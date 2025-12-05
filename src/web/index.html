@@ -1620,6 +1620,7 @@
             .metrics-grid { gap: 1rem; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-left { flex-direction: column; gap: 1rem; }
+            .validation-charts-grid { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -1913,15 +1914,33 @@
                     <div class="chart-legend">
                         <div class="legend-item">
                             <div class="legend-dot blue"></div>
-                            Study data points
+                            Study data points (color = study)
                         </div>
                         <div class="legend-item">
                             <div class="legend-dot line"></div>
-                            Regression line
+                            Perfect prediction line
                         </div>
                     </div>
                 </div>
                 <div id="scatter-plot" style="width: 100%; height: 500px;"></div>
+            </div>
+
+            <!-- Residual & Bland-Altman Charts -->
+            <div class="validation-charts-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem;">
+                <div class="chart-section" style="margin: 0;">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Residual Plot</h3>
+                        <p style="color: var(--text-muted); font-size: 0.8125rem; margin-top: 0.25rem;">Error vs predicted value (should be random)</p>
+                    </div>
+                    <div id="residual-plot" style="width: 100%; height: 350px;"></div>
+                </div>
+                <div class="chart-section" style="margin: 0;">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Bland-Altman Plot</h3>
+                        <p style="color: var(--text-muted); font-size: 0.8125rem; margin-top: 0.25rem;">Agreement analysis (95% limits of agreement)</p>
+                    </div>
+                    <div id="bland-altman-plot" style="width: 100%; height: 350px;"></div>
+                </div>
             </div>
 
             <!-- Studies Used - Interactive -->
@@ -1951,43 +1970,71 @@
                 </p>
             </div>
 
-            <!-- Accuracy Showcase - Reframed for Honesty -->
+            <!-- PRIMARY METRICS - Big Cards -->
             <div class="accuracy-showcase animate-on-scroll">
-                <div class="accuracy-card">
-                    <div class="accuracy-value">100%</div>
-                    <div class="accuracy-label">Within ±3 Points</div>
-                    <div class="accuracy-detail">Pass criterion met</div>
+                <div class="accuracy-card primary-metric">
+                    <div class="accuracy-value" style="color: var(--accent-blue);">0.93</div>
+                    <div class="accuracy-label">VAI Error (avg)</div>
+                    <div class="accuracy-detail">Points on 0-22 scale</div>
                 </div>
-                <div class="accuracy-card">
-                    <div class="accuracy-value">60%</div>
-                    <div class="accuracy-label">Exact Match</div>
-                    <div class="accuracy-detail">9/15 cases with 0 error</div>
+                <div class="accuracy-card primary-metric">
+                    <div class="accuracy-value" style="color: var(--accent-purple);">0.73</div>
+                    <div class="accuracy-label">MAGNIFI Error (avg)</div>
+                    <div class="accuracy-detail">Points on 0-25 scale</div>
                 </div>
-                <div class="accuracy-card">
-                    <div class="accuracy-value">80%</div>
-                    <div class="accuracy-label">Within ±1 Point</div>
-                    <div class="accuracy-detail">12/15 cases</div>
+                <div class="accuracy-card primary-metric">
+                    <div class="accuracy-value" style="color: var(--accent-cyan);">93%</div>
+                    <div class="accuracy-label">Clinical Agreement</div>
+                    <div class="accuracy-detail">Within ±2 points</div>
                 </div>
-                <div class="accuracy-card">
-                    <div class="accuracy-value">100%</div>
+                <div class="accuracy-card primary-metric">
+                    <div class="accuracy-value" style="color: var(--accent-green);">100%</div>
                     <div class="accuracy-label">Edge Cases</div>
                     <div class="accuracy-detail">11/11 passed</div>
                 </div>
             </div>
 
-            <!-- MAE Metrics -->
-            <div class="metrics-grid animate-on-scroll" style="grid-template-columns: repeat(2, 1fr); max-width: 600px; margin: 0 auto 3rem;">
-                <div class="metric-card">
-                    <div class="metric-icon blue">VAI</div>
-                    <div class="metric-value blue">0.93</div>
-                    <div class="metric-label">VAI Mean Absolute Error</div>
-                    <div class="metric-subtext">Points on 0-22 scale</div>
+            <!-- Error Distribution Visual -->
+            <div class="error-distribution animate-on-scroll" style="max-width: 700px; margin: 2rem auto 3rem; background: var(--bg-glass); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem;">
+                <h4 style="font-size: 0.9375rem; margin-bottom: 1rem; color: var(--text-secondary);">Error Distribution (15 Real-World Cases)</h4>
+                <div class="error-bar-visual">
+                    <div class="error-row" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                        <span style="width: 80px; font-size: 0.8125rem; color: var(--text-muted);">0 pts off</span>
+                        <div style="flex: 1; background: var(--bg-tertiary); height: 24px; border-radius: 4px; overflow: hidden;">
+                            <div style="width: 60%; height: 100%; background: var(--accent-green); display: flex; align-items: center; padding-left: 8px;">
+                                <span style="font-size: 0.75rem; font-weight: 600; color: white;">60% exact</span>
+                            </div>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-secondary);">9/15</span>
+                    </div>
+                    <div class="error-row" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                        <span style="width: 80px; font-size: 0.8125rem; color: var(--text-muted);">1 pt off</span>
+                        <div style="flex: 1; background: var(--bg-tertiary); height: 24px; border-radius: 4px; overflow: hidden;">
+                            <div style="width: 20%; height: 100%; background: var(--accent-cyan);"></div>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-secondary);">3/15</span>
+                    </div>
+                    <div class="error-row" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                        <span style="width: 80px; font-size: 0.8125rem; color: var(--text-muted);">2 pts off</span>
+                        <div style="flex: 1; background: var(--bg-tertiary); height: 24px; border-radius: 4px; overflow: hidden;">
+                            <div style="width: 13%; height: 100%; background: var(--accent-orange);"></div>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-secondary);">2/15</span>
+                    </div>
+                    <div class="error-row" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="width: 80px; font-size: 0.8125rem; color: var(--text-muted);">3 pts off</span>
+                        <div style="flex: 1; background: var(--bg-tertiary); height: 24px; border-radius: 4px; overflow: hidden;">
+                            <div style="width: 7%; height: 100%; background: var(--accent-red);"></div>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-secondary);">1/15</span>
+                    </div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-icon purple">MAG</div>
-                    <div class="metric-value purple">0.73</div>
-                    <div class="metric-label">MAGNIFI Mean Absolute Error</div>
-                    <div class="metric-subtext">Points on 0-25 scale</div>
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--text-muted);">
+                        <span>80% within ±1 pt</span>
+                        <span>93% within ±2 pts</span>
+                        <span style="color: var(--accent-green);">100% within ±3 pts (pass)</span>
+                    </div>
                 </div>
             </div>
 
@@ -2616,29 +2663,48 @@
 
         // =========================================
         // SCATTERPLOT (with real validation data)
+        // Color-coded by study category
         // =========================================
+
+        // Study color palette - distinct colors for each study category
+        const STUDY_COLORS = {
+            'ADMIRE': '#3b82f6',       // Blue
+            'ADMIRE-II': '#8b5cf6',    // Purple
+            'MAGNIFI': '#06b6d4',      // Cyan
+            'PISA-II': '#10b981',      // Green
+            'PEMPAC': '#f59e0b',       // Amber
+            'DIVERGENCE': '#ef4444',   // Red
+            'De Gregorio': '#ec4899',  // Pink
+            'vanRijn': '#14b8a6',      // Teal
+            'Beek': '#f97316',         // Orange
+            'ESGAR': '#a855f7',        // Violet
+            'Protocolized': '#84cc16', // Lime
+            'P325': '#6366f1',         // Indigo
+            'Other': '#71717a'         // Gray
+        };
+
         const SCATTER_DATA = [
             // Real data from validation_results.json
-            { vai: 0, magnifi: 0, study: "vanRijn (healed)", predicted: 3.3, n: 25 },
-            { vai: 0, magnifi: 0, study: "PISA-II Surgery (healed)", predicted: 3.3, n: 15 },
-            { vai: 0, magnifi: 6, study: "Protocolized (healed)", predicted: 3.3, n: 29 },
-            { vai: 4, magnifi: 8, study: "Protocolized (healed high)", predicted: 5.84, n: 14 },
-            { vai: 5, magnifi: 6, study: "P325 Responders", predicted: 6.87, n: 26 },
-            { vai: 5, magnifi: 7, study: "De Gregorio (remission)", predicted: 6.87, n: 20 },
-            { vai: 6, magnifi: 8, study: "PISA-II (clinical)", predicted: 7.9, n: 24 },
-            { vai: 7, magnifi: 9, study: "ADMIRE (responders)", predicted: 8.93, n: 53 },
-            { vai: 8, magnifi: 10, study: "ADMIRE-II (remission)", predicted: 9.96, n: 128 },
-            { vai: 9, magnifi: 11, study: "MAGNIFI Responders", predicted: 10.99, n: 80 },
-            { vai: 10, magnifi: 12, study: "PEMPAC Baseline", predicted: 12.02, n: 80 },
-            { vai: 11, magnifi: 13, study: "De Gregorio (active)", predicted: 13.05, n: 42 },
-            { vai: 12, magnifi: 14, study: "ADMIRE-II (active)", predicted: 14.08, n: 192 },
-            { vai: 13, magnifi: 15, study: "DIVERGENCE-2", predicted: 15.12, n: 80 },
-            { vai: 14, magnifi: 16, study: "ADMIRE Baseline", predicted: 16.15, n: 212 },
-            { vai: 15, magnifi: 17, study: "ADMIRE-II Baseline", predicted: 17.18, n: 320 },
-            { vai: 16, magnifi: 19, study: "van Rijn (active)", predicted: 18.21, n: 25 },
-            { vai: 17, magnifi: 20, study: "Beek (severe)", predicted: 19.24, n: 30 },
-            { vai: 18, magnifi: 20, study: "ESGAR (high)", predicted: 20.27, n: 33 },
-            { vai: 22, magnifi: 25, study: "Maximum severity", predicted: 24.4, n: 1 }
+            { vai: 0, magnifi: 0, study: "vanRijn", label: "vanRijn (healed)", predicted: 3.3, n: 25 },
+            { vai: 0, magnifi: 0, study: "PISA-II", label: "PISA-II Surgery (healed)", predicted: 3.3, n: 15 },
+            { vai: 0, magnifi: 6, study: "Protocolized", label: "Protocolized (healed)", predicted: 3.3, n: 29 },
+            { vai: 4, magnifi: 8, study: "Protocolized", label: "Protocolized (healed high)", predicted: 5.84, n: 14 },
+            { vai: 5, magnifi: 6, study: "P325", label: "P325 Responders", predicted: 6.87, n: 26 },
+            { vai: 5, magnifi: 7, study: "De Gregorio", label: "De Gregorio (remission)", predicted: 6.87, n: 20 },
+            { vai: 6, magnifi: 8, study: "PISA-II", label: "PISA-II (clinical)", predicted: 7.9, n: 24 },
+            { vai: 7, magnifi: 9, study: "ADMIRE", label: "ADMIRE (responders)", predicted: 8.93, n: 53 },
+            { vai: 8, magnifi: 10, study: "ADMIRE-II", label: "ADMIRE-II (remission)", predicted: 9.96, n: 128 },
+            { vai: 9, magnifi: 11, study: "MAGNIFI", label: "MAGNIFI Responders", predicted: 10.99, n: 80 },
+            { vai: 10, magnifi: 12, study: "PEMPAC", label: "PEMPAC Baseline", predicted: 12.02, n: 80 },
+            { vai: 11, magnifi: 13, study: "De Gregorio", label: "De Gregorio (active)", predicted: 13.05, n: 42 },
+            { vai: 12, magnifi: 14, study: "ADMIRE-II", label: "ADMIRE-II (active)", predicted: 14.08, n: 192 },
+            { vai: 13, magnifi: 15, study: "DIVERGENCE", label: "DIVERGENCE-2", predicted: 15.12, n: 80 },
+            { vai: 14, magnifi: 16, study: "ADMIRE", label: "ADMIRE Baseline", predicted: 16.15, n: 212 },
+            { vai: 15, magnifi: 17, study: "ADMIRE-II", label: "ADMIRE-II Baseline", predicted: 17.18, n: 320 },
+            { vai: 16, magnifi: 19, study: "vanRijn", label: "vanRijn (active)", predicted: 18.21, n: 25 },
+            { vai: 17, magnifi: 20, study: "Beek", label: "Beek (severe)", predicted: 19.24, n: 30 },
+            { vai: 18, magnifi: 20, study: "ESGAR", label: "ESGAR (high)", predicted: 20.27, n: 33 },
+            { vai: 22, magnifi: 25, study: "Other", label: "Maximum severity", predicted: 24.4, n: 1 }
         ];
 
         function updatePlotlyTheme() {
@@ -2663,46 +2729,59 @@
             const textColor = isDark ? '#a1a1aa' : '#475569';
             const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
 
-            const trace1 = {
-                x: SCATTER_DATA.map(d => d.magnifi),
-                y: SCATTER_DATA.map(d => d.predicted),
+            // Group data by study for colored traces
+            const studyGroups = {};
+            SCATTER_DATA.forEach(d => {
+                if (!studyGroups[d.study]) {
+                    studyGroups[d.study] = [];
+                }
+                studyGroups[d.study].push(d);
+            });
+
+            // Create a trace for each study group
+            const studyTraces = Object.entries(studyGroups).map(([study, points]) => ({
+                x: points.map(d => d.magnifi),
+                y: points.map(d => d.predicted),
                 mode: 'markers',
                 type: 'scatter',
-                name: 'Study Data',
-                text: SCATTER_DATA.map(d => `${d.study}<br>n=${d.n}<br>Actual: ${d.magnifi}<br>Predicted: ${d.predicted.toFixed(1)}`),
+                name: study,
+                text: points.map(d => `<b>${d.label}</b><br>n=${d.n}<br>Actual: ${d.magnifi}<br>Predicted: ${d.predicted.toFixed(1)}`),
                 marker: {
-                    color: '#3b82f6',
-                    size: SCATTER_DATA.map(d => Math.sqrt(d.n) * 1.2 + 8),
-                    opacity: 0.85,
-                    line: { color: '#60a5fa', width: 1 }
+                    color: STUDY_COLORS[study] || STUDY_COLORS['Other'],
+                    size: points.map(d => Math.sqrt(d.n) * 1.2 + 8),
+                    opacity: 0.9,
+                    line: { color: 'rgba(255,255,255,0.3)', width: 1.5 }
                 },
-                hovertemplate: '<b>%{text}</b><extra></extra>'
-            };
+                hovertemplate: '%{text}<extra></extra>'
+            }));
 
-            const trace2 = {
+            const perfectLine = {
                 x: [0, 25],
                 y: [0, 25],
                 mode: 'lines',
-                name: 'Perfect Prediction (y=x)',
-                line: { color: '#8b5cf6', width: 2 }
+                name: 'Perfect (y=x)',
+                line: { color: '#71717a', width: 2, dash: 'dash' },
+                hoverinfo: 'skip'
             };
 
-            const trace3 = {
+            const upperPI = {
                 x: [0, 25],
                 y: [0 + 1.96*0.96, 25 + 1.96*0.96],
                 mode: 'lines',
-                name: '+95% PI',
-                line: { color: 'rgba(139, 92, 246, 0.3)', width: 1, dash: 'dot' },
-                showlegend: false
+                name: '95% PI',
+                line: { color: 'rgba(113, 113, 122, 0.4)', width: 1, dash: 'dot' },
+                showlegend: false,
+                hoverinfo: 'skip'
             };
 
-            const trace4 = {
+            const lowerPI = {
                 x: [0, 25],
                 y: [Math.max(0, 0 - 1.96*0.96), 25 - 1.96*0.96],
                 mode: 'lines',
                 name: '-95% PI',
-                line: { color: 'rgba(139, 92, 246, 0.3)', width: 1, dash: 'dot' },
-                showlegend: false
+                line: { color: 'rgba(113, 113, 122, 0.4)', width: 1, dash: 'dot' },
+                showlegend: false,
+                hoverinfo: 'skip'
             };
 
             const layout = {
@@ -2723,12 +2802,22 @@
                     zerolinecolor: gridColor,
                     tickfont: { family: 'JetBrains Mono, monospace', size: 11, color: textColor }
                 },
-                margin: { t: 20, r: 30, b: 60, l: 70 },
-                showlegend: false,
+                margin: { t: 20, r: 150, b: 60, l: 70 },
+                showlegend: true,
+                legend: {
+                    x: 1.02,
+                    y: 1,
+                    xanchor: 'left',
+                    yanchor: 'top',
+                    bgcolor: 'transparent',
+                    font: { size: 10, color: textColor },
+                    itemsizing: 'constant',
+                    itemwidth: 20
+                },
                 hovermode: 'closest',
                 annotations: [{
-                    x: 20,
-                    y: 5,
+                    x: 4,
+                    y: 24,
                     text: '<b>R² = 0.96</b>',
                     showarrow: false,
                     font: { family: 'JetBrains Mono', size: 14, color: '#3b82f6' },
@@ -2740,7 +2829,212 @@
             };
 
             const config = { responsive: true, displayModeBar: false };
-            Plotly.newPlot('scatter-plot', [trace1, trace2, trace3, trace4], layout, config);
+            Plotly.newPlot('scatter-plot', [...studyTraces, perfectLine, upperPI, lowerPI], layout, config);
+        }
+
+        // =========================================
+        // RESIDUAL PLOT
+        // =========================================
+        function initResidualPlot() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const textColor = isDark ? '#a1a1aa' : '#475569';
+            const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
+
+            // Calculate residuals (actual - predicted)
+            const residuals = SCATTER_DATA.map(d => ({
+                predicted: d.predicted,
+                residual: d.magnifi - d.predicted,
+                study: d.study,
+                label: d.label,
+                n: d.n
+            }));
+
+            const trace = {
+                x: residuals.map(r => r.predicted),
+                y: residuals.map(r => r.residual),
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Residuals',
+                text: residuals.map(r => `${r.label}<br>n=${r.n}<br>Residual: ${r.residual.toFixed(2)}`),
+                marker: {
+                    color: residuals.map(r => STUDY_COLORS[r.study] || STUDY_COLORS['Other']),
+                    size: residuals.map(r => Math.sqrt(r.n) * 0.8 + 6),
+                    opacity: 0.85,
+                    line: { color: 'rgba(255,255,255,0.3)', width: 1 }
+                },
+                hovertemplate: '%{text}<extra></extra>'
+            };
+
+            const zeroLine = {
+                x: [0, 30],
+                y: [0, 0],
+                mode: 'lines',
+                name: 'Zero Line',
+                line: { color: '#71717a', width: 2, dash: 'dash' },
+                hoverinfo: 'skip'
+            };
+
+            // ±2 SD lines (RMSE = 0.96)
+            const upperBound = {
+                x: [0, 30],
+                y: [1.96 * 0.96, 1.96 * 0.96],
+                mode: 'lines',
+                name: '+2 SD',
+                line: { color: 'rgba(239, 68, 68, 0.4)', width: 1, dash: 'dot' },
+                showlegend: false,
+                hoverinfo: 'skip'
+            };
+
+            const lowerBound = {
+                x: [0, 30],
+                y: [-1.96 * 0.96, -1.96 * 0.96],
+                mode: 'lines',
+                name: '-2 SD',
+                line: { color: 'rgba(239, 68, 68, 0.4)', width: 1, dash: 'dot' },
+                showlegend: false,
+                hoverinfo: 'skip'
+            };
+
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { family: 'Inter, sans-serif', color: textColor },
+                xaxis: {
+                    title: { text: 'Predicted MAGNIFI-CD', font: { size: 11, color: textColor } },
+                    gridcolor: gridColor,
+                    zerolinecolor: gridColor,
+                    tickfont: { family: 'JetBrains Mono', size: 10, color: textColor }
+                },
+                yaxis: {
+                    title: { text: 'Residual (Actual - Predicted)', font: { size: 11, color: textColor } },
+                    gridcolor: gridColor,
+                    zerolinecolor: gridColor,
+                    tickfont: { family: 'JetBrains Mono', size: 10, color: textColor },
+                    range: [-5, 5]
+                },
+                margin: { t: 10, r: 20, b: 50, l: 60 },
+                showlegend: false,
+                hovermode: 'closest'
+            };
+
+            Plotly.newPlot('residual-plot', [trace, zeroLine, upperBound, lowerBound], layout, { responsive: true, displayModeBar: false });
+        }
+
+        // =========================================
+        // BLAND-ALTMAN PLOT
+        // =========================================
+        function initBlandAltmanPlot() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const textColor = isDark ? '#a1a1aa' : '#475569';
+            const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
+
+            // Bland-Altman: x = mean of methods, y = difference
+            const baData = SCATTER_DATA.map(d => ({
+                mean: (d.magnifi + d.predicted) / 2,
+                diff: d.magnifi - d.predicted,
+                study: d.study,
+                label: d.label,
+                n: d.n
+            }));
+
+            // Calculate mean difference and limits of agreement
+            const meanDiff = baData.reduce((sum, d) => sum + d.diff, 0) / baData.length;
+            const sdDiff = Math.sqrt(baData.reduce((sum, d) => sum + Math.pow(d.diff - meanDiff, 2), 0) / (baData.length - 1));
+            const upperLOA = meanDiff + 1.96 * sdDiff;
+            const lowerLOA = meanDiff - 1.96 * sdDiff;
+
+            const trace = {
+                x: baData.map(d => d.mean),
+                y: baData.map(d => d.diff),
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Differences',
+                text: baData.map(d => `${d.label}<br>n=${d.n}<br>Diff: ${d.diff.toFixed(2)}`),
+                marker: {
+                    color: baData.map(d => STUDY_COLORS[d.study] || STUDY_COLORS['Other']),
+                    size: baData.map(d => Math.sqrt(d.n) * 0.8 + 6),
+                    opacity: 0.85,
+                    line: { color: 'rgba(255,255,255,0.3)', width: 1 }
+                },
+                hovertemplate: '%{text}<extra></extra>'
+            };
+
+            const meanLine = {
+                x: [0, 30],
+                y: [meanDiff, meanDiff],
+                mode: 'lines',
+                name: `Mean (${meanDiff.toFixed(2)})`,
+                line: { color: '#3b82f6', width: 2 },
+                hoverinfo: 'skip'
+            };
+
+            const upperLine = {
+                x: [0, 30],
+                y: [upperLOA, upperLOA],
+                mode: 'lines',
+                name: `+1.96 SD (${upperLOA.toFixed(2)})`,
+                line: { color: '#ef4444', width: 1.5, dash: 'dash' },
+                hoverinfo: 'skip'
+            };
+
+            const lowerLine = {
+                x: [0, 30],
+                y: [lowerLOA, lowerLOA],
+                mode: 'lines',
+                name: `-1.96 SD (${lowerLOA.toFixed(2)})`,
+                line: { color: '#ef4444', width: 1.5, dash: 'dash' },
+                hoverinfo: 'skip'
+            };
+
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { family: 'Inter, sans-serif', color: textColor },
+                xaxis: {
+                    title: { text: 'Mean of Actual & Predicted', font: { size: 11, color: textColor } },
+                    gridcolor: gridColor,
+                    zerolinecolor: gridColor,
+                    tickfont: { family: 'JetBrains Mono', size: 10, color: textColor }
+                },
+                yaxis: {
+                    title: { text: 'Difference (Actual - Predicted)', font: { size: 11, color: textColor } },
+                    gridcolor: gridColor,
+                    zerolinecolor: gridColor,
+                    tickfont: { family: 'JetBrains Mono', size: 10, color: textColor },
+                    range: [-5, 5]
+                },
+                margin: { t: 10, r: 20, b: 50, l: 60 },
+                showlegend: false,
+                hovermode: 'closest',
+                annotations: [
+                    {
+                        x: 22, y: meanDiff,
+                        text: `Mean: ${meanDiff.toFixed(2)}`,
+                        showarrow: false,
+                        font: { size: 9, color: '#3b82f6' },
+                        bgcolor: 'rgba(59, 130, 246, 0.1)',
+                        borderpad: 3
+                    },
+                    {
+                        x: 22, y: upperLOA,
+                        text: `+LOA: ${upperLOA.toFixed(2)}`,
+                        showarrow: false,
+                        font: { size: 9, color: '#ef4444' },
+                        bgcolor: 'rgba(239, 68, 68, 0.1)',
+                        borderpad: 3
+                    },
+                    {
+                        x: 22, y: lowerLOA,
+                        text: `-LOA: ${lowerLOA.toFixed(2)}`,
+                        showarrow: false,
+                        font: { size: 9, color: '#ef4444' },
+                        bgcolor: 'rgba(239, 68, 68, 0.1)',
+                        borderpad: 3
+                    }
+                ]
+            };
+
+            Plotly.newPlot('bland-altman-plot', [trace, meanLine, upperLine, lowerLine], layout, { responsive: true, displayModeBar: false });
         }
 
         // =========================================
@@ -2792,6 +3086,8 @@
             renderStudyGrid();
             renderEdgeCaseTable();
             initScatterPlot();
+            initResidualPlot();
+            initBlandAltmanPlot();
         });
     </script>
 </body>
