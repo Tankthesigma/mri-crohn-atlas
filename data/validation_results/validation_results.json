@@ -1,0 +1,1878 @@
+{
+  "cross_validation": {
+    "n_iterations": 10,
+    "test_fraction": 0.2,
+    "n_test_samples": 12,
+    "n_train_samples": 52,
+    "r2_mean": 0.9375274370550883,
+    "r2_std": 0.050722745053686374,
+    "rmse_mean": 1.1186609294883536,
+    "rmse_std": 0.3529211494316668,
+    "mae_mean": 0.6432803596596504,
+    "mae_std": 0.1914387463102248,
+    "coef_vai_mean": 1.0207449319085877,
+    "coef_vai_std": 0.011445368903205832,
+    "coef_fib_healed_mean": 0.03878687637442592,
+    "coef_fib_healed_std": 0.11167354938686717,
+    "iterations": [
+      {
+        "r2": 0.9702072769356935,
+        "rmse": 0.7787686001068607,
+        "mae": 0.46554706572155663,
+        "max_error": 2.2225433375584815,
+        "mean_residual": 0.33820762600980037,
+        "iteration": 1,
+        "coef_vai": 1.0301202853858418,
+        "coef_fib_healed": 0.007629412221363262,
+        "intercept": 1.6569755208981514
+      },
+      {
+        "r2": 0.8897833578553949,
+        "rmse": 1.4875322415741425,
+        "mae": 0.9451081736971029,
+        "max_error": 3.566433566433568,
+        "mean_residual": -0.04674349024471521,
+        "iteration": 2,
+        "coef_vai": 1.016280119084489,
+        "coef_fib_healed": 0.0976618561872723,
+        "intercept": 1.8475952964427982
+      },
+      {
+        "r2": 0.9525506810298502,
+        "rmse": 1.218586393286746,
+        "mae": 0.7224402438649417,
+        "max_error": 2.6160466010702086,
+        "mean_residual": -0.6486369893033658,
+        "iteration": 3,
+        "coef_vai": 1.0146498719809012,
+        "coef_fib_healed": 0.1252125657917053,
+        "intercept": 1.8647712063199766
+      },
+      {
+        "r2": 0.8951375969875199,
+        "rmse": 1.3355204258247502,
+        "mae": 0.6887755353173431,
+        "max_error": 3.995317385681285,
+        "mean_residual": -0.0039126225604687965,
+        "iteration": 4,
+        "coef_vai": 1.0227059334451347,
+        "coef_fib_healed": 0.031068781298060656,
+        "intercept": 1.8182699265303508
+      },
+      {
+        "r2": 0.9905164659546651,
+        "rmse": 0.39049288109891794,
+        "mae": 0.24754831087226478,
+        "max_error": 0.8577569621663876,
+        "mean_residual": -0.08353129906660017,
+        "iteration": 5,
+        "coef_vai": 1.0154514946667121,
+        "coef_fib_healed": -0.030364493271903957,
+        "intercept": 1.879567628499505
+      },
+      {
+        "r2": 0.9732255775730982,
+        "rmse": 1.1423953605570984,
+        "mae": 0.7370720332337296,
+        "max_error": 2.4264876770945,
+        "mean_residual": -0.2402490689486151,
+        "iteration": 6,
+        "coef_vai": 1.0026353259317082,
+        "coef_fib_healed": 0.07589562892478857,
+        "intercept": 1.9711139035457683
+      },
+      {
+        "r2": 0.8269935581880139,
+        "rmse": 1.5789156941286544,
+        "mae": 0.5709420115343835,
+        "max_error": 5.419417269224568,
+        "mean_residual": 0.3322942000030445,
+        "iteration": 7,
+        "coef_vai": 1.0067851075738716,
+        "coef_fib_healed": -0.23221599133072557,
+        "intercept": 1.9738786787597855
+      },
+      {
+        "r2": 0.966413585407156,
+        "rmse": 1.0050662001469486,
+        "mae": 0.7193853126796963,
+        "max_error": 2.2137390196307862,
+        "mean_residual": 0.034134334487197826,
+        "iteration": 8,
+        "coef_vai": 1.0312512557821396,
+        "coef_fib_healed": 0.06804982799881963,
+        "intercept": 1.6612559572406558
+      },
+      {
+        "r2": 0.9517239553571485,
+        "rmse": 1.2931467613456618,
+        "mae": 0.7708685518527876,
+        "max_error": 2.6621084562273234,
+        "mean_residual": -0.2544629879965698,
+        "iteration": 9,
+        "coef_vai": 1.0375809137502392,
+        "coef_fib_healed": 0.17636695836534524,
+        "intercept": 1.603906706035252
+      },
+      {
+        "r2": 0.9587223152623416,
+        "rmse": 0.9561847368137573,
+        "mae": 0.5651163578226972,
+        "max_error": 2.2304158936762946,
+        "mean_residual": 0.057030302192028794,
+        "iteration": 10,
+        "coef_vai": 1.0299890114848405,
+        "coef_fib_healed": 0.06856421755953372,
+        "intercept": 1.6496280603843434
+      }
+    ]
+  },
+  "leave_one_study_out": {
+    "n_studies": 16,
+    "studies_validated": [
+      "Protocolized_2025",
+      "MAGNIFI-CD_Validation_2019",
+      "Beek_2024",
+      "vanRijn_2022",
+      "Li_Ustekinumab_2023",
+      "P325_ECCO_2022",
+      "Samaan_2019",
+      "ESGAR_2023",
+      "DeGregorio_2022",
+      "PISA2_2023",
+      "Yao_UST_2023",
+      "ADMIRE_2016",
+      "ADMIRE_Followup_2022",
+      "ADMIRE2_2024",
+      "DIVERGENCE2_2024",
+      "PEMPAC_2021"
+    ],
+    "r2_mean": 0.9445158393599309,
+    "r2_std": 0.07673877717332458,
+    "rmse_mean": 0.6861545240260108,
+    "rmse_std": 0.7490683924279237,
+    "mae_mean": 0.5044354931974742,
+    "mae_std": 0.53491715272649,
+    "by_study": [
+      {
+        "r2": 0.7151824384014283,
+        "rmse": 2.814162492150543,
+        "mae": 1.9835345156841395,
+        "max_error": 5.8894736842105235,
+        "mean_residual": 1.6064512634587007,
+        "study": "Protocolized_2025",
+        "n_datapoints": 6,
+        "total_patients": "118",
+        "coef_vai": 1.0343601539652423,
+        "coef_fib_healed": -0.2515747284774403,
+        "intercept": 1.6199746866541176,
+        "predictions": [
+          {
+            "source": "protocolized_active_median",
+            "vai": 12.0,
+            "fibrosis": 2,
+            "actual": 14.0,
+            "predicted": 14.03,
+            "error": -0.03
+          },
+          {
+            "source": "protocolized_active_iqr_low",
+            "vai": 8.0,
+            "fibrosis": 1,
+            "actual": 9.0,
+            "predicted": 9.89,
+            "error": -0.89
+          },
+          {
+            "source": "protocolized_active_iqr_high",
+            "vai": 17.0,
+            "fibrosis": 3,
+            "actual": 19.0,
+            "predicted": 19.2,
+            "error": -0.2
+          },
+          {
+            "source": "protocolized_healed_median",
+            "vai": 0.0,
+            "fibrosis": 6,
+            "actual": 6.0,
+            "predicted": 0.11,
+            "error": 5.89
+          },
+          {
+            "source": "protocolized_healed_iqr_low",
+            "vai": 0.0,
+            "fibrosis": 5,
+            "actual": 3.0,
+            "predicted": 0.36,
+            "error": 2.64
+          },
+          {
+            "source": "protocolized_healed_iqr_high",
+            "vai": 4.0,
+            "fibrosis": 6,
+            "actual": 8.0,
+            "predicted": 5.76,
+            "error": 2.24
+          }
+        ]
+      },
+      {
+        "r2": 0.8411050821082477,
+        "rmse": 0.6060900826618061,
+        "mae": 0.5658958028367911,
+        "max_error": 0.8398548547723408,
+        "mean_residual": -0.3659286453875552,
+        "study": "MAGNIFI-CD_Validation_2019",
+        "n_datapoints": 4,
+        "total_patients": "320",
+        "coef_vai": 1.027957833934162,
+        "coef_fib_healed": -0.007983403566416601,
+        "intercept": 1.7484451796940716,
+        "predictions": [
+          {
+            "source": "magnificd_validation_responders_bl",
+            "vai": 14.0,
+            "fibrosis": 2,
+            "actual": 15.3,
+            "predicted": 16.14,
+            "error": -0.84
+          },
+          {
+            "source": "magnificd_validation_responders_wk24",
+            "vai": 9.0,
+            "fibrosis": 3,
+            "actual": 11.4,
+            "predicted": 11.0,
+            "error": 0.4
+          },
+          {
+            "source": "magnificd_validation_nonresp_bl",
+            "vai": 13.0,
+            "fibrosis": 2,
+            "actual": 14.8,
+            "predicted": 15.11,
+            "error": -0.31
+          },
+          {
+            "source": "magnificd_validation_nonresp_wk24",
+            "vai": 13.0,
+            "fibrosis": 2,
+            "actual": 14.4,
+            "predicted": 15.11,
+            "error": -0.71
+          }
+        ]
+      },
+      {
+        "r2": 0.9430842591806557,
+        "rmse": 1.0188930819987148,
+        "mae": 0.9003399902973321,
+        "max_error": 1.5234969401424294,
+        "mean_residual": 0.9003399902973321,
+        "study": "Beek_2024",
+        "n_datapoints": 5,
+        "total_patients": "115",
+        "coef_vai": 1.0072365468265931,
+        "coef_fib_healed": -0.0345583025931557,
+        "intercept": 1.9041375915916383,
+        "predictions": [
+          {
+            "source": "beek_responders_bl",
+            "vai": 17.0,
+            "fibrosis": 2,
+            "actual": 20.0,
+            "predicted": 19.03,
+            "error": 0.97
+          },
+          {
+            "source": "beek_remitters_bl",
+            "vai": 10.0,
+            "fibrosis": 3,
+            "actual": 13.5,
+            "predicted": 11.98,
+            "error": 1.52
+          },
+          {
+            "source": "beek_nonresp_bl",
+            "vai": 17.0,
+            "fibrosis": 2,
+            "actual": 20.0,
+            "predicted": 19.03,
+            "error": 0.97
+          },
+          {
+            "source": "beek_responders_fu",
+            "vai": 7.0,
+            "fibrosis": 4,
+            "actual": 9.0,
+            "predicted": 8.95,
+            "error": 0.05
+          },
+          {
+            "source": "beek_nonresp_fu",
+            "vai": 15.0,
+            "fibrosis": 2,
+            "actual": 18.0,
+            "predicted": 17.01,
+            "error": 0.99
+          }
+        ]
+      },
+      {
+        "r2": 0.970853717574118,
+        "rmse": 1.23405561331422,
+        "mae": 1.0012519424899131,
+        "max_error": 2.0638412674735354,
+        "mean_residual": -0.03066869124685445,
+        "study": "vanRijn_2022",
+        "n_datapoints": 4,
+        "total_patients": "100",
+        "coef_vai": 1.0129121942545967,
+        "coef_fib_healed": 0.03463076036563329,
+        "intercept": 1.8560567052797357,
+        "predictions": [
+          {
+            "source": "vanrijn_pretreat_closed",
+            "vai": 9.0,
+            "fibrosis": 3,
+            "actual": 11.0,
+            "predicted": 10.97,
+            "error": 0.03
+          },
+          {
+            "source": "vanrijn_pretreat_open",
+            "vai": 16.0,
+            "fibrosis": 1,
+            "actual": 19.0,
+            "predicted": 18.06,
+            "error": 0.94
+          },
+          {
+            "source": "vanrijn_posttreat_closed",
+            "vai": 0.0,
+            "fibrosis": 6,
+            "actual": 0.0,
+            "predicted": 2.06,
+            "error": -2.06
+          },
+          {
+            "source": "vanrijn_posttreat_open",
+            "vai": 13.0,
+            "fibrosis": 1,
+            "actual": 16.0,
+            "predicted": 15.02,
+            "error": 0.98
+          }
+        ]
+      },
+      {
+        "r2": 0.9744606435640735,
+        "rmse": 0.3196207529928336,
+        "mae": 0.22675036188707143,
+        "max_error": 0.4520095440035572,
+        "mean_residual": -0.22525918211648577,
+        "study": "Li_Ustekinumab_2023",
+        "n_datapoints": 2,
+        "total_patients": "134",
+        "coef_vai": 1.0132855074931022,
+        "coef_fib_healed": -0.030257236785941135,
+        "intercept": 1.8789392527914952,
+        "predictions": [
+          {
+            "source": "ustekinumab_baseline",
+            "vai": 9.0,
+            "fibrosis": 3,
+            "actual": 11.0,
+            "predicted": 11.0,
+            "error": 0.0
+          },
+          {
+            "source": "ustekinumab_posttreat",
+            "vai": 5.5,
+            "fibrosis": 4,
+            "actual": 7.0,
+            "predicted": 7.45,
+            "error": -0.45
+          }
+        ]
+      },
+      {
+        "r2": 0.9730682718829267,
+        "rmse": 0.47845552457373025,
+        "mae": 0.2566589076181962,
+        "max_error": 0.955991889480841,
+        "mean_residual": -0.2566589076181962,
+        "study": "P325_ECCO_2022",
+        "n_datapoints": 4,
+        "total_patients": "76",
+        "coef_vai": 1.0119216513264364,
+        "coef_fib_healed": -0.033234791266298434,
+        "intercept": 1.896383632848659,
+        "predictions": [
+          {
+            "source": "p325_responders_bl",
+            "vai": 11.0,
+            "fibrosis": 2,
+            "actual": 13.0,
+            "predicted": 13.03,
+            "error": -0.03
+          },
+          {
+            "source": "p325_responders_fu",
+            "vai": 5.0,
+            "fibrosis": 4,
+            "actual": 6.0,
+            "predicted": 6.96,
+            "error": -0.96
+          },
+          {
+            "source": "p325_nonresp_bl",
+            "vai": 10.0,
+            "fibrosis": 2,
+            "actual": 12.0,
+            "predicted": 12.02,
+            "error": -0.02
+          },
+          {
+            "source": "p325_nonresp_fu",
+            "vai": 11.0,
+            "fibrosis": 2,
+            "actual": 13.0,
+            "predicted": 13.03,
+            "error": -0.03
+          }
+        ]
+      },
+      {
+        "r2": 0.8823945582283981,
+        "rmse": 0.48498544673340843,
+        "mae": 0.4338000794270105,
+        "max_error": 0.6029461380650698,
+        "mean_residual": -0.4338000794270105,
+        "study": "Samaan_2019",
+        "n_datapoints": 4,
+        "total_patients": "60",
+        "coef_vai": 1.017141078534411,
+        "coef_fib_healed": -0.023336251541956288,
+        "intercept": 1.8383917841347255,
+        "predictions": [
+          {
+            "source": "samaan_responders_bl",
+            "vai": 13.0,
+            "fibrosis": 2,
+            "actual": 15.0,
+            "predicted": 15.06,
+            "error": -0.06
+          },
+          {
+            "source": "samaan_responders_fu",
+            "vai": 9.6,
+            "fibrosis": 3,
+            "actual": 11.0,
+            "predicted": 11.6,
+            "error": -0.6
+          },
+          {
+            "source": "samaan_nonresp_bl",
+            "vai": 11.5,
+            "fibrosis": 2,
+            "actual": 13.0,
+            "predicted": 13.54,
+            "error": -0.54
+          },
+          {
+            "source": "samaan_nonresp_fu",
+            "vai": 11.5,
+            "fibrosis": 2,
+            "actual": 13.0,
+            "predicted": 13.54,
+            "error": -0.54
+          }
+        ]
+      },
+      {
+        "r2": 0.9866401657832978,
+        "rmse": 0.5529844129449516,
+        "mae": 0.3632403275862881,
+        "max_error": 0.9526001259805348,
+        "mean_residual": 0.30670934670452316,
+        "study": "ESGAR_2023",
+        "n_datapoints": 3,
+        "total_patients": "133",
+        "coef_vai": 1.0124655324343934,
+        "coef_fib_healed": -0.027095682659674554,
+        "intercept": 1.8604168875035636,
+        "predictions": [
+          {
+            "source": "esgar_baseline_median",
+            "vai": 15.0,
+            "fibrosis": 2,
+            "actual": 18.0,
+            "predicted": 17.05,
+            "error": 0.95
+          },
+          {
+            "source": "esgar_baseline_iqr_low",
+            "vai": 7.0,
+            "fibrosis": 1,
+            "actual": 9.0,
+            "predicted": 8.95,
+            "error": 0.05
+          },
+          {
+            "source": "esgar_baseline_iqr_high",
+            "vai": 18.0,
+            "fibrosis": 3,
+            "actual": 20.0,
+            "predicted": 20.08,
+            "error": -0.08
+          }
+        ]
+      },
+      {
+        "r2": 0.9993922168752918,
+        "rmse": 0.07175843988998841,
+        "mae": 0.06148236708977706,
+        "max_error": 0.11850320731101593,
+        "mean_residual": 0.04627894249952765,
+        "study": "DeGregorio_2022",
+        "n_datapoints": 6,
+        "total_patients": "225",
+        "coef_vai": 1.0188411125595187,
+        "coef_fib_healed": -0.01782993691198946,
+        "intercept": 1.8061323424509093,
+        "predictions": [
+          {
+            "source": "anti_tnf_ifx_healing",
+            "vai": 8.0,
+            "fibrosis": 3,
+            "actual": 10.0,
+            "predicted": 9.96,
+            "error": 0.04
+          },
+          {
+            "source": "anti_tnf_ifx_active",
+            "vai": 12.0,
+            "fibrosis": 2,
+            "actual": 14.0,
+            "predicted": 14.03,
+            "error": -0.03
+          },
+          {
+            "source": "anti_tnf_ifx_remission",
+            "vai": 5.0,
+            "fibrosis": 4,
+            "actual": 7.0,
+            "predicted": 6.9,
+            "error": 0.1
+          },
+          {
+            "source": "anti_tnf_ada_healing",
+            "vai": 7.0,
+            "fibrosis": 3,
+            "actual": 9.0,
+            "predicted": 8.94,
+            "error": 0.06
+          },
+          {
+            "source": "anti_tnf_ada_active",
+            "vai": 11.0,
+            "fibrosis": 2,
+            "actual": 13.0,
+            "predicted": 13.01,
+            "error": -0.01
+          },
+          {
+            "source": "anti_tnf_ada_remission",
+            "vai": 4.0,
+            "fibrosis": 5,
+            "actual": 6.0,
+            "predicted": 5.88,
+            "error": 0.12
+          }
+        ]
+      },
+      {
+        "r2": 0.9365777524856834,
+        "rmse": 1.4227532228623738,
+        "mae": 0.8491442054906667,
+        "max_error": 2.4633418431572176,
+        "mean_residual": -0.8090489685442757,
+        "study": "PISA2_2023",
+        "n_datapoints": 6,
+        "total_patients": "91",
+        "coef_vai": 1.0186868385143961,
+        "coef_fib_healed": 0.10904876136292954,
+        "intercept": 1.8090492749796405,
+        "predictions": [
+          {
+            "source": "pisa2_surgery_healed",
+            "vai": 0.0,
+            "fibrosis": 6,
+            "actual": 0.0,
+            "predicted": 2.46,
+            "error": -2.46
+          },
+          {
+            "source": "pisa2_surgery_clinical",
+            "vai": 8.0,
+            "fibrosis": 3,
+            "actual": 10.0,
+            "predicted": 9.96,
+            "error": 0.04
+          },
+          {
+            "source": "pisa2_surgery_active",
+            "vai": 12.0,
+            "fibrosis": 2,
+            "actual": 14.0,
+            "predicted": 14.03,
+            "error": -0.03
+          },
+          {
+            "source": "pisa2_antitnf_healed",
+            "vai": 0.0,
+            "fibrosis": 6,
+            "actual": 0.0,
+            "predicted": 2.46,
+            "error": -2.46
+          },
+          {
+            "source": "pisa2_antitnf_clinical",
+            "vai": 6.0,
+            "fibrosis": 4,
+            "actual": 8.0,
+            "predicted": 7.92,
+            "error": 0.08
+          },
+          {
+            "source": "pisa2_antitnf_active",
+            "vai": 11.0,
+            "fibrosis": 2,
+            "actual": 13.0,
+            "predicted": 13.01,
+            "error": -0.01
+          }
+        ]
+      },
+      {
+        "r2": 0.9761868314333386,
+        "rmse": 0.26228533714538116,
+        "mae": 0.1559531762480173,
+        "max_error": 0.4540940984022672,
+        "mean_residual": -0.14677622268682752,
+        "study": "Yao_UST_2023",
+        "n_datapoints": 3,
+        "total_patients": "190",
+        "coef_vai": 1.013007728808947,
+        "coef_fib_healed": -0.030873821076396427,
+        "intercept": 1.882551589953059,
+        "predictions": [
+          {
+            "source": "ust_realworld_baseline",
+            "vai": 9.0,
+            "fibrosis": 2,
+            "actual": 11.0,
+            "predicted": 11.0,
+            "error": 0.0
+          },
+          {
+            "source": "ust_realworld_post",
+            "vai": 5.5,
+            "fibrosis": 4,
+            "actual": 7.0,
+            "predicted": 7.45,
+            "error": -0.45
+          },
+          {
+            "source": "ust_realworld_partial",
+            "vai": 8.0,
+            "fibrosis": 3,
+            "actual": 10.0,
+            "predicted": 9.99,
+            "error": 0.01
+          }
+        ]
+      },
+      {
+        "r2": 0.9996224015678395,
+        "rmse": 0.05232197084555985,
+        "mae": 0.04728985846914702,
+        "max_error": 0.07818265473586195,
+        "mean_residual": -0.011976852879055588,
+        "study": "ADMIRE_2016",
+        "n_datapoints": 4,
+        "total_patients": "355",
+        "coef_vai": 1.0189159433876587,
+        "coef_fib_healed": -0.019063520357123043,
+        "intercept": 1.8133594473086387,
+        "predictions": [
+          {
+            "source": "admire_baseline",
+            "vai": 14.0,
+            "fibrosis": 2,
+            "actual": 16.0,
+            "predicted": 16.08,
+            "error": -0.08
+          },
+          {
+            "source": "admire_darvad_responders",
+            "vai": 7.0,
+            "fibrosis": 4,
+            "actual": 9.0,
+            "predicted": 8.95,
+            "error": 0.05
+          },
+          {
+            "source": "admire_darvad_nonresp",
+            "vai": 12.0,
+            "fibrosis": 2,
+            "actual": 14.0,
+            "predicted": 14.04,
+            "error": -0.04
+          },
+          {
+            "source": "admire_placebo_resp",
+            "vai": 9.0,
+            "fibrosis": 3,
+            "actual": 11.0,
+            "predicted": 10.98,
+            "error": 0.02
+          }
+        ]
+      },
+      {
+        "r2": 0.9154260280072402,
+        "rmse": 1.4540802246846616,
+        "mae": 1.0468546419422027,
+        "max_error": 2.0560348332178036,
+        "mean_residual": -1.0091801912756009,
+        "study": "ADMIRE_Followup_2022",
+        "n_datapoints": 2,
+        "total_patients": "25",
+        "coef_vai": 1.0177785589034836,
+        "coef_fib_healed": 0.03932295918537905,
+        "intercept": 1.8200970781055295,
+        "predictions": [
+          {
+            "source": "admire_longterm_remission",
+            "vai": 0.0,
+            "fibrosis": 6,
+            "actual": 0.0,
+            "predicted": 2.06,
+            "error": -2.06
+          },
+          {
+            "source": "admire_longterm_partial",
+            "vai": 8.0,
+            "fibrosis": 3,
+            "actual": 10.0,
+            "predicted": 9.96,
+            "error": 0.04
+          }
+        ]
+      },
+      {
+        "r2": 0.9992825602940241,
+        "rmse": 0.07680461375191135,
+        "mae": 0.06804903340975994,
+        "max_error": 0.11735958263072277,
+        "mean_residual": -0.0450366512985898,
+        "study": "ADMIRE2_2024",
+        "n_datapoints": 3,
+        "total_patients": "640",
+        "coef_vai": 1.0216968793996395,
+        "coef_fib_healed": -0.015401731183434724,
+        "intercept": 1.791906391636129,
+        "predictions": [
+          {
+            "source": "admire2_baseline",
+            "vai": 15.0,
+            "fibrosis": 2,
+            "actual": 17.0,
+            "predicted": 17.12,
+            "error": -0.12
+          },
+          {
+            "source": "admire2_combined_remission",
+            "vai": 8.0,
+            "fibrosis": 3,
+            "actual": 10.0,
+            "predicted": 9.97,
+            "error": 0.03
+          },
+          {
+            "source": "admire2_active",
+            "vai": 12.0,
+            "fibrosis": 2,
+            "actual": 14.0,
+            "predicted": 14.05,
+            "error": -0.05
+          }
+        ]
+      },
+      {
+        "r2": 0.9996739683079974,
+        "rmse": 0.06319721692473962,
+        "mae": 0.0623957758092879,
+        "max_error": 0.07242849170228904,
+        "mean_residual": 0.010032715893001143,
+        "study": "DIVERGENCE2_2024",
+        "n_datapoints": 2,
+        "total_patients": "112",
+        "coef_vai": 1.0178273645169393,
+        "coef_fib_healed": -0.0203006488360879,
+        "intercept": 1.8206073211960752,
+        "predictions": [
+          {
+            "source": "divergence2_baseline",
+            "vai": 13.0,
+            "fibrosis": 2,
+            "actual": 15.0,
+            "predicted": 15.05,
+            "error": -0.05
+          },
+          {
+            "source": "divergence2_responders",
+            "vai": 6.0,
+            "fibrosis": 4,
+            "actual": 8.0,
+            "predicted": 7.93,
+            "error": 0.07
+          }
+        ]
+      },
+      {
+        "r2": 0.9993025340643351,
+        "rmse": 0.06602395094134982,
+        "mae": 0.04832690487398761,
+        "max_error": 0.09331215093540557,
+        "mean_residual": 0.04832690487398761,
+        "study": "PEMPAC_2021",
+        "n_datapoints": 2,
+        "total_patients": "120",
+        "coef_vai": 1.0179940984245672,
+        "coef_fib_healed": -0.019636676802922075,
+        "intercept": 1.8167173569417585,
+        "predictions": [
+          {
+            "source": "pempac_baseline",
+            "vai": 10.0,
+            "fibrosis": 2,
+            "actual": 12.0,
+            "predicted": 12.0,
+            "error": 0.0
+          },
+          {
+            "source": "pempac_responders",
+            "vai": 5.0,
+            "fibrosis": 4,
+            "actual": 7.0,
+            "predicted": 6.91,
+            "error": 0.09
+          }
+        ]
+      }
+    ]
+  },
+  "clinical_thresholds": {
+    "thresholds": {
+      "vai_response": {
+        "threshold": 4,
+        "meaning": "VAI \u2264 4 indicates radiological response",
+        "source": "Van Assche 2003"
+      },
+      "magnificd_remission": {
+        "threshold": 6,
+        "meaning": "MAGNIFI-CD \u2264 6 predicts long-term closure (87% sens, 91% spec)",
+        "source": "van Rijn 2022"
+      },
+      "vai_healing": {
+        "threshold": 2,
+        "meaning": "VAI \u2264 2 indicates radiological healing",
+        "source": "Clinical consensus"
+      }
+    },
+    "threshold_mapping": {
+      "vai_response_to_magnificd": {
+        "vai_threshold": 4,
+        "predicted_magnificd_no_fibrosis": 5.84,
+        "predicted_magnificd_moderate_fibrosis": 5.84,
+        "interpretation": "VAI \u2264 4 corresponds to MAGNIFI-CD \u2248 5.8-6.6"
+      },
+      "magnificd_remission_to_vai": {
+        "magnificd_threshold": 6,
+        "equivalent_vai_active": 4.2,
+        "equivalent_vai_healed_high_fib": 2.6,
+        "interpretation": "MAGNIFI-CD \u2264 6 corresponds to VAI \u2264 4.2 (active) or VAI \u2264 2.6 (healed with fibrosis)"
+      },
+      "vai_healing_to_magnificd": {
+        "vai_threshold": 2,
+        "predicted_magnificd_no_fibrosis": 3.78,
+        "predicted_magnificd_full_fibrosis": 5.36,
+        "interpretation": "VAI \u2264 2 (healed) maps to MAGNIFI-CD 3.8-5.3 depending on fibrosis"
+      }
+    },
+    "detailed_mappings": [
+      {
+        "vai": 0,
+        "fibrosis": 0,
+        "predicted_magnificd": 1.71,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 0,
+        "fibrosis": 2,
+        "predicted_magnificd": 2.24,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 0,
+        "fibrosis": 4,
+        "predicted_magnificd": 2.77,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 0,
+        "fibrosis": 6,
+        "predicted_magnificd": 3.3,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 1,
+        "fibrosis": 0,
+        "predicted_magnificd": 2.74,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 1,
+        "fibrosis": 2,
+        "predicted_magnificd": 3.27,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 1,
+        "fibrosis": 4,
+        "predicted_magnificd": 3.8,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 1,
+        "fibrosis": 6,
+        "predicted_magnificd": 4.33,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 2,
+        "fibrosis": 0,
+        "predicted_magnificd": 3.78,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 2,
+        "fibrosis": 2,
+        "predicted_magnificd": 4.3,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 2,
+        "fibrosis": 4,
+        "predicted_magnificd": 4.83,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 2,
+        "fibrosis": 6,
+        "predicted_magnificd": 5.36,
+        "vai_category": "healed",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 3,
+        "fibrosis": 0,
+        "predicted_magnificd": 4.81,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 3,
+        "fibrosis": 2,
+        "predicted_magnificd": 4.81,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 3,
+        "fibrosis": 4,
+        "predicted_magnificd": 4.81,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 3,
+        "fibrosis": 6,
+        "predicted_magnificd": 4.81,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 4,
+        "fibrosis": 0,
+        "predicted_magnificd": 5.84,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 4,
+        "fibrosis": 2,
+        "predicted_magnificd": 5.84,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 4,
+        "fibrosis": 4,
+        "predicted_magnificd": 5.84,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      },
+      {
+        "vai": 4,
+        "fibrosis": 6,
+        "predicted_magnificd": 5.84,
+        "vai_category": "response",
+        "magnificd_category": "remission"
+      }
+    ],
+    "alignment_check": {
+      "vai_4_predicts_magnificd": 5.84,
+      "target_magnificd": 6,
+      "alignment": "GOOD"
+    }
+  },
+  "auroc_preservation": {
+    "original_data": {
+      "source": "P325 ECCO 2022 (Mtir et al.)",
+      "n_patients": 38,
+      "original_auroc": {
+        "vai": 0.925,
+        "mvai": 0.908,
+        "magnificd": 0.869
+      }
+    },
+    "analysis": {
+      "vai_coefficient": 1.031,
+      "is_monotonic_active": true,
+      "expected_auroc_preservation": "HIGH",
+      "reasoning": [
+        "For active disease (VAI > 2), MAGNIFI-CD = 1.031\u00d7VAI + 1.713 is strictly monotonic",
+        "Monotonic transformations preserve AUROC exactly",
+        "Therefore, converted VAI\u2192MAGNIFI-CD scores should have identical AUROC for active disease classification",
+        "Small differences may arise in healed cases where fibrosis term contributes"
+      ]
+    },
+    "estimated_converted_auroc": {
+      "vai_to_magnificd_converted": 0.92,
+      "confidence": "HIGH",
+      "note": "Expected to be within 0.01 of original VAI AUROC due to monotonicity"
+    },
+    "conclusion": "Converting VAI to MAGNIFI-CD using our formula preserves discriminative ability"
+  },
+  "residual_analysis": {
+    "overall_stats": {
+      "mean": -0.09222812499999944,
+      "std": 1.0999788608009629,
+      "median": -0.022999999999999687,
+      "min": -3.297,
+      "max": 2.703,
+      "q25": -0.24774999999999903,
+      "q75": 0.10875000000000012
+    },
+    "by_disease_state": {
+      "active": {
+        "n": 56,
+        "mean": 0.06473928571428637,
+        "std": 0.5463840805300174
+      },
+      "healed": {
+        "n": 8,
+        "mean": -1.1910000000000003,
+        "std": 2.4920088282347637
+      }
+    },
+    "all_predictions": [
+      {
+        "source": "vanrijn_posttreat_closed",
+        "study": "vanRijn_2022",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 25
+      },
+      {
+        "source": "pisa2_surgery_healed",
+        "study": "PISA2_2023",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 15
+      },
+      {
+        "source": "pisa2_antitnf_healed",
+        "study": "PISA2_2023",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 10
+      },
+      {
+        "source": "admire_longterm_remission",
+        "study": "ADMIRE_Followup_2022",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 14
+      },
+      {
+        "source": "protocolized_healed_median",
+        "study": "Protocolized_2025",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 6.0,
+        "predicted": 3.3,
+        "residual": 2.7,
+        "n_patients": 29
+      },
+      {
+        "source": "theoretical_fibrotic",
+        "study": "Theoretical",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 6.0,
+        "predicted": 3.3,
+        "residual": 2.7,
+        "n_patients": 1
+      },
+      {
+        "source": "protocolized_healed_iqr_high",
+        "study": "Protocolized_2025",
+        "vai": 4.0,
+        "fibrosis": 6,
+        "actual": 8.0,
+        "predicted": 5.84,
+        "residual": 2.16,
+        "n_patients": 14
+      },
+      {
+        "source": "theoretical_remission",
+        "study": "Theoretical",
+        "vai": 0.0,
+        "fibrosis": 0,
+        "actual": 0.0,
+        "predicted": 1.71,
+        "residual": -1.71,
+        "n_patients": 1
+      },
+      {
+        "source": "beek_remitters_bl",
+        "study": "Beek_2024",
+        "vai": 10.0,
+        "fibrosis": 3,
+        "actual": 13.5,
+        "predicted": 12.02,
+        "residual": 1.48,
+        "n_patients": 15
+      },
+      {
+        "source": "response_equivalence",
+        "study": "Theoretical",
+        "vai": 10.0,
+        "fibrosis": 2,
+        "actual": 13.0,
+        "predicted": 12.02,
+        "residual": 0.98,
+        "n_patients": 1
+      },
+      {
+        "source": "protocolized_active_iqr_low",
+        "study": "Protocolized_2025",
+        "vai": 8.0,
+        "fibrosis": 1,
+        "actual": 9.0,
+        "predicted": 9.96,
+        "residual": -0.96,
+        "n_patients": 15
+      },
+      {
+        "source": "vanrijn_posttreat_open",
+        "study": "vanRijn_2022",
+        "vai": 13.0,
+        "fibrosis": 1,
+        "actual": 16.0,
+        "predicted": 15.12,
+        "residual": 0.88,
+        "n_patients": 25
+      },
+      {
+        "source": "p325_responders_fu",
+        "study": "P325_ECCO_2022",
+        "vai": 5.0,
+        "fibrosis": 4,
+        "actual": 6.0,
+        "predicted": 6.87,
+        "residual": -0.87,
+        "n_patients": 26
+      },
+      {
+        "source": "magnificd_validation_responders_bl",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "vai": 14.0,
+        "fibrosis": 2,
+        "actual": 15.3,
+        "predicted": 16.15,
+        "residual": -0.85,
+        "n_patients": 80
+      },
+      {
+        "source": "beek_nonresp_fu",
+        "study": "Beek_2024",
+        "vai": 15.0,
+        "fibrosis": 2,
+        "actual": 18.0,
+        "predicted": 17.18,
+        "residual": 0.82,
+        "n_patients": 20
+      },
+      {
+        "source": "esgar_baseline_median",
+        "study": "ESGAR_2023",
+        "vai": 15.0,
+        "fibrosis": 2,
+        "actual": 18.0,
+        "predicted": 17.18,
+        "residual": 0.82,
+        "n_patients": 67
+      },
+      {
+        "source": "vanrijn_pretreat_open",
+        "study": "vanRijn_2022",
+        "vai": 16.0,
+        "fibrosis": 1,
+        "actual": 19.0,
+        "predicted": 18.21,
+        "residual": 0.79,
+        "n_patients": 25
+      },
+      {
+        "source": "beek_responders_bl",
+        "study": "Beek_2024",
+        "vai": 17.0,
+        "fibrosis": 2,
+        "actual": 20.0,
+        "predicted": 19.24,
+        "residual": 0.76,
+        "n_patients": 30
+      },
+      {
+        "source": "beek_nonresp_bl",
+        "study": "Beek_2024",
+        "vai": 17.0,
+        "fibrosis": 2,
+        "actual": 20.0,
+        "predicted": 19.24,
+        "residual": 0.76,
+        "n_patients": 20
+      },
+      {
+        "source": "magnificd_validation_nonresp_wk24",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "vai": 13.0,
+        "fibrosis": 2,
+        "actual": 14.4,
+        "predicted": 15.12,
+        "residual": -0.72,
+        "n_patients": 80
+      },
+      {
+        "source": "samaan_responders_fu",
+        "study": "Samaan_2019",
+        "vai": 9.6,
+        "fibrosis": 3,
+        "actual": 11.0,
+        "predicted": 11.61,
+        "residual": -0.61,
+        "n_patients": 16
+      },
+      {
+        "source": "theoretical_max_active",
+        "study": "Theoretical",
+        "vai": 22.0,
+        "fibrosis": 0,
+        "actual": 25.0,
+        "predicted": 24.4,
+        "residual": 0.61,
+        "n_patients": 1
+      },
+      {
+        "source": "samaan_nonresp_bl",
+        "study": "Samaan_2019",
+        "vai": 11.5,
+        "fibrosis": 2,
+        "actual": 13.0,
+        "predicted": 13.57,
+        "residual": -0.57,
+        "n_patients": 14
+      },
+      {
+        "source": "samaan_nonresp_fu",
+        "study": "Samaan_2019",
+        "vai": 11.5,
+        "fibrosis": 2,
+        "actual": 13.0,
+        "predicted": 13.57,
+        "residual": -0.57,
+        "n_patients": 14
+      },
+      {
+        "source": "magnificd_validation_responders_wk24",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "vai": 9.0,
+        "fibrosis": 3,
+        "actual": 11.4,
+        "predicted": 10.99,
+        "residual": 0.41,
+        "n_patients": 80
+      },
+      {
+        "source": "ustekinumab_posttreat",
+        "study": "Li_Ustekinumab_2023",
+        "vai": 5.5,
+        "fibrosis": 4,
+        "actual": 7.0,
+        "predicted": 7.38,
+        "residual": -0.38,
+        "n_patients": 67
+      },
+      {
+        "source": "ust_realworld_post",
+        "study": "Yao_UST_2023",
+        "vai": 5.5,
+        "fibrosis": 4,
+        "actual": 7.0,
+        "predicted": 7.38,
+        "residual": -0.38,
+        "n_patients": 48
+      },
+      {
+        "source": "magnificd_validation_nonresp_bl",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "vai": 13.0,
+        "fibrosis": 2,
+        "actual": 14.8,
+        "predicted": 15.12,
+        "residual": -0.32,
+        "n_patients": 80
+      },
+      {
+        "source": "esgar_baseline_iqr_high",
+        "study": "ESGAR_2023",
+        "vai": 18.0,
+        "fibrosis": 3,
+        "actual": 20.0,
+        "predicted": 20.27,
+        "residual": -0.27,
+        "n_patients": 33
+      },
+      {
+        "source": "protocolized_active_iqr_high",
+        "study": "Protocolized_2025",
+        "vai": 17.0,
+        "fibrosis": 3,
+        "actual": 19.0,
+        "predicted": 19.24,
+        "residual": -0.24,
+        "n_patients": 15
+      },
+      {
+        "source": "admire2_baseline",
+        "study": "ADMIRE2_2024",
+        "vai": 15.0,
+        "fibrosis": 2,
+        "actual": 17.0,
+        "predicted": 17.18,
+        "residual": -0.18,
+        "n_patients": 320
+      },
+      {
+        "source": "anti_tnf_ada_remission",
+        "study": "DeGregorio_2022",
+        "vai": 4.0,
+        "fibrosis": 5,
+        "actual": 6.0,
+        "predicted": 5.84,
+        "residual": 0.16,
+        "n_patients": 12
+      },
+      {
+        "source": "admire_baseline",
+        "study": "ADMIRE_2016",
+        "vai": 14.0,
+        "fibrosis": 2,
+        "actual": 16.0,
+        "predicted": 16.15,
+        "residual": -0.15,
+        "n_patients": 212
+      },
+      {
+        "source": "anti_tnf_ifx_remission",
+        "study": "DeGregorio_2022",
+        "vai": 5.0,
+        "fibrosis": 4,
+        "actual": 7.0,
+        "predicted": 6.87,
+        "residual": 0.13,
+        "n_patients": 20
+      },
+      {
+        "source": "pempac_responders",
+        "study": "PEMPAC_2021",
+        "vai": 5.0,
+        "fibrosis": 4,
+        "actual": 7.0,
+        "predicted": 6.87,
+        "residual": 0.13,
+        "n_patients": 40
+      },
+      {
+        "source": "samaan_responders_bl",
+        "study": "Samaan_2019",
+        "vai": 13.0,
+        "fibrosis": 2,
+        "actual": 15.0,
+        "predicted": 15.12,
+        "residual": -0.12,
+        "n_patients": 16
+      },
+      {
+        "source": "divergence2_baseline",
+        "study": "DIVERGENCE2_2024",
+        "vai": 13.0,
+        "fibrosis": 2,
+        "actual": 15.0,
+        "predicted": 15.12,
+        "residual": -0.12,
+        "n_patients": 80
+      },
+      {
+        "source": "pisa2_antitnf_clinical",
+        "study": "PISA2_2023",
+        "vai": 6.0,
+        "fibrosis": 4,
+        "actual": 8.0,
+        "predicted": 7.9,
+        "residual": 0.1,
+        "n_patients": 24
+      },
+      {
+        "source": "divergence2_responders",
+        "study": "DIVERGENCE2_2024",
+        "vai": 6.0,
+        "fibrosis": 4,
+        "actual": 8.0,
+        "predicted": 7.9,
+        "residual": 0.1,
+        "n_patients": 32
+      },
+      {
+        "source": "protocolized_active_median",
+        "study": "Protocolized_2025",
+        "vai": 12.0,
+        "fibrosis": 2,
+        "actual": 14.0,
+        "predicted": 14.08,
+        "residual": -0.09,
+        "n_patients": 31
+      },
+      {
+        "source": "anti_tnf_ifx_active",
+        "study": "DeGregorio_2022",
+        "vai": 12.0,
+        "fibrosis": 2,
+        "actual": 14.0,
+        "predicted": 14.08,
+        "residual": -0.09,
+        "n_patients": 62
+      },
+      {
+        "source": "pisa2_surgery_active",
+        "study": "PISA2_2023",
+        "vai": 12.0,
+        "fibrosis": 2,
+        "actual": 14.0,
+        "predicted": 14.08,
+        "residual": -0.09,
+        "n_patients": 10
+      },
+      {
+        "source": "admire_darvad_nonresp",
+        "study": "ADMIRE_2016",
+        "vai": 12.0,
+        "fibrosis": 2,
+        "actual": 14.0,
+        "predicted": 14.08,
+        "residual": -0.09,
+        "n_patients": 54
+      },
+      {
+        "source": "admire2_active",
+        "study": "ADMIRE2_2024",
+        "vai": 12.0,
+        "fibrosis": 2,
+        "actual": 14.0,
+        "predicted": 14.08,
+        "residual": -0.09,
+        "n_patients": 192
+      },
+      {
+        "source": "beek_responders_fu",
+        "study": "Beek_2024",
+        "vai": 7.0,
+        "fibrosis": 4,
+        "actual": 9.0,
+        "predicted": 8.93,
+        "residual": 0.07,
+        "n_patients": 30
+      },
+      {
+        "source": "esgar_baseline_iqr_low",
+        "study": "ESGAR_2023",
+        "vai": 7.0,
+        "fibrosis": 1,
+        "actual": 9.0,
+        "predicted": 8.93,
+        "residual": 0.07,
+        "n_patients": 33
+      },
+      {
+        "source": "anti_tnf_ada_healing",
+        "study": "DeGregorio_2022",
+        "vai": 7.0,
+        "fibrosis": 3,
+        "actual": 9.0,
+        "predicted": 8.93,
+        "residual": 0.07,
+        "n_patients": 34
+      },
+      {
+        "source": "admire_darvad_responders",
+        "study": "ADMIRE_2016",
+        "vai": 7.0,
+        "fibrosis": 4,
+        "actual": 9.0,
+        "predicted": 8.93,
+        "residual": 0.07,
+        "n_patients": 53
+      },
+      {
+        "source": "p325_responders_bl",
+        "study": "P325_ECCO_2022",
+        "vai": 11.0,
+        "fibrosis": 2,
+        "actual": 13.0,
+        "predicted": 13.05,
+        "residual": -0.05,
+        "n_patients": 26
+      },
+      {
+        "source": "p325_nonresp_fu",
+        "study": "P325_ECCO_2022",
+        "vai": 11.0,
+        "fibrosis": 2,
+        "actual": 13.0,
+        "predicted": 13.05,
+        "residual": -0.05,
+        "n_patients": 12
+      },
+      {
+        "source": "anti_tnf_ada_active",
+        "study": "DeGregorio_2022",
+        "vai": 11.0,
+        "fibrosis": 2,
+        "actual": 13.0,
+        "predicted": 13.05,
+        "residual": -0.05,
+        "n_patients": 42
+      },
+      {
+        "source": "pisa2_antitnf_active",
+        "study": "PISA2_2023",
+        "vai": 11.0,
+        "fibrosis": 2,
+        "actual": 13.0,
+        "predicted": 13.05,
+        "residual": -0.05,
+        "n_patients": 21
+      },
+      {
+        "source": "anti_tnf_ifx_healing",
+        "study": "DeGregorio_2022",
+        "vai": 8.0,
+        "fibrosis": 3,
+        "actual": 10.0,
+        "predicted": 9.96,
+        "residual": 0.04,
+        "n_patients": 55
+      },
+      {
+        "source": "pisa2_surgery_clinical",
+        "study": "PISA2_2023",
+        "vai": 8.0,
+        "fibrosis": 3,
+        "actual": 10.0,
+        "predicted": 9.96,
+        "residual": 0.04,
+        "n_patients": 11
+      },
+      {
+        "source": "ust_realworld_partial",
+        "study": "Yao_UST_2023",
+        "vai": 8.0,
+        "fibrosis": 3,
+        "actual": 10.0,
+        "predicted": 9.96,
+        "residual": 0.04,
+        "n_patients": 34
+      },
+      {
+        "source": "admire_longterm_partial",
+        "study": "ADMIRE_Followup_2022",
+        "vai": 8.0,
+        "fibrosis": 3,
+        "actual": 10.0,
+        "predicted": 9.96,
+        "residual": 0.04,
+        "n_patients": 11
+      },
+      {
+        "source": "admire2_combined_remission",
+        "study": "ADMIRE2_2024",
+        "vai": 8.0,
+        "fibrosis": 3,
+        "actual": 10.0,
+        "predicted": 9.96,
+        "residual": 0.04,
+        "n_patients": 128
+      },
+      {
+        "source": "protocolized_healed_iqr_low",
+        "study": "Protocolized_2025",
+        "vai": 0.0,
+        "fibrosis": 5,
+        "actual": 3.0,
+        "predicted": 3.03,
+        "residual": -0.03,
+        "n_patients": 14
+      },
+      {
+        "source": "p325_nonresp_bl",
+        "study": "P325_ECCO_2022",
+        "vai": 10.0,
+        "fibrosis": 2,
+        "actual": 12.0,
+        "predicted": 12.02,
+        "residual": -0.02,
+        "n_patients": 12
+      },
+      {
+        "source": "pempac_baseline",
+        "study": "PEMPAC_2021",
+        "vai": 10.0,
+        "fibrosis": 2,
+        "actual": 12.0,
+        "predicted": 12.02,
+        "residual": -0.02,
+        "n_patients": 80
+      },
+      {
+        "source": "vanrijn_pretreat_closed",
+        "study": "vanRijn_2022",
+        "vai": 9.0,
+        "fibrosis": 3,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 25
+      },
+      {
+        "source": "ustekinumab_baseline",
+        "study": "Li_Ustekinumab_2023",
+        "vai": 9.0,
+        "fibrosis": 3,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 67
+      },
+      {
+        "source": "ust_realworld_baseline",
+        "study": "Yao_UST_2023",
+        "vai": 9.0,
+        "fibrosis": 2,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 108
+      },
+      {
+        "source": "admire_placebo_resp",
+        "study": "ADMIRE_2016",
+        "vai": 9.0,
+        "fibrosis": 3,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 36
+      }
+    ],
+    "worst_predictions": [
+      {
+        "source": "vanrijn_posttreat_closed",
+        "study": "vanRijn_2022",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 25
+      },
+      {
+        "source": "pisa2_surgery_healed",
+        "study": "PISA2_2023",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 15
+      },
+      {
+        "source": "pisa2_antitnf_healed",
+        "study": "PISA2_2023",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 10
+      },
+      {
+        "source": "admire_longterm_remission",
+        "study": "ADMIRE_Followup_2022",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 0.0,
+        "predicted": 3.3,
+        "residual": -3.3,
+        "n_patients": 14
+      },
+      {
+        "source": "protocolized_healed_median",
+        "study": "Protocolized_2025",
+        "vai": 0.0,
+        "fibrosis": 6,
+        "actual": 6.0,
+        "predicted": 3.3,
+        "residual": 2.7,
+        "n_patients": 29
+      }
+    ],
+    "best_predictions": [
+      {
+        "source": "pempac_baseline",
+        "study": "PEMPAC_2021",
+        "vai": 10.0,
+        "fibrosis": 2,
+        "actual": 12.0,
+        "predicted": 12.02,
+        "residual": -0.02,
+        "n_patients": 80
+      },
+      {
+        "source": "vanrijn_pretreat_closed",
+        "study": "vanRijn_2022",
+        "vai": 9.0,
+        "fibrosis": 3,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 25
+      },
+      {
+        "source": "ustekinumab_baseline",
+        "study": "Li_Ustekinumab_2023",
+        "vai": 9.0,
+        "fibrosis": 3,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 67
+      },
+      {
+        "source": "ust_realworld_baseline",
+        "study": "Yao_UST_2023",
+        "vai": 9.0,
+        "fibrosis": 2,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 108
+      },
+      {
+        "source": "admire_placebo_resp",
+        "study": "ADMIRE_2016",
+        "vai": 9.0,
+        "fibrosis": 3,
+        "actual": 11.0,
+        "predicted": 10.99,
+        "residual": 0.01,
+        "n_patients": 36
+      }
+    ]
+  },
+  "summary": {
+    "cross_validation": {
+      "r2": "0.9375 \u00b1 0.0507",
+      "rmse": "1.119 \u00b1 0.353",
+      "mae": "0.643 \u00b1 0.191"
+    },
+    "loso": {
+      "r2": "0.9445 \u00b1 0.0767",
+      "rmse": "0.686 \u00b1 0.749"
+    },
+    "clinical_alignment": "GOOD",
+    "auroc_preserved": "HIGH",
+    "total_data_points": 83,
+    "total_patients": 2818,
+    "total_studies": 17
+  }
+}

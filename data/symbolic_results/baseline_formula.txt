@@ -1,0 +1,5 @@
+Baseline Linear Model:
+MAGNIFI-CD = 0.966 × VAI + 0.479 × Fibrosis + 1.466
+
+R² = 0.9748
+RMSE = 1.123

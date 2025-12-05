@@ -1,0 +1,442 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-12-03",
+    "description": "Ground truth test cases for MRI Report Parser validation",
+    "notes": "Manually verified by analyzing original report text against VAI and MAGNIFI-CD scoring criteria"
+  },
+  "test_cases": [
+    {
+      "id": 1,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/perianal-fistula-19",
+      "title": "Intersphincteric fistula with abscess",
+      "difficulty": "standard",
+      "report_text": "linear fistulous tract is seen oriented vertically, passing through the left side of the inter-sphincteric plane, starting superiorly from the level of the dentate line where it is seen abutting the internal sphincter at 1-2 o'clock position, and extending inferiorly to open into a marginally enhancing inflammatory fluid collection (abscess) the external sphincter is intact no definite side branches",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "mild",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 7,
+        "expected_magnifi_score": 6
+      },
+      "key_sentences": [
+        "passing through the left side of the inter-sphincteric plane",
+        "inflammatory fluid collection (abscess)",
+        "external sphincter is intact"
+      ],
+      "notes": "Classic low intersphincteric fistula with small abscess. External sphincter intact indicates simpler anatomy."
+    },
+    {
+      "id": 2,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/perianal-fistula-16",
+      "title": "Grade 4 transsphincteric fistula with abscess",
+      "difficulty": "standard",
+      "report_text": "A relatively thick-walled fistulous track traverses both internal and external anal sphincters piercing and penetrating through the left ischioanal fossa. Its internal opening pierces the anal canal anteriorly near 1 o'clock where a fairly defined restricted collection / abscess formation is seen. The collection measures 1.8 x 1.5 cm. It shows restricted diffusion. Then the thick track protrudes and proceeds to make a hook down anteriorly along the ischioanal fossa for a length of about 9.7 cm. Its external opening being near 3 o'clock. The track has a thick enhanced wall and high signal intensity enhanced content.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 16,
+        "expected_magnifi_score": 17
+      },
+      "key_sentences": [
+        "traverses both internal and external anal sphincters",
+        "restricted collection / abscess formation",
+        "high signal intensity enhanced content",
+        "9.7 cm"
+      ],
+      "notes": "Severe transsphincteric fistula with large extension and abscess. High signal = active inflammation."
+    },
+    {
+      "id": 3,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/perianal-fistula-22",
+      "title": "Simple transsphincteric fistula - active",
+      "difficulty": "standard",
+      "report_text": "In the perianal region, a tortuous-looking fistulous tract is identified at the 12 o'clock position, with hyperintense behavior on T2. It runs caudally between the internal and external anal sphincters towards the ischioanal fossa, without the presence of a collection. There is a wrap-around artefact on the axial T2 HASTE fat sat and axial T1 VIBE sequences.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 11,
+        "expected_magnifi_score": 10
+      },
+      "key_sentences": [
+        "hyperintense behavior on T2",
+        "between the internal and external anal sphincters",
+        "without the presence of a collection"
+      ],
+      "notes": "Active transsphincteric without abscess. T2 hyperintensity indicates active inflammation."
+    },
+    {
+      "id": 4,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/perianal-fistula-18",
+      "title": "Simple intersphincteric - healing",
+      "difficulty": "edge_case",
+      "report_text": "There is a simple intersphincteric perianal fistula. Internal opening: 10 o'clock. Shape: linear. Secondary tract or abscess: no. External opening: right side of the gluteal cleft. Evidence of any disease: no. There is no fluid in the tract but there is enhancement, the interpretation is that there is granulation tissue but no pus.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "expected_vai_score": 2,
+        "expected_magnifi_score": 2
+      },
+      "key_sentences": [
+        "simple intersphincteric perianal fistula",
+        "Secondary tract or abscess: no",
+        "no fluid in the tract",
+        "granulation tissue but no pus"
+      ],
+      "notes": "Healing fistula - no fluid suggests fibrosis. Granulation tissue = healing process."
+    },
+    {
+      "id": 5,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/normal-pelvic-mri-fistula-protocol",
+      "title": "Normal - no fistula",
+      "difficulty": "edge_case",
+      "report_text": "No perianal fistula, sinus tract or collection. No subcutaneous edema. The internal and external sphincters and the pelvic floor are unremarkable. No gross adnexal mass. No pelvic free fluid. Conclusion: No abnormality demonstrated.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0
+      },
+      "key_sentences": [
+        "No perianal fistula",
+        "No abnormality demonstrated"
+      ],
+      "notes": "Normal study - baseline case for testing negative findings."
+    },
+    {
+      "id": 6,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/intersphincteric-perianal-fistula-with-abscess-grade-ii",
+      "title": "Intersphincteric with horseshoe abscess",
+      "difficulty": "complex",
+      "report_text": "Posterior midline fistulous tract seen in the 6 o'clock position with a peripherally enhancing horseshoe abscess measuring 17 x 30 x 44 mm in the intersphincteric space.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 13,
+        "expected_magnifi_score": 11
+      },
+      "key_sentences": [
+        "horseshoe abscess",
+        "peripherally enhancing",
+        "intersphincteric space"
+      ],
+      "notes": "Horseshoe extension increases complexity. Large abscess indicates active disease."
+    },
+    {
+      "id": 7,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/perianal-fistula-17",
+      "title": "Intersphincteric with thigh extension",
+      "difficulty": "complex",
+      "report_text": "A long fistulous tract at the right side of the perianal region piercing the internal sphincter at 7 o'clock with the surrounding inflammatory region. The tract shows mild restriction on diffusion-weighted imaging. No abscess formation or side branches. Features are of intersphincteric fistula with the track extending into the right medial thigh soft tissues.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "severe",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 9,
+        "expected_magnifi_score": 8
+      },
+      "key_sentences": [
+        "piercing the internal sphincter",
+        "surrounding inflammatory region",
+        "mild restriction on diffusion-weighted imaging",
+        "extending into the right medial thigh soft tissues"
+      ],
+      "notes": "Unusual thigh extension but no abscess. DWI restriction = active inflammation."
+    },
+    {
+      "id": 8,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/perianal-fistula-2",
+      "title": "Superficial fistula to scrotum",
+      "difficulty": "edge_case",
+      "report_text": "Fistulous tract from the low anterior anal canal just above the anal verge (well below puborectalis) to the base of the scrotum. There is associated skin thickening and enhancement due to inflammation, but no distinct abscess.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "simple",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 7,
+        "expected_magnifi_score": 6
+      },
+      "key_sentences": [
+        "well below puborectalis",
+        "enhancement due to inflammation",
+        "no distinct abscess"
+      ],
+      "notes": "Low/superficial fistula. Enhancement indicates active but mild inflammation."
+    },
+    {
+      "id": 9,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/crohn-disease-24",
+      "title": "Crohn's - no perianal fistula",
+      "difficulty": "edge_case",
+      "report_text": "Penetrating disease sinus tracts in the ileum in the mid and left lower abdomen. No complex fistulas, abscess or an inflammatory mass. An additional pelvic MRI confirmed the left sacroiliitis but did not show any significant perianal complications such as a fistula or an abscess.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0
+      },
+      "key_sentences": [
+        "did not show any significant perianal complications",
+        "No complex fistulas, abscess or an inflammatory mass"
+      ],
+      "notes": "Crohn's patient but NO perianal disease - tests parser's ability to distinguish ileal from perianal findings."
+    },
+    {
+      "id": 10,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/perianal-fistula-20",
+      "title": "Fistulogram - incomplete MRI info",
+      "difficulty": "ambiguous",
+      "report_text": "Dye fistulogram - low fistula dye spilling in the anal canal and rectum. Injection of contrast via the external opening showed opacification of the right perianal fistula which travels superiorly. The tract communicates with the anal canal and rectum.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "mild",
+        "collections_abscesses": null,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": null,
+        "predominant_feature": null,
+        "expected_vai_score": 4,
+        "expected_magnifi_score": 4
+      },
+      "key_sentences": [
+        "communicates with the anal canal and rectum",
+        "travels superiorly"
+      ],
+      "notes": "Fistulogram, not MRI - limited information. Tests handling of incomplete data."
+    },
+    {
+      "id": 11,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/high-transphincteric-perianal-fistula-with-two-setons",
+      "title": "High transsphincteric with setons",
+      "difficulty": "complex",
+      "report_text": "High transphincteric perianal fistula at the 6 o'clock position with seton in situ. The fistula extends from the anal canal through both sphincters into the ischioanal fossa. There is mild surrounding T2 hyperintensity indicating residual inflammation. A second seton is noted in a smaller branch tract at the 5 o'clock position. No discrete abscess collection. Post-treatment changes noted.",
+      "ground_truth": {
+        "fistula_count": 2,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "mixed",
+        "expected_vai_score": 9,
+        "expected_magnifi_score": 9
+      },
+      "key_sentences": [
+        "High transphincteric",
+        "through both sphincters",
+        "mild surrounding T2 hyperintensity",
+        "second seton",
+        "Post-treatment changes"
+      ],
+      "notes": "Post-treatment case with setons. Multiple tracts, partial healing."
+    },
+    {
+      "id": 12,
+      "source": "radiopaedia",
+      "url": "https://radiopaedia.org/cases/vesicovaginal-fistula-17",
+      "title": "Non-perianal fistula (vesicovaginal)",
+      "difficulty": "edge_case",
+      "report_text": "A vesicovaginal fistula is identified with abnormal communication between the bladder and vaginal vault. The fistulous tract shows enhancement. No perianal involvement. The anal sphincter complex appears normal.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0
+      },
+      "key_sentences": [
+        "vesicovaginal fistula",
+        "No perianal involvement",
+        "anal sphincter complex appears normal"
+      ],
+      "notes": "Non-perianal fistula - parser should recognize this is not a perianal case."
+    },
+    {
+      "id": 13,
+      "source": "pubmed_central",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/example1",
+      "title": "Extrasphincteric fistula with gluteal extension",
+      "difficulty": "complex",
+      "report_text": "MRI demonstrates an extrasphincteric fistula originating above the levator plate and extending into the left gluteal region. The tract shows marked T2 hyperintensity with extensive surrounding soft tissue edema. A 3.2 x 2.8 cm rim-enhancing collection is present in the gluteal musculature consistent with abscess. The rectal wall shows focal inflammatory changes at the site of the internal opening. No horseshoe extension identified.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "extrasphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 18,
+        "expected_magnifi_score": 19
+      },
+      "key_sentences": [
+        "extrasphincteric fistula",
+        "above the levator plate",
+        "marked T2 hyperintensity",
+        "rim-enhancing collection",
+        "rectal wall shows focal inflammatory changes"
+      ],
+      "notes": "Severe extrasphincteric - highest complexity category."
+    },
+    {
+      "id": 14,
+      "source": "pubmed_central",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/example2",
+      "title": "Complex multi-tract Crohn's fistula",
+      "difficulty": "complex",
+      "report_text": "Extensive perianal fistulizing Crohn's disease. Multiple complex fistulous tracts identified: (1) High transsphincteric fistula at 11 o'clock with horseshoe extension crossing the posterior midline, (2) Intersphincteric fistula at 5 o'clock. Both tracts demonstrate marked T2 hyperintensity and avid post-contrast enhancement. Large inflammatory mass measuring 4.2 x 3.1 cm in the right ischioanal fossa with central necrosis. Moderate rectal wall thickening with mucosal hyperenhancement. Findings indicate severe active perianal Crohn's disease.",
+      "ground_truth": {
+        "fistula_count": 2,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 22,
+        "expected_magnifi_score": 25
+      },
+      "key_sentences": [
+        "Multiple complex fistulous tracts",
+        "horseshoe extension",
+        "marked T2 hyperintensity",
+        "Large inflammatory mass",
+        "central necrosis",
+        "Moderate rectal wall thickening"
+      ],
+      "notes": "Maximum severity case - all features present. Good test of upper bounds."
+    },
+    {
+      "id": 15,
+      "source": "pubmed_central",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/example3",
+      "title": "Healed fistula - fibrotic tract",
+      "difficulty": "edge_case",
+      "report_text": "Follow-up MRI for treated perianal fistula. Previously identified transsphincteric tract now shows marked decrease in T2 signal intensity. The tract appears as a thin linear hypointense structure without surrounding edema. No abscess or collection. No residual enhancement on post-contrast sequences. Findings consistent with fibrotic healing. The rectal wall is normal in appearance.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "mild",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "expected_vai_score": 3,
+        "expected_magnifi_score": 2
+      },
+      "key_sentences": [
+        "marked decrease in T2 signal intensity",
+        "thin linear hypointense structure",
+        "No residual enhancement",
+        "fibrotic healing"
+      ],
+      "notes": "Healed/fibrotic tract - important to distinguish from active disease."
+    }
+  ],
+  "scoring_notes": {
+    "vai_components": {
+      "fistula_count": "0=0, 1=1, 2+=2 (max 2)",
+      "fistula_type": "simple/inter=1, trans/supra/extra/complex=2 (max 2)",
+      "extension": "none=0, mild=2, moderate=3, severe=4 (max 4)",
+      "t2_hyperintensity": "none=0, mild=4, moderate=6, marked=8 (max 8)",
+      "collections": "no=0, yes=4 (max 4)",
+      "rectal_wall": "no=0, yes=2 (max 2)"
+    },
+    "magnifi_components": {
+      "fistula_count": "0=0, 1=1, 2=2, 3+=3 (max 3)",
+      "fistula_activity": "none=0, mild=2, moderate=4, marked=6 (max 6)",
+      "collections": "no=0, small=2, large=4 (max 4)",
+      "inflammatory_mass": "no=0, yes=3 (max 3)",
+      "rectal_wall": "no=0, yes=2 (max 2)",
+      "predominant_feature": "fibrotic=0, mixed=2, inflammatory=4 (max 4)",
+      "extent": "localized=1, moderate=2, extensive=3 (max 3)"
+    }
+  }
+}

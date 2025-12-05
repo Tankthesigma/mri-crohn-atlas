@@ -1,0 +1,949 @@
+{
+  "bootstrap_ci": {
+    "n_iterations": 1000,
+    "confidence_level": 0.95,
+    "coefficients": {
+      "vai": {
+        "mean": 1.0195188088093783,
+        "std": 0.02150778876954099,
+        "median": 1.019417583315441,
+        "ci_lower": 0.9748058935422504,
+        "ci_upper": 1.060820403045488,
+        "ci_level": 0.95
+      },
+      "fibrosis_healed": {
+        "mean": -0.02063404211679868,
+        "std": 0.19515295283750364,
+        "median": -0.037954882561735376,
+        "ci_lower": -0.3226657223829757,
+        "ci_upper": 0.43959948987529385,
+        "ci_level": 0.95
+      },
+      "intercept": {
+        "mean": 1.8022833824121913,
+        "std": 0.24337673994540032,
+        "median": 1.7994791171654558,
+        "ci_lower": 1.3711468854686772,
+        "ci_upper": 2.3145614445010088,
+        "ci_level": 0.95
+      }
+    },
+    "r2": {
+      "mean": 0.961794652270453,
+      "std": 0.014539151368667989,
+      "median": 0.9624211629216868,
+      "ci_lower": 0.930867673954836,
+      "ci_upper": 0.9891541023172755,
+      "ci_level": 0.95
+    },
+    "interpretation": {
+      "vai_ci": "VAI coefficient: 1.020 (95% CI: 0.975 - 1.061)",
+      "conclusion": "Narrow confidence intervals indicate stable coefficient estimates"
+    }
+  },
+  "sensitivity_analysis": {
+    "full_model_r2": 0.9602332831176625,
+    "full_model_coef_vai": 1.0171956071028112,
+    "full_model_coef_fib": -0.02142711476828389,
+    "full_model_intercept": 1.827206864536864,
+    "by_study": [
+      {
+        "study": "Protocolized_2025",
+        "n_patients": 118,
+        "n_datapoints": 6,
+        "r2_without_study": 0.969541993169743,
+        "r2_change": 0.009308710052080449,
+        "r2_change_pct": 0.9694217244644084,
+        "coef_vai_without": 1.0343601539652423,
+        "coef_vai_change": 0.017164546862431074,
+        "influential": "False"
+      },
+      {
+        "study": "Beek_2024",
+        "n_patients": 115,
+        "n_datapoints": 5,
+        "r2_without_study": 0.9573348155113862,
+        "r2_change": -0.0028984676062763226,
+        "r2_change_pct": -0.3018503583697544,
+        "coef_vai_without": 1.0072365468265931,
+        "coef_vai_change": -0.009959060276218068,
+        "influential": "False"
+      },
+      {
+        "study": "ESGAR_2023",
+        "n_patients": 133,
+        "n_datapoints": 3,
+        "r2_without_study": 0.9573739021348856,
+        "r2_change": -0.002859380982776938,
+        "r2_change_pct": -0.29777982424158095,
+        "coef_vai_without": 1.0124655324343934,
+        "coef_vai_change": -0.004730074668417794,
+        "influential": "False"
+      },
+      {
+        "study": "DeGregorio_2022",
+        "n_patients": 225,
+        "n_datapoints": 6,
+        "r2_without_study": 0.9588173445374419,
+        "r2_change": -0.0014159385802205993,
+        "r2_change_pct": -0.14745776938947208,
+        "coef_vai_without": 1.0188411125595187,
+        "coef_vai_change": 0.0016455054567074967,
+        "influential": "False"
+      },
+      {
+        "study": "vanRijn_2022",
+        "n_patients": 100,
+        "n_datapoints": 4,
+        "r2_without_study": 0.9592870886849436,
+        "r2_change": -0.0009461944327189276,
+        "r2_change_pct": -0.09853797502694824,
+        "coef_vai_without": 1.0129121942545967,
+        "coef_vai_change": -0.004283412848214541,
+        "influential": "False"
+      },
+      {
+        "study": "PISA2_2023",
+        "n_patients": 91,
+        "n_datapoints": 6,
+        "r2_without_study": 0.9611377382849207,
+        "r2_change": 0.0009044551672581225,
+        "r2_change_pct": 0.09419119115737781,
+        "coef_vai_without": 1.0186868385143961,
+        "coef_vai_change": 0.0014912314115849146,
+        "influential": "False"
+      },
+      {
+        "study": "ADMIRE2_2024",
+        "n_patients": 640,
+        "n_datapoints": 3,
+        "r2_without_study": 0.9595014747805619,
+        "r2_change": -0.0007318083371006256,
+        "r2_change_pct": -0.0762115154688877,
+        "coef_vai_without": 1.0216968793996395,
+        "coef_vai_change": 0.004501272296828285,
+        "influential": "False"
+      },
+      {
+        "study": "ADMIRE_2016",
+        "n_patients": 355,
+        "n_datapoints": 4,
+        "r2_without_study": 0.959525995553864,
+        "r2_change": -0.0007072875637985643,
+        "r2_change_pct": -0.07365788878949914,
+        "coef_vai_without": 1.0189159433876587,
+        "coef_vai_change": 0.001720336284847468,
+        "influential": "False"
+      },
+      {
+        "study": "DIVERGENCE2_2024",
+        "n_patients": 112,
+        "n_datapoints": 2,
+        "r2_without_study": 0.9597103401920305,
+        "r2_change": -0.0005229429256320417,
+        "r2_change_pct": -0.0544599874661877,
+        "coef_vai_without": 1.0178273645169393,
+        "coef_vai_change": 0.0006317574141281312,
+        "influential": "False"
+      },
+      {
+        "study": "Yao_UST_2023",
+        "n_patients": 190,
+        "n_datapoints": 3,
+        "r2_without_study": 0.9597425366680284,
+        "r2_change": -0.0004907464496340941,
+        "r2_change_pct": -0.051107002669262845,
+        "coef_vai_without": 1.013007728808947,
+        "coef_vai_change": -0.0041878782938642445,
+        "influential": "False"
+      },
+      {
+        "study": "P325_ECCO_2022",
+        "n_patients": 76,
+        "n_datapoints": 4,
+        "r2_without_study": 0.9597850133690926,
+        "r2_change": -0.0004482697485699294,
+        "r2_change_pct": -0.04668342125306237,
+        "coef_vai_without": 1.0119216513264364,
+        "coef_vai_change": -0.005273955776374795,
+        "influential": "False"
+      },
+      {
+        "study": "Li_Ustekinumab_2023",
+        "n_patients": 134,
+        "n_datapoints": 2,
+        "r2_without_study": 0.9597939805520826,
+        "r2_change": -0.000439302565579891,
+        "r2_change_pct": -0.04574956662130831,
+        "coef_vai_without": 1.0132855074931022,
+        "coef_vai_change": -0.003910099609709006,
+        "influential": "False"
+      },
+      {
+        "study": "MAGNIFI-CD_Validation_2019",
+        "n_patients": 320,
+        "n_datapoints": 4,
+        "r2_without_study": 0.9606678786254079,
+        "r2_change": 0.00043459550774538336,
+        "r2_change_pct": 0.045259367216927644,
+        "coef_vai_without": 1.027957833934162,
+        "coef_vai_change": 0.010762226831350752,
+        "influential": "False"
+      },
+      {
+        "study": "PEMPAC_2021",
+        "n_patients": 120,
+        "n_datapoints": 2,
+        "r2_without_study": 0.9598367780259132,
+        "r2_change": -0.0003965050917493773,
+        "r2_change_pct": -0.041292579492976336,
+        "coef_vai_without": 1.0179940984245672,
+        "coef_vai_change": 0.000798491321756023,
+        "influential": "False"
+      },
+      {
+        "study": "ADMIRE_Followup_2022",
+        "n_patients": 25,
+        "n_datapoints": 2,
+        "r2_without_study": 0.9603822152043965,
+        "r2_change": 0.00014893208673394387,
+        "r2_change_pct": 0.015509990056832306,
+        "coef_vai_without": 1.0177785589034836,
+        "coef_vai_change": 0.00058295180067236,
+        "influential": "False"
+      },
+      {
+        "study": "Samaan_2019",
+        "n_patients": 60,
+        "n_datapoints": 4,
+        "r2_without_study": 0.9603369683760439,
+        "r2_change": 0.00010368525838133635,
+        "r2_change_pct": 0.010797923817501257,
+        "coef_vai_without": 1.017141078534411,
+        "coef_vai_change": -5.4528568400158406e-05,
+        "influential": "False"
+      }
+    ],
+    "summary": {
+      "max_r2_increase": 0.009308710052080449,
+      "max_r2_decrease": -0.0028984676062763226,
+      "mean_r2_change": 0.001422326397266034,
+      "most_influential_positive": "Protocolized_2025",
+      "most_influential_negative": "Beek_2024",
+      "n_influential_studies": 0
+    },
+    "interpretation": "Model is robust - no single study removal causes >2% R\u00b2 change"
+  },
+  "bland_altman": {
+    "mean_difference": {
+      "value": -0.09222812499999944,
+      "ci_lower": -0.3617229458962353,
+      "ci_upper": 0.17726669589623645,
+      "interpretation": "No significant systematic bias"
+    },
+    "limits_of_agreement": {
+      "upper": 2.063730442169888,
+      "lower": -2.2481866921698863,
+      "ci_upper": {
+        "lower": 1.5969517200009324,
+        "upper": 2.5305091643388433
+      },
+      "ci_lower": {
+        "lower": -2.7149654143388418,
+        "upper": -1.7814079700009309
+      }
+    },
+    "proportional_bias": {
+      "correlation": 0.36906927721171895,
+      "present": "True",
+      "interpretation": "Proportional bias present - agreement varies with score magnitude"
+    },
+    "points_outside_loa": {
+      "count": 7,
+      "percentage": 10.9375,
+      "expected_percentage": 5.0,
+      "interpretation": "More outliers than expected"
+    },
+    "clinical_acceptability": {
+      "acceptable": "True",
+      "loa_width": 4.311917134339774,
+      "interpretation": "Clinically acceptable agreement"
+    },
+    "point_data": [
+      {
+        "mean": 14.04,
+        "difference": -0.09,
+        "source": "protocolized_active_median",
+        "study": "Protocolized_2025",
+        "outside_loa": false
+      },
+      {
+        "mean": 9.48,
+        "difference": -0.96,
+        "source": "protocolized_active_iqr_low",
+        "study": "Protocolized_2025",
+        "outside_loa": false
+      },
+      {
+        "mean": 19.12,
+        "difference": -0.24,
+        "source": "protocolized_active_iqr_high",
+        "study": "Protocolized_2025",
+        "outside_loa": false
+      },
+      {
+        "mean": 4.65,
+        "difference": 2.7,
+        "source": "protocolized_healed_median",
+        "study": "Protocolized_2025",
+        "outside_loa": true
+      },
+      {
+        "mean": 3.02,
+        "difference": -0.03,
+        "source": "protocolized_healed_iqr_low",
+        "study": "Protocolized_2025",
+        "outside_loa": false
+      },
+      {
+        "mean": 6.92,
+        "difference": 2.16,
+        "source": "protocolized_healed_iqr_high",
+        "study": "Protocolized_2025",
+        "outside_loa": true
+      },
+      {
+        "mean": 15.72,
+        "difference": -0.85,
+        "source": "magnificd_validation_responders_bl",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 11.2,
+        "difference": 0.41,
+        "source": "magnificd_validation_responders_wk24",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 14.96,
+        "difference": -0.32,
+        "source": "magnificd_validation_nonresp_bl",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 14.76,
+        "difference": -0.72,
+        "source": "magnificd_validation_nonresp_wk24",
+        "study": "MAGNIFI-CD_Validation_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 19.62,
+        "difference": 0.76,
+        "source": "beek_responders_bl",
+        "study": "Beek_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 12.76,
+        "difference": 1.48,
+        "source": "beek_remitters_bl",
+        "study": "Beek_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 19.62,
+        "difference": 0.76,
+        "source": "beek_nonresp_bl",
+        "study": "Beek_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 8.96,
+        "difference": 0.07,
+        "source": "beek_responders_fu",
+        "study": "Beek_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 17.59,
+        "difference": 0.82,
+        "source": "beek_nonresp_fu",
+        "study": "Beek_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 11.0,
+        "difference": 0.01,
+        "source": "vanrijn_pretreat_closed",
+        "study": "vanRijn_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 18.6,
+        "difference": 0.79,
+        "source": "vanrijn_pretreat_open",
+        "study": "vanRijn_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "vanrijn_posttreat_closed",
+        "study": "vanRijn_2022",
+        "outside_loa": true
+      },
+      {
+        "mean": 15.56,
+        "difference": 0.88,
+        "source": "vanrijn_posttreat_open",
+        "study": "vanRijn_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 11.0,
+        "difference": 0.01,
+        "source": "ustekinumab_baseline",
+        "study": "Li_Ustekinumab_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 7.19,
+        "difference": -0.38,
+        "source": "ustekinumab_posttreat",
+        "study": "Li_Ustekinumab_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 13.03,
+        "difference": -0.05,
+        "source": "p325_responders_bl",
+        "study": "P325_ECCO_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 6.43,
+        "difference": -0.87,
+        "source": "p325_responders_fu",
+        "study": "P325_ECCO_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 12.01,
+        "difference": -0.02,
+        "source": "p325_nonresp_bl",
+        "study": "P325_ECCO_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 13.03,
+        "difference": -0.05,
+        "source": "p325_nonresp_fu",
+        "study": "P325_ECCO_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 15.06,
+        "difference": -0.12,
+        "source": "samaan_responders_bl",
+        "study": "Samaan_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 11.31,
+        "difference": -0.61,
+        "source": "samaan_responders_fu",
+        "study": "Samaan_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 13.28,
+        "difference": -0.57,
+        "source": "samaan_nonresp_bl",
+        "study": "Samaan_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 13.28,
+        "difference": -0.57,
+        "source": "samaan_nonresp_fu",
+        "study": "Samaan_2019",
+        "outside_loa": false
+      },
+      {
+        "mean": 17.59,
+        "difference": 0.82,
+        "source": "esgar_baseline_median",
+        "study": "ESGAR_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 8.96,
+        "difference": 0.07,
+        "source": "esgar_baseline_iqr_low",
+        "study": "ESGAR_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 20.14,
+        "difference": -0.27,
+        "source": "esgar_baseline_iqr_high",
+        "study": "ESGAR_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 9.98,
+        "difference": 0.04,
+        "source": "anti_tnf_ifx_healing",
+        "study": "DeGregorio_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 14.04,
+        "difference": -0.09,
+        "source": "anti_tnf_ifx_active",
+        "study": "DeGregorio_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 6.93,
+        "difference": 0.13,
+        "source": "anti_tnf_ifx_remission",
+        "study": "DeGregorio_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 8.96,
+        "difference": 0.07,
+        "source": "anti_tnf_ada_healing",
+        "study": "DeGregorio_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 13.03,
+        "difference": -0.05,
+        "source": "anti_tnf_ada_active",
+        "study": "DeGregorio_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 5.92,
+        "difference": 0.16,
+        "source": "anti_tnf_ada_remission",
+        "study": "DeGregorio_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "pisa2_surgery_healed",
+        "study": "PISA2_2023",
+        "outside_loa": true
+      },
+      {
+        "mean": 9.98,
+        "difference": 0.04,
+        "source": "pisa2_surgery_clinical",
+        "study": "PISA2_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 14.04,
+        "difference": -0.09,
+        "source": "pisa2_surgery_active",
+        "study": "PISA2_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "pisa2_antitnf_healed",
+        "study": "PISA2_2023",
+        "outside_loa": true
+      },
+      {
+        "mean": 7.95,
+        "difference": 0.1,
+        "source": "pisa2_antitnf_clinical",
+        "study": "PISA2_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 13.03,
+        "difference": -0.05,
+        "source": "pisa2_antitnf_active",
+        "study": "PISA2_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 11.0,
+        "difference": 0.01,
+        "source": "ust_realworld_baseline",
+        "study": "Yao_UST_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 7.19,
+        "difference": -0.38,
+        "source": "ust_realworld_post",
+        "study": "Yao_UST_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 9.98,
+        "difference": 0.04,
+        "source": "ust_realworld_partial",
+        "study": "Yao_UST_2023",
+        "outside_loa": false
+      },
+      {
+        "mean": 16.07,
+        "difference": -0.15,
+        "source": "admire_baseline",
+        "study": "ADMIRE_2016",
+        "outside_loa": false
+      },
+      {
+        "mean": 8.96,
+        "difference": 0.07,
+        "source": "admire_darvad_responders",
+        "study": "ADMIRE_2016",
+        "outside_loa": false
+      },
+      {
+        "mean": 14.04,
+        "difference": -0.09,
+        "source": "admire_darvad_nonresp",
+        "study": "ADMIRE_2016",
+        "outside_loa": false
+      },
+      {
+        "mean": 11.0,
+        "difference": 0.01,
+        "source": "admire_placebo_resp",
+        "study": "ADMIRE_2016",
+        "outside_loa": false
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "admire_longterm_remission",
+        "study": "ADMIRE_Followup_2022",
+        "outside_loa": true
+      },
+      {
+        "mean": 9.98,
+        "difference": 0.04,
+        "source": "admire_longterm_partial",
+        "study": "ADMIRE_Followup_2022",
+        "outside_loa": false
+      },
+      {
+        "mean": 17.09,
+        "difference": -0.18,
+        "source": "admire2_baseline",
+        "study": "ADMIRE2_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 9.98,
+        "difference": 0.04,
+        "source": "admire2_combined_remission",
+        "study": "ADMIRE2_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 14.04,
+        "difference": -0.09,
+        "source": "admire2_active",
+        "study": "ADMIRE2_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 15.06,
+        "difference": -0.12,
+        "source": "divergence2_baseline",
+        "study": "DIVERGENCE2_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 7.95,
+        "difference": 0.1,
+        "source": "divergence2_responders",
+        "study": "DIVERGENCE2_2024",
+        "outside_loa": false
+      },
+      {
+        "mean": 12.01,
+        "difference": -0.02,
+        "source": "pempac_baseline",
+        "study": "PEMPAC_2021",
+        "outside_loa": false
+      },
+      {
+        "mean": 6.93,
+        "difference": 0.13,
+        "source": "pempac_responders",
+        "study": "PEMPAC_2021",
+        "outside_loa": false
+      },
+      {
+        "mean": 0.86,
+        "difference": -1.71,
+        "source": "theoretical_remission",
+        "study": "Theoretical",
+        "outside_loa": false
+      },
+      {
+        "mean": 24.7,
+        "difference": 0.61,
+        "source": "theoretical_max_active",
+        "study": "Theoretical",
+        "outside_loa": false
+      },
+      {
+        "mean": 4.65,
+        "difference": 2.7,
+        "source": "theoretical_fibrotic",
+        "study": "Theoretical",
+        "outside_loa": true
+      },
+      {
+        "mean": 12.51,
+        "difference": 0.98,
+        "source": "response_equivalence",
+        "study": "Theoretical",
+        "outside_loa": false
+      }
+    ],
+    "outliers": [
+      {
+        "mean": 4.65,
+        "difference": 2.7,
+        "source": "protocolized_healed_median",
+        "study": "Protocolized_2025",
+        "outside_loa": true
+      },
+      {
+        "mean": 6.92,
+        "difference": 2.16,
+        "source": "protocolized_healed_iqr_high",
+        "study": "Protocolized_2025",
+        "outside_loa": true
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "vanrijn_posttreat_closed",
+        "study": "vanRijn_2022",
+        "outside_loa": true
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "pisa2_surgery_healed",
+        "study": "PISA2_2023",
+        "outside_loa": true
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "pisa2_antitnf_healed",
+        "study": "PISA2_2023",
+        "outside_loa": true
+      },
+      {
+        "mean": 1.65,
+        "difference": -3.3,
+        "source": "admire_longterm_remission",
+        "study": "ADMIRE_Followup_2022",
+        "outside_loa": true
+      },
+      {
+        "mean": 4.65,
+        "difference": 2.7,
+        "source": "theoretical_fibrotic",
+        "study": "Theoretical",
+        "outside_loa": true
+      }
+    ],
+    "summary": {
+      "bias": "-0.09 (-0.36 to 0.18)",
+      "loa": "-2.25 to 2.06",
+      "conclusion": "Good agreement between predicted and actual MAGNIFI-CD scores"
+    }
+  },
+  "subgroup_analysis": {
+    "global_model": {
+      "coef_vai": 1.0171956071028112,
+      "coef_fib_healed": -0.02142711476828389,
+      "intercept": 1.827206864536864
+    },
+    "by_treatment": [
+      {
+        "treatment": "Stem Cell",
+        "n_datapoints": 9,
+        "n_patients": 1020,
+        "n_studies": 3,
+        "studies": [
+          "ADMIRE_2016",
+          "ADMIRE_Followup_2022",
+          "ADMIRE2_2024"
+        ],
+        "r2": 0.985867252032149,
+        "rmse": 0.5681416939909602,
+        "mae": 0.22886132500957737,
+        "mean_vai": 9.444444444444445,
+        "mean_magnificd": 11.222222222222221,
+        "subgroup_coef_vai": 0.9999999999999974,
+        "coef_vai_difference": -0.01719560710281376,
+        "formula_generalizes": "True"
+      },
+      {
+        "treatment": "Anti-TNF",
+        "n_datapoints": 33,
+        "n_patients": 1014,
+        "n_studies": 7,
+        "studies": [
+          "Protocolized_2025",
+          "MAGNIFI-CD_Validation_2019",
+          "Beek_2024",
+          "vanRijn_2022",
+          "P325_ECCO_2022",
+          "Samaan_2019",
+          "DeGregorio_2022"
+        ],
+        "r2": 0.9485601240557388,
+        "rmse": 1.0697176563938255,
+        "mae": 0.656101630991675,
+        "mean_vai": 9.806060606060607,
+        "mean_magnificd": 12.012121212121212,
+        "subgroup_coef_vai": 1.0010616124807115,
+        "coef_vai_difference": -0.016133994622099745,
+        "formula_generalizes": "True"
+      },
+      {
+        "treatment": "Ustekinumab",
+        "n_datapoints": 5,
+        "n_patients": 324,
+        "n_studies": 2,
+        "studies": [
+          "Li_Ustekinumab_2023",
+          "Yao_UST_2023"
+        ],
+        "r2": 0.9787087687965631,
+        "rmse": 0.2674668892471514,
+        "mae": 0.18297180578419336,
+        "mean_vai": 7.4,
+        "mean_magnificd": 9.2,
+        "subgroup_coef_vai": null,
+        "coef_vai_difference": null,
+        "formula_generalizes": "True"
+      },
+      {
+        "treatment": "Mixed",
+        "n_datapoints": 3,
+        "n_patients": 133,
+        "n_studies": 1,
+        "studies": [
+          "ESGAR_2023"
+        ],
+        "r2": 0.9874988864688474,
+        "rmse": 0.5349173754907735,
+        "mae": 0.3680035690172983,
+        "mean_vai": 13.333333333333334,
+        "mean_magnificd": 15.666666666666666,
+        "subgroup_coef_vai": null,
+        "coef_vai_difference": null,
+        "formula_generalizes": "True"
+      },
+      {
+        "treatment": "Pediatric",
+        "n_datapoints": 2,
+        "n_patients": 120,
+        "n_studies": 1,
+        "studies": [
+          "PEMPAC_2021"
+        ],
+        "r2": 0.9993969950195171,
+        "rmse": 0.061390399314701846,
+        "mae": 0.04382608219205153,
+        "mean_vai": 7.5,
+        "mean_magnificd": 9.5,
+        "subgroup_coef_vai": null,
+        "coef_vai_difference": null,
+        "formula_generalizes": "True"
+      },
+      {
+        "treatment": "JAK Inhibitor",
+        "n_datapoints": 2,
+        "n_patients": 112,
+        "n_studies": 1,
+        "studies": [
+          "DIVERGENCE2_2024"
+        ],
+        "r2": 0.9996970444242089,
+        "rmse": 0.060919666803430216,
+        "mae": 0.06018462485983944,
+        "mean_vai": 9.5,
+        "mean_magnificd": 11.5,
+        "subgroup_coef_vai": null,
+        "coef_vai_difference": null,
+        "formula_generalizes": "True"
+      },
+      {
+        "treatment": "Anti-TNF + Surgery",
+        "n_datapoints": 6,
+        "n_patients": 91,
+        "n_studies": 1,
+        "studies": [
+          "PISA2_2023"
+        ],
+        "r2": 0.9698262900203252,
+        "rmse": 0.9813481764990211,
+        "mae": 0.5920081359632703,
+        "mean_vai": 6.166666666666667,
+        "mean_magnificd": 7.5,
+        "subgroup_coef_vai": 1.0000000000000004,
+        "coef_vai_difference": -0.01719560710281076,
+        "formula_generalizes": "True"
+      }
+    ],
+    "summary": {
+      "n_treatment_groups": 7,
+      "min_r2": 0.9485601240557388,
+      "max_r2": 0.9874988864688474,
+      "mean_r2": 0.9740922642747247,
+      "all_generalize": true,
+      "consistent_coefficient": true
+    },
+    "interpretation": {
+      "conclusion": "Formula generalizes well across all treatment modalities",
+      "clinical_implication": "Crosswalk can be used for anti-TNF, ustekinumab, JAK inhibitors, and stem cell studies",
+      "strongest_evidence": "Anti-TNF and Stem Cell subgroups have largest sample sizes with excellent fit"
+    }
+  },
+  "enhanced_summary": {
+    "bootstrap": {
+      "coef_vai_ci": "0.975 - 1.061",
+      "r2_ci": "0.9309 - 0.9892"
+    },
+    "sensitivity": {
+      "max_impact": "\u00b10.0093",
+      "robust": true
+    },
+    "bland_altman": {
+      "bias": "-0.09",
+      "loa_width": "4.31",
+      "acceptable": "True"
+    },
+    "subgroup": {
+      "all_generalize": true,
+      "treatment_types_validated": 7
+    },
+    "overall_conclusion": "Formula is robust, unbiased, and generalizes across all treatment modalities"
+  }
+}

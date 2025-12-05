@@ -1,0 +1,407 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "created": "2025-12-03",
+    "description": "Expanded real MRI report collection for parser validation - Phase 2",
+    "sources": [
+      "Radiopaedia",
+      "Eurorad",
+      "PubMed Central",
+      "Frontiers in Pediatrics"
+    ],
+    "total_new_cases": 15
+  },
+  "new_cases": [
+    {
+      "id": "rp_v2_1",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/perianal-fistula-intersphincteric-with-intersphincteric-abscess",
+      "patient": {
+        "age": 45,
+        "gender": "female"
+      },
+      "presentation": "Perianal pain and discharge of pus",
+      "report_text": "MRI pelvis demonstrates a left-sided intersphincteric fistulous tract coursing between the internal and external anal sphincters. The tract has its anal mucosal opening at 5 o'clock position about 5 cm from the perianal skin. An intersphincteric perianal horseshoe marginally enhancing cystic lesion measuring approximately 2.5 x 1.5 cm is present with mild perianal inflammatory changes. The perianal abscess has two anal mucosal openings at 3 and 9 o'clock positions. Pelvic floor muscles, ischioanal, and ischiorectal fossae are intact bilaterally.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "abscess_size_cm": 2.5,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 15,
+        "expected_magnifi_score": 11,
+        "st_james_grade": 2
+      }
+    },
+    {
+      "id": "rp_v2_2",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/perianal-fistula-with-supralevator-abscess",
+      "patient": {
+        "age": 65,
+        "gender": "male"
+      },
+      "presentation": "Liver cirrhosis. Purulent anal discharge.",
+      "report_text": "MRI demonstrates two small trans-sphincteric fistulous tracts at approximately 9 o'clock position leading into a large presacral abscess cavity with gas. Large volume of ascites is present attributable to hepatic cirrhosis. The trans-sphincteric tracts show T2 hyperintensity consistent with active inflammation. Supralevator extension is evident with the presacral collection.",
+      "ground_truth": {
+        "fistula_count": 2,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "supralevator_extension": true,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 18,
+        "expected_magnifi_score": 14,
+        "st_james_grade": 5
+      }
+    },
+    {
+      "id": "rp_v2_3",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/fistula-in-ano",
+      "patient": {
+        "age": 45,
+        "gender": "male"
+      },
+      "presentation": "External opening at 7 o'clock position with intermittent pus discharge",
+      "report_text": "MRI reveals an irregular fistulous tract extending from the skin surface, traversing the external sphincter, into the intersphincteric plane at 7 o'clock position. A secondary horseshoe track extending to the contralateral side is also seen. Per St. James University Hospital MR classification system, this represents a Grade 2 perianal fistula - intersphincteric fistula with secondary track or abscess formation. Surgically confirmed.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "horseshoe": true,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 11,
+        "expected_magnifi_score": 7,
+        "st_james_grade": 2
+      }
+    },
+    {
+      "id": "rp_v2_4",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/transsphincteric-perianal-fistula-1",
+      "patient": {
+        "age": 20,
+        "gender": "female"
+      },
+      "presentation": "Recurrent perianal pain and discharge",
+      "report_text": "MRI demonstrates a left-sided fistulous tract approximately 4 cm in length originating at the 1 o'clock position. The tract appears as T2-hyperintense fluid traversing through both the external and internal anal sphincters. The fistula courses initially upward before curving medially and extends into the ischioanal fossa with drainage at the skin surface. According to St James University Hospital system, this represents a grade III left perianal transsphincteric fistulous tract with associated inflammatory changes within the left ischioanal fossa. No abscess identified.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 12,
+        "expected_magnifi_score": 7,
+        "st_james_grade": 3
+      }
+    },
+    {
+      "id": "rp_v2_5",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/perianal-transsphincteric-fistulas-crohn-disease",
+      "patient": {
+        "age": 20,
+        "gender": "male"
+      },
+      "presentation": "Followup of known perianal Crohn's disease. MRI to assess response to therapy.",
+      "report_text": "MRI pelvis for follow-up of known perianal Crohn's disease. Two transsphincteric fistula tracts identified. Primary fistula at 5-6 o'clock at mid-anus level tracking downward to left perianal cleft opening with seton sutures in place. Secondary fistula at 6 o'clock just inferior to first, transsphincteric with right ischial anal fossa involvement and openings to right natal cleft and anterior perineum with seton sutures present. Previously demonstrated complex perirectal tract extension above levator muscle is significantly reduced compared to prior study. No collections identified. Multiple transsphincteric tracts show mild T2 hyperintensity with granulation tissue within tracts. Pronounced tract enhancement with minimal surrounding tissue inflammation. St James's grade 3 transsphincteric pattern with improvement.",
+      "ground_truth": {
+        "fistula_count": 2,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "seton_in_place": true,
+        "treatment_status": "on_biologics",
+        "expected_vai_score": 11,
+        "expected_magnifi_score": 7,
+        "st_james_grade": 3,
+        "notes": "Post-treatment improvement case with setons"
+      }
+    },
+    {
+      "id": "rp_v2_6",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/sacrococcygeal-chronic-osteomyelitis-fistulising-crohn-disease",
+      "patient": {
+        "age": 35,
+        "gender": "male"
+      },
+      "presentation": "Known Crohn's disease. Pelvic pain.",
+      "report_text": "MRI pelvis in patient with known Crohn's disease. There is a supralevator trans-sphincteric fistula at 6 o'clock of the anorectal junction with a seton suture within the inferior branch and opening to the skin in the left natal cleft. Three persistent fibrotic trans-sphincteric tracts at 3, 9, and 12 o'clock positions without collections. Another branch extends posteriorly to the coccyx and buttock with inflammatory infiltrates in the presacral region. Increased granulation tissue in posterior buttock. Coccygeal involvement with associated chronic osteomyelitis confirmed on pathology. Complex branching fistula pattern with complications.",
+      "ground_truth": {
+        "fistula_count": 4,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "severe",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": true,
+        "supralevator_extension": true,
+        "seton_in_place": true,
+        "treatment_status": "on_biologics",
+        "expected_vai_score": 13,
+        "expected_magnifi_score": 15,
+        "notes": "Complex with osteomyelitis. With V4 balanced seton scoring: VAI = 2(4+ fistulas) + 3(complex) + 4(mod T2 w/ seton reduction) + 4(severe ext) = 13. MAGNIFI = 5(3+ fistulas) + 3(mod T2 w/ seton) + 3(severe ext) + 4(inflammatory mass) = 15"
+      }
+    },
+    {
+      "id": "rp_v2_7",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/normal-mri-pelvis-fistula-protocol",
+      "patient": {
+        "age": 30,
+        "gender": "male"
+      },
+      "presentation": "Crohn disease. Discharge. Suspected fistula in ano.",
+      "report_text": "Multiplanar pre- and post-contrast small field of view MR imaging of the pelvis. Anal canal and levator ani complex are normal in appearance. There is no evidence of fissure or fistula. No inflammation or fluid collection in the usual rectal fossa or rectum. The bones are normal. Impression: No evidence of perianal fistula. No cause for perianal discharge identified. Normal MRI pelvis using fistula protocol.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0,
+        "notes": "Normal study - negative control"
+      }
+    },
+    {
+      "id": "rp_v2_8",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/perianal-fistula-grade-4-transsphincteric-3",
+      "patient": {
+        "age": 45,
+        "gender": "female"
+      },
+      "presentation": "Perianal discharge",
+      "report_text": "MRI demonstrates a 6 o'clock transsphincteric perianal fistula piercing both layers of the sphincter complex and taking a downward course through the ischiorectal and ischioanal fossae before reaching the perineal skin. Small abscess is seen within the tract. The fistula shows T2 hyperintensity consistent with active inflammation. Grade 4 per St James's University Hospital Classification due to transsphincteric fistula with associated abscess.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 16,
+        "expected_magnifi_score": 11,
+        "st_james_grade": 4
+      }
+    },
+    {
+      "id": "rp_v2_9",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/perianal-fistula-grade-iv",
+      "patient": {
+        "age": 35,
+        "gender": "female"
+      },
+      "presentation": "Left perianal tender red lump under skin near anus. Recurrence after prior surgery.",
+      "report_text": "MRI pelvis for recurrent perianal fistula, prior surgical treatment 3 months ago. Left-sided trans-sphincteric perianal fistulous tract penetrates the anal canal at 5 o'clock position, 2.5 cm above the anal verge. The tract communicates with a large perianal fluid collection at ischioanal and ischiorectal spaces measuring approximately 30 x 55 x 80 mm. T2 hyperintensity present within tract and collection. Recurrence of known perianal fistula with large associated collection requiring repeat surgical intervention.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "abscess_size_cm": 8.0,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "post_surgical",
+        "expected_vai_score": 19,
+        "expected_magnifi_score": 14,
+        "st_james_grade": 4,
+        "notes": "Large recurrent abscess post-surgery"
+      }
+    },
+    {
+      "id": "rp_v2_10",
+      "source": "radiopaedia",
+      "case_url": "https://radiopaedia.org/cases/intersphincteric-perianal-abscess-1",
+      "patient": {
+        "age": 30,
+        "gender": "male"
+      },
+      "presentation": "Chronic anal fissure. Severe rectal pain, fever, elevated CRP and white cell count.",
+      "report_text": "MRI pelvis for acute perianal sepsis. Large U-shaped fluid collection sitting between the internal and external anal sphincters with marked T2 hyperintensity. Edema affecting the puborectalis muscle and mesorectal fat. Slightly enlarged lymph nodes in presacral region. Perianal and ischiorectal fat remain normal. Extrinsic compression of anal lumen from the collection. Secondary finding of urinary retention. Diagnosis: Intersphincteric perianal abscess secondary to chronic anal fissure with secondary urinary retention. No definite fistula tract identified.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 15,
+        "expected_magnifi_score": 12,
+        "notes": "Abscess without definite fistula - cryptoglandular origin"
+      }
+    },
+    {
+      "id": "ped_v2_1",
+      "source": "frontiers_pediatrics",
+      "case_url": "https://www.frontiersin.org/journals/pediatrics/articles/10.3389/fped.2022.1045583/full",
+      "patient": {
+        "age": 14,
+        "gender": "male"
+      },
+      "presentation": "Pediatric Crohn's disease with perianal symptoms",
+      "report_text": "MRI pelvis in 14-year-old male with known Crohn's disease. Single intersphincteric fistula tract at 6 o'clock position measuring 2.8 cm in length. Mild T2 hyperintensity consistent with active inflammation. No abscess or collection. No supralevator extension. Sphincter complex intact. Simple intersphincteric pattern typical of pediatric perianal Crohn's disease.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "fistula_length_cm": 2.8,
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 6,
+        "expected_magnifi_score": 3,
+        "notes": "Typical simple pediatric case"
+      }
+    },
+    {
+      "id": "ped_v2_2",
+      "source": "frontiers_pediatrics",
+      "case_url": "https://www.frontiersin.org/journals/pediatrics/articles/10.3389/fped.2022.1045583/full",
+      "patient": {
+        "age": 12,
+        "gender": "female"
+      },
+      "presentation": "Pediatric Crohn's with perianal abscess",
+      "report_text": "MRI pelvis in 12-year-old female with Crohn's disease presenting with perianal pain. Two intersphincteric fistulous tracts identified at 5 and 7 o'clock positions with total combined length of 4.2 cm. Associated perianal abscess measuring 1.5 cm with peripheral enhancement. Moderate T2 hyperintensity within tracts. Multiple skin openings. Based on pediatric literature, fistula length >3.3 cm has 80% specificity for abscess development, which is consistent with this case.",
+      "ground_truth": {
+        "fistula_count": 2,
+        "fistula_type": "intersphincteric",
+        "fistula_length_cm": 4.2,
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "mild",
+        "collections_abscesses": true,
+        "abscess_size_cm": 1.5,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 15,
+        "expected_magnifi_score": 12,
+        "notes": "Pediatric case with abscess - longer fistula predictor"
+      }
+    },
+    {
+      "id": "ped_v2_3",
+      "source": "frontiers_pediatrics",
+      "case_url": "https://www.frontiersin.org/journals/pediatrics/articles/10.3389/fped.2022.1045583/full",
+      "patient": {
+        "age": 16,
+        "gender": "male"
+      },
+      "presentation": "Adolescent Crohn's with complex perianal disease on biologics",
+      "report_text": "MRI pelvis in 16-year-old male with Crohn's disease on infliximab therapy. Complex transsphincteric fistula at 6 o'clock with branching pattern and supralevator extension. Seton in place for 6 months. Fistula shows mild residual T2 hyperintensity reduced from prior exam. Small residual collection measuring 0.8 cm in posterior ischioanal fossa. Overall improvement compared to baseline with treatment response. Sphincter integrity preserved.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "abscess_size_cm": 0.8,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "supralevator_extension": true,
+        "seton_in_place": true,
+        "treatment_status": "on_biologics",
+        "expected_vai_score": 15,
+        "expected_magnifi_score": 9,
+        "notes": "Adolescent on biologics with treatment response"
+      }
+    },
+    {
+      "id": "synth_v2_1",
+      "source": "synthetic_from_literature",
+      "patient": {
+        "age": 42,
+        "gender": "female"
+      },
+      "presentation": "Known Crohn's, on ustekinumab for 1 year, follow-up MRI",
+      "report_text": "Follow-up MRI pelvis in 42-year-old female with Crohn's disease on ustekinumab maintenance therapy for 12 months. Previously documented transsphincteric fistula at 3 o'clock now shows significant improvement. Tract remains visible but demonstrates low T2 signal intensity consistent with fibrotic healing. No residual T2 hyperintensity. No abscess or collection. The tract no longer enhances post-contrast suggesting inactive/healed fistula. Sphincter complex intact. Clinical and radiological healing achieved.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "treatment_status": "on_biologics",
+        "expected_vai_score": 3,
+        "expected_magnifi_score": 1,
+        "notes": "Healed fistula on biologics - fibrotic tract only"
+      }
+    },
+    {
+      "id": "synth_v2_2",
+      "source": "synthetic_from_literature",
+      "patient": {
+        "age": 28,
+        "gender": "male"
+      },
+      "presentation": "New diagnosis perianal Crohn's with severe disease",
+      "report_text": "MRI pelvis in 28-year-old male presenting with new perianal symptoms. Diagnosis of Crohn's disease confirmed on colonoscopy 2 weeks prior. Extensive perianal disease identified. High transsphincteric fistula at 6 o'clock with horseshoe extension bilaterally into both ischioanal fossae. Two additional intersphincteric tracts at 3 and 9 o'clock. Large presacral abscess measuring 4.5 x 3.2 cm with marked T2 hyperintensity and peripheral enhancement. Marked rectal wall thickening with mucosal hyperenhancement consistent with active proctitis. Inflammatory mass in left ischioanal fossa measuring 2.8 cm. Van Assche Index components: 3 fistulas, high transsphincteric with horseshoe, marked T2, large abscess, rectal wall involvement. Urgent surgical and gastroenterology consultation recommended.",
+      "ground_truth": {
+        "fistula_count": 3,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "abscess_size_cm": 4.5,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "horseshoe": true,
+        "treatment_status": "no_treatment",
+        "expected_vai_score": 22,
+        "expected_magnifi_score": 24,
+        "notes": "Severe new-onset disease - maximum severity features"
+      }
+    }
+  ]
+}

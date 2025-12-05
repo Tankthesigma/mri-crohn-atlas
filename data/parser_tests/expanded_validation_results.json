@@ -1,0 +1,740 @@
+{
+  "generated_at": "2025-12-04T13:38:29.232420",
+  "summary": {
+    "total_cases": 15,
+    "passed": 15,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "vai_mae": 0.9333333333333333,
+    "magnifi_mae": 0.7333333333333333,
+    "vai_within_3": 1.0,
+    "magnifi_within_3": 1.0
+  },
+  "by_source": {
+    "radiopaedia": {
+      "total": 10,
+      "passed": 10
+    },
+    "frontiers_pediatrics": {
+      "total": 3,
+      "passed": 3
+    },
+    "synthetic_from_literature": {
+      "total": 2,
+      "passed": 2
+    }
+  },
+  "results": [
+    {
+      "case_id": "rp_v2_1",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 45,
+        "gender": "female"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [],
+        "internal_opening": "5 o'clock",
+        "external_opening": false,
+        "branching": false,
+        "horseshoe": true,
+        "confidence": 0.9,
+        "key_findings": [
+          "left-sided intersphincteric fistulous tract",
+          "intersphincteric perianal horseshoe marginally enhancing cystic lesion",
+          "perianal abscess has two anal mucosal openings at 3 and 9 o'clock positions"
+        ]
+      },
+      "vai_extracted": 15,
+      "vai_expected": 15,
+      "vai_error": 0,
+      "magnifi_extracted": 11,
+      "magnifi_expected": 11,
+      "magnifi_error": 0,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 8.450663805007935
+    },
+    {
+      "case_id": "rp_v2_2",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 65,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 2,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": null,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [],
+        "internal_opening": "9 o'clock",
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.9,
+        "key_findings": [
+          "two small trans-sphincteric fistulous tracts at approximately 9 o'clock position leading into a large presacral abscess cavity with gas",
+          "Large volume of ascites is present attributable to hepatic cirrhosis",
+          "The trans-sphincteric tracts show T2 hyperintensity consistent with active inflammation",
+          "Supralevator extension is evident with the presacral collection"
+        ]
+      },
+      "vai_extracted": 18,
+      "vai_expected": 18,
+      "vai_error": 0,
+      "magnifi_extracted": 14,
+      "magnifi_expected": 14,
+      "magnifi_error": 0,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 9.358852863311768
+    },
+    {
+      "case_id": "rp_v2_3",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 45,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [],
+        "internal_opening": "7 o'clock",
+        "external_opening": true,
+        "branching": true,
+        "horseshoe": true,
+        "confidence": 0.9,
+        "key_findings": [
+          "irregular fistulous tract extending from the skin surface, traversing the external sphincter, into the intersphincteric plane at 7 o'clock position",
+          "secondary horseshoe track extending to the contralateral side"
+        ]
+      },
+      "vai_extracted": 8,
+      "vai_expected": 11,
+      "vai_error": 3,
+      "magnifi_extracted": 5,
+      "magnifi_expected": 7,
+      "magnifi_error": 2,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 5.921452045440674
+    },
+    {
+      "case_id": "rp_v2_4",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 20,
+        "gender": "female"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [
+          "No abscess identified"
+        ],
+        "internal_opening": "1 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.95,
+        "key_findings": [
+          "MRI demonstrates a left-sided fistulous tract approximately 4 cm in length originating at the 1 o'clock position.",
+          "The tract appears as T2-hyperintense fluid traversing through both the external and internal anal sphincters.",
+          "The fistula courses initially upward before curving medially and extends into the ischioanal fossa with drainage at the skin surface.",
+          "According to St James University Hospital system, this represents a grade III left perianal transsphincteric fistulous tract with associated inflammatory changes within the left ischioanal fossa."
+        ]
+      },
+      "vai_extracted": 12,
+      "vai_expected": 12,
+      "vai_error": 0,
+      "magnifi_extracted": 7,
+      "magnifi_expected": 7,
+      "magnifi_error": 0,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 6.72807502746582
+    },
+    {
+      "case_id": "rp_v2_5",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 20,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 2,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": true,
+        "predominant_feature": null,
+        "treatment_status": "seton_in_place",
+        "disease_phase": "improving",
+        "has_prior_comparison": true,
+        "negative_findings": [
+          "No collections identified"
+        ],
+        "internal_opening": "5-6 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.95,
+        "key_findings": [
+          "Two transsphincteric fistula tracts identified",
+          "Primary fistula at 5-6 o'clock at mid-anus level tracking downward to left perianal cleft opening with seton sutures in place",
+          "Secondary fistula at 6 o'clock just inferior to first, transsphincteric with right ischial anal fossa involvement and openings to right natal cleft and anterior perineum with seton sutures present",
+          "Previously demonstrated complex perirectal tract extension above levator muscle is significantly reduced compared to prior study",
+          "Multiple transsphincteric tracts show mild T2 hyperintensity with granulation tissue within tracts",
+          "Pronounced tract enhancement with minimal surrounding tissue inflammation",
+          "St James's grade 3 transsphincteric pattern with improvement"
+        ]
+      },
+      "vai_extracted": 10,
+      "vai_expected": 11,
+      "vai_error": 1,
+      "magnifi_extracted": 7,
+      "magnifi_expected": 7,
+      "magnifi_error": 0,
+      "treatment_extracted": "seton_in_place",
+      "treatment_expected": "on_biologics",
+      "seton_detected": true,
+      "feature_issues": [],
+      "extraction_time": 8.282135963439941
+    },
+    {
+      "case_id": "rp_v2_6",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 35,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 4,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "severe",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": "fibrotic",
+        "treatment_status": "seton_in_place",
+        "disease_phase": "chronic_stable",
+        "has_prior_comparison": false,
+        "negative_findings": [],
+        "internal_opening": "6 o'clock",
+        "external_opening": true,
+        "branching": true,
+        "horseshoe": false,
+        "confidence": 0.9,
+        "key_findings": [
+          "supralevator trans-sphincteric fistula at 6 o'clock of the anorectal junction with a seton suture within the inferior branch and opening to the skin in the left natal cleft",
+          "Three persistent fibrotic trans-sphincteric tracts at 3, 9, and 12 o'clock positions without collections",
+          "Another branch extends posteriorly to the coccyx and buttock with inflammatory infiltrates in the presacral region",
+          "Increased granulation tissue in posterior buttock",
+          "Coccygeal involvement with associated chronic osteomyelitis confirmed on pathology",
+          "Complex branching fistula pattern with complications"
+        ]
+      },
+      "vai_extracted": 15,
+      "vai_expected": 13,
+      "vai_error": 2,
+      "magnifi_extracted": 17,
+      "magnifi_expected": 15,
+      "magnifi_error": 2,
+      "treatment_extracted": "seton_in_place",
+      "treatment_expected": "on_biologics",
+      "seton_detected": true,
+      "feature_issues": [],
+      "extraction_time": 13.266463994979858
+    },
+    {
+      "case_id": "rp_v2_7",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 30,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": null,
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "chronic_stable",
+        "has_prior_comparison": false,
+        "negative_findings": [
+          "No evidence of fissure or fistula",
+          "No inflammation or fluid collection in the usual rectal fossa or rectum",
+          "No cause for perianal discharge identified"
+        ],
+        "internal_opening": null,
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 1.0,
+        "key_findings": [
+          "Anal canal and levator ani complex are normal in appearance",
+          "No evidence of perianal fistula",
+          "Normal MRI pelvis using fistula protocol"
+        ]
+      },
+      "vai_extracted": 0,
+      "vai_expected": 0,
+      "vai_error": 0,
+      "magnifi_extracted": 0,
+      "magnifi_expected": 0,
+      "magnifi_error": 0,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 5.530941009521484
+    },
+    {
+      "case_id": "rp_v2_8",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 45,
+        "gender": "female"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [],
+        "internal_opening": "6 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.95,
+        "key_findings": [
+          "MRI demonstrates a 6 o'clock transsphincteric perianal fistula piercing both layers of the sphincter complex and taking a downward course through the ischiorectal and ischioanal fossae before reaching the perineal skin.",
+          "Small abscess is seen within the tract.",
+          "The fistula shows T2 hyperintensity consistent with active inflammation.",
+          "Grade 4 per St James's University Hospital Classification due to transsphincteric fistula with associated abscess."
+        ]
+      },
+      "vai_extracted": 16,
+      "vai_expected": 16,
+      "vai_error": 0,
+      "magnifi_extracted": 11,
+      "magnifi_expected": 11,
+      "magnifi_error": 0,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 5.7398951053619385
+    },
+    {
+      "case_id": "rp_v2_9",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 35,
+        "gender": "female"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": null,
+        "predominant_feature": null,
+        "treatment_status": "post_surgical",
+        "disease_phase": "active",
+        "has_prior_comparison": true,
+        "negative_findings": [],
+        "internal_opening": "5 o'clock",
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.9,
+        "key_findings": [
+          "Left-sided trans-sphincteric perianal fistulous tract penetrates the anal canal at 5 o'clock position, 2.5 cm above the anal verge",
+          "The tract communicates with a large perianal fluid collection at ischioanal and ischiorectal spaces measuring approximately 30 x 55 x 80 mm",
+          "T2 hyperintensity present within tract and collection",
+          "Recurrence of known perianal fistula with large associated collection requiring repeat surgical intervention"
+        ]
+      },
+      "vai_extracted": 16,
+      "vai_expected": 19,
+      "vai_error": 3,
+      "magnifi_extracted": 11,
+      "magnifi_expected": 14,
+      "magnifi_error": 3,
+      "treatment_extracted": "post_surgical",
+      "treatment_expected": "post_surgical",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 12.49131178855896
+    },
+    {
+      "case_id": "rp_v2_10",
+      "source": "radiopaedia",
+      "patient": {
+        "age": 30,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [
+          "No definite fistula tract identified"
+        ],
+        "internal_opening": null,
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.9,
+        "key_findings": [
+          "Large U-shaped fluid collection sitting between the internal and external anal sphincters with marked T2 hyperintensity",
+          "Edema affecting the puborectalis muscle and mesorectal fat",
+          "Slightly enlarged lymph nodes in presacral region",
+          "Extrinsic compression of anal lumen from the collection",
+          "Secondary finding of urinary retention"
+        ]
+      },
+      "vai_extracted": 15,
+      "vai_expected": 15,
+      "vai_error": 0,
+      "magnifi_extracted": 12,
+      "magnifi_expected": 12,
+      "magnifi_error": 0,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 5.85536003112793
+    },
+    {
+      "case_id": "ped_v2_1",
+      "source": "frontiers_pediatrics",
+      "patient": {
+        "age": 14,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [
+          "No abscess or collection",
+          "No supralevator extension",
+          "Sphincter complex intact"
+        ],
+        "internal_opening": "6 o'clock",
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.95,
+        "key_findings": [
+          "Single intersphincteric fistula tract at 6 o'clock position measuring 2.8 cm in length",
+          "Mild T2 hyperintensity consistent with active inflammation",
+          "Simple intersphincteric pattern typical of pediatric perianal Crohn's disease"
+        ]
+      },
+      "vai_extracted": 6,
+      "vai_expected": 6,
+      "vai_error": 0,
+      "magnifi_extracted": 3,
+      "magnifi_expected": 3,
+      "magnifi_error": 0,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 8.560589075088501
+    },
+    {
+      "case_id": "ped_v2_2",
+      "source": "frontiers_pediatrics",
+      "patient": {
+        "age": 12,
+        "gender": "female"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 2,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [],
+        "internal_opening": "5 and 7 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.9,
+        "key_findings": [
+          "Two intersphincteric fistulous tracts identified at 5 and 7 o'clock positions with total combined length of 4.2 cm.",
+          "Associated perianal abscess measuring 1.5 cm with peripheral enhancement.",
+          "Moderate T2 hyperintensity within tracts.",
+          "Multiple skin openings."
+        ]
+      },
+      "vai_extracted": 16,
+      "vai_expected": 15,
+      "vai_error": 1,
+      "magnifi_extracted": 13,
+      "magnifi_expected": 12,
+      "magnifi_error": 1,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 5.705790042877197
+    },
+    {
+      "case_id": "ped_v2_3",
+      "source": "frontiers_pediatrics",
+      "patient": {
+        "age": 16,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": null,
+        "predominant_feature": null,
+        "treatment_status": "seton_in_place",
+        "disease_phase": "improving",
+        "has_prior_comparison": true,
+        "negative_findings": [],
+        "internal_opening": "6 o'clock",
+        "external_opening": null,
+        "branching": true,
+        "horseshoe": null,
+        "confidence": 0.9,
+        "key_findings": [
+          "Complex transsphincteric fistula at 6 o'clock with branching pattern and supralevator extension",
+          "Seton in place for 6 months",
+          "Fistula shows mild residual T2 hyperintensity reduced from prior exam",
+          "Small residual collection measuring 0.8 cm in posterior ischioanal fossa",
+          "Overall improvement compared to baseline with treatment response",
+          "Sphincter integrity preserved"
+        ]
+      },
+      "vai_extracted": 14,
+      "vai_expected": 15,
+      "vai_error": 1,
+      "magnifi_extracted": 9,
+      "magnifi_expected": 9,
+      "magnifi_error": 0,
+      "treatment_extracted": "seton_in_place",
+      "treatment_expected": "on_biologics",
+      "seton_detected": true,
+      "feature_issues": [],
+      "extraction_time": 9.644078969955444
+    },
+    {
+      "case_id": "synth_v2_1",
+      "source": "synthetic_from_literature",
+      "patient": {
+        "age": 42,
+        "gender": "female"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "treatment_status": "on_medication",
+        "disease_phase": "improving",
+        "has_prior_comparison": true,
+        "negative_findings": [
+          "No residual T2 hyperintensity",
+          "No abscess or collection"
+        ],
+        "internal_opening": "3 o'clock",
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "confidence": 0.95,
+        "key_findings": [
+          "Previously documented transsphincteric fistula at 3 o'clock now shows significant improvement",
+          "Tract remains visible but demonstrates low T2 signal intensity consistent with fibrotic healing",
+          "The tract no longer enhances post-contrast suggesting inactive/healed fistula",
+          "Clinical and radiological healing achieved"
+        ]
+      },
+      "vai_extracted": 6,
+      "vai_expected": 3,
+      "vai_error": 3,
+      "magnifi_extracted": 3,
+      "magnifi_expected": 1,
+      "magnifi_error": 2,
+      "treatment_extracted": "on_medication",
+      "treatment_expected": "on_biologics",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 10.73637580871582
+    },
+    {
+      "case_id": "synth_v2_2",
+      "source": "synthetic_from_literature",
+      "patient": {
+        "age": 28,
+        "gender": "male"
+      },
+      "passed": true,
+      "features_extracted": {
+        "fistula_count": 3,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "no_treatment",
+        "disease_phase": "active",
+        "has_prior_comparison": false,
+        "negative_findings": [],
+        "internal_opening": "6 o'clock",
+        "external_opening": null,
+        "branching": true,
+        "horseshoe": true,
+        "confidence": 0.9,
+        "key_findings": [
+          "High transsphincteric fistula at 6 o'clock with horseshoe extension bilaterally into both ischioanal fossae",
+          "Two additional intersphincteric tracts at 3 and 9 o'clock",
+          "Large presacral abscess measuring 4.5 x 3.2 cm with marked T2 hyperintensity and peripheral enhancement",
+          "Marked rectal wall thickening with mucosal hyperenhancement consistent with active proctitis",
+          "Inflammatory mass in left ischioanal fossa measuring 2.8 cm"
+        ]
+      },
+      "vai_extracted": 22,
+      "vai_expected": 22,
+      "vai_error": 0,
+      "magnifi_extracted": 25,
+      "magnifi_expected": 24,
+      "magnifi_error": 1,
+      "treatment_extracted": "no_treatment",
+      "treatment_expected": "no_treatment",
+      "seton_detected": false,
+      "feature_issues": [],
+      "extraction_time": 5.607966899871826
+    }
+  ]
+}

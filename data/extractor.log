@@ -1,0 +1,714 @@
+2025-12-02 14:46:47,773 - INFO - Found 370 PDFs to process.
+2025-12-02 14:46:47,774 - INFO - Using model: deepseek/deepseek-v3.2
+2025-12-02 14:46:47,774 - INFO - Cost limit: $10.00
+2025-12-02 14:46:48,523 - ERROR - Failed to parse PDF Case_report_of_squamous_cell_carcinoma_secondary_to_recurrent_anal_fistula.pdf: not a textpage of this page
+2025-12-02 14:46:48,685 - ERROR - Failed to parse PDF Differential_Diagnosis_Value_of_Neutrophil_Gelatinase_Associated_Lipocalin_as_a_Noninvasive_Biomarke.pdf: not a textpage of this page
+2025-12-02 14:46:48,828 - ERROR - Failed to parse PDF Medical_X-Ray_Image_Enhancement_Using_Global_Contrast-Limited_Adaptive_Histogram_Equalization.pdf: not a textpage of this page
+2025-12-02 14:46:48,855 - ERROR - Failed to parse PDF Improving_AEBS_Validation_Through_Objective_Intervention_Classification_Leveraging_the_Prediction_Di.pdf: not a textpage of this page
+2025-12-02 14:46:48,855 - ERROR - Error processing Case_report_of_squamous_cell_carcinoma_secondary_to_recurrent_anal_fistula.pdf: Empty markdown output
+2025-12-02 14:46:48,893 - ERROR - Error processing Differential_Diagnosis_Value_of_Neutrophil_Gelatinase_Associated_Lipocalin_as_a_Noninvasive_Biomarke.pdf: Empty markdown output
+2025-12-02 14:46:49,036 - ERROR - Error processing Medical_X-Ray_Image_Enhancement_Using_Global_Contrast-Limited_Adaptive_Histogram_Equalization.pdf: Empty markdown output
+2025-12-02 14:46:49,150 - ERROR - Error processing Improving_AEBS_Validation_Through_Objective_Intervention_Classification_Leveraging_the_Prediction_Di.pdf: Empty markdown output
+2025-12-02 14:46:49,259 - ERROR - Failed to parse PDF Integrating_Radiomics_and_Artificial_Intelligence_(AI)_in_Stereotactic_Body_Radiotherapy_(SBRT)Stere.pdf: not a textpage of this page
+2025-12-02 14:46:49,446 - ERROR - Error processing Integrating_Radiomics_and_Artificial_Intelligence_(AI)_in_Stereotactic_Body_Radiotherapy_(SBRT)Stere.pdf: Empty markdown output
+2025-12-02 14:46:49,504 - ERROR - Failed to parse PDF Molecular_MRI-Based_Monitoring_of_Cancer_Immunotherapy_Treatment_Response.pdf: not a textpage of this page
+2025-12-02 14:46:49,711 - ERROR - Failed to parse PDF Evaluating_the_impact_of_an_explainable_machine_learning_system_on_the_interobserver_agreement_in_ch.pdf: not a textpage of this page
+2025-12-02 14:46:49,745 - ERROR - Error processing Molecular_MRI-Based_Monitoring_of_Cancer_Immunotherapy_Treatment_Response.pdf: Empty markdown output
+2025-12-02 14:46:49,922 - ERROR - Failed to parse PDF Evaluation_of_the_RIFER_procedure_in_treating_high_intersphincteric_anal_fistulas.pdf: not a textpage of this page
+2025-12-02 14:46:49,936 - ERROR - Error processing Evaluating_the_impact_of_an_explainable_machine_learning_system_on_the_interobserver_agreement_in_ch.pdf: Empty markdown output
+2025-12-02 14:46:50,174 - ERROR - Failed to parse PDF Predicting_Thrombectomy_Recanalization_from_CT_Imaging_Using_Deep_Learning_Models.pdf: not a textpage of this page
+2025-12-02 14:46:50,270 - ERROR - Error processing Evaluation_of_the_RIFER_procedure_in_treating_high_intersphincteric_anal_fistulas.pdf: Empty markdown output
+2025-12-02 14:46:50,424 - ERROR - Error processing Predicting_Thrombectomy_Recanalization_from_CT_Imaging_Using_Deep_Learning_Models.pdf: Empty markdown output
+2025-12-02 14:46:50,593 - ERROR - Failed to parse PDF Small_Bowel_Imaging_from_Stepchild_of_Roentgenology_to_MR_Enterography,_Part_II_The_Reliable_Disclos.pdf: not a textpage of this page
+2025-12-02 14:46:50,719 - ERROR - Error processing Small_Bowel_Imaging_from_Stepchild_of_Roentgenology_to_MR_Enterography,_Part_II_The_Reliable_Disclos.pdf: Empty markdown output
+2025-12-02 14:46:50,738 - ERROR - Failed to parse PDF Magnetic_resonance_imaging_for_suspected_perianal_Crohn's_disease_in_children_a_multi-reader_agreeme.pdf: not a textpage of this page
+2025-12-02 14:46:50,958 - ERROR - Error processing Magnetic_resonance_imaging_for_suspected_perianal_Crohn's_disease_in_children_a_multi-reader_agreeme.pdf: Empty markdown output
+2025-12-02 14:46:51,873 - ERROR - Failed to parse PDF Activation_Analysis_of_a_Byte-Based_Deep_Neural_Network_for_Malware_Classification.pdf: not a textpage of this page
+2025-12-02 14:46:51,973 - ERROR - Failed to parse PDF ColoCap_determining_the_diagnostic_accuracy_of_colon_capsule_endoscopy_compared_with_standard_colono.pdf: not a textpage of this page
+2025-12-02 14:46:52,119 - ERROR - Failed to parse PDF Bayesian_inference_and_role_of_astrocytes_in_amyloid-beta_dynamics_with_modelling_of_Alzheimer's_dis.pdf: not a textpage of this page
+2025-12-02 14:46:52,195 - ERROR - Error processing Activation_Analysis_of_a_Byte-Based_Deep_Neural_Network_for_Malware_Classification.pdf: Empty markdown output
+2025-12-02 14:46:52,309 - ERROR - Error processing ColoCap_determining_the_diagnostic_accuracy_of_colon_capsule_endoscopy_compared_with_standard_colono.pdf: Empty markdown output
+2025-12-02 14:46:52,591 - ERROR - Error processing Bayesian_inference_and_role_of_astrocytes_in_amyloid-beta_dynamics_with_modelling_of_Alzheimer's_dis.pdf: Empty markdown output
+2025-12-02 14:46:52,750 - ERROR - Failed to parse PDF Controversies_and_Perspectives_in_the_Current_Management_of_Patients_with_Locally_Advanced_Rectal_Ca.pdf: not a textpage of this page
+2025-12-02 14:46:52,891 - ERROR - Error processing Controversies_and_Perspectives_in_the_Current_Management_of_Patients_with_Locally_Advanced_Rectal_Ca.pdf: Empty markdown output
+2025-12-02 14:46:53,485 - ERROR - Failed to parse PDF Using_matrix_assisted_laser_desorption_ionisation_mass_spectrometry_combined_with_machine_learning_f.pdf: not a textpage of this page
+2025-12-02 14:46:53,568 - ERROR - Failed to parse PDF Delayed_completion_of_total_gastrectomy_for_refractory_fistula_following_laparoscopic_sleeve_gastrec.pdf: not a textpage of this page
+2025-12-02 14:46:53,583 - ERROR - Failed to parse PDF Volumetric_Changes_in_Perianal_Fistulizing_Crohn's_Disease_Measured_by_Magnetic_Resonance_Is_Feasibl.pdf: not a textpage of this page
+2025-12-02 14:46:53,652 - ERROR - Error processing Using_matrix_assisted_laser_desorption_ionisation_mass_spectrometry_combined_with_machine_learning_f.pdf: Empty markdown output
+2025-12-02 14:46:53,712 - ERROR - Error processing Delayed_completion_of_total_gastrectomy_for_refractory_fistula_following_laparoscopic_sleeve_gastrec.pdf: Empty markdown output
+2025-12-02 14:46:53,785 - ERROR - Error processing Volumetric_Changes_in_Perianal_Fistulizing_Crohn's_Disease_Measured_by_Magnetic_Resonance_Is_Feasibl.pdf: Empty markdown output
+2025-12-02 14:46:54,636 - ERROR - Failed to parse PDF Complicated_enteroenteric_intestinal_fistula_due_to_Crohn's_disease_a_rare_case_report.pdf: not a textpage of this page
+2025-12-02 14:46:54,889 - ERROR - Failed to parse PDF Development_and_validation_of_a_predictive_model_for_acute_myelitis_secondary_to_hyperextension-indu.pdf: not a textpage of this page
+2025-12-02 14:46:54,925 - ERROR - Failed to parse PDF Discovery_Radiomics_via_Evolutionary_Deep_Radiomic_Sequencer_Discovery_for_Pathologically-Proven_Lun.pdf: not a textpage of this page
+2025-12-02 14:46:57,676 - INFO - Found 370 PDFs to process.
+2025-12-02 14:46:57,676 - INFO - Using model: deepseek/deepseek-v3.2
+2025-12-02 14:46:57,676 - INFO - Cost limit: $10.00
+2025-12-02 14:46:58,541 - ERROR - Failed to parse PDF Enhancing_radiologist's_detection_an_imaging-based_grading_system_for_differentiating_Crohn's_diseas.pdf: not a textpage of this page
+2025-12-02 14:46:58,550 - ERROR - Failed to parse PDF Unveiling_the_superior_diagnostic_efficacy_of_double-balloon_endoscopy_compared_to_small_intestine_d.pdf: not a textpage of this page
+2025-12-02 14:46:58,626 - ERROR - Failed to parse PDF Clinical_features_and_oncologic_outcomes_of_primary_retroperitoneal_ganglioneuroma_a_retrospective_c.pdf: not a textpage of this page
+2025-12-02 14:46:58,710 - ERROR - Error processing Enhancing_radiologist's_detection_an_imaging-based_grading_system_for_differentiating_Crohn's_diseas.pdf: Empty markdown output
+2025-12-02 14:46:58,816 - ERROR - Failed to parse PDF Emotion_in_Reinforcement_Learning_Agents_and_Robots_A_Survey.pdf: not a textpage of this page
+2025-12-02 14:46:58,829 - ERROR - Error processing Unveiling_the_superior_diagnostic_efficacy_of_double-balloon_endoscopy_compared_to_small_intestine_d.pdf: Empty markdown output
+2025-12-02 14:46:58,946 - ERROR - Error processing Clinical_features_and_oncologic_outcomes_of_primary_retroperitoneal_ganglioneuroma_a_retrospective_c.pdf: Empty markdown output
+2025-12-02 14:46:59,167 - ERROR - Error processing Emotion_in_Reinforcement_Learning_Agents_and_Robots_A_Survey.pdf: Empty markdown output
+2025-12-02 14:46:59,221 - ERROR - Failed to parse PDF Investigation_of_the_Inter-Rater_Reliability_between_Large_Language_Models_and_Human_Raters_in_Quali.pdf: not a textpage of this page
+2025-12-02 14:46:59,422 - ERROR - Error processing Investigation_of_the_Inter-Rater_Reliability_between_Large_Language_Models_and_Human_Raters_in_Quali.pdf: Empty markdown output
+2025-12-02 14:46:59,657 - ERROR - Failed to parse PDF Diagnosing_Crohn's_disease_in_presumed_cryptoglandular_perianal_fistulas_an_expert_Delphi_consensus.pdf: not a textpage of this page
+2025-12-02 14:46:59,771 - ERROR - Failed to parse PDF Discovering_Behavioral_Predispositions_in_Data_to_Improve_Human_Activity_Recognition.pdf: not a textpage of this page
+2025-12-02 14:46:59,997 - ERROR - Error processing Diagnosing_Crohn's_disease_in_presumed_cryptoglandular_perianal_fistulas_an_expert_Delphi_consensus.pdf: Empty markdown output
+2025-12-02 14:47:00,009 - ERROR - Failed to parse PDF Can_a_Commercially_Available_Smartwatch_Device_Accurately_Measure_Nighttime_Sleep_Outcomes_in_Indivi.pdf: not a textpage of this page
+2025-12-02 14:47:00,105 - ERROR - Error processing Discovering_Behavioral_Predispositions_in_Data_to_Improve_Human_Activity_Recognition.pdf: Empty markdown output
+2025-12-02 14:47:00,356 - ERROR - Error processing Can_a_Commercially_Available_Smartwatch_Device_Accurately_Measure_Nighttime_Sleep_Outcomes_in_Indivi.pdf: Empty markdown output
+2025-12-02 14:47:01,037 - ERROR - Failed to parse PDF Classification,_diagnosis,_and_management_of_orbital_venous-lymphatic_malformations_Current_state-of.pdf: not a textpage of this page
+2025-12-02 14:47:01,570 - ERROR - Error processing Classification,_diagnosis,_and_management_of_orbital_venous-lymphatic_malformations_Current_state-of.pdf: Empty markdown output
+2025-12-02 14:47:01,596 - ERROR - Failed to parse PDF Recent_advances_in_the_diagnosis_and_treatment_of_complex_anal_fistula.pdf: not a textpage of this page
+2025-12-02 14:47:01,643 - ERROR - Failed to parse PDF Artificial_Intelligence_in_Pancreatic_Imaging_A_Systematic_Review.pdf: not a textpage of this page
+2025-12-02 14:47:01,644 - ERROR - Failed to parse PDF Insights_into_Imaging.pdf: not a textpage of this page
+2025-12-02 14:47:01,689 - ERROR - Error processing Artificial_Intelligence_in_Pancreatic_Imaging_A_Systematic_Review.pdf: Empty markdown output
+2025-12-02 14:47:01,943 - ERROR - Error processing Recent_advances_in_the_diagnosis_and_treatment_of_complex_anal_fistula.pdf: Empty markdown output
+2025-12-02 14:47:02,034 - ERROR - Error processing Insights_into_Imaging.pdf: Empty markdown output
+2025-12-02 14:47:02,909 - ERROR - Failed to parse PDF The_Evaluation_of_Transmural_Healing_by_Low-dose_Computed_Tomography_Enterography_in_Patients_with_C.pdf: not a textpage of this page
+2025-12-02 14:47:02,916 - ERROR - Failed to parse PDF SemEval-2020_Task_4_Commonsense_Validation_and_Explanation.pdf: not a textpage of this page
+2025-12-02 14:47:02,989 - ERROR - Failed to parse PDF Case_Report_Metronidazole-induced_encephalopathy_in_a_patient_with_acute_myeloid_leukemia_type_2_and.pdf: not a textpage of this page
+2025-12-02 14:47:03,102 - ERROR - Error processing The_Evaluation_of_Transmural_Healing_by_Low-dose_Computed_Tomography_Enterography_in_Patients_with_C.pdf: Empty markdown output
+2025-12-02 14:47:03,253 - ERROR - Error processing SemEval-2020_Task_4_Commonsense_Validation_and_Explanation.pdf: Empty markdown output
+2025-12-02 14:47:03,359 - ERROR - Error processing Case_Report_Metronidazole-induced_encephalopathy_in_a_patient_with_acute_myeloid_leukemia_type_2_and.pdf: Empty markdown output
+2025-12-02 14:47:04,204 - ERROR - Failed to parse PDF Chebyshev_polynomials_in_the_16th_century.pdf: not a textpage of this page
+2025-12-02 14:47:04,523 - ERROR - Error processing Chebyshev_polynomials_in_the_16th_century.pdf: Empty markdown output
+2025-12-02 14:47:04,549 - ERROR - Failed to parse PDF A_Tree-based_Model_Averaging_Approach_for_Personalized_Treatment_Effect_Estimation_from_Heterogeneou.pdf: not a textpage of this page
+2025-12-02 14:47:04,792 - ERROR - Error processing A_Tree-based_Model_Averaging_Approach_for_Personalized_Treatment_Effect_Estimation_from_Heterogeneou.pdf: Empty markdown output
+2025-12-02 14:47:05,973 - ERROR - Failed to parse PDF Review_Article_Albumin_and_Its_Role_in_Inflammatory_Bowel_Disease_The_Old,_the_New,_and_the_Future.pdf: not a textpage of this page
+2025-12-02 14:47:06,052 - ERROR - Failed to parse PDF Current_Methods_for_Hyperpolarized_[1-13C]pyruvate_MRI_Human_Studies.pdf: not a textpage of this page
+2025-12-02 14:47:06,284 - ERROR - Error processing Review_Article_Albumin_and_Its_Role_in_Inflammatory_Bowel_Disease_The_Old,_the_New,_and_the_Future.pdf: Empty markdown output
+2025-12-02 14:47:06,489 - ERROR - Error processing Current_Methods_for_Hyperpolarized_[1-13C]pyruvate_MRI_Human_Studies.pdf: Empty markdown output
+2025-12-02 14:47:07,562 - ERROR - Failed to parse PDF Mesenteric_fat_proliferation_on_magnetic_resonance_enterography_is_a_predictor_of_long-term_disease.pdf: not a textpage of this page
+2025-12-02 14:47:07,750 - ERROR - Error processing Mesenteric_fat_proliferation_on_magnetic_resonance_enterography_is_a_predictor_of_long-term_disease.pdf: Empty markdown output
+2025-12-02 14:47:07,951 - ERROR - Failed to parse PDF Darvadstrocel_for_complex_perianal_fistulas_in_Crohn's_disease_A_systematic_review_and_meta-analysis.pdf: not a textpage of this page
+2025-12-02 14:47:08,116 - ERROR - Failed to parse PDF Lung_imaging_methods_indications,_strengths_and_limitations.pdf: not a textpage of this page
+2025-12-02 14:47:08,157 - ERROR - Error processing Darvadstrocel_for_complex_perianal_fistulas_in_Crohn's_disease_A_systematic_review_and_meta-analysis.pdf: Empty markdown output
+2025-12-02 14:47:08,438 - ERROR - Error processing Lung_imaging_methods_indications,_strengths_and_limitations.pdf: Empty markdown output
+2025-12-02 14:47:08,635 - ERROR - Failed to parse PDF Infected_necrotizing_pancreatitis_clinical_features,_microbial_patterns,_and_outcomes_in_a_Saudi_ter.pdf: not a textpage of this page
+2025-12-02 14:47:08,888 - ERROR - Error processing Infected_necrotizing_pancreatitis_clinical_features,_microbial_patterns,_and_outcomes_in_a_Saudi_ter.pdf: Empty markdown output
+2025-12-02 14:47:09,530 - ERROR - Failed to parse PDF The_Diagnostic_Performance_of_Transvaginal_Ultrasound_for_Posterior_Compartment_Endometriosis_Compar.pdf: not a textpage of this page
+2025-12-02 14:47:09,732 - ERROR - Failed to parse PDF The_Importance_of_Magnetic_Resonance_Enterography_in_Monitoring_Inflammatory_Bowel_Disease_A_Review.pdf: not a textpage of this page
+2025-12-02 14:47:09,765 - ERROR - Error processing The_Diagnostic_Performance_of_Transvaginal_Ultrasound_for_Posterior_Compartment_Endometriosis_Compar.pdf: Empty markdown output
+2025-12-02 14:47:10,058 - ERROR - Error processing The_Importance_of_Magnetic_Resonance_Enterography_in_Monitoring_Inflammatory_Bowel_Disease_A_Review.pdf: Empty markdown output
+2025-12-02 14:47:10,344 - ERROR - Failed to parse PDF Isointense_infant_brain_MRI_segmentation_with_a_dilated_convolutional_neural_network.pdf: not a textpage of this page
+2025-12-02 14:47:10,526 - ERROR - Error processing Isointense_infant_brain_MRI_segmentation_with_a_dilated_convolutional_neural_network.pdf: Empty markdown output
+2025-12-02 14:47:11,086 - ERROR - Failed to parse PDF Artificial_Intelligence_and_Digital_Biomarkers_in_Hepatology_Critical_Perspectives,_Emerging_Evidenc.pdf: not a textpage of this page
+2025-12-02 14:47:11,514 - ERROR - Error processing Artificial_Intelligence_and_Digital_Biomarkers_in_Hepatology_Critical_Perspectives,_Emerging_Evidenc.pdf: Empty markdown output
+2025-12-02 14:47:11,838 - ERROR - Failed to parse PDF Differential_Diagnosis_Value_of_Neutrophil_Gelatinase_Associated_Lipocalin_as_a_Noninvasive_Biomarke.pdf: not a textpage of this page
+2025-12-02 14:47:12,196 - ERROR - Error processing Differential_Diagnosis_Value_of_Neutrophil_Gelatinase_Associated_Lipocalin_as_a_Noninvasive_Biomarke.pdf: Empty markdown output
+2025-12-02 14:47:12,439 - ERROR - Failed to parse PDF Diagnosis_of_Alzheimer's_Disease_via_Multi-modality_3D_Convolutional_Neural_Network.pdf: not a textpage of this page
+2025-12-02 14:47:12,450 - ERROR - Failed to parse PDF Diagnostic_Applications_of_Artificial_Intelligence_in_Liver_Diseases.pdf: not a textpage of this page
+2025-12-02 14:47:12,657 - ERROR - Error processing Diagnosis_of_Alzheimer's_Disease_via_Multi-modality_3D_Convolutional_Neural_Network.pdf: Empty markdown output
+2025-12-02 14:47:12,848 - ERROR - Error processing Diagnostic_Applications_of_Artificial_Intelligence_in_Liver_Diseases.pdf: Empty markdown output
+2025-12-02 14:47:13,060 - ERROR - Failed to parse PDF No_manometric_differences_after_surgical_intervention_for_anal_fistula_in_infants_and_toddlers.pdf: not a textpage of this page
+2025-12-02 14:47:13,263 - ERROR - Failed to parse PDF Bowel_function_after_surgery_in_male_children_with_complicated_anorectal_malformations.pdf: not a textpage of this page
+2025-12-02 14:47:13,321 - ERROR - Error processing No_manometric_differences_after_surgical_intervention_for_anal_fistula_in_infants_and_toddlers.pdf: Empty markdown output
+2025-12-02 14:47:13,912 - ERROR - Error processing Bowel_function_after_surgery_in_male_children_with_complicated_anorectal_malformations.pdf: Empty markdown output
+2025-12-02 14:47:14,203 - ERROR - Failed to parse PDF APPSPGHAN_2023.pdf: not a textpage of this page
+2025-12-02 14:47:14,426 - ERROR - Failed to parse PDF Cross-Sectional_Imaging_of_Pelvic_Inflammatory_Disease_Diagnostic_Pearls_and_Pitfalls_on_CT_and_MR.pdf: not a textpage of this page
+2025-12-02 14:47:14,479 - ERROR - Error processing APPSPGHAN_2023.pdf: Empty markdown output
+2025-12-02 14:47:14,542 - ERROR - Failed to parse PDF Antibiotic_use_during_the_first_episode_of_acute_perianal_sepsis_a_still-open_question.pdf: not a textpage of this page
+2025-12-02 14:47:14,558 - ERROR - Error processing Cross-Sectional_Imaging_of_Pelvic_Inflammatory_Disease_Diagnostic_Pearls_and_Pitfalls_on_CT_and_MR.pdf: Empty markdown output
+2025-12-02 14:47:14,703 - ERROR - Error processing Antibiotic_use_during_the_first_episode_of_acute_perianal_sepsis_a_still-open_question.pdf: Empty markdown output
+2025-12-02 14:47:14,958 - ERROR - Failed to parse PDF Headache_After_Sealing_of_Cerebrospinal_Fluid_Leaks_in_Patients_With_Spontaneous_Intracranial_Hypote.pdf: not a textpage of this page
+2025-12-02 14:47:15,169 - ERROR - Error processing Headache_After_Sealing_of_Cerebrospinal_Fluid_Leaks_in_Patients_With_Spontaneous_Intracranial_Hypote.pdf: Empty markdown output
+2025-12-02 14:47:15,287 - ERROR - Failed to parse PDF Is_the_identification_of_caseating_granuloma_in_the_intestine_indicative_of_tuberculosis_a_rare_case.pdf: not a textpage of this page
+2025-12-02 14:47:15,591 - ERROR - Error processing Is_the_identification_of_caseating_granuloma_in_the_intestine_indicative_of_tuberculosis_a_rare_case.pdf: Empty markdown output
+2025-12-02 14:47:15,653 - ERROR - Failed to parse PDF Inflammatory_bowel_disease_cross-sectional_imaging_What's_new.pdf: not a textpage of this page
+2025-12-02 14:47:15,698 - ERROR - Error processing Inflammatory_bowel_disease_cross-sectional_imaging_What's_new.pdf: Empty markdown output
+2025-12-02 14:47:16,588 - ERROR - Failed to parse PDF Prospects_of_AI-Powered_Bowel_Sound_Analytics_for_Diagnosis,_Characterization,_and_Treatment_Managem.pdf: not a textpage of this page
+2025-12-02 14:47:16,598 - ERROR - Failed to parse PDF Outcome_of_transanal_advancement_flap_repair_(TAFR)_as_salvage_therapy_after_failed_ligation_of_inte.pdf: not a textpage of this page
+2025-12-02 14:47:16,754 - ERROR - Error processing Prospects_of_AI-Powered_Bowel_Sound_Analytics_for_Diagnosis,_Characterization,_and_Treatment_Managem.pdf: Empty markdown output
+2025-12-02 14:47:16,791 - ERROR - Error processing Outcome_of_transanal_advancement_flap_repair_(TAFR)_as_salvage_therapy_after_failed_ligation_of_inte.pdf: Empty markdown output
+2025-12-02 14:47:17,255 - ERROR - Failed to parse PDF Multi-modal_Liver_Segmentation_and_Fibrosis_Staging_Using_Real-world_MRI_Images.pdf: not a textpage of this page
+2025-12-02 14:47:17,345 - ERROR - Failed to parse PDF The_Role_of_Synthetic_MRI_and_Radiomics_in_Breast_Cancer_A_Review.pdf: not a textpage of this page
+2025-12-02 14:47:17,374 - ERROR - Error processing Multi-modal_Liver_Segmentation_and_Fibrosis_Staging_Using_Real-world_MRI_Images.pdf: Empty markdown output
+2025-12-02 14:47:17,441 - ERROR - Error processing The_Role_of_Synthetic_MRI_and_Radiomics_in_Breast_Cancer_A_Review.pdf: Empty markdown output
+2025-12-02 14:47:18,086 - ERROR - Failed to parse PDF Inter-Rater_Software_for_analysis_of_inter-rater_reliability_by_permutating_pairs_of_multiple_users.pdf: not a textpage of this page
+2025-12-02 14:47:18,235 - ERROR - Error processing Inter-Rater_Software_for_analysis_of_inter-rater_reliability_by_permutating_pairs_of_multiple_users.pdf: Empty markdown output
+2025-12-02 14:47:18,733 - ERROR - Failed to parse PDF Refractory_Crohn's_Disease_Perspectives,_Unmet_Needs_and_Innovations.pdf: not a textpage of this page
+2025-12-02 14:47:18,891 - ERROR - Error processing Refractory_Crohn's_Disease_Perspectives,_Unmet_Needs_and_Innovations.pdf: Empty markdown output
+2025-12-02 14:47:18,910 - ERROR - Failed to parse PDF IgG4_unveiled_navigating_the_interplay_with_Crohn's_disease_-_from_immunology_insights_to_machine_le.pdf: not a textpage of this page
+2025-12-02 14:47:19,012 - ERROR - Error processing IgG4_unveiled_navigating_the_interplay_with_Crohn's_disease_-_from_immunology_insights_to_machine_le.pdf: Empty markdown output
+2025-12-02 14:47:19,399 - ERROR - Failed to parse PDF The_Current_Applications_in_Surgery_of_Three-Dimensional_Modelling_Technology_for_Complex_Fistula-In.pdf: not a textpage of this page
+2025-12-02 14:47:19,536 - ERROR - Error processing The_Current_Applications_in_Surgery_of_Three-Dimensional_Modelling_Technology_for_Complex_Fistula-In.pdf: Empty markdown output
+2025-12-02 14:47:20,241 - ERROR - Failed to parse PDF Multiparametric_Deep_Learning_and_Radiomics_for_Tumor_Grading_and_Treatment_Response_Assessment_of_B.pdf: not a textpage of this page
+2025-12-02 14:47:20,295 - ERROR - Failed to parse PDF Fully_Convolutional_Networks_for_Automated_Segmentation_of_Abdominal_Adipose_Tissue_Depots_in_Multic.pdf: not a textpage of this page
+2025-12-02 14:47:20,349 - ERROR - Error processing Multiparametric_Deep_Learning_and_Radiomics_for_Tumor_Grading_and_Treatment_Response_Assessment_of_B.pdf: Empty markdown output
+2025-12-02 14:47:20,412 - ERROR - Error processing Fully_Convolutional_Networks_for_Automated_Segmentation_of_Abdominal_Adipose_Tissue_Depots_in_Multic.pdf: Empty markdown output
+2025-12-02 14:47:20,878 - ERROR - Failed to parse PDF Primary_malignant_melanoma_of_the_pineal_region_illustrative_case.pdf: weakly-referenced object no longer exists
+2025-12-02 14:47:21,043 - ERROR - Error processing Primary_malignant_melanoma_of_the_pineal_region_illustrative_case.pdf: Empty markdown output
+2025-12-02 14:47:21,073 - ERROR - Failed to parse PDF Beyond_Imaging_Integrating_Radiomics,_Genomics,_and_Multi-Omics_for_Precision_Breast_Cancer_Manageme.pdf: not a textpage of this page
+2025-12-02 14:47:21,105 - ERROR - Error processing Beyond_Imaging_Integrating_Radiomics,_Genomics,_and_Multi-Omics_for_Precision_Breast_Cancer_Manageme.pdf: Empty markdown output
+2025-12-02 14:47:21,807 - ERROR - Failed to parse PDF Innovative_machine_learning_approach_for_liver_fibrosis_and_disease_severity_evaluation_in_MAFLD_pat.pdf: not a textpage of this page
+2025-12-02 14:47:21,960 - ERROR - Error processing Innovative_machine_learning_approach_for_liver_fibrosis_and_disease_severity_evaluation_in_MAFLD_pat.pdf: Empty markdown output
+2025-12-02 14:47:23,325 - ERROR - Failed to parse PDF Transformer-based_Models_to_Deal_with_Heterogeneous_Environments_in_Human_Activity_Recognition.pdf: not a textpage of this page
+2025-12-02 14:47:23,397 - ERROR - Error processing Transformer-based_Models_to_Deal_with_Heterogeneous_Environments_in_Human_Activity_Recognition.pdf: Empty markdown output
+2025-12-02 14:47:24,592 - ERROR - Failed to parse PDF Label_fusion_and_training_methods_for_reliable_representation_of_inter-rater_uncertainty.pdf: not a textpage of this page
+2025-12-02 14:47:24,665 - ERROR - Error processing Label_fusion_and_training_methods_for_reliable_representation_of_inter-rater_uncertainty.pdf: Empty markdown output
+2025-12-02 14:47:25,188 - ERROR - Failed to parse PDF Long-term_effectiveness_of_allogeneic_bone_marrow-derived_mesenchymal_stromal_cell_therapy_for_compl.pdf: not a textpage of this page
+2025-12-02 14:47:25,206 - ERROR - Error processing Long-term_effectiveness_of_allogeneic_bone_marrow-derived_mesenchymal_stromal_cell_therapy_for_compl.pdf: Empty markdown output
+2025-12-02 14:47:54,497 - ERROR - Failed to parse PDF Clinical,_Radiological_and_Pharmacokinetic_Data_of_CT-P13_Subcutaneous_in_Individuals_with_Fistulizi.pdf: not a textpage of this page
+2025-12-02 14:47:54,561 - ERROR - Error processing Clinical,_Radiological_and_Pharmacokinetic_Data_of_CT-P13_Subcutaneous_in_Individuals_with_Fistulizi.pdf: Empty markdown output
+2025-12-02 14:47:54,883 - ERROR - Failed to parse PDF Changing_Data_Sources_in_the_Age_of_Machine_Learning_for_Official_Statistics.pdf: not a textpage of this page
+2025-12-02 14:47:54,954 - ERROR - Error processing Changing_Data_Sources_in_the_Age_of_Machine_Learning_for_Official_Statistics.pdf: Empty markdown output
+2025-12-02 14:48:08,022 - WARNING - Validation error for Intraoperative_Autologous_Platelet-Rich_Stroma_Injection_as_Add-On_to_Fistula_Curettage_and_Closure.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="Paper focuses on clinica... clinical closure rate.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:49:25,764 - WARNING - Validation error for Defining_mucosal_healing_in_randomized_controlled_trials_of_inflammatory_bowel_disease_A_systematic.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='This is a systematic rev...ons of mucosal healing.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:49:25,983 - ERROR - Failed to parse PDF Comprehensive_Insights_into_Tracheoesophageal_Fistula_Pathophysiology,_Diagnosis,_Treatment,_and_Fut.pdf: not a textpage of this page
+2025-12-02 14:49:26,032 - ERROR - Error processing Comprehensive_Insights_into_Tracheoesophageal_Fistula_Pathophysiology,_Diagnosis,_Treatment,_and_Fut.pdf: Empty markdown output
+2025-12-02 14:49:26,458 - ERROR - Failed to parse PDF Predictive_Factors_of_Autologous_Bone_Marrow-Derived_Mesenchymal_Stem_Cell_Therapy's_Success_in_the.pdf: not a textpage of this page
+2025-12-02 14:49:26,532 - ERROR - Error processing Predictive_Factors_of_Autologous_Bone_Marrow-Derived_Mesenchymal_Stem_Cell_Therapy's_Success_in_the.pdf: Empty markdown output
+2025-12-02 14:49:26,848 - ERROR - Failed to parse PDF Physics-Inspired_Interpretability_Of_Machine_Learning_Models.pdf: not a textpage of this page
+2025-12-02 14:49:26,905 - ERROR - Error processing Physics-Inspired_Interpretability_Of_Machine_Learning_Models.pdf: Empty markdown output
+2025-12-02 14:49:26,987 - INFO - 💰 Cost so far: $0.0541 (10 papers)
+2025-12-02 14:49:27,188 - ERROR - Failed to parse PDF Magnetic_resonance_imaging_after_ligation_of_the_intersphincteric_fistula_tract_for_high_perianal_fi.pdf: not a textpage of this page
+2025-12-02 14:49:27,324 - ERROR - Error processing Magnetic_resonance_imaging_after_ligation_of_the_intersphincteric_fistula_tract_for_high_perianal_fi.pdf: Empty markdown output
+2025-12-02 14:49:27,569 - ERROR - Failed to parse PDF Comment_on_Development_and_Validation_of_Machine_Learning-Based_Marker_for_Early_Detection_and_Progn.pdf: not a textpage of this page
+2025-12-02 14:49:27,718 - ERROR - Error processing Comment_on_Development_and_Validation_of_Machine_Learning-Based_Marker_for_Early_Detection_and_Progn.pdf: Empty markdown output
+2025-12-02 14:49:28,097 - ERROR - Failed to parse PDF Predicting_arrhythmia_recurrence_post-ablation_in_atrial_fibrillation_using_explainable_machine_lear.pdf: not a textpage of this page
+2025-12-02 14:49:28,164 - ERROR - Failed to parse PDF Radiation-induced_intestinal_injury_from_molecular_mechanisms_to_clinical_translation.pdf: not a textpage of this page
+2025-12-02 14:49:28,206 - ERROR - Error processing Predicting_arrhythmia_recurrence_post-ablation_in_atrial_fibrillation_using_explainable_machine_lear.pdf: Empty markdown output
+2025-12-02 14:49:28,277 - ERROR - Error processing Radiation-induced_intestinal_injury_from_molecular_mechanisms_to_clinical_translation.pdf: Empty markdown output
+2025-12-02 14:49:28,767 - ERROR - Failed to parse PDF Switching_from_intravenous_to_subcutaneous_infliximab_is_safe_and_feasible_in_patients_with_perianal.pdf: not a textpage of this page
+2025-12-02 14:49:28,939 - ERROR - Error processing Switching_from_intravenous_to_subcutaneous_infliximab_is_safe_and_feasible_in_patients_with_perianal.pdf: Empty markdown output
+2025-12-02 14:49:29,762 - ERROR - Failed to parse PDF How_to_use_intestinal_ultrasonography_in_patients_with_Crohn_disease_its_role_in_the_assessment_of_d.pdf: not a textpage of this page
+2025-12-02 14:49:29,902 - ERROR - Error processing How_to_use_intestinal_ultrasonography_in_patients_with_Crohn_disease_its_role_in_the_assessment_of_d.pdf: Empty markdown output
+2025-12-02 14:49:30,465 - ERROR - Failed to parse PDF Min-Mid-Max_Scaling,_Limits_of_Agreement,_and_Agreement_Score.pdf: not a textpage of this page
+2025-12-02 14:49:30,599 - ERROR - Error processing Min-Mid-Max_Scaling,_Limits_of_Agreement,_and_Agreement_Score.pdf: Empty markdown output
+2025-12-02 14:49:30,673 - ERROR - Failed to parse PDF Applying_Inter-rater_Reliability_and_Agreement_in_Grounded_Theory_Studies_in_Software_Engineering.pdf: not a textpage of this page
+2025-12-02 14:49:30,825 - ERROR - Error processing Applying_Inter-rater_Reliability_and_Agreement_in_Grounded_Theory_Studies_in_Software_Engineering.pdf: Empty markdown output
+2025-12-02 14:49:31,432 - ERROR - Failed to parse PDF Machine_learning_techniques_in_hepatic_encephalopathy_a_scoping_review.pdf: not a textpage of this page
+2025-12-02 14:49:31,549 - ERROR - Failed to parse PDF Fully_Automated_Organ_Segmentation_in_Male_Pelvic_CT_Images.pdf: not a textpage of this page
+2025-12-02 14:49:31,562 - ERROR - Error processing Machine_learning_techniques_in_hepatic_encephalopathy_a_scoping_review.pdf: Empty markdown output
+2025-12-02 14:49:31,650 - ERROR - Error processing Fully_Automated_Organ_Segmentation_in_Male_Pelvic_CT_Images.pdf: Empty markdown output
+2025-12-02 14:49:32,253 - ERROR - Failed to parse PDF Multi-model_applications_and_cutting-edge_advancements_of_artificial_intelligence_in_hepatology_in_t.pdf: not a textpage of this page
+2025-12-02 14:49:32,389 - ERROR - Error processing Multi-model_applications_and_cutting-edge_advancements_of_artificial_intelligence_in_hepatology_in_t.pdf: Empty markdown output
+2025-12-02 14:49:32,545 - ERROR - Failed to parse PDF Identification_of_neural_alterations_in_patients_with_Crohn's_disease_with_a_novel_multiparametric_b.pdf: not a textpage of this page
+2025-12-02 14:49:32,683 - ERROR - Error processing Identification_of_neural_alterations_in_patients_with_Crohn's_disease_with_a_novel_multiparametric_b.pdf: Empty markdown output
+2025-12-02 14:49:33,550 - ERROR - Failed to parse PDF Deep_learning_for_automated_detection_of_breast_cancer_in_deep_ultraviolet_fluorescence_images_with.pdf: not a textpage of this page
+2025-12-02 14:49:33,666 - ERROR - Error processing Deep_learning_for_automated_detection_of_breast_cancer_in_deep_ultraviolet_fluorescence_images_with.pdf: Empty markdown output
+2025-12-02 14:49:34,513 - ERROR - Failed to parse PDF MPRAD_A_Multiparametric_Radiomics_Framework.pdf: not a textpage of this page
+2025-12-02 14:49:34,656 - ERROR - Error processing MPRAD_A_Multiparametric_Radiomics_Framework.pdf: Empty markdown output
+2025-12-02 14:49:36,460 - ERROR - Failed to parse PDF ESGAR_2025_Book_of_Abstracts.pdf: not a textpage of this page
+2025-12-02 14:49:36,533 - ERROR - Error processing ESGAR_2025_Book_of_Abstracts.pdf: Empty markdown output
+2025-12-02 14:49:36,987 - ERROR - Failed to parse PDF Active_learning_for_data_streams_a_survey.pdf: not a textpage of this page
+2025-12-02 14:49:37,052 - ERROR - Error processing Active_learning_for_data_streams_a_survey.pdf: Empty markdown output
+2025-12-02 14:49:37,944 - ERROR - Failed to parse PDF Transperineal_ultrasound_Role_in_inflammatory_bowel_disease_management.pdf: not a textpage of this page
+2025-12-02 14:49:38,011 - ERROR - Error processing Transperineal_ultrasound_Role_in_inflammatory_bowel_disease_management.pdf: Empty markdown output
+2025-12-02 14:49:38,658 - ERROR - Failed to parse PDF Beyond_the_horizon_Innovations_and_future_directions_in_axial-spondyloarthritis.pdf: weakly-referenced object no longer exists
+2025-12-02 14:49:38,711 - ERROR - Error processing Beyond_the_horizon_Innovations_and_future_directions_in_axial-spondyloarthritis.pdf: Empty markdown output
+2025-12-02 14:49:38,960 - ERROR - Failed to parse PDF Deep_Learning_and_Computational_Physics_(Lecture_Notes).pdf: not a textpage of this page
+2025-12-02 14:49:39,006 - ERROR - Error processing Deep_Learning_and_Computational_Physics_(Lecture_Notes).pdf: Empty markdown output
+2025-12-02 14:49:40,550 - ERROR - Failed to parse PDF DeepCFL_Deep_Contextual_Features_Learning_from_a_Single_Image.pdf: not a textpage of this page
+2025-12-02 14:49:40,598 - ERROR - Error processing DeepCFL_Deep_Contextual_Features_Learning_from_a_Single_Image.pdf: Empty markdown output
+2025-12-02 14:49:41,099 - ERROR - Failed to parse PDF Adipose-derived_stem_cell_therapies_for_complex_anal_fistula_a_systematic_review_and_meta-analysis_o.pdf: not a textpage of this page
+2025-12-02 14:49:41,156 - ERROR - Error processing Adipose-derived_stem_cell_therapies_for_complex_anal_fistula_a_systematic_review_and_meta-analysis_o.pdf: Empty markdown output
+2025-12-02 14:49:41,715 - ERROR - Failed to parse PDF Inter-_and_intra-observer_variability_of_software_quantified_bowel_motility_measurements_of_small_bo.pdf: not a textpage of this page
+2025-12-02 14:49:41,788 - ERROR - Error processing Inter-_and_intra-observer_variability_of_software_quantified_bowel_motility_measurements_of_small_bo.pdf: Empty markdown output
+2025-12-02 14:49:52,973 - WARNING - Validation error for Dissimilarity-based_representation_for_radiomics_applications.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="This is a machine learni... Crohn's disease study.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:49:53,538 - WARNING - Validation error for New_score_models_for_assessing_disease_activity_in_Crohn's_disease_based_on_bowel_ultrasound_and_bio.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="This paper focuses on de...RI systems are present.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:49:54,004 - ERROR - Failed to parse PDF Clinical_applications_of_fibroblast_activation_protein_inhibitor_positron_emission_tomography_(FAPI-.pdf: not a textpage of this page
+2025-12-02 14:49:54,055 - ERROR - Error processing Clinical_applications_of_fibroblast_activation_protein_inhibitor_positron_emission_tomography_(FAPI-.pdf: Empty markdown output
+2025-12-02 14:49:55,247 - ERROR - Failed to parse PDF Different_scenarios_and_management_of_complicated_hepatic_cystic_echinococcosis_a_case_series.pdf: not a textpage of this page
+2025-12-02 14:49:55,317 - ERROR - Error processing Different_scenarios_and_management_of_complicated_hepatic_cystic_echinococcosis_a_case_series.pdf: Empty markdown output
+2025-12-02 14:49:55,905 - ERROR - Failed to parse PDF Three_New_Validators_and_a_Large-Scale_Benchmark_Ranking_for_Unsupervised_Domain_Adaptation.pdf: not a textpage of this page
+2025-12-02 14:49:55,956 - ERROR - Error processing Three_New_Validators_and_a_Large-Scale_Benchmark_Ranking_for_Unsupervised_Domain_Adaptation.pdf: Empty markdown output
+2025-12-02 14:49:56,570 - ERROR - Failed to parse PDF Variability_and_performance_of_radiologic_stricture_parameters_in_Crohn's_disease_a_systematic_revie.pdf: not a textpage of this page
+2025-12-02 14:49:56,641 - ERROR - Error processing Variability_and_performance_of_radiologic_stricture_parameters_in_Crohn's_disease_a_systematic_revie.pdf: Empty markdown output
+2025-12-02 14:49:57,041 - ERROR - Failed to parse PDF Diagnostic_value_of_apparent_diffusion_coefficient_of_psoas_muscles_for_evaluating_complications_in.pdf: not a textpage of this page
+2025-12-02 14:49:57,085 - ERROR - Error processing Diagnostic_value_of_apparent_diffusion_coefficient_of_psoas_muscles_for_evaluating_complications_in.pdf: Empty markdown output
+2025-12-02 14:49:57,649 - ERROR - Failed to parse PDF PePR_Performance_Per_Resource_Unit_as_a_Metric_to_Promote_Small-Scale_Deep_Learning_in_Medical_Image.pdf: not a textpage of this page
+2025-12-02 14:49:57,707 - ERROR - Error processing PePR_Performance_Per_Resource_Unit_as_a_Metric_to_Promote_Small-Scale_Deep_Learning_in_Medical_Image.pdf: Empty markdown output
+2025-12-02 14:49:58,165 - ERROR - Failed to parse PDF Fecal_calprotectin_from_ileostomy_output_in_patients_with_Crohn's_disease.pdf: not a textpage of this page
+2025-12-02 14:49:58,257 - ERROR - Error processing Fecal_calprotectin_from_ileostomy_output_in_patients_with_Crohn's_disease.pdf: Empty markdown output
+2025-12-02 14:49:58,823 - ERROR - Failed to parse PDF Relapse_Rates_and_Predictors_Following_Azathioprine_Withdrawal_in_Inflammatory_Bowel_Disease_A_Syste.pdf: weakly-referenced object no longer exists
+2025-12-02 14:49:58,884 - ERROR - Error processing Relapse_Rates_and_Predictors_Following_Azathioprine_Withdrawal_in_Inflammatory_Bowel_Disease_A_Syste.pdf: Empty markdown output
+2025-12-02 14:49:59,551 - ERROR - Failed to parse PDF Treatment_recommendation_with_distributional_targets.pdf: not a textpage of this page
+2025-12-02 14:49:59,632 - ERROR - Error processing Treatment_recommendation_with_distributional_targets.pdf: Empty markdown output
+2025-12-02 14:50:00,340 - ERROR - Failed to parse PDF Murine_vascular_organoids_are_responsive_and_adaptable_3D_systems_with_cellular_heterogeneity_and_dy.pdf: not a textpage of this page
+2025-12-02 14:50:00,403 - ERROR - Error processing Murine_vascular_organoids_are_responsive_and_adaptable_3D_systems_with_cellular_heterogeneity_and_dy.pdf: Empty markdown output
+2025-12-02 14:50:01,207 - ERROR - Failed to parse PDF Clinical_TNM_Lung_Cancer_Staging_A_Diagnostic_Algorithm_with_a_Pictorial_Review.pdf: not a textpage of this page
+2025-12-02 14:50:01,295 - ERROR - Error processing Clinical_TNM_Lung_Cancer_Staging_A_Diagnostic_Algorithm_with_a_Pictorial_Review.pdf: Empty markdown output
+2025-12-02 14:50:01,659 - ERROR - Failed to parse PDF Is_the_ligation_of_the_intersphincteric_fistula_tract_(LIFT)_procedure_truly_a_sphincter_preserving.pdf: not a textpage of this page
+2025-12-02 14:50:01,764 - ERROR - Error processing Is_the_ligation_of_the_intersphincteric_fistula_tract_(LIFT)_procedure_truly_a_sphincter_preserving.pdf: Empty markdown output
+2025-12-02 14:50:02,271 - ERROR - Failed to parse PDF Utility_and_Challenges_of_Imaging_in_Peripheral_Vestibular_Disorder_Diagnosis_A_Narrative_Review.pdf: not a textpage of this page
+2025-12-02 14:50:02,345 - ERROR - Error processing Utility_and_Challenges_of_Imaging_in_Peripheral_Vestibular_Disorder_Diagnosis_A_Narrative_Review.pdf: Empty markdown output
+2025-12-02 14:50:02,813 - ERROR - Failed to parse PDF Magnetic_Resonance_Enterography_and_Histology_in_Patients_With_Fibrostenotic_Crohn's_Disease_A_Multi.pdf: not a textpage of this page
+2025-12-02 14:50:02,900 - ERROR - Error processing Magnetic_Resonance_Enterography_and_Histology_in_Patients_With_Fibrostenotic_Crohn's_Disease_A_Multi.pdf: Empty markdown output
+2025-12-02 14:50:05,046 - ERROR - Failed to parse PDF Enhancing_resilience_of_interdependent_networks_by_healing.pdf: weakly-referenced object no longer exists
+2025-12-02 14:50:05,072 - ERROR - Error processing Enhancing_resilience_of_interdependent_networks_by_healing.pdf: Empty markdown output
+2025-12-02 14:51:20,859 - WARNING - Validation error for Abstracts_DGKCH.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="The provided content is ...the domain of interest.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:51:32,399 - WARNING - Validation error for Volumetric_measurement_of_terminal_ileal_Crohn's_disease_by_magnetic_resonance_enterography_a_feasib.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='Paper focuses on volumet...iximab and adalimumab).', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:52:08,392 - INFO - 💰 Cost so far: $0.1095 (20 papers)
+2025-12-02 14:52:08,394 - WARNING - Validation error for Comparison_between_fecal_calprotectin_and_magnetic_resonance_enterography_in_ileal_Crohn's_disease_f.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='This is a systematic rev...cross included studies.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:52:48,016 - WARNING - Validation error for IFTAK_(Interception_of_Fistulous_Tract_with_Application_of_Ksharasutra)_technique_a_minimally_invasi.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='Paper focuses on surgica...coring systems present.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:52:48,569 - ERROR - Failed to parse PDF Quantified_motility_in_Crohn's_disease_to_evaluate_stricture_composition_using_cine-MRI.pdf: not a textpage of this page
+2025-12-02 14:52:48,665 - ERROR - Error processing Quantified_motility_in_Crohn's_disease_to_evaluate_stricture_composition_using_cine-MRI.pdf: Empty markdown output
+2025-12-02 14:52:49,052 - ERROR - Failed to parse PDF Endoscopic_Identification_of_a_Hidden_Internal_Opening_Using_Video-Assisted_Anal_Fistula_Treatment_(.pdf: not a textpage of this page
+2025-12-02 14:52:49,179 - ERROR - Error processing Endoscopic_Identification_of_a_Hidden_Internal_Opening_Using_Video-Assisted_Anal_Fistula_Treatment_(.pdf: Empty markdown output
+2025-12-02 14:52:50,695 - ERROR - Failed to parse PDF Sample_size_estimation_for_comparing_dynamic_treatment_regimens_in_a_SMART_a_Monte_Carlo-based_appro.pdf: not a textpage of this page
+2025-12-02 14:52:50,748 - ERROR - Error processing Sample_size_estimation_for_comparing_dynamic_treatment_regimens_in_a_SMART_a_Monte_Carlo-based_appro.pdf: Empty markdown output
+2025-12-02 14:52:51,465 - ERROR - Failed to parse PDF Community_recommendations_on_cryoEM_data_archiving_and_validation.pdf: not a textpage of this page
+2025-12-02 14:52:51,519 - ERROR - Error processing Community_recommendations_on_cryoEM_data_archiving_and_validation.pdf: Empty markdown output
+2025-12-02 14:52:51,926 - ERROR - Failed to parse PDF Generalizing_Machine_Learning_Evaluation_through_the_Integration_of_Shannon_Entropy_and_Rough_Set_Th.pdf: not a textpage of this page
+2025-12-02 14:52:51,975 - ERROR - Error processing Generalizing_Machine_Learning_Evaluation_through_the_Integration_of_Shannon_Entropy_and_Rough_Set_Th.pdf: Empty markdown output
+2025-12-02 14:52:52,450 - ERROR - Failed to parse PDF Quantitative_Magnetic_Resonance_Imaging_(qMRI)_of_the_Small_Bowel_in_Crohn's_Disease_State-of-the-Ar.pdf: weakly-referenced object no longer exists
+2025-12-02 14:52:52,535 - ERROR - Error processing Quantitative_Magnetic_Resonance_Imaging_(qMRI)_of_the_Small_Bowel_in_Crohn's_Disease_State-of-the-Ar.pdf: Empty markdown output
+2025-12-02 14:52:53,945 - ERROR - Failed to parse PDF CAGI,_the_Critical_Assessment_of_Genome_Interpretation,_establishes_progress_and_prospects_for_compu.pdf: not a textpage of this page
+2025-12-02 14:52:54,057 - ERROR - Error processing CAGI,_the_Critical_Assessment_of_Genome_Interpretation,_establishes_progress_and_prospects_for_compu.pdf: Empty markdown output
+2025-12-02 14:52:54,410 - ERROR - Failed to parse PDF Reverse_Engineering_Breast_MRIs_Predicting_Acquisition_Parameters_Directly_from_Images.pdf: not a textpage of this page
+2025-12-02 14:52:54,556 - ERROR - Failed to parse PDF Spontaneous_Cerebrospinal_Fluid_Rhinorrhea_in_Pre-operative_Pituitary_Adenoma_A_Report_of_Two_Cases.pdf: not a textpage of this page
+2025-12-02 14:52:54,556 - ERROR - Error processing Reverse_Engineering_Breast_MRIs_Predicting_Acquisition_Parameters_Directly_from_Images.pdf: Empty markdown output
+2025-12-02 14:52:54,660 - ERROR - Error processing Spontaneous_Cerebrospinal_Fluid_Rhinorrhea_in_Pre-operative_Pituitary_Adenoma_A_Report_of_Two_Cases.pdf: Empty markdown output
+2025-12-02 14:52:55,303 - ERROR - Failed to parse PDF Deep_learning_in_magnetic_resonance_enterography_for_Crohn's_disease_assessment_a_systematic_review.pdf: not a textpage of this page
+2025-12-02 14:52:55,379 - ERROR - Failed to parse PDF Extrasphincteric_anal_fistula_with_gluteal_extension_A_case_report_and_literature_review.pdf: not a textpage of this page
+2025-12-02 14:52:55,403 - ERROR - Error processing Deep_learning_in_magnetic_resonance_enterography_for_Crohn's_disease_assessment_a_systematic_review.pdf: Empty markdown output
+2025-12-02 14:52:55,460 - ERROR - Error processing Extrasphincteric_anal_fistula_with_gluteal_extension_A_case_report_and_literature_review.pdf: Empty markdown output
+2025-12-02 14:52:56,240 - ERROR - Failed to parse PDF Integrating_Gut_Microbiome_and_Metabolomics_with_Magnetic_Resonance_Enterography_to_Advance_Bowel_Da.pdf: not a textpage of this page
+2025-12-02 14:52:56,393 - ERROR - Error processing Integrating_Gut_Microbiome_and_Metabolomics_with_Magnetic_Resonance_Enterography_to_Advance_Bowel_Da.pdf: Empty markdown output
+2025-12-02 14:52:57,029 - ERROR - Failed to parse PDF Score-based_diffusion_models_for_accelerated_MRI.pdf: not a textpage of this page
+2025-12-02 14:52:57,033 - ERROR - Failed to parse PDF A_Self_Healing_Model_Based_on_Polymer-Mediated_Chromophore_Correlations.pdf: not a textpage of this page
+2025-12-02 14:52:57,082 - ERROR - Error processing A_Self_Healing_Model_Based_on_Polymer-Mediated_Chromophore_Correlations.pdf: Empty markdown output
+2025-12-02 14:52:57,151 - ERROR - Error processing Score-based_diffusion_models_for_accelerated_MRI.pdf: Empty markdown output
+2025-12-02 14:52:57,635 - ERROR - Failed to parse PDF Wernicke's_encephalopathy_in_a_terminally_ill_patient_with_primary_cervical_cancer_A_case_report_and.pdf: not a textpage of this page
+2025-12-02 14:52:57,741 - ERROR - Error processing Wernicke's_encephalopathy_in_a_terminally_ill_patient_with_primary_cervical_cancer_A_case_report_and.pdf: Empty markdown output
+2025-12-02 14:52:57,858 - ERROR - Failed to parse PDF Operationalization_of_Scenario-Based_Safety_Assessment_of_Automated_Driving_Systems.pdf: not a textpage of this page
+2025-12-02 14:52:58,017 - ERROR - Error processing Operationalization_of_Scenario-Based_Safety_Assessment_of_Automated_Driving_Systems.pdf: Empty markdown output
+2025-12-02 14:52:58,850 - ERROR - Failed to parse PDF CLIP_Guided_Image-perceptive_Prompt_Learning_for_Image_Enhancement.pdf: not a textpage of this page
+2025-12-02 14:52:58,944 - ERROR - Error processing CLIP_Guided_Image-perceptive_Prompt_Learning_for_Image_Enhancement.pdf: Empty markdown output
+2025-12-02 14:52:59,350 - ERROR - Failed to parse PDF Prognostic_factors_for_the_efficacy_of_infliximab_in_patients_with_luminal_fistulizing_Crohn's_disea.pdf: not a textpage of this page
+2025-12-02 14:52:59,416 - ERROR - Error processing Prognostic_factors_for_the_efficacy_of_infliximab_in_patients_with_luminal_fistulizing_Crohn's_disea.pdf: Empty markdown output
+2025-12-02 14:53:00,636 - ERROR - Failed to parse PDF Radiogenomics_of_Glioblastoma_Identification_of_Radiomics_associated_with_Molecular_Subtypes.pdf: not a textpage of this page
+2025-12-02 14:53:00,707 - ERROR - Error processing Radiogenomics_of_Glioblastoma_Identification_of_Radiomics_associated_with_Molecular_Subtypes.pdf: Empty markdown output
+2025-12-02 14:53:00,943 - ERROR - Failed to parse PDF SADM_Sequence-Aware_Diffusion_Model_for_Longitudinal_Medical_Image_Generation.pdf: not a textpage of this page
+2025-12-02 14:53:01,007 - ERROR - Error processing SADM_Sequence-Aware_Diffusion_Model_for_Longitudinal_Medical_Image_Generation.pdf: Empty markdown output
+2025-12-02 14:53:01,380 - ERROR - Failed to parse PDF Unveiling_the_Hidden_Successful_Surgical_Management_of_a_Rare_Case_of_Chronic_Perineal_Sinus_Tract.pdf: not a textpage of this page
+2025-12-02 14:53:01,423 - ERROR - Error processing Unveiling_the_Hidden_Successful_Surgical_Management_of_a_Rare_Case_of_Chronic_Perineal_Sinus_Tract.pdf: Empty markdown output
+2025-12-02 14:53:03,349 - ERROR - Failed to parse PDF Interpretable_deep_learning_regression_for_breast_density_estimation_on_MRI.pdf: not a textpage of this page
+2025-12-02 14:53:03,423 - ERROR - Error processing Interpretable_deep_learning_regression_for_breast_density_estimation_on_MRI.pdf: Empty markdown output
+2025-12-02 14:53:03,837 - ERROR - Failed to parse PDF Process_to_determine_the_level_of_the_primary_internal_opening_of_anal_fistula_on_magnetic_resonance.pdf: not a textpage of this page
+2025-12-02 14:53:03,898 - ERROR - Error processing Process_to_determine_the_level_of_the_primary_internal_opening_of_anal_fistula_on_magnetic_resonance.pdf: Empty markdown output
+2025-12-02 14:53:04,188 - ERROR - Failed to parse PDF DeepAD_A_Robust_Deep_Learning_Model_of_Alzheimer's_Disease_Progression_for_Real-World_Clinical_Appli.pdf: not a textpage of this page
+2025-12-02 14:53:04,258 - ERROR - Error processing DeepAD_A_Robust_Deep_Learning_Model_of_Alzheimer's_Disease_Progression_for_Real-World_Clinical_Appli.pdf: Empty markdown output
+2025-12-02 14:53:05,017 - ERROR - Failed to parse PDF North_American_Society_for_Pediatric_Gastroenterology,_Hepatology,_and_Nutrition_position_paper_on_t.pdf: not a textpage of this page
+2025-12-02 14:53:05,080 - ERROR - Error processing North_American_Society_for_Pediatric_Gastroenterology,_Hepatology,_and_Nutrition_position_paper_on_t.pdf: Empty markdown output
+2025-12-02 14:53:06,020 - ERROR - Failed to parse PDF Recent_Trends_in_Non-Invasive_Methods_of_Diagnosis_and_Evaluation_of_Inflammatory_Bowel_Disease_A_Sh.pdf: not a textpage of this page
+2025-12-02 14:53:06,083 - ERROR - Error processing Recent_Trends_in_Non-Invasive_Methods_of_Diagnosis_and_Evaluation_of_Inflammatory_Bowel_Disease_A_Sh.pdf: Empty markdown output
+2025-12-02 14:53:06,528 - ERROR - Failed to parse PDF Crohn's_Disease_Stricture_Response_to_Treatment_Assessed_with_Magnetic_Resonance_Imaging_and_Intesti.pdf: not a textpage of this page
+2025-12-02 14:53:06,646 - ERROR - Error processing Crohn's_Disease_Stricture_Response_to_Treatment_Assessed_with_Magnetic_Resonance_Imaging_and_Intesti.pdf: Empty markdown output
+2025-12-02 14:53:07,137 - ERROR - Failed to parse PDF Clinical_application_of_the_intersphincteric_approach_with_internal_incision_combined_with_counter-.pdf: not a textpage of this page
+2025-12-02 14:53:07,251 - ERROR - Error processing Clinical_application_of_the_intersphincteric_approach_with_internal_incision_combined_with_counter-.pdf: Empty markdown output
+2025-12-02 14:53:07,589 - ERROR - Failed to parse PDF A_Benchmark_Study_of_Machine_Learning_Models_for_Online_Fake_News_Detection.pdf: not a textpage of this page
+2025-12-02 14:53:07,802 - ERROR - Error processing A_Benchmark_Study_of_Machine_Learning_Models_for_Online_Fake_News_Detection.pdf: Empty markdown output
+2025-12-02 14:53:07,854 - ERROR - Failed to parse PDF Development_and_Validation_of_a_Radiomics_Nomogram_Based_on_Magnetic_Resonance_Imaging_and_Clinicora.pdf: not a textpage of this page
+2025-12-02 14:53:07,934 - ERROR - Error processing Development_and_Validation_of_a_Radiomics_Nomogram_Based_on_Magnetic_Resonance_Imaging_and_Clinicora.pdf: Empty markdown output
+2025-12-02 14:53:08,382 - ERROR - Failed to parse PDF Combined_Biologics_and_Exclusive_Enteral_Nutrition_Promote_Early_Transmural_Healing_and_Improve_Long.pdf: not a textpage of this page
+2025-12-02 14:53:08,408 - ERROR - Failed to parse PDF Assessment_of_Machine_Learning_Algorithms_for_Prediction_of_Breast_Cancer_Malignancy_Based_on_Mammog.pdf: not a textpage of this page
+2025-12-02 14:53:08,445 - ERROR - Error processing Combined_Biologics_and_Exclusive_Enteral_Nutrition_Promote_Early_Transmural_Healing_and_Improve_Long.pdf: Empty markdown output
+2025-12-02 14:53:08,508 - ERROR - Error processing Assessment_of_Machine_Learning_Algorithms_for_Prediction_of_Breast_Cancer_Malignancy_Based_on_Mammog.pdf: Empty markdown output
+2025-12-02 14:53:08,673 - ERROR - Failed to parse PDF An_Interdisciplinary_Tutorial_A_Self-Healing_Soft_Finger_with_Embedded_Sensor.pdf: not a textpage of this page
+2025-12-02 14:53:08,807 - ERROR - Error processing An_Interdisciplinary_Tutorial_A_Self-Healing_Soft_Finger_with_Embedded_Sensor.pdf: Empty markdown output
+2025-12-02 14:53:08,950 - ERROR - Failed to parse PDF Case_report_of_squamous_cell_carcinoma_secondary_to_recurrent_anal_fistula.pdf: not a textpage of this page
+2025-12-02 14:53:09,076 - ERROR - Error processing Case_report_of_squamous_cell_carcinoma_secondary_to_recurrent_anal_fistula.pdf: Empty markdown output
+2025-12-02 14:53:09,547 - ERROR - Failed to parse PDF Predicting_Thrombectomy_Recanalization_from_CT_Imaging_Using_Deep_Learning_Models.pdf: not a textpage of this page
+2025-12-02 14:53:09,557 - ERROR - Failed to parse PDF Improving_AEBS_Validation_Through_Objective_Intervention_Classification_Leveraging_the_Prediction_Di.pdf: not a textpage of this page
+2025-12-02 14:53:09,626 - ERROR - Error processing Predicting_Thrombectomy_Recanalization_from_CT_Imaging_Using_Deep_Learning_Models.pdf: Empty markdown output
+2025-12-02 14:53:09,726 - ERROR - Error processing Improving_AEBS_Validation_Through_Objective_Intervention_Classification_Leveraging_the_Prediction_Di.pdf: Empty markdown output
+2025-12-02 14:53:09,947 - ERROR - Failed to parse PDF Molecular_MRI-Based_Monitoring_of_Cancer_Immunotherapy_Treatment_Response.pdf: not a textpage of this page
+2025-12-02 14:53:10,094 - ERROR - Error processing Molecular_MRI-Based_Monitoring_of_Cancer_Immunotherapy_Treatment_Response.pdf: Empty markdown output
+2025-12-02 14:53:10,225 - ERROR - Failed to parse PDF Evaluation_of_the_RIFER_procedure_in_treating_high_intersphincteric_anal_fistulas.pdf: weakly-referenced object no longer exists
+2025-12-02 14:53:10,407 - ERROR - Error processing Evaluation_of_the_RIFER_procedure_in_treating_high_intersphincteric_anal_fistulas.pdf: Empty markdown output
+2025-12-02 14:53:10,742 - ERROR - Failed to parse PDF Small_Bowel_Imaging_from_Stepchild_of_Roentgenology_to_MR_Enterography,_Part_II_The_Reliable_Disclos.pdf: not a textpage of this page
+2025-12-02 14:53:10,799 - ERROR - Error processing Small_Bowel_Imaging_from_Stepchild_of_Roentgenology_to_MR_Enterography,_Part_II_The_Reliable_Disclos.pdf: Empty markdown output
+2025-12-02 14:53:11,034 - ERROR - Failed to parse PDF Magnetic_resonance_imaging_for_suspected_perianal_Crohn's_disease_in_children_a_multi-reader_agreeme.pdf: not a textpage of this page
+2025-12-02 14:53:11,079 - ERROR - Error processing Magnetic_resonance_imaging_for_suspected_perianal_Crohn's_disease_in_children_a_multi-reader_agreeme.pdf: Empty markdown output
+2025-12-02 14:53:12,077 - ERROR - Failed to parse PDF Activation_Analysis_of_a_Byte-Based_Deep_Neural_Network_for_Malware_Classification.pdf: not a textpage of this page
+2025-12-02 14:53:12,232 - ERROR - Error processing Activation_Analysis_of_a_Byte-Based_Deep_Neural_Network_for_Malware_Classification.pdf: Empty markdown output
+2025-12-02 14:53:36,729 - WARNING - JSON parse error for Inter-Rater_Reliability_is_Individual_Fairness.pdf: Expecting ':' delimiter: line 18 column 495 (char 992)
+2025-12-02 14:53:41,989 - ERROR - Failed to parse PDF ColoCap_determining_the_diagnostic_accuracy_of_colon_capsule_endoscopy_compared_with_standard_colono.pdf: not a textpage of this page
+2025-12-02 14:53:42,066 - ERROR - Error processing ColoCap_determining_the_diagnostic_accuracy_of_colon_capsule_endoscopy_compared_with_standard_colono.pdf: Empty markdown output
+2025-12-02 14:53:42,608 - ERROR - Failed to parse PDF Using_matrix_assisted_laser_desorption_ionisation_mass_spectrometry_combined_with_machine_learning_f.pdf: not a textpage of this page
+2025-12-02 14:53:42,671 - ERROR - Error processing Using_matrix_assisted_laser_desorption_ionisation_mass_spectrometry_combined_with_machine_learning_f.pdf: Empty markdown output
+2025-12-02 14:53:43,114 - ERROR - Failed to parse PDF Volumetric_Changes_in_Perianal_Fistulizing_Crohn's_Disease_Measured_by_Magnetic_Resonance_Is_Feasibl.pdf: not a textpage of this page
+2025-12-02 14:53:43,198 - ERROR - Error processing Volumetric_Changes_in_Perianal_Fistulizing_Crohn's_Disease_Measured_by_Magnetic_Resonance_Is_Feasibl.pdf: Empty markdown output
+2025-12-02 14:53:43,553 - ERROR - Failed to parse PDF Controversies_and_Perspectives_in_the_Current_Management_of_Patients_with_Locally_Advanced_Rectal_Ca.pdf: not a textpage of this page
+2025-12-02 14:53:43,611 - ERROR - Error processing Controversies_and_Perspectives_in_the_Current_Management_of_Patients_with_Locally_Advanced_Rectal_Ca.pdf: Empty markdown output
+2025-12-02 14:53:44,246 - ERROR - Failed to parse PDF Delayed_completion_of_total_gastrectomy_for_refractory_fistula_following_laparoscopic_sleeve_gastrec.pdf: weakly-referenced object no longer exists
+2025-12-02 14:53:44,306 - ERROR - Error processing Delayed_completion_of_total_gastrectomy_for_refractory_fistula_following_laparoscopic_sleeve_gastrec.pdf: Empty markdown output
+2025-12-02 14:53:44,783 - ERROR - Failed to parse PDF Discovery_Radiomics_via_Evolutionary_Deep_Radiomic_Sequencer_Discovery_for_Pathologically-Proven_Lun.pdf: not a textpage of this page
+2025-12-02 14:53:44,854 - ERROR - Error processing Discovery_Radiomics_via_Evolutionary_Deep_Radiomic_Sequencer_Discovery_for_Pathologically-Proven_Lun.pdf: Empty markdown output
+2025-12-02 14:53:45,260 - ERROR - Failed to parse PDF Complicated_enteroenteric_intestinal_fistula_due_to_Crohn's_disease_a_rare_case_report.pdf: not a textpage of this page
+2025-12-02 14:53:45,305 - ERROR - Error processing Complicated_enteroenteric_intestinal_fistula_due_to_Crohn's_disease_a_rare_case_report.pdf: Empty markdown output
+2025-12-02 14:53:45,887 - ERROR - Failed to parse PDF Development_and_validation_of_a_predictive_model_for_acute_myelitis_secondary_to_hyperextension-indu.pdf: not a textpage of this page
+2025-12-02 14:53:45,946 - ERROR - Error processing Development_and_validation_of_a_predictive_model_for_acute_myelitis_secondary_to_hyperextension-indu.pdf: Empty markdown output
+2025-12-02 14:54:25,299 - WARNING - Validation error for Bayesian_inference_and_role_of_astrocytes_in_amyloid-beta_dynamics_with_modelling_of_Alzheimer's_dis.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="Paper is about Alzheimer...elds are null or empty.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:54:26,054 - INFO - 💰 Cost so far: $0.1554 (30 papers)
+2025-12-02 14:54:26,203 - ERROR - Failed to parse PDF Repair_of_Rectovaginal_Fistulas_with_Martius_Flap_and_Concomitant_Levatoroplasty_A_Ten-year_Experien.pdf: weakly-referenced object no longer exists
+2025-12-02 14:54:26,430 - ERROR - Error processing Repair_of_Rectovaginal_Fistulas_with_Martius_Flap_and_Concomitant_Levatoroplasty_A_Ten-year_Experien.pdf: Empty markdown output
+2025-12-02 14:54:27,076 - ERROR - Failed to parse PDF Detecting_and_characterizing_creeping_fat_in_Crohn's_disease_agreement_between_intestinal_ultrasound.pdf: weakly-referenced object no longer exists
+2025-12-02 14:54:27,243 - ERROR - Error processing Detecting_and_characterizing_creeping_fat_in_Crohn's_disease_agreement_between_intestinal_ultrasound.pdf: Empty markdown output
+2025-12-02 14:54:27,437 - ERROR - Failed to parse PDF Inter-rater_reliability_and_convergent_validity_of_F1000Prime_peer_review.pdf: not a textpage of this page
+2025-12-02 14:54:27,564 - ERROR - Error processing Inter-rater_reliability_and_convergent_validity_of_F1000Prime_peer_review.pdf: Empty markdown output
+2025-12-02 14:54:28,374 - ERROR - Failed to parse PDF Pelvic_floor_MRI_segmentation_based_on_semi-supervised_deep_learning.pdf: not a textpage of this page
+2025-12-02 14:54:28,428 - ERROR - Error processing Pelvic_floor_MRI_segmentation_based_on_semi-supervised_deep_learning.pdf: Empty markdown output
+2025-12-02 14:54:28,557 - ERROR - Failed to parse PDF Evaluation_of_the_Effectiveness_and_Safety_of_Mesenchymal_Stem_Cell_Treatment_in_Fistulising_Crohn's.pdf: not a textpage of this page
+2025-12-02 14:54:28,612 - ERROR - Error processing Evaluation_of_the_Effectiveness_and_Safety_of_Mesenchymal_Stem_Cell_Treatment_in_Fistulising_Crohn's.pdf: Empty markdown output
+2025-12-02 14:54:29,153 - ERROR - Failed to parse PDF Clinical_relevance_of_calprotectin_in_patients_with_perianal_fistulas_in_Crohn's_disease_and_cryptog.pdf: not a textpage of this page
+2025-12-02 14:54:29,220 - ERROR - Error processing Clinical_relevance_of_calprotectin_in_patients_with_perianal_fistulas_in_Crohn's_disease_and_cryptog.pdf: Empty markdown output
+2025-12-02 14:54:29,569 - ERROR - Failed to parse PDF Urosymphyseal_fistulas_and_their_radiographic_features_A_case_report.pdf: weakly-referenced object no longer exists
+2025-12-02 14:54:29,572 - ERROR - Error processing Urosymphyseal_fistulas_and_their_radiographic_features_A_case_report.pdf: Empty markdown output
+2025-12-02 14:55:06,338 - WARNING - Validation error for Magnetic_resonance_imaging-based_body_composition_is_associated_with_nutritional_and_inflammatory_st.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="Paper focuses on MRI-bas...ed MRI scoring systems.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:55:11,544 - ERROR - Failed to parse PDF Prevalence_of_sacroiliitis_on_magnetic_resonance_enterography_in_Crohn's_disease_and_its_association.pdf: not a textpage of this page
+2025-12-02 14:55:11,632 - ERROR - Error processing Prevalence_of_sacroiliitis_on_magnetic_resonance_enterography_in_Crohn's_disease_and_its_association.pdf: Empty markdown output
+2025-12-02 14:55:12,134 - ERROR - Failed to parse PDF Synthesizing_MR_Image_Contrast_Enhancement_Using_3D_High-resolution_ConvNets.pdf: not a textpage of this page
+2025-12-02 14:55:12,212 - ERROR - Error processing Synthesizing_MR_Image_Contrast_Enhancement_Using_3D_High-resolution_ConvNets.pdf: Empty markdown output
+2025-12-02 14:55:13,048 - ERROR - Failed to parse PDF Uplift_Modeling_with_Multiple_Treatments_and_General_Response_Types.pdf: not a textpage of this page
+2025-12-02 14:55:13,095 - ERROR - Error processing Uplift_Modeling_with_Multiple_Treatments_and_General_Response_Types.pdf: Empty markdown output
+2025-12-02 14:55:13,681 - ERROR - Failed to parse PDF A_Sequential_Density-Based_Empirical_Likelihood_Ratio_Test_for_Treatment_Effects.pdf: not a textpage of this page
+2025-12-02 14:55:13,740 - ERROR - Error processing A_Sequential_Density-Based_Empirical_Likelihood_Ratio_Test_for_Treatment_Effects.pdf: Empty markdown output
+2025-12-02 14:55:14,650 - ERROR - Failed to parse PDF Hotspots_and_trends_of_perianal_fistula_of_Crohn’s_disease_A_bibliometric_analysis.pdf: not a textpage of this page
+2025-12-02 14:55:14,687 - ERROR - Failed to parse PDF Treatment_escalation_and_de-escalation_decisions_in_Crohn's_disease_Delphi_consensus_recommendations.pdf: not a textpage of this page
+2025-12-02 14:55:14,717 - ERROR - Error processing Hotspots_and_trends_of_perianal_fistula_of_Crohn’s_disease_A_bibliometric_analysis.pdf: Empty markdown output
+2025-12-02 14:55:14,789 - ERROR - Error processing Treatment_escalation_and_de-escalation_decisions_in_Crohn's_disease_Delphi_consensus_recommendations.pdf: Empty markdown output
+2025-12-02 14:55:15,187 - ERROR - Failed to parse PDF Gradient-enhanced_continuum_models_of_healing_in_damaged_soft_tissues.pdf: not a textpage of this page
+2025-12-02 14:55:15,323 - ERROR - Error processing Gradient-enhanced_continuum_models_of_healing_in_damaged_soft_tissues.pdf: Empty markdown output
+2025-12-02 14:55:15,972 - ERROR - Failed to parse PDF Concomitant_Thoracic_Spinal_Hemangioma_and_Dural_Arteriovenous_Fistula_Case_Report_and_Technical_Not.pdf: weakly-referenced object no longer exists
+2025-12-02 14:55:16,086 - ERROR - Error processing Concomitant_Thoracic_Spinal_Hemangioma_and_Dural_Arteriovenous_Fistula_Case_Report_and_Technical_Not.pdf: Empty markdown output
+2025-12-02 14:55:16,790 - ERROR - Failed to parse PDF Modified_Van_Assche_magnetic_resonance_imaging-based_score_for_assessing_the_clinical_status_of_anal.pdf: not a textpage of this page
+2025-12-02 14:55:16,914 - ERROR - Error processing Modified_Van_Assche_magnetic_resonance_imaging-based_score_for_assessing_the_clinical_status_of_anal.pdf: Empty markdown output
+2025-12-02 14:55:28,221 - WARNING - Attempt 1/3 failed for ESGAR_2023_Book_of_Abstracts.pdf: 
+2025-12-02 14:56:02,916 - ERROR - Failed to parse PDF Evaluating_luminal_and_post-operative_Crohn's_disease_activity_on_magnetic_resonance_enterography_A.pdf: not a textpage of this page
+2025-12-02 14:56:02,976 - ERROR - Error processing Evaluating_luminal_and_post-operative_Crohn's_disease_activity_on_magnetic_resonance_enterography_A.pdf: Empty markdown output
+2025-12-02 14:56:03,574 - ERROR - Failed to parse PDF A_Heavy_Feeling_in_the_Stomach_Neural_Correlates_of_Anxiety_in_Crohn's_Disease.pdf: not a textpage of this page
+2025-12-02 14:56:03,670 - ERROR - Error processing A_Heavy_Feeling_in_the_Stomach_Neural_Correlates_of_Anxiety_in_Crohn's_Disease.pdf: Empty markdown output
+2025-12-02 14:56:04,155 - ERROR - Failed to parse PDF Case_Report_Pediatric_acute_suppurative_thyroiditis_caused_by_&lt;i&gt;Eikenella_corrodens&lt;i&gt;.pdf: not a textpage of this page
+2025-12-02 14:56:04,216 - ERROR - Error processing Case_Report_Pediatric_acute_suppurative_thyroiditis_caused_by_&lt;i&gt;Eikenella_corrodens&lt;i&gt;.pdf: Empty markdown output
+2025-12-02 14:56:04,722 - ERROR - Failed to parse PDF Multifactorial_Analysis_of_Postoperative_Recurrence_of_Anal_Fistula_A_Retrospective_Study.pdf: not a textpage of this page
+2025-12-02 14:56:04,792 - ERROR - Error processing Multifactorial_Analysis_of_Postoperative_Recurrence_of_Anal_Fistula_A_Retrospective_Study.pdf: Empty markdown output
+2025-12-02 14:56:05,102 - ERROR - Failed to parse PDF Superconducting_magnet_designs_and_MRI_accessibility_a_review.pdf: not a textpage of this page
+2025-12-02 14:56:05,158 - ERROR - Error processing Superconducting_magnet_designs_and_MRI_accessibility_a_review.pdf: Empty markdown output
+2025-12-02 14:56:05,967 - ERROR - Failed to parse PDF Spinal_Cord_Infarction_Clinical_and_Neuroradiological_Clues_of_a_Rare_Stroke_Subtype.pdf: not a textpage of this page
+2025-12-02 14:56:06,018 - ERROR - Error processing Spinal_Cord_Infarction_Clinical_and_Neuroradiological_Clues_of_a_Rare_Stroke_Subtype.pdf: Empty markdown output
+2025-12-02 14:56:06,335 - ERROR - Failed to parse PDF Publicly_Available_Clinical_BERT_Embeddings.pdf: not a textpage of this page
+2025-12-02 14:56:06,378 - ERROR - Error processing Publicly_Available_Clinical_BERT_Embeddings.pdf: Empty markdown output
+2025-12-02 14:56:06,792 - ERROR - Failed to parse PDF Timing_of_individualized_surgical_intervention_in_Crohn's_disease.pdf: not a textpage of this page
+2025-12-02 14:56:06,876 - ERROR - Error processing Timing_of_individualized_surgical_intervention_in_Crohn's_disease.pdf: Empty markdown output
+2025-12-02 14:56:07,347 - ERROR - Failed to parse PDF Assessment_of_disease_activity_in_inflammatory_bowel_diseases_Non-invasive_biomarkers_and_endoscopic.pdf: not a textpage of this page
+2025-12-02 14:56:07,391 - ERROR - Error processing Assessment_of_disease_activity_in_inflammatory_bowel_diseases_Non-invasive_biomarkers_and_endoscopic.pdf: Empty markdown output
+2025-12-02 14:56:08,207 - ERROR - Failed to parse PDF DILIE_Deep_Internal_Learning_for_Image_Enhancement.pdf: not a textpage of this page
+2025-12-02 14:56:08,316 - ERROR - Failed to parse PDF Risk_factors_for_delayed_wound_healing_after_anal_fistula_surgery_Protocol_of_a_meta-analytic_study.pdf: not a textpage of this page
+2025-12-02 14:56:08,340 - ERROR - Error processing DILIE_Deep_Internal_Learning_for_Image_Enhancement.pdf: Empty markdown output
+2025-12-02 14:56:08,498 - ERROR - Error processing Risk_factors_for_delayed_wound_healing_after_anal_fistula_surgery_Protocol_of_a_meta-analytic_study.pdf: Empty markdown output
+2025-12-02 14:56:09,049 - ERROR - Failed to parse PDF U2AD_Uncertainty-based_Unsupervised_Anomaly_Detection_Framework_for_Detecting_T2_Hyperintensity_in_M.pdf: not a textpage of this page
+2025-12-02 14:56:09,179 - ERROR - Error processing U2AD_Uncertainty-based_Unsupervised_Anomaly_Detection_Framework_for_Detecting_T2_Hyperintensity_in_M.pdf: Empty markdown output
+2025-12-02 14:56:10,032 - ERROR - Failed to parse PDF Assessment_of_ESGO_Quality_Indicators_and_Factors_Associated_with_Recurrence_Following_Surgery_for_E.pdf: not a textpage of this page
+2025-12-02 14:56:10,131 - ERROR - Error processing Assessment_of_ESGO_Quality_Indicators_and_Factors_Associated_with_Recurrence_Following_Surgery_for_E.pdf: Empty markdown output
+2025-12-02 14:56:10,215 - ERROR - Failed to parse PDF Defining_partial_response_in_inflammatory_bowel_disease_a_Delphi_consensus_and_economic_evaluation.pdf: not a textpage of this page
+2025-12-02 14:56:10,325 - ERROR - Error processing Defining_partial_response_in_inflammatory_bowel_disease_a_Delphi_consensus_and_economic_evaluation.pdf: Empty markdown output
+2025-12-02 14:56:10,755 - ERROR - Failed to parse PDF Crohn's_disease_from_past_to_present_Research_trends_and_global_outcomes_with_scientometric_analysis.pdf: not a textpage of this page
+2025-12-02 14:56:10,932 - ERROR - Error processing Crohn's_disease_from_past_to_present_Research_trends_and_global_outcomes_with_scientometric_analysis.pdf: Empty markdown output
+2025-12-02 14:56:11,027 - ERROR - Failed to parse PDF Hyperbaric_oxygen_therapy_for_the_treatment_of_perianal_fistulas_in_20_patients_with_Crohn's_disease.pdf: not a textpage of this page
+2025-12-02 14:56:11,101 - ERROR - Error processing Hyperbaric_oxygen_therapy_for_the_treatment_of_perianal_fistulas_in_20_patients_with_Crohn's_disease.pdf: Empty markdown output
+2025-12-02 14:56:11,723 - ERROR - Failed to parse PDF Deconditioning_in_quiescent_Crohn's_disease_patients_with_heightened_fatigue_perception.pdf: not a textpage of this page
+2025-12-02 14:56:11,879 - ERROR - Error processing Deconditioning_in_quiescent_Crohn's_disease_patients_with_heightened_fatigue_perception.pdf: Empty markdown output
+2025-12-02 14:56:11,956 - ERROR - Failed to parse PDF Crohn's_Disease_Radiological_Answers_to_Clinical_Questions_and_Review_of_the_Literature.pdf: not a textpage of this page
+2025-12-02 14:56:12,077 - ERROR - Error processing Crohn's_Disease_Radiological_Answers_to_Clinical_Questions_and_Review_of_the_Literature.pdf: Empty markdown output
+2025-12-02 14:56:12,647 - ERROR - Failed to parse PDF Outcomes_of_Fecal_Diversion_in_Perianal_Crohn's_Disease_A_Systematic_Review_and_Meta-Analysis.pdf: not a textpage of this page
+2025-12-02 14:56:12,716 - ERROR - Failed to parse PDF First-principles_prediction_of_lattice_coherency_in_van_der_Waals_heterostructures.pdf: not a textpage of this page
+2025-12-02 14:56:12,729 - ERROR - Error processing Outcomes_of_Fecal_Diversion_in_Perianal_Crohn's_Disease_A_Systematic_Review_and_Meta-Analysis.pdf: Empty markdown output
+2025-12-02 14:56:12,840 - ERROR - Error processing First-principles_prediction_of_lattice_coherency_in_van_der_Waals_heterostructures.pdf: Empty markdown output
+2025-12-02 14:56:13,096 - ERROR - Failed to parse PDF Provable_Non-Convex_Optimization_and_Algorithm_Validation_via_Submodularity.pdf: not a textpage of this page
+2025-12-02 14:56:13,267 - ERROR - Error processing Provable_Non-Convex_Optimization_and_Algorithm_Validation_via_Submodularity.pdf: Empty markdown output
+2025-12-02 14:56:13,352 - ERROR - Failed to parse PDF The_role_of_MRI_in_perianal_fistulizing_disease_diagnostic_imaging_and_classification_systems_to_mon.pdf: not a textpage of this page
+2025-12-02 14:56:13,398 - ERROR - Error processing The_role_of_MRI_in_perianal_fistulizing_disease_diagnostic_imaging_and_classification_systems_to_mon.pdf: Empty markdown output
+2025-12-02 14:56:13,638 - ERROR - Failed to parse PDF Prospective_randomised_controlled_trial_of_adults_with_perianal_fistulising_Crohn's_disease_and_opti.pdf: not a textpage of this page
+2025-12-02 14:56:13,789 - ERROR - Error processing Prospective_randomised_controlled_trial_of_adults_with_perianal_fistulising_Crohn's_disease_and_opti.pdf: Empty markdown output
+2025-12-02 14:56:13,930 - ERROR - Failed to parse PDF MR_Enterography_Scores_Correlate_with_Degree_of_Mucosal_Healing_in_Pediatric_Crohn's_Disease_A_Pilot.pdf: not a textpage of this page
+2025-12-02 14:56:14,056 - ERROR - Error processing MR_Enterography_Scores_Correlate_with_Degree_of_Mucosal_Healing_in_Pediatric_Crohn's_Disease_A_Pilot.pdf: Empty markdown output
+2025-12-02 14:56:14,231 - ERROR - Failed to parse PDF Radiomics_in_preclinical_imaging_research_methods,_challenges_and_opportunities.pdf: not a textpage of this page
+2025-12-02 14:56:14,380 - ERROR - Error processing Radiomics_in_preclinical_imaging_research_methods,_challenges_and_opportunities.pdf: Empty markdown output
+2025-12-02 14:56:14,590 - ERROR - Failed to parse PDF Single-stage_pulmonary_vein_isolation_combined_with_percutaneous_implantation_of_left_atrial_appenda.pdf: not a textpage of this page
+2025-12-02 14:56:14,695 - ERROR - Error processing Single-stage_pulmonary_vein_isolation_combined_with_percutaneous_implantation_of_left_atrial_appenda.pdf: Empty markdown output
+2025-12-02 14:56:15,101 - ERROR - Failed to parse PDF Observation_of_orbital_order_in_the_Van_der_Waals_material_1T-TiSe2.pdf: not a textpage of this page
+2025-12-02 14:56:15,243 - ERROR - Error processing Observation_of_orbital_order_in_the_Van_der_Waals_material_1T-TiSe2.pdf: Empty markdown output
+2025-12-02 14:56:15,249 - ERROR - Failed to parse PDF A_Review_of_the_Current_State_and_Future_Directions_for_Management_of_Scalp_and_Facial_Vascular_Malf.pdf: not a textpage of this page
+2025-12-02 14:56:15,306 - ERROR - Error processing A_Review_of_the_Current_State_and_Future_Directions_for_Management_of_Scalp_and_Facial_Vascular_Malf.pdf: Empty markdown output
+2025-12-02 14:56:15,836 - ERROR - Failed to parse PDF Lightweight_Transformers_for_Clinical_Natural_Language_Processing.pdf: weakly-referenced object no longer exists
+2025-12-02 14:56:15,926 - ERROR - Error processing Lightweight_Transformers_for_Clinical_Natural_Language_Processing.pdf: Empty markdown output
+2025-12-02 14:56:16,540 - ERROR - Failed to parse PDF Tapering-pressure_VAC_therapy_for_wound_exudation_in_POPF_after_pancreatoduodenectomy_a_single-cente.pdf: weakly-referenced object no longer exists
+2025-12-02 14:56:16,607 - ERROR - Error processing Tapering-pressure_VAC_therapy_for_wound_exudation_in_POPF_after_pancreatoduodenectomy_a_single-cente.pdf: Empty markdown output
+2025-12-02 14:56:17,028 - ERROR - Failed to parse PDF Magnetic_Resonance_Spectroscopy_Facilitates_the_Understanding_of_the_Pathophysiology_of_Cerebellar_A.pdf: not a textpage of this page
+2025-12-02 14:56:17,111 - ERROR - Error processing Magnetic_Resonance_Spectroscopy_Facilitates_the_Understanding_of_the_Pathophysiology_of_Cerebellar_A.pdf: Empty markdown output
+2025-12-02 14:56:17,706 - ERROR - Failed to parse PDF Pieter_Johannes_van_Rhijn,_Kapteyn's_Astronomical_Laboratory_and_the_Plan_of_Selected_Areas.pdf: not a textpage of this page
+2025-12-02 14:56:17,788 - ERROR - Error processing Pieter_Johannes_van_Rhijn,_Kapteyn's_Astronomical_Laboratory_and_the_Plan_of_Selected_Areas.pdf: Empty markdown output
+2025-12-02 14:56:18,593 - ERROR - Failed to parse PDF Precision_Multiparameter_Tracking_of_Inflammation_on_Timescales_of_Hours_to_Years_Using_Serial_Dried.pdf: not a textpage of this page
+2025-12-02 14:56:18,661 - ERROR - Error processing Precision_Multiparameter_Tracking_of_Inflammation_on_Timescales_of_Hours_to_Years_Using_Serial_Dried.pdf: Empty markdown output
+2025-12-02 14:56:19,644 - ERROR - Failed to parse PDF Periprosthetic_joint_infection_after_arthroplasty_advances_and_future_prospects.pdf: not a textpage of this page
+2025-12-02 14:56:19,709 - ERROR - Error processing Periprosthetic_joint_infection_after_arthroplasty_advances_and_future_prospects.pdf: Empty markdown output
+2025-12-02 14:56:20,184 - ERROR - Failed to parse PDF Ethics-Based_Auditing_of_Automated_Decision-Making_Systems_Nature,_Scope,_and_Limitations.pdf: not a textpage of this page
+2025-12-02 14:56:20,251 - ERROR - Error processing Ethics-Based_Auditing_of_Automated_Decision-Making_Systems_Nature,_Scope,_and_Limitations.pdf: Empty markdown output
+2025-12-02 14:56:20,739 - ERROR - Failed to parse PDF Safety_and_efficacy_of_stem_cell_therapy_for_Crohn's_disease_an_umbrella_review_of_systematic_review.pdf: weakly-referenced object no longer exists
+2025-12-02 14:56:20,743 - ERROR - Error processing Safety_and_efficacy_of_stem_cell_therapy_for_Crohn's_disease_an_umbrella_review_of_systematic_review.pdf: Empty markdown output
+2025-12-02 14:56:44,320 - WARNING - Validation error for ESGAR_2023_Book_of_Abstracts.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="This is a book of abstra...ailable for extraction.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:56:47,595 - ERROR - Failed to parse PDF DIRE_for_Diffusion-Generated_Image_Detection.pdf: not a textpage of this page
+2025-12-02 14:56:47,669 - ERROR - Error processing DIRE_for_Diffusion-Generated_Image_Detection.pdf: Empty markdown output
+2025-12-02 14:56:48,049 - ERROR - Failed to parse PDF Spinal_lesions_a_comprehensive_radiologic_overview.pdf: not a textpage of this page
+2025-12-02 14:56:48,117 - ERROR - Error processing Spinal_lesions_a_comprehensive_radiologic_overview.pdf: Empty markdown output
+2025-12-02 14:56:48,661 - ERROR - Failed to parse PDF MR_enterography_radiologic_ulcers_in_newly_diagnosed_ileal_Crohn_disease_in_children_frequency,_inte.pdf: not a textpage of this page
+2025-12-02 14:56:48,711 - ERROR - Error processing MR_enterography_radiologic_ulcers_in_newly_diagnosed_ileal_Crohn_disease_in_children_frequency,_inte.pdf: Empty markdown output
+2025-12-02 14:56:49,664 - ERROR - Failed to parse PDF A_magnetic_resonance_enterography_index_for_assessing_small_bowel_Crohn's_disease_activity.pdf: not a textpage of this page
+2025-12-02 14:56:49,716 - ERROR - Error processing A_magnetic_resonance_enterography_index_for_assessing_small_bowel_Crohn's_disease_activity.pdf: Empty markdown output
+2025-12-02 14:56:50,215 - ERROR - Failed to parse PDF High_fidelity_blood_flow_in_a_patient-specific_arteriovenous_fistula.pdf: not a textpage of this page
+2025-12-02 14:56:50,305 - ERROR - Error processing High_fidelity_blood_flow_in_a_patient-specific_arteriovenous_fistula.pdf: Empty markdown output
+2025-12-02 14:56:50,522 - ERROR - Failed to parse PDF Reliability_of_deep_learning_models_for_anatomical_landmark_detection_The_role_of_inter-rater_variab.pdf: not a textpage of this page
+2025-12-02 14:56:50,578 - ERROR - Error processing Reliability_of_deep_learning_models_for_anatomical_landmark_detection_The_role_of_inter-rater_variab.pdf: Empty markdown output
+2025-12-02 14:56:50,917 - ERROR - Failed to parse PDF Mesenchymal_Stem_Cell_Therapy_for_Perianal_Crohn's_Disease_Surgical_Appraisal_of_Evidence_and_Transl.pdf: not a textpage of this page
+2025-12-02 14:56:50,974 - ERROR - Error processing Mesenchymal_Stem_Cell_Therapy_for_Perianal_Crohn's_Disease_Surgical_Appraisal_of_Evidence_and_Transl.pdf: Empty markdown output
+2025-12-02 14:56:51,630 - ERROR - Failed to parse PDF Impact_of_abdominal_adipose_tissue_segmentation_on_radiomics-based_prognostic_evaluation_using_CT_en.pdf: not a textpage of this page
+2025-12-02 14:56:51,706 - ERROR - Error processing Impact_of_abdominal_adipose_tissue_segmentation_on_radiomics-based_prognostic_evaluation_using_CT_en.pdf: Empty markdown output
+2025-12-02 14:56:52,158 - ERROR - Failed to parse PDF Knowledge_and_acceptability_of_the_Lémann_Index_as_a_tool_to_measure_disease_progression_and_bowel_d.pdf: weakly-referenced object no longer exists
+2025-12-02 14:56:52,229 - ERROR - Error processing Knowledge_and_acceptability_of_the_Lémann_Index_as_a_tool_to_measure_disease_progression_and_bowel_d.pdf: Empty markdown output
+2025-12-02 14:56:52,559 - ERROR - Failed to parse PDF High-dimensional_regression_over_disease_subgroups.pdf: not a textpage of this page
+2025-12-02 14:56:52,645 - ERROR - Error processing High-dimensional_regression_over_disease_subgroups.pdf: Empty markdown output
+2025-12-02 14:56:54,587 - ERROR - Failed to parse PDF Clinical_presentation_and_differential_splicing_of_SRSF2,_U2AF1_and_SF3B1_mutations_in_patients_with.pdf: not a textpage of this page
+2025-12-02 14:56:54,631 - ERROR - Error processing Clinical_presentation_and_differential_splicing_of_SRSF2,_U2AF1_and_SF3B1_mutations_in_patients_with.pdf: Empty markdown output
+2025-12-02 14:56:56,406 - ERROR - Failed to parse PDF Errors-in-variables_Modeling_of_Personalized_Treatment-Response_Trajectories.pdf: not a textpage of this page
+2025-12-02 14:56:56,458 - ERROR - Error processing Errors-in-variables_Modeling_of_Personalized_Treatment-Response_Trajectories.pdf: Empty markdown output
+2025-12-02 14:56:56,896 - ERROR - Failed to parse PDF Spinal_Dural_Arteriovenous_Fistulas_in_a_Patient_with_Cowden_Syndrome_and_a_Phosphatase_and_Tensin_H.pdf: not a textpage of this page
+2025-12-02 14:56:56,954 - ERROR - Error processing Spinal_Dural_Arteriovenous_Fistulas_in_a_Patient_with_Cowden_Syndrome_and_a_Phosphatase_and_Tensin_H.pdf: Empty markdown output
+2025-12-02 14:56:57,667 - ERROR - Failed to parse PDF Response-adaptive_randomization_in_clinical_trials_from_myths_to_practical_considerations.pdf: not a textpage of this page
+2025-12-02 14:56:57,803 - ERROR - Error processing Response-adaptive_randomization_in_clinical_trials_from_myths_to_practical_considerations.pdf: Empty markdown output
+2025-12-02 14:56:58,230 - ERROR - Failed to parse PDF A_Bayesian_Nonparametric_Approach_for_Estimating_Individualized_Treatment-Response_Curves.pdf: not a textpage of this page
+2025-12-02 14:56:58,279 - ERROR - Error processing A_Bayesian_Nonparametric_Approach_for_Estimating_Individualized_Treatment-Response_Curves.pdf: Empty markdown output
+2025-12-02 14:56:58,464 - ERROR - Failed to parse PDF Evaluation_of_Diffusion_Weighted_Imaging_in_the_Context_of_Multi-Parametric_MRI_of_the_Prostate_in_t.pdf: not a textpage of this page
+2025-12-02 14:56:58,521 - ERROR - Error processing Evaluation_of_Diffusion_Weighted_Imaging_in_the_Context_of_Multi-Parametric_MRI_of_the_Prostate_in_t.pdf: Empty markdown output
+2025-12-02 14:56:58,918 - ERROR - Failed to parse PDF Stem_cell-_and_extracellular_vesicle-based_therapies_for_perianal_fistulizing_Crohn's_disease_An_upd.pdf: not a textpage of this page
+2025-12-02 14:56:58,975 - ERROR - Error processing Stem_cell-_and_extracellular_vesicle-based_therapies_for_perianal_fistulizing_Crohn's_disease_An_upd.pdf: Empty markdown output
+2025-12-02 14:56:59,379 - ERROR - Failed to parse PDF Predicting_Conservative_Treatment_Failure_in_Postmenopausal_Women_With_Osteoporotic_Vertebral_Compre.pdf: not a textpage of this page
+2025-12-02 14:56:59,432 - ERROR - Error processing Predicting_Conservative_Treatment_Failure_in_Postmenopausal_Women_With_Osteoporotic_Vertebral_Compre.pdf: Empty markdown output
+2025-12-02 14:57:00,348 - ERROR - Failed to parse PDF The_Role_of_Imaging_in_Inflammatory_Bowel_Diseases_From_Diagnosis_to_Individualized_Therapy.pdf: not a textpage of this page
+2025-12-02 14:57:00,443 - INFO - 💰 Cost so far: $0.2127 (40 papers)
+2025-12-02 14:57:00,494 - ERROR - Error processing The_Role_of_Imaging_in_Inflammatory_Bowel_Diseases_From_Diagnosis_to_Individualized_Therapy.pdf: Empty markdown output
+2025-12-02 14:57:00,831 - WARNING - Validation error for Correlation_between_computed_tomography_imaging_features_of_mesenteric_fat_and_inflammatory_activity.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='This is a CT-based study...primary modality is CT.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:57:00,976 - ERROR - Failed to parse PDF Esophago-tracheobronchial_fistula_induced_by_anlotinib_A_case_report.pdf: not a textpage of this page
+2025-12-02 14:57:01,146 - ERROR - Error processing Esophago-tracheobronchial_fistula_induced_by_anlotinib_A_case_report.pdf: Empty markdown output
+2025-12-02 14:57:01,178 - ERROR - Failed to parse PDF Verification_and_Validation_the_Path_to_Predictive_Scale-Resolving_Simulations_of_Turbulence.pdf: not a textpage of this page
+2025-12-02 14:57:01,280 - ERROR - Error processing Verification_and_Validation_the_Path_to_Predictive_Scale-Resolving_Simulations_of_Turbulence.pdf: Empty markdown output
+2025-12-02 14:57:02,219 - ERROR - Failed to parse PDF Deep_learning_observables_in_computational_fluid_dynamics.pdf: not a textpage of this page
+2025-12-02 14:57:02,280 - ERROR - Failed to parse PDF Sequential_Surgical_Management_of_a_Recurrent_Complex_Transsphincteric_Anal_Fistula_With_Sphincter_D.pdf: not a textpage of this page
+2025-12-02 14:57:02,318 - ERROR - Error processing Deep_learning_observables_in_computational_fluid_dynamics.pdf: Empty markdown output
+2025-12-02 14:57:02,363 - ERROR - Error processing Sequential_Surgical_Management_of_a_Recurrent_Complex_Transsphincteric_Anal_Fistula_With_Sphincter_D.pdf: Empty markdown output
+2025-12-02 14:57:03,180 - ERROR - Failed to parse PDF Open-source_Pulseq_sequences_on_Philips_MRI_scanners.pdf: not a textpage of this page
+2025-12-02 14:57:03,249 - ERROR - Error processing Open-source_Pulseq_sequences_on_Philips_MRI_scanners.pdf: Empty markdown output
+2025-12-02 14:57:03,605 - ERROR - Failed to parse PDF Exploring_Text_Specific_and_Blackbox_Fairness_Algorithms_in_Multimodal_Clinical_NLP.pdf: weakly-referenced object no longer exists
+2025-12-02 14:57:03,657 - ERROR - Error processing Exploring_Text_Specific_and_Blackbox_Fairness_Algorithms_in_Multimodal_Clinical_NLP.pdf: Empty markdown output
+2025-12-02 14:57:05,041 - ERROR - Failed to parse PDF Automatically_Explaining_Machine_Learning_Prediction_Results_A_Demonstration_on_Type_2_Diabetes_Risk.pdf: not a textpage of this page
+2025-12-02 14:57:05,092 - ERROR - Error processing Automatically_Explaining_Machine_Learning_Prediction_Results_A_Demonstration_on_Type_2_Diabetes_Risk.pdf: Empty markdown output
+2025-12-02 14:57:06,384 - ERROR - Failed to parse PDF Observing_many_researchers_using_the_same_data_and_hypothesis_reveals_a_hidden_universe_of_uncertain.pdf: not a textpage of this page
+2025-12-02 14:57:06,446 - ERROR - Error processing Observing_many_researchers_using_the_same_data_and_hypothesis_reveals_a_hidden_universe_of_uncertain.pdf: Empty markdown output
+2025-12-02 14:57:06,833 - ERROR - Failed to parse PDF Assessment_of_perianal_fistulizing_Crohn's_disease_activity_with_endoanal_ultrasound_A_retrospective.pdf: not a textpage of this page
+2025-12-02 14:57:06,901 - ERROR - Error processing Assessment_of_perianal_fistulizing_Crohn's_disease_activity_with_endoanal_ultrasound_A_retrospective.pdf: Empty markdown output
+2025-12-02 14:57:07,299 - ERROR - Failed to parse PDF Endoanal_Ultrasound_in_Perianal_Crohn's_Disease.pdf: not a textpage of this page
+2025-12-02 14:57:07,352 - ERROR - Error processing Endoanal_Ultrasound_in_Perianal_Crohn's_Disease.pdf: Empty markdown output
+2025-12-02 14:57:43,328 - WARNING - Validation error for LAVA_HyperSense_and_deep-learning_reconstruction_for_near-isotropic_(3D)_enhanced_magnetic_resonance.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="This paper is a technica...equences are described.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:57:43,818 - ERROR - Failed to parse PDF Mucosal_advancement_flap_versus_ligation_of_the_inter-sphincteric_fistula_tract_for_management_of_tr.pdf: not a textpage of this page
+2025-12-02 14:57:43,962 - ERROR - Failed to parse PDF HiDiff_Hybrid_Diffusion_Framework_for_Medical_Image_Segmentation.pdf: not a textpage of this page
+2025-12-02 14:57:43,968 - ERROR - Error processing Mucosal_advancement_flap_versus_ligation_of_the_inter-sphincteric_fistula_tract_for_management_of_tr.pdf: Empty markdown output
+2025-12-02 14:57:44,089 - ERROR - Error processing HiDiff_Hybrid_Diffusion_Framework_for_Medical_Image_Segmentation.pdf: Empty markdown output
+2025-12-02 14:57:44,723 - ERROR - Failed to parse PDF [Perianal_Fistula_An_Overview].pdf: not a textpage of this page
+2025-12-02 14:57:45,122 - ERROR - Error processing [Perianal_Fistula_An_Overview].pdf: Empty markdown output
+2025-12-02 14:57:45,570 - ERROR - Failed to parse PDF Patch-Based_Diffusion_for_Data-Efficient,_Radiologist-Preferred_MRI_Reconstruction.pdf: not a textpage of this page
+2025-12-02 14:57:45,701 - ERROR - Error processing Patch-Based_Diffusion_for_Data-Efficient,_Radiologist-Preferred_MRI_Reconstruction.pdf: Empty markdown output
+2025-12-02 14:57:46,103 - ERROR - Failed to parse PDF Different_tightening_schemes_in_thread-drawing_therapy_and_their_effects_on_anal_function_recovery_i.pdf: not a textpage of this page
+2025-12-02 14:57:46,303 - ERROR - Error processing Different_tightening_schemes_in_thread-drawing_therapy_and_their_effects_on_anal_function_recovery_i.pdf: Empty markdown output
+2025-12-02 14:57:47,279 - ERROR - Failed to parse PDF Validation_of_a_novel_imaging-guided_and_anatomy-based_classification_system_for_anorectal_fistulas.pdf: not a textpage of this page
+2025-12-02 14:57:47,457 - ERROR - Error processing Validation_of_a_novel_imaging-guided_and_anatomy-based_classification_system_for_anorectal_fistulas.pdf: Empty markdown output
+2025-12-02 14:57:48,500 - ERROR - Failed to parse PDF The_use_of_ultrasound_in_colonic_and_perianal_diseases.pdf: not a textpage of this page
+2025-12-02 14:57:48,667 - ERROR - Error processing The_use_of_ultrasound_in_colonic_and_perianal_diseases.pdf: Empty markdown output
+2025-12-02 14:57:49,161 - ERROR - Failed to parse PDF Learning_Curves_for_Decision_Making_in_Supervised_Machine_Learning_A_Survey.pdf: not a textpage of this page
+2025-12-02 14:57:49,285 - ERROR - Error processing Learning_Curves_for_Decision_Making_in_Supervised_Machine_Learning_A_Survey.pdf: Empty markdown output
+2025-12-02 14:57:49,980 - ERROR - Failed to parse PDF Time_to_classify_a_narrative_and_scoping_review_of_the_old_and_the_new_classifications_of_perianal_C.pdf: not a textpage of this page
+2025-12-02 14:57:50,121 - ERROR - Error processing Time_to_classify_a_narrative_and_scoping_review_of_the_old_and_the_new_classifications_of_perianal_C.pdf: Empty markdown output
+2025-12-02 14:57:51,005 - ERROR - Failed to parse PDF Abstract.pdf: not a textpage of this page
+2025-12-02 14:57:51,214 - ERROR - Error processing Abstract.pdf: Empty markdown output
+2025-12-02 14:57:51,873 - ERROR - Failed to parse PDF Reducing_the_workload_of_medical_diagnosis_through_artificial_intelligence_A_narrative_review.pdf: not a textpage of this page
+2025-12-02 14:57:51,999 - ERROR - Error processing Reducing_the_workload_of_medical_diagnosis_through_artificial_intelligence_A_narrative_review.pdf: Empty markdown output
+2025-12-02 14:57:52,012 - ERROR - Failed to parse PDF Use_of_imaging_modalities_for_decision-making_in_inflammatory_bowel_disease.pdf: not a textpage of this page
+2025-12-02 14:57:52,055 - ERROR - Error processing Use_of_imaging_modalities_for_decision-making_in_inflammatory_bowel_disease.pdf: Empty markdown output
+2025-12-02 14:57:52,884 - ERROR - Failed to parse PDF ESR_Essentials_diagnosis_and_assessment_of_treatment_response_in_patients_with_luminal_Crohn's_disea.pdf: not a textpage of this page
+2025-12-02 14:57:53,090 - ERROR - Error processing ESR_Essentials_diagnosis_and_assessment_of_treatment_response_in_patients_with_luminal_Crohn's_disea.pdf: Empty markdown output
+2025-12-02 14:57:53,732 - ERROR - Failed to parse PDF Perianal_fistulizing_Crohn's_disease_Mechanisms_and_treatment_options_focusing_on_cellular_therapy.pdf: not a textpage of this page
+2025-12-02 14:57:53,871 - ERROR - Error processing Perianal_fistulizing_Crohn's_disease_Mechanisms_and_treatment_options_focusing_on_cellular_therapy.pdf: Empty markdown output
+2025-12-02 14:58:24,490 - INFO - 💰 Cost so far: $0.2535 (50 papers)
+2025-12-02 14:59:24,348 - ERROR - Failed to parse PDF Reproducibility_study_of_LICO_Explainable_Models_with_Language-Image_Consistency.pdf: not a textpage of this page
+2025-12-02 14:59:24,537 - ERROR - Error processing Reproducibility_study_of_LICO_Explainable_Models_with_Language-Image_Consistency.pdf: Empty markdown output
+2025-12-02 14:59:25,211 - ERROR - Failed to parse PDF Turning_the_Tide-Artificial_Intelligence_in_the_Evolving_Landscape_of_Liver_Cancer.pdf: not a textpage of this page
+2025-12-02 14:59:25,279 - ERROR - Error processing Turning_the_Tide-Artificial_Intelligence_in_the_Evolving_Landscape_of_Liver_Cancer.pdf: Empty markdown output
+2025-12-02 14:59:25,956 - ERROR - Failed to parse PDF Novel_biomarker_profiles_to_improve_individual_diagnosis_and_prognosis_in_patients_with_suspected_in.pdf: not a textpage of this page
+2025-12-02 14:59:26,120 - ERROR - Failed to parse PDF AI-based_fingerprint_index_of_visceral_adipose_tissue_for_the_prediction_of_bowel_damage_in_patients.pdf: not a textpage of this page
+2025-12-02 14:59:26,132 - ERROR - Error processing Novel_biomarker_profiles_to_improve_individual_diagnosis_and_prognosis_in_patients_with_suspected_in.pdf: Empty markdown output
+2025-12-02 14:59:26,219 - ERROR - Error processing AI-based_fingerprint_index_of_visceral_adipose_tissue_for_the_prediction_of_bowel_damage_in_patients.pdf: Empty markdown output
+2025-12-02 14:59:26,602 - ERROR - Failed to parse PDF Automatic_measurement_of_mesenteric_vascular_and_portal_vein_parameters_via_PE-NET_in_the_diagnosis.pdf: not a textpage of this page
+2025-12-02 14:59:26,720 - ERROR - Failed to parse PDF Imaging_in_perianal_fistulising_Crohn's_disease_A_practical_guide_for_the_gastroenterologist.pdf: not a textpage of this page
+2025-12-02 14:59:26,725 - ERROR - Error processing Automatic_measurement_of_mesenteric_vascular_and_portal_vein_parameters_via_PE-NET_in_the_diagnosis.pdf: Empty markdown output
+2025-12-02 14:59:26,799 - ERROR - Error processing Imaging_in_perianal_fistulising_Crohn's_disease_A_practical_guide_for_the_gastroenterologist.pdf: Empty markdown output
+2025-12-02 14:59:27,615 - ERROR - Failed to parse PDF Case_Report_Acute_onset_hemiparesis_in_a_young_man_do_not_miss_Crohn's_disease.pdf: not a textpage of this page
+2025-12-02 14:59:27,640 - ERROR - Failed to parse PDF Surgical_treatment_of_inflammatory_bowel_disease_From_the_gastroenterologist's_stand-point.pdf: not a textpage of this page
+2025-12-02 14:59:27,679 - ERROR - Error processing Case_Report_Acute_onset_hemiparesis_in_a_young_man_do_not_miss_Crohn's_disease.pdf: Empty markdown output
+2025-12-02 14:59:27,722 - ERROR - Error processing Surgical_treatment_of_inflammatory_bowel_disease_From_the_gastroenterologist's_stand-point.pdf: Empty markdown output
+2025-12-02 14:59:28,533 - ERROR - Failed to parse PDF Night-sky_brightness_monitoring_in_Hong_Kong_-_a_city-wide_light_pollution_assessment.pdf: not a textpage of this page
+2025-12-02 14:59:28,701 - ERROR - Failed to parse PDF Is_Transmural_Healing_an_Achievable_Goal_in_Inflammatory_Bowel_Disease.pdf: not a textpage of this page
+2025-12-02 14:59:28,727 - ERROR - Error processing Night-sky_brightness_monitoring_in_Hong_Kong_-_a_city-wide_light_pollution_assessment.pdf: Empty markdown output
+2025-12-02 14:59:28,791 - ERROR - Error processing Is_Transmural_Healing_an_Achievable_Goal_in_Inflammatory_Bowel_Disease.pdf: Empty markdown output
+2025-12-02 14:59:29,408 - ERROR - Failed to parse PDF Identifying_falsified_COVID-19_vaccines_by_analysing_vaccine_vial_label_and_excipient_profiles_using.pdf: not a textpage of this page
+2025-12-02 14:59:29,539 - ERROR - Failed to parse PDF Influence_of_seton_configuration,_thickness,_and_laxity_on_patient_comfort_in_chronic_perianal_fistu.pdf: not a textpage of this page
+2025-12-02 14:59:29,565 - ERROR - Error processing Identifying_falsified_COVID-19_vaccines_by_analysing_vaccine_vial_label_and_excipient_profiles_using.pdf: Empty markdown output
+2025-12-02 14:59:29,650 - ERROR - Error processing Influence_of_seton_configuration,_thickness,_and_laxity_on_patient_comfort_in_chronic_perianal_fistu.pdf: Empty markdown output
+2025-12-02 14:59:30,120 - ERROR - Failed to parse PDF Comparison_Between_Adalimumab_and_Infliximab_in_Perianal_Crohn’s_Disease_A_Systematic_Review_and_Met.pdf: not a textpage of this page
+2025-12-02 14:59:30,121 - ERROR - Failed to parse PDF Fluid_statics_of_a_self-gravitating_isothermal_sphere_of_van_der_Waals'_gas.pdf: not a textpage of this page
+2025-12-02 14:59:30,190 - ERROR - Error processing Comparison_Between_Adalimumab_and_Infliximab_in_Perianal_Crohn’s_Disease_A_Systematic_Review_and_Met.pdf: Empty markdown output
+2025-12-02 14:59:30,238 - ERROR - Error processing Fluid_statics_of_a_self-gravitating_isothermal_sphere_of_van_der_Waals'_gas.pdf: Empty markdown output
+2025-12-02 14:59:31,199 - ERROR - Failed to parse PDF Multimodal_artificial_intelligence_technology_in_the_precision_diagnosis_and_treatment_of_gastroente.pdf: not a textpage of this page
+2025-12-02 14:59:31,341 - ERROR - Error processing Multimodal_artificial_intelligence_technology_in_the_precision_diagnosis_and_treatment_of_gastroente.pdf: Empty markdown output
+2025-12-02 14:59:31,720 - ERROR - Failed to parse PDF Radiomics-enhanced_Deep_Multi-task_Learning_for_Outcome_Prediction_in_Head_and_Neck_Cancer.pdf: not a textpage of this page
+2025-12-02 14:59:31,796 - ERROR - Error processing Radiomics-enhanced_Deep_Multi-task_Learning_for_Outcome_Prediction_in_Head_and_Neck_Cancer.pdf: Empty markdown output
+2025-12-02 14:59:32,209 - ERROR - Failed to parse PDF A_Nomogram_Based_on_Laboratory_Data,_Inflammatory_Bowel_Disease_Questionnaire_and_CT_Enterography_fo.pdf: not a textpage of this page
+2025-12-02 14:59:32,266 - ERROR - Error processing A_Nomogram_Based_on_Laboratory_Data,_Inflammatory_Bowel_Disease_Questionnaire_and_CT_Enterography_fo.pdf: Empty markdown output
+2025-12-02 14:59:32,570 - ERROR - Failed to parse PDF A_Practical_Approach_in_Differentiating_IBD_From_Other_Causes_of_Enterocolitis.pdf: not a textpage of this page
+2025-12-02 14:59:32,661 - ERROR - Error processing A_Practical_Approach_in_Differentiating_IBD_From_Other_Causes_of_Enterocolitis.pdf: Empty markdown output
+2025-12-02 14:59:32,960 - ERROR - Failed to parse PDF Patients'_Attitudes_to_Magnetic_Resonance_Imaging_in_Perianal_Fistulizing_Crohn's_Disease_A_Global_S.pdf: not a textpage of this page
+2025-12-02 14:59:33,011 - ERROR - Error processing Patients'_Attitudes_to_Magnetic_Resonance_Imaging_in_Perianal_Fistulizing_Crohn's_Disease_A_Global_S.pdf: Empty markdown output
+2025-12-02 14:59:33,511 - ERROR - Failed to parse PDF Expanding_the_role_of_radiomics_and_artificial_intelligence_in_the_management_of_inflammatory_bowel.pdf: not a textpage of this page
+2025-12-02 14:59:33,565 - ERROR - Error processing Expanding_the_role_of_radiomics_and_artificial_intelligence_in_the_management_of_inflammatory_bowel.pdf: Empty markdown output
+2025-12-02 14:59:34,573 - ERROR - Failed to parse PDF Adult_pilocytic_astrocytomas_challenging_the_benign_paradigm_with_surgical_risks,_recurrence_dynamic.pdf: not a textpage of this page
+2025-12-02 14:59:34,653 - ERROR - Error processing Adult_pilocytic_astrocytomas_challenging_the_benign_paradigm_with_surgical_risks,_recurrence_dynamic.pdf: Empty markdown output
+2025-12-02 14:59:35,053 - ERROR - Failed to parse PDF Hyperbaric_Oxygen_Therapy_in_the_Management_of_Refractory_Perianal_Crohn's_Disease.pdf: not a textpage of this page
+2025-12-02 14:59:35,130 - ERROR - Error processing Hyperbaric_Oxygen_Therapy_in_the_Management_of_Refractory_Perianal_Crohn's_Disease.pdf: Empty markdown output
+2025-12-02 14:59:35,870 - ERROR - Failed to parse PDF Implications_of_mappings_between_ICD_clinical_diagnosis_codes_and_Human_Phenotype_Ontology_terms.pdf: not a textpage of this page
+2025-12-02 14:59:35,921 - ERROR - Error processing Implications_of_mappings_between_ICD_clinical_diagnosis_codes_and_Human_Phenotype_Ontology_terms.pdf: Empty markdown output
+2025-12-02 14:59:36,510 - ERROR - Failed to parse PDF Assessing_quality_of_selection_procedures_Lower_bound_of_false_positive_rate_as_a_function_of_inter-.pdf: not a textpage of this page
+2025-12-02 14:59:36,575 - ERROR - Error processing Assessing_quality_of_selection_procedures_Lower_bound_of_false_positive_rate_as_a_function_of_inter-.pdf: Empty markdown output
+2025-12-02 14:59:37,956 - WARNING - Validation error for Prevalence_and_risk_factors_of_depression_among_patients_with_perianal_fistulizing_Crohn's_disease.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value="Paper focuses on depress...s for the index itself.", input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 14:59:43,839 - ERROR - Failed to parse PDF Discontinuation_of_Anti-Tumour_Necrosis_Factor_Therapy_in_Patients_with_Perianal_Fistulizing_Crohn's.pdf: not a textpage of this page
+2025-12-02 14:59:43,937 - ERROR - Error processing Discontinuation_of_Anti-Tumour_Necrosis_Factor_Therapy_in_Patients_with_Perianal_Fistulizing_Crohn's.pdf: Empty markdown output
+2025-12-02 14:59:45,731 - ERROR - Failed to parse PDF Clinical_Utility_of_Foundation_Segmentation_Models_in_Musculoskeletal_MRI_Biomarker_Fidelity_and_Pre.pdf: weakly-referenced object no longer exists
+2025-12-02 14:59:45,816 - ERROR - Error processing Clinical_Utility_of_Foundation_Segmentation_Models_in_Musculoskeletal_MRI_Biomarker_Fidelity_and_Pre.pdf: Empty markdown output
+2025-12-02 14:59:46,302 - ERROR - Failed to parse PDF Intestinal_Ultrasound_Early_on_in_Treatment_Follow-up_Predicts_Endoscopic_Response_to_Anti-TNFα_Trea.pdf: not a textpage of this page
+2025-12-02 14:59:46,333 - ERROR - Error processing Intestinal_Ultrasound_Early_on_in_Treatment_Follow-up_Predicts_Endoscopic_Response_to_Anti-TNFα_Trea.pdf: Empty markdown output
+2025-12-02 14:59:46,924 - ERROR - Failed to parse PDF Robotic-assisted_surgical_management_of_a_post-brachytherapy_rectoprostatic_fistula_a_case_report.pdf: not a textpage of this page
+2025-12-02 14:59:46,982 - ERROR - Error processing Robotic-assisted_surgical_management_of_a_post-brachytherapy_rectoprostatic_fistula_a_case_report.pdf: Empty markdown output
+2025-12-02 14:59:48,756 - ERROR - Failed to parse PDF Second_United_Arab_Emirates_consensus_guidance_on_the_diagnosis_and_management_of_inflammatory_bowel.pdf: not a textpage of this page
+2025-12-02 14:59:48,775 - ERROR - Error processing Second_United_Arab_Emirates_consensus_guidance_on_the_diagnosis_and_management_of_inflammatory_bowel.pdf: Empty markdown output
+2025-12-02 15:00:23,215 - WARNING - Attempt 1/3 failed for Total_fistula_volume_predicts_surgical_outcomes_in_complex_perianal_fistulizing_Crohn's_disease_foll.pdf: Cannot connect to host openrouter.ai:443 ssl:default [None]
+2025-12-02 15:00:39,395 - WARNING - Attempt 2/3 failed for Total_fistula_volume_predicts_surgical_outcomes_in_complex_perianal_fistulizing_Crohn's_disease_foll.pdf: Server disconnected
+2025-12-02 15:01:05,826 - INFO - 💰 Cost so far: $0.2907 (60 papers)
+2025-12-02 15:01:23,111 - WARNING - Validation error for Bright_Luminal_Sign_on_High_b-Value_Diffusion-Weighted_Magnetic_Resonance_Enterography_Imaging_as_a.pdf: 2 validation errors for ClinicalData
+evidence_snippet
+  String should have at most 500 characters [type=string_too_long, input_value='The study was performed ...penetration (p = 0.05).', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='Paper focuses on a new D...enhancement gain >24%).', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 15:01:34,387 - WARNING - JSON parse error for Total_fistula_volume_predicts_surgical_outcomes_in_complex_perianal_fistulizing_Crohn's_disease_foll.pdf: Expecting ',' delimiter: line 46 column 2 (char 2339)
+2025-12-02 15:01:45,873 - WARNING - Validation error for Bright_Luminal_Sign_on_High_b-Value_Diffusion-Weighted_Magnetic_Resonance_Enterography_Imaging_as_a.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='Paper focuses on a new D...enhancement gain >24%).', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 15:01:47,277 - ERROR - Failed to parse PDF Enhancing_Angular_Resolution_via_Directionality_Encoding_and_Geometric_Constraints_in_Brain_Diffusio.pdf: not a textpage of this page
+2025-12-02 15:01:47,333 - ERROR - Error processing Enhancing_Angular_Resolution_via_Directionality_Encoding_and_Geometric_Constraints_in_Brain_Diffusio.pdf: Empty markdown output
+2025-12-02 15:01:47,789 - ERROR - Failed to parse PDF Detecting_Early_Kidney_Allograft_Fibrosis_with_Multi-b-value_Spectral_Diffusion_MRI.pdf: not a textpage of this page
+2025-12-02 15:01:47,853 - ERROR - Error processing Detecting_Early_Kidney_Allograft_Fibrosis_with_Multi-b-value_Spectral_Diffusion_MRI.pdf: Empty markdown output
+2025-12-02 15:01:49,355 - ERROR - Failed to parse PDF The_Modern_Mathematics_of_Deep_Learning.pdf: not a textpage of this page
+2025-12-02 15:01:49,408 - ERROR - Error processing The_Modern_Mathematics_of_Deep_Learning.pdf: Empty markdown output
+2025-12-02 15:01:50,123 - ERROR - Failed to parse PDF Multi-TE_Single-Quantum_Sodium_(23Na)_MRI_A_Clinically_Translatable_Technique_for_Separation_of_Mono.pdf: not a textpage of this page
+2025-12-02 15:01:50,175 - ERROR - Error processing Multi-TE_Single-Quantum_Sodium_(23Na)_MRI_A_Clinically_Translatable_Technique_for_Separation_of_Mono.pdf: Empty markdown output
+2025-12-02 15:02:12,945 - ERROR - Failed to parse PDF Pancreatic_Endometriosis_Coexisting_with_a_Splenic_Mesothelial_Cyst_A_Rare_Case_Report_and_Review_of.pdf: not a textpage of this page
+2025-12-02 15:02:12,978 - ERROR - Error processing Pancreatic_Endometriosis_Coexisting_with_a_Splenic_Mesothelial_Cyst_A_Rare_Case_Report_and_Review_of.pdf: Empty markdown output
+2025-12-02 15:02:13,447 - ERROR - Failed to parse PDF Garg_scoring_system_to_predict_long-term_healing_in_cryptoglandular_anal_fistulas_a_prospective_vali.pdf: not a textpage of this page
+2025-12-02 15:02:13,505 - ERROR - Error processing Garg_scoring_system_to_predict_long-term_healing_in_cryptoglandular_anal_fistulas_a_prospective_vali.pdf: Empty markdown output
+2025-12-02 15:02:13,948 - ERROR - Failed to parse PDF Consensus_definition_of_a_radiologically_healed_fistula_on_magnetic_resonance_imaging_in_perianal_Cr.pdf: weakly-referenced object no longer exists
+2025-12-02 15:02:14,008 - ERROR - Error processing Consensus_definition_of_a_radiologically_healed_fistula_on_magnetic_resonance_imaging_in_perianal_Cr.pdf: Empty markdown output
+2025-12-02 15:02:15,154 - ERROR - Failed to parse PDF Linear_Predictability_in_MRI_Reconstruction_Leveraging_Shift-Invariant_Fourier_Structure_for_Faster.pdf: not a textpage of this page
+2025-12-02 15:02:15,326 - ERROR - Error processing Linear_Predictability_in_MRI_Reconstruction_Leveraging_Shift-Invariant_Fourier_Structure_for_Faster.pdf: Empty markdown output
+2025-12-02 15:02:16,200 - ERROR - Failed to parse PDF Clinical_Safety_and_Efficacy_of_Allogeneic_Adipose_Stem_Cells_A_Systematic_Review_of_the_Clinical_Tr.pdf: weakly-referenced object no longer exists
+2025-12-02 15:02:16,268 - ERROR - Error processing Clinical_Safety_and_Efficacy_of_Allogeneic_Adipose_Stem_Cells_A_Systematic_Review_of_the_Clinical_Tr.pdf: Empty markdown output
+2025-12-02 15:02:17,778 - ERROR - Failed to parse PDF DOME_Recommendations_for_supervised_machine_learning_validation_in_biology.pdf: not a textpage of this page
+2025-12-02 15:02:17,828 - ERROR - Error processing DOME_Recommendations_for_supervised_machine_learning_validation_in_biology.pdf: Empty markdown output
+2025-12-02 15:02:18,303 - ERROR - Failed to parse PDF Prediction_of_early_mucosal_healing_of_Crohn’s_disease_after_treatment_with_biologics-_a_novel_nomog.pdf: not a textpage of this page
+2025-12-02 15:02:18,366 - ERROR - Error processing Prediction_of_early_mucosal_healing_of_Crohn’s_disease_after_treatment_with_biologics-_a_novel_nomog.pdf: Empty markdown output
+2025-12-02 15:02:25,527 - INFO - 💰 Cost so far: $0.3471 (70 papers)
+2025-12-02 15:03:07,256 - ERROR - Failed to parse PDF Beyond_Fixed_Thresholds_Cluster-Derived_MRI_Boundaries_Improve_Assessment_of_Crohn's_Disease_Activit.pdf: not a textpage of this page
+2025-12-02 15:03:07,314 - ERROR - Error processing Beyond_Fixed_Thresholds_Cluster-Derived_MRI_Boundaries_Improve_Assessment_of_Crohn's_Disease_Activit.pdf: Empty markdown output
+2025-12-02 15:03:08,189 - ERROR - Failed to parse PDF TRACE_Model_Predicting_Treatment_Response_to_Transarterial_Chemoembolization_in_Unresectable_Hepatoc.pdf: not a textpage of this page
+2025-12-02 15:03:08,358 - ERROR - Failed to parse PDF Small_Bowel_Motility_Quantified_by_Cine_MRI_to_Predict_Longer-Term_Response_in_Patients_with_Crohn's.pdf: not a textpage of this page
+2025-12-02 15:03:08,383 - ERROR - Error processing TRACE_Model_Predicting_Treatment_Response_to_Transarterial_Chemoembolization_in_Unresectable_Hepatoc.pdf: Empty markdown output
+2025-12-02 15:03:08,552 - ERROR - Error processing Small_Bowel_Motility_Quantified_by_Cine_MRI_to_Predict_Longer-Term_Response_in_Patients_with_Crohn's.pdf: Empty markdown output
+2025-12-02 15:03:09,264 - ERROR - Failed to parse PDF Therapeutic_potential_and_mechanistic_insights_into_adipose-derived_stem_cells_and_mesenchymal_stem.pdf: not a textpage of this page
+2025-12-02 15:03:09,316 - ERROR - Error processing Therapeutic_potential_and_mechanistic_insights_into_adipose-derived_stem_cells_and_mesenchymal_stem.pdf: Empty markdown output
+2025-12-02 15:03:09,627 - WARNING - Validation error for Assessment_of_outcomes_in_Crohn's_disease_A_systematic_review_of_randomized_clinical_trials_to_infor.pdf: 1 validation error for ClinicalData
+extraction_notes
+  String should have at most 300 characters [type=string_too_long, input_value='This is a systematic rev... MRI metric extraction.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_too_long
+2025-12-02 15:03:09,717 - ERROR - Failed to parse PDF Differentiating_gastrointestinal_tuberculosis_and_Crohn's_disease-_a_comprehensive_review.pdf: not a textpage of this page
+2025-12-02 15:03:09,887 - ERROR - Error processing Differentiating_gastrointestinal_tuberculosis_and_Crohn's_disease-_a_comprehensive_review.pdf: Empty markdown output
+2025-12-02 15:03:10,418 - ERROR - Failed to parse PDF The_Potential_Benefits_of_Exercise_in_Managing_Inflammatory_Bowel_Disease_A_Systematic_Review.pdf: not a textpage of this page
+2025-12-02 15:03:10,556 - ERROR - Failed to parse PDF Date-Driven_Approach_for_Identifying_State_of_Hemodialysis_Fistulas_Entropy-Complexity_and_Formal_Co.pdf: not a textpage of this page
+2025-12-02 15:03:10,563 - ERROR - Error processing The_Potential_Benefits_of_Exercise_in_Managing_Inflammatory_Bowel_Disease_A_Systematic_Review.pdf: Empty markdown output
+2025-12-02 15:03:10,738 - ERROR - Error processing Date-Driven_Approach_for_Identifying_State_of_Hemodialysis_Fistulas_Entropy-Complexity_and_Formal_Co.pdf: Empty markdown output
+2025-12-02 15:03:11,118 - ERROR - Failed to parse PDF Clinical_outcome_after_entero-enteric_anastomosis_for_Crohn's_disease_a_case-control_study.pdf: not a textpage of this page
+2025-12-02 15:03:11,331 - ERROR - Error processing Clinical_outcome_after_entero-enteric_anastomosis_for_Crohn's_disease_a_case-control_study.pdf: Empty markdown output
+2025-12-02 15:03:11,509 - ERROR - Failed to parse PDF Effectiveness_and_Safety_of_Advanced_Dual-Targeted_Therapy_in_Refractory_Perianal_Crohn's_Disease.pdf: not a textpage of this page
+2025-12-02 15:03:11,635 - ERROR - Failed to parse PDF Self-organized_clustering,_prediction,_and_superposition_of_long-term_cognitive_decline_from_short-t.pdf: not a textpage of this page
+2025-12-02 15:03:11,682 - ERROR - Error processing Effectiveness_and_Safety_of_Advanced_Dual-Targeted_Therapy_in_Refractory_Perianal_Crohn's_Disease.pdf: Empty markdown output
+2025-12-02 15:03:11,758 - ERROR - Error processing Self-organized_clustering,_prediction,_and_superposition_of_long-term_cognitive_decline_from_short-t.pdf: Empty markdown output
+2025-12-02 15:03:11,962 - ERROR - Failed to parse PDF A_utero-pelvic_fistula_and_pelvic-parasitic_myoma_by_hysteroscopic_resection_of_a_recurrent_submucos.pdf: not a textpage of this page
+2025-12-02 15:03:12,035 - ERROR - Error processing A_utero-pelvic_fistula_and_pelvic-parasitic_myoma_by_hysteroscopic_resection_of_a_recurrent_submucos.pdf: Empty markdown output
+2025-12-02 15:03:12,577 - ERROR - Failed to parse PDF Integrating_Radiomics_and_Artificial_Intelligence_(AI)_in_Stereotactic_Body_Radiotherapy_(SBRT)Stere.pdf: not a textpage of this page
+2025-12-02 15:03:12,723 - ERROR - Error processing Integrating_Radiomics_and_Artificial_Intelligence_(AI)_in_Stereotactic_Body_Radiotherapy_(SBRT)Stere.pdf: Empty markdown output
+2025-12-02 15:03:12,761 - ERROR - Failed to parse PDF Computed_tomography_enterography-based_radiomics_for_assessing_mucosal_healing_in_patients_with_smal.pdf: not a textpage of this page
+2025-12-02 15:03:12,800 - ERROR - Error processing Computed_tomography_enterography-based_radiomics_for_assessing_mucosal_healing_in_patients_with_smal.pdf: Empty markdown output

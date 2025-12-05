@@ -1,0 +1,27 @@
+============================================================
+VAI → MAGNIFI-CD CROSSWALK FORMULAS
+============================================================
+
+RECOMMENDED: Neuro-Symbolic Model
+----------------------------------------
+MAGNIFI-CD = 1.015×VAI + 0.012×Fibrosis×I(VAI≤2) + 1.856
+
+Where:
+  - VAI = Van Assche Index (0-22)
+  - Fibrosis = Fibrosis Score (0-6)
+  - I(VAI≤2) = 1 if VAI ≤ 2 (healed), 0 otherwise
+
+Performance: R² = 0.9595, RMSE = 0.981
+
+ALTERNATIVE: Simple Linear Model
+----------------------------------------
+MAGNIFI-CD = 1.039×VAI + 0.118×Fibrosis + 1.301
+
+Performance: R² = 0.9611, RMSE = 0.961
+
+ALTERNATIVE: Piecewise Model
+----------------------------------------
+If VAI > 2 (active):  MAGNIFI-CD = 1.014×VAI + 1.865
+If VAI ≤ 2 (healed):  MAGNIFI-CD = 0.098×Fibrosis + 1.353
+
+Performance: R² = 0.9602

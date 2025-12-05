@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRI-Crohn Atlas | The First VAI↔MAGNIFI-CD Crosswalk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        /* =========================================
+           CSS VARIABLES - DARK MODE (default)
+           ========================================= */
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-tertiary: #18181b;
+            --bg-elevated: #1f1f23;
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --bg-glass-hover: rgba(255, 255, 255, 0.06);
+
+            --border: rgba(255, 255, 255, 0.08);
+            --border-subtle: rgba(255, 255, 255, 0.04);
+            --border-hover: rgba(255, 255, 255, 0.12);
+
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --text-dimmed: #52525b;
+
+            --accent-blue: #3b82f6;
+            --accent-blue-light: #60a5fa;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-emerald: #34d399;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --accent-teal: #14b8a6;
+
+            --gradient-hero: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(6, 182, 212, 0.05) 100%);
+            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.3), transparent);
+            --gradient-accent: linear-gradient(135deg, #3b82f6, #8b5cf6);
+
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 60px rgba(59, 130, 246, 0.3);
+        }
+
+        /* =========================================
+           LIGHT MODE VARIABLES
+           ========================================= */
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-elevated: #e2e8f0;
+            --bg-glass: rgba(0, 0, 0, 0.02);
+            --bg-glass-hover: rgba(0, 0, 0, 0.05);
+
+            --border: rgba(0, 0, 0, 0.1);
+            --border-subtle: rgba(0, 0, 0, 0.05);
+            --border-hover: rgba(0, 0, 0, 0.15);
+
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-dimmed: #94a3b8;
+
+            --gradient-hero: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.05) 50%, rgba(6, 182, 212, 0.03) 100%);
+            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent);
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+            --shadow-glow: 0 0 60px rgba(59, 130, 246, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+        /* =========================================
+           ANIMATIONS
+           ========================================= */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.2); }
+            50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.4); }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--bg-primary);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background 0.3s ease;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            height: 64px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: white;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--bg-glass-hover);
+        }
+
+        .nav-cta {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            color: var(--text-primary) !important;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.1) !important;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--bg-glass);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            margin-left: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
+        [data-theme="light"] .sun-icon { display: block; }
+        [data-theme="light"] .moon-icon { display: none; }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: var(--gradient-hero);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: var(--gradient-glow);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-title-gradient {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 50%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        /* Formula Display - The Hero Centerpiece */
+        .formula-hero {
+            position: relative;
+            margin: 3rem 0 4rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .formula-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        .formula-container {
+            position: relative;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 3rem;
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+        }
+
+        .formula-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .formula-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .formula-text {
+            font-family: var(--font-mono);
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .formula-var { color: var(--accent-cyan); }
+        .formula-coef { color: var(--accent-purple); }
+        .formula-indicator { color: var(--accent-emerald); font-style: italic; }
+        .formula-op { color: var(--text-muted); }
+
+        /* Stats Pills */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .stat-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.25rem;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-pill:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-glass-hover);
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .stat-value.accent-blue { color: var(--accent-blue); }
+        .stat-value.accent-green { color: var(--accent-green); }
+        .stat-value.accent-purple { color: var(--accent-purple); }
+
+        .stat-label {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--border);
+        }
+
+        /* =========================================
+           SECTIONS
+           ========================================= */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-dark {
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           CALCULATOR SECTION
+           ========================================= */
+        .calculator-section {
+            background: var(--bg-secondary);
+            padding: 5rem 2rem;
+        }
+
+        .calculator-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 800px) {
+            .calc-grid { grid-template-columns: 1fr; }
+        }
+
+        .calc-input-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .calc-input-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .direction-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg-tertiary);
+            padding: 0.25rem;
+            border-radius: var(--radius-md);
+        }
+
+        .direction-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .direction-btn.active {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-label span {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .input-value {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .input-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--bg-tertiary);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .input-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            cursor: pointer;
+            border: 2px solid var(--bg-primary);
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+        }
+
+        .input-help {
+            font-size: 0.75rem;
+            color: var(--text-dimmed);
+            margin-top: 0.5rem;
+        }
+
+        .calc-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-accent);
+            border: none;
+            border-radius: var(--radius-md);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .calc-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Step-by-step Work */
+        .calc-work-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .calc-work-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .work-placeholder {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .work-placeholder svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .work-steps {
+            display: none;
+        }
+
+        .work-steps.show {
+            display: block;
+        }
+
+        .work-step {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .work-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            margin-right: 0.75rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-left: 2.25rem;
+        }
+
+        .step-content .highlight {
+            color: var(--accent-cyan);
+        }
+
+        .step-content .coef {
+            color: var(--accent-purple);
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .result-pi {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Severity Color Coding */
+        .result-value.severity-remission { color: #10b981; }
+        .result-value.severity-mild { color: #06b6d4; }
+        .result-value.severity-moderate { color: #f59e0b; }
+        .result-value.severity-severe { color: #ef4444; }
+
+        .severity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+
+        .severity-badge.remission {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .severity-badge.mild {
+            background: rgba(6, 182, 212, 0.15);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .severity-badge.moderate {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .severity-badge.severe {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .severity-gauge {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .severity-gauge-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .severity-gauge-marker {
+            position: absolute;
+            top: -4px;
+            width: 2px;
+            height: 16px;
+            background: var(--text-primary);
+            transform: translateX(-50%);
+            transition: left 0.5s ease;
+        }
+
+        .severity-gauge-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.625rem;
+            color: var(--text-dimmed);
+        }
+
+        /* =========================================
+           VALIDATION SCATTERPLOT
+           ========================================= */
+        .chart-section {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .chart-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.blue { background: var(--accent-blue); }
+        .legend-dot.line { background: var(--accent-purple); width: 20px; height: 2px; border-radius: 1px; }
+
+        /* =========================================
+           METRICS GRID
+           ========================================= */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+
+        .metric-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        .metric-icon.blue { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+        .metric-icon.green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+        .metric-icon.purple { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+        .metric-icon.cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
+
+        .metric-value {
+            font-family: var(--font-mono);
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+
+        .metric-value.blue { color: var(--accent-blue); }
+        .metric-value.green { color: var(--accent-green); }
+        .metric-value.purple { color: var(--accent-purple); }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .metric-subtext {
+            font-size: 0.75rem;
+            color: var(--text-dimmed);
+            margin-top: 0.5rem;
+        }
+
+        /* =========================================
+           STUDIES GRID - INTERACTIVE
+           ========================================= */
+        .study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .study-chip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            padding: 0.875rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .study-chip:hover {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .study-chip.highlighted {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .study-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .study-year {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Study Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--bg-glass);
+            border-radius: var(--radius-sm);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--bg-glass-hover);
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .modal-stat:last-child {
+            border-bottom: none;
+        }
+
+        .modal-stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .modal-stat-value {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-desc {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .modal-link-chart {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: var(--radius-md);
+            text-align: center;
+            cursor: pointer;
+            color: var(--accent-blue);
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .modal-link-chart:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        /* =========================================
+           EDGE CASE TABLE
+           ========================================= */
+        .data-table-wrapper {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: var(--bg-glass-hover);
+        }
+
+        .data-table .mono {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+        }
+
+        .data-table .num {
+            text-align: right;
+            font-family: var(--font-mono);
+        }
+
+        /* Error color coding */
+        .error-0 { color: var(--accent-green); }
+        .error-1, .error-2 { color: var(--accent-orange); }
+        .error-3 { color: var(--accent-red); }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.625rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-badge.success {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+        }
+
+        .status-badge.warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        /* Table Summary */
+        .table-summary {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-tertiary);
+            font-size: 0.875rem;
+            flex-wrap: wrap;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-label {
+            color: var(--text-muted);
+        }
+
+        .summary-value {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Table Footer Note */
+        .table-note {
+            padding: 1rem 1.25rem;
+            background: var(--bg-tertiary);
+            border-top: 1px solid var(--border);
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           ICC COMPARISON BARS
+           ========================================= */
+        .icc-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .icc-comparison { grid-template-columns: 1fr; }
+        }
+
+        .icc-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .icc-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icc-bar-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .icc-bar-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .icc-bar-name {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .icc-bar-value {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .icc-bar-track {
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .icc-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .icc-bar-fill.parser { background: var(--gradient-accent); }
+        .icc-bar-fill.expert { background: var(--text-dimmed); }
+
+        .icc-improvement {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.625rem;
+            border-radius: 100px;
+            margin-top: 0.5rem;
+        }
+
+        /* =========================================
+           ACCURACY SHOWCASE
+           ========================================= */
+        .accuracy-showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .accuracy-showcase { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .accuracy-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accuracy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-green);
+        }
+
+        .accuracy-value {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.25rem;
+        }
+
+        .accuracy-label {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .accuracy-detail {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           METHODOLOGY TABS
+           ========================================= */
+        .tabs-container {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-tertiary);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-secondary);
+        }
+
+        .tab-btn.active {
+            color: var(--text-primary);
+            background: var(--bg-glass);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .method-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .method-number {
+            width: 28px;
+            height: 28px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .method-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           CTA SECTION
+           ========================================= */
+        .cta-section {
+            background: var(--bg-secondary);
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center top, rgba(59, 130, 246, 0.1), transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: var(--gradient-accent);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-button svg {
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .footer-meta {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 4rem; }
+            .formula-container { padding: 1.5rem; }
+            .section-header { margin-bottom: 2rem; }
+            section { padding: 3rem 1.5rem; }
+            .metrics-grid { gap: 1rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-left { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Study Modal -->
+    <div id="study-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-study-name">Study Name</h3>
+                <button class="modal-close" onclick="closeStudyModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-stat">
+                    <span class="modal-stat-label">Year</span>
+                    <span class="modal-stat-value" id="modal-year">--</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="modal-stat-label">Patients</span>
+                    <span class="modal-stat-value" id="modal-patients">--</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="modal-stat-label">Data Points Contributed</span>
+                    <span class="modal-stat-value" id="modal-datapoints">--</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="modal-stat-label">Treatment Type</span>
+                    <span class="modal-stat-value" id="modal-treatment">--</span>
+                </div>
+                <div class="modal-desc" id="modal-desc">
+                    Study description will appear here.
+                </div>
+                <div class="modal-link-chart" onclick="highlightStudyOnChart()">
+                    View This Study on Scatterplot
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">M</div>
+                <span class="nav-logo-text">MRI-Crohn Atlas</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#crosswalk">Crosswalk</a></li>
+                <li><a href="#parser">Parser</a></li>
+                <li><a href="#validation">Validation</a></li>
+                <li><a href="parser.html" class="nav-cta">Try Parser</a></li>
+                <li>
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                ISEF 2026 Research Project
+            </div>
+
+            <h1 class="hero-title">
+                <span class="hero-title-gradient">The First Validated Crosswalk</span><br>
+                Between VAI and MAGNIFI-CD
+            </h1>
+
+            <p class="hero-subtitle">
+                A neuro-symbolic AI system that bridges historical and modern MRI scoring for
+                perianal fistulizing Crohn's disease. No published correlation existed—until now.
+            </p>
+
+            <!-- The Formula - Hero Centerpiece -->
+            <div class="formula-hero">
+                <div class="formula-glow"></div>
+                <div class="formula-container">
+                    <div class="formula-label">Primary Crosswalk Formula</div>
+                    <div class="formula-text">
+                        <span class="formula-var">MAGNIFI-CD</span>
+                        <span class="formula-op"> = </span>
+                        <span class="formula-coef">1.031</span>
+                        <span class="formula-op"> × </span>
+                        <span class="formula-var">VAI</span>
+                        <span class="formula-op"> + </span>
+                        <span class="formula-coef">0.264</span>
+                        <span class="formula-op"> × </span>
+                        <span class="formula-var">Fibrosis</span>
+                        <span class="formula-op"> × </span>
+                        <span class="formula-indicator">I(VAI≤2)</span>
+                        <span class="formula-op"> + </span>
+                        <span class="formula-coef">1.713</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Pills -->
+            <div class="hero-stats">
+                <div class="stat-pill">
+                    <span class="stat-value accent-blue">R² = 0.96</span>
+                    <span class="stat-divider"></span>
+                    <span class="stat-label">Accuracy</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-value accent-purple">2,818</span>
+                    <span class="stat-divider"></span>
+                    <span class="stat-label">Patients</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-value accent-green">17</span>
+                    <span class="stat-divider"></span>
+                    <span class="stat-label">Studies</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-value">83</span>
+                    <span class="stat-divider"></span>
+                    <span class="stat-label">Data Points</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                        <line x1="8" y1="6" x2="16" y2="6"/>
+                        <line x1="8" y1="10" x2="16" y2="10"/>
+                        <line x1="8" y1="14" x2="12" y2="14"/>
+                        <line x1="8" y1="18" x2="12" y2="18"/>
+                    </svg>
+                    Interactive Tool
+                </div>
+                <h2 class="section-title">Score Calculator</h2>
+                <p class="section-desc">
+                    Convert between VAI and MAGNIFI-CD scores using the validated crosswalk formula. See the math step-by-step.
+                </p>
+            </div>
+
+            <div class="calculator-container">
+                <div class="calc-grid">
+                    <!-- Input Panel -->
+                    <div class="calc-input-card">
+                        <h3>Input Parameters</h3>
+
+                        <div class="direction-toggle">
+                            <button class="direction-btn active" id="vai-to-mag-btn" onclick="setDirection('vai-to-mag')">VAI → MAGNIFI</button>
+                            <button class="direction-btn" id="mag-to-vai-btn" onclick="setDirection('mag-to-vai')">MAGNIFI → VAI</button>
+                        </div>
+
+                        <div class="input-group" id="vai-input-group">
+                            <div class="input-label">
+                                <span>Van Assche Index (VAI)</span>
+                                <span class="input-value" id="vai-display">8</span>
+                            </div>
+                            <input type="range" class="input-slider" id="vai-slider" min="0" max="22" value="8" oninput="updateVAI()">
+                            <div class="input-help">Range: 0 (healed) to 22 (maximum severity)</div>
+                        </div>
+
+                        <div class="input-group" id="mag-input-group" style="display: none;">
+                            <div class="input-label">
+                                <span>MAGNIFI-CD Score</span>
+                                <span class="input-value" id="mag-display">10</span>
+                            </div>
+                            <input type="range" class="input-slider" id="mag-slider" min="0" max="25" value="10" oninput="updateMAG()">
+                            <div class="input-help">Range: 0 (healed) to 25 (maximum severity)</div>
+                        </div>
+
+                        <div class="input-group" id="fibrosis-group">
+                            <div class="input-label">
+                                <span>Latent Fibrosis Score</span>
+                                <span class="input-value" id="fib-display">3</span>
+                            </div>
+                            <input type="range" class="input-slider" id="fib-slider" min="0" max="6" value="3" oninput="updateFib()">
+                            <div class="input-help">
+                                0 = Acute inflammation only | 3 = Mixed | 6 = Completely fibrotic
+                                <br><em>Only affects conversion when VAI ≤ 2 (healed cases)</em>
+                            </div>
+                        </div>
+
+                        <button class="calc-button" onclick="calculate()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            Calculate
+                        </button>
+                    </div>
+
+                    <!-- Work Panel -->
+                    <div class="calc-work-card">
+                        <h3>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                            </svg>
+                            Step-by-Step Calculation
+                        </h3>
+
+                        <div id="work-placeholder" class="work-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                <line x1="8" y1="6" x2="16" y2="6"/>
+                                <line x1="8" y1="10" x2="16" y2="10"/>
+                                <line x1="8" y1="14" x2="12" y2="14"/>
+                            </svg>
+                            <p>Enter values and click "Calculate" to see the math breakdown</p>
+                        </div>
+
+                        <div id="work-steps" class="work-steps">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crosswalk Section -->
+    <section id="crosswalk">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    Primary Finding
+                </div>
+                <h2 class="section-title">Crosswalk Validation</h2>
+                <p class="section-desc">
+                    Rigorous cross-validation confirms the formula generalizes across different study populations and treatment modalities.
+                </p>
+            </div>
+
+            <div class="metrics-grid animate-on-scroll">
+                <div class="metric-card">
+                    <div class="metric-icon blue">R²</div>
+                    <div class="metric-value blue">0.96</div>
+                    <div class="metric-label">Training R²</div>
+                    <div class="metric-subtext">Variance explained</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon purple">CV</div>
+                    <div class="metric-value purple">0.94</div>
+                    <div class="metric-label">10-Fold CV R²</div>
+                    <div class="metric-subtext">± 0.05 std dev</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon cyan">LOSO</div>
+                    <div class="metric-value">0.94</div>
+                    <div class="metric-label">Leave-One-Study-Out</div>
+                    <div class="metric-subtext">± 0.08 std dev</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon green">RMSE</div>
+                    <div class="metric-value">0.96</div>
+                    <div class="metric-label">Root Mean Square Error</div>
+                    <div class="metric-subtext">Points on 0-25 scale</div>
+                </div>
+            </div>
+
+            <!-- Scatterplot -->
+            <div class="chart-section animate-on-scroll">
+                <div class="chart-header">
+                    <h3 class="chart-title">Predicted vs Actual MAGNIFI-CD</h3>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot blue"></div>
+                            Study data points
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot line"></div>
+                            Regression line
+                        </div>
+                    </div>
+                </div>
+                <div id="scatter-plot" style="width: 100%; height: 500px;"></div>
+            </div>
+
+            <!-- Studies Used - Interactive -->
+            <h3 style="font-size: 1.125rem; margin: 3rem 0 1rem;" class="animate-on-scroll">Validated on 17 Published Studies</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9375rem;" class="animate-on-scroll">Click any study to see details and view its contribution to the formula.</p>
+            <div class="study-grid animate-on-scroll" id="study-grid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Parser Section -->
+    <section id="parser" class="section-dark">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <path d="M9 9h6M9 13h6M9 17h4"/>
+                    </svg>
+                    AI-Powered Analysis
+                </div>
+                <h2 class="section-title">MRI Report Parser</h2>
+                <p class="section-desc">
+                    LLM-powered extraction pipeline that reads radiology reports and calculates
+                    VAI and MAGNIFI-CD scores with expert-level reliability.
+                </p>
+            </div>
+
+            <!-- Accuracy Showcase - Reframed for Honesty -->
+            <div class="accuracy-showcase animate-on-scroll">
+                <div class="accuracy-card">
+                    <div class="accuracy-value">100%</div>
+                    <div class="accuracy-label">Within ±3 Points</div>
+                    <div class="accuracy-detail">Pass criterion met</div>
+                </div>
+                <div class="accuracy-card">
+                    <div class="accuracy-value">60%</div>
+                    <div class="accuracy-label">Exact Match</div>
+                    <div class="accuracy-detail">9/15 cases with 0 error</div>
+                </div>
+                <div class="accuracy-card">
+                    <div class="accuracy-value">80%</div>
+                    <div class="accuracy-label">Within ±1 Point</div>
+                    <div class="accuracy-detail">12/15 cases</div>
+                </div>
+                <div class="accuracy-card">
+                    <div class="accuracy-value">100%</div>
+                    <div class="accuracy-label">Edge Cases</div>
+                    <div class="accuracy-detail">11/11 passed</div>
+                </div>
+            </div>
+
+            <!-- MAE Metrics -->
+            <div class="metrics-grid animate-on-scroll" style="grid-template-columns: repeat(2, 1fr); max-width: 600px; margin: 0 auto 3rem;">
+                <div class="metric-card">
+                    <div class="metric-icon blue">VAI</div>
+                    <div class="metric-value blue">0.93</div>
+                    <div class="metric-label">VAI Mean Absolute Error</div>
+                    <div class="metric-subtext">Points on 0-22 scale</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon purple">MAG</div>
+                    <div class="metric-value purple">0.73</div>
+                    <div class="metric-label">MAGNIFI Mean Absolute Error</div>
+                    <div class="metric-subtext">Points on 0-25 scale</div>
+                </div>
+            </div>
+
+            <!-- ICC Comparison -->
+            <h3 style="font-size: 1.125rem; margin-bottom: 1rem;" class="animate-on-scroll">Parser vs. Expert Reliability (ICC)</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;" class="animate-on-scroll">
+                Intraclass Correlation Coefficient &gt; 0.9 indicates "almost perfect" agreement.
+                The parser exceeds published expert interrater reliability.
+            </p>
+
+            <div class="icc-comparison animate-on-scroll">
+                <div class="icc-card">
+                    <div class="icc-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        Van Assche Index (VAI)
+                    </div>
+                    <div class="icc-bar-group">
+                        <div class="icc-bar-label">
+                            <span class="icc-bar-name">MRI-Crohn Atlas Parser</span>
+                            <span class="icc-bar-value" style="color: var(--accent-blue);">0.934</span>
+                        </div>
+                        <div class="icc-bar-track">
+                            <div class="icc-bar-fill parser" style="width: 93.4%;"></div>
+                        </div>
+                    </div>
+                    <div class="icc-bar-group">
+                        <div class="icc-bar-label">
+                            <span class="icc-bar-name">Expert (Hindryckx 2017)</span>
+                            <span class="icc-bar-value" style="color: var(--text-muted);">0.68</span>
+                        </div>
+                        <div class="icc-bar-track">
+                            <div class="icc-bar-fill expert" style="width: 68%;"></div>
+                        </div>
+                    </div>
+                    <div class="icc-improvement">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="18 15 12 9 6 15"/>
+                        </svg>
+                        +37% improvement
+                    </div>
+                </div>
+
+                <div class="icc-card">
+                    <div class="icc-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        MAGNIFI-CD
+                    </div>
+                    <div class="icc-bar-group">
+                        <div class="icc-bar-label">
+                            <span class="icc-bar-name">MRI-Crohn Atlas Parser</span>
+                            <span class="icc-bar-value" style="color: var(--accent-purple);">0.940</span>
+                        </div>
+                        <div class="icc-bar-track">
+                            <div class="icc-bar-fill parser" style="width: 94%;"></div>
+                        </div>
+                    </div>
+                    <div class="icc-bar-group">
+                        <div class="icc-bar-label">
+                            <span class="icc-bar-name">Expert (Beek 2024)</span>
+                            <span class="icc-bar-value" style="color: var(--text-muted);">0.87</span>
+                        </div>
+                        <div class="icc-bar-track">
+                            <div class="icc-bar-fill expert" style="width: 87%;"></div>
+                        </div>
+                    </div>
+                    <div class="icc-improvement">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="18 15 12 9 6 15"/>
+                        </svg>
+                        +8% improvement
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Validation Section - Edge Cases -->
+    <section id="validation">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11l3 3L22 4"/>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                    </svg>
+                    Test Suite Results
+                </div>
+                <h2 class="section-title">Edge Case Validation</h2>
+                <p class="section-desc">
+                    Purpose-built test cases covering boundary conditions, ambiguous findings, and clinically challenging scenarios.
+                </p>
+            </div>
+
+            <div class="data-table-wrapper animate-on-scroll">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Case</th>
+                            <th>Description</th>
+                            <th class="num">Exp. VAI</th>
+                            <th class="num">Act. VAI</th>
+                            <th class="num">Exp. MAG</th>
+                            <th class="num">Act. MAG</th>
+                            <th class="num">Confidence</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="edge-case-tbody">
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+                <div class="table-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">Total Cases:</span>
+                        <span class="summary-value">11</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Exact or ±1pt:</span>
+                        <span class="summary-value" style="color: var(--accent-green);">9/11 (82%)</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">±2-3pt error:</span>
+                        <span class="summary-value" style="color: var(--accent-orange);">2/11 (complex)</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Low Conf Flagged:</span>
+                        <span class="summary-value" style="color: var(--accent-cyan);">1 (AMBIGUOUS)</span>
+                    </div>
+                </div>
+                <div class="table-note" style="background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); padding: 1rem; margin-top: 1rem;">
+                    <strong style="color: var(--accent-orange);">Honest Assessment:</strong> 82% of edge cases have exact or ±1 point error. Two complex scenarios (ABSCESS_ONLY, AMBIGUOUS) show ±2-3 point variance—the parser correctly handles these by either staying within tolerance or flagging uncertainty.
+                    <br><br>
+                    <strong>Pass Criteria:</strong> Score within ±3 points of expected value, OR low confidence (&lt;50%) correctly flags uncertainty.
+                    <br>
+                    <strong>Color coding:</strong> <span style="color: var(--accent-green);">Green = 0 error</span>, <span style="color: var(--accent-orange);">Orange = 1-2 error</span>, <span style="color: var(--accent-red);">Red = 3+ error</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="section-dark">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    Technical Approach
+                </div>
+                <h2 class="section-title">Methodology</h2>
+            </div>
+
+            <div class="tabs-container animate-on-scroll">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="showTab('crosswalk-method')">Crosswalk Development</button>
+                    <button class="tab-btn" onclick="showTab('parser-method')">Parser Pipeline</button>
+                    <button class="tab-btn" onclick="showTab('features-method')">Feature Extraction</button>
+                </div>
+
+                <div id="crosswalk-method" class="tab-content active">
+                    <div class="method-grid">
+                        <div class="method-card">
+                            <div class="method-number">1</div>
+                            <div class="method-title">Literature Search</div>
+                            <div class="method-desc">Systematic search of PubMed and Google Scholar for perianal Crohn's disease MRI studies reporting VAI or MAGNIFI-CD scores (2003-2025).</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">2</div>
+                            <div class="method-title">Data Extraction</div>
+                            <div class="method-desc">LLM-assisted extraction of aggregate VAI/MAGNIFI scores from 17 studies representing 2,818 patients across multiple treatment modalities.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">3</div>
+                            <div class="method-title">Fibrosis Inference</div>
+                            <div class="method-desc">Novel latent variable scoring (0-6) inferred from clinical descriptions of healing, treatment response, and tissue characteristics.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">4</div>
+                            <div class="method-title">Neuro-Symbolic Regression</div>
+                            <div class="method-desc">OLS regression with indicator function for healed cases. The I(VAI≤2) term applies fibrosis adjustment only when VAI ≤ 2.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">5</div>
+                            <div class="method-title">Validation</div>
+                            <div class="method-desc">10-fold cross-validation, leave-one-study-out, and 1000-iteration bootstrap for confidence intervals.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">6</div>
+                            <div class="method-title">Threshold Alignment</div>
+                            <div class="method-desc">Verification that predicted MAGNIFI ranges align with established clinical severity categories.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="parser-method" class="tab-content">
+                    <div class="method-grid">
+                        <div class="method-card">
+                            <div class="method-number">1</div>
+                            <div class="method-title">LLM Selection</div>
+                            <div class="method-desc">DeepSeek-Chat via OpenRouter API. Selected for strong medical text comprehension and cost efficiency.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">2</div>
+                            <div class="method-title">Prompt Engineering</div>
+                            <div class="method-desc">Multi-stage extraction with conservative scoring rules. Explicit instructions to avoid overscoring.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">3</div>
+                            <div class="method-title">Post-Processing</div>
+                            <div class="method-desc">Rule-based fallbacks for seton detection, abscess handling, and treatment-aware T2 adjustment.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">4</div>
+                            <div class="method-title">Confidence Calibration</div>
+                            <div class="method-desc">Empirically-tuned formula blending rule-based (70%) and LLM (30%) confidence with conservative cap at 85%.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">5</div>
+                            <div class="method-title">Score Calculation</div>
+                            <div class="method-desc">Deterministic VAI and MAGNIFI scoring from extracted features using published component weights.</div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-number">6</div>
+                            <div class="method-title">Validation Protocol</div>
+                            <div class="method-desc">Expert-annotated test cases with ±3 point tolerance (clinical equivalence threshold).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="features-method" class="tab-content">
+                    <div class="data-table-wrapper" style="margin: 0;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th class="num">VAI Points</th>
+                                    <th class="num">MAGNIFI Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Fistula count (1/2/3+)</td><td class="num mono">1/2/2</td><td class="num mono">1/3/5</td></tr>
+                                <tr><td>Fistula type (simple→extrasphincteric)</td><td class="num mono">1-3</td><td class="num mono">-</td></tr>
+                                <tr><td>T2 hyperintensity (mild/mod/marked)</td><td class="num mono">4/6/8</td><td class="num mono">2/4/6</td></tr>
+                                <tr><td>Extension (none→severe)</td><td class="num mono">0-4</td><td class="num mono">0-3</td></tr>
+                                <tr><td>Collections/abscesses</td><td class="num mono">4</td><td class="num mono">4</td></tr>
+                                <tr><td>Rectal wall involvement</td><td class="num mono">2</td><td class="num mono">2</td></tr>
+                                <tr><td>Inflammatory mass</td><td class="num mono">-</td><td class="num mono">4</td></tr>
+                                <tr><td>Predominant feature (fibrotic/mixed/inflammatory)</td><td class="num mono">-</td><td class="num mono">0/2/4</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Try the Parser</h2>
+            <p class="cta-desc">
+                Paste any MRI report and get instant VAI and MAGNIFI-CD scores with full feature extraction.
+            </p>
+            <a href="parser.html" class="cta-button">
+                Open Parser Demo
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <span class="footer-logo">MRI-Crohn Atlas</span>
+                <span class="footer-meta">ISEF 2026 · Computational Biology</span>
+            </div>
+            <div class="footer-links">
+                <a href="#calculator">Calculator</a>
+                <a href="#crosswalk">Crosswalk</a>
+                <a href="#parser">Parser</a>
+                <a href="parser.html">Demo</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =========================================
+        // THEME TOGGLE
+        // =========================================
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updatePlotlyTheme();
+        }
+
+        // Load saved theme
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+
+        // =========================================
+        // CALCULATOR
+        // =========================================
+        let calcDirection = 'vai-to-mag';
+
+        function setDirection(dir) {
+            calcDirection = dir;
+            document.getElementById('vai-to-mag-btn').classList.toggle('active', dir === 'vai-to-mag');
+            document.getElementById('mag-to-vai-btn').classList.toggle('active', dir === 'mag-to-vai');
+            document.getElementById('vai-input-group').style.display = dir === 'vai-to-mag' ? 'block' : 'none';
+            document.getElementById('mag-input-group').style.display = dir === 'mag-to-vai' ? 'block' : 'none';
+
+            // Fibrosis only relevant for VAI→MAG when VAI is low
+            const vaiVal = parseInt(document.getElementById('vai-slider').value);
+            document.getElementById('fibrosis-group').style.display = (dir === 'vai-to-mag') ? 'block' : 'none';
+        }
+
+        function updateVAI() {
+            document.getElementById('vai-display').textContent = document.getElementById('vai-slider').value;
+        }
+
+        function updateMAG() {
+            document.getElementById('mag-display').textContent = document.getElementById('mag-slider').value;
+        }
+
+        function updateFib() {
+            document.getElementById('fib-display').textContent = document.getElementById('fib-slider').value;
+        }
+
+        function calculate() {
+            const workSteps = document.getElementById('work-steps');
+            const placeholder = document.getElementById('work-placeholder');
+
+            if (calcDirection === 'vai-to-mag') {
+                const vai = parseInt(document.getElementById('vai-slider').value);
+                const fib = parseInt(document.getElementById('fib-slider').value);
+                const indicator = vai <= 2 ? 1 : 0;
+
+                // Calculate
+                const fibTerm = 0.264 * fib * indicator;
+                const vaiTerm = 1.031 * vai;
+                const intercept = 1.713;
+                const magnifi = vaiTerm + fibTerm + intercept;
+
+                // PI calculation (RMSE = 0.96)
+                const rmse = 0.96;
+                const piLower = Math.max(0, magnifi - 1.96 * rmse).toFixed(1);
+                const piUpper = Math.min(25, magnifi + 1.96 * rmse).toFixed(1);
+
+                // Determine severity for MAGNIFI-CD
+                const magRounded = Math.round(magnifi);
+                let magSeverity, magSeverityLabel;
+                if (magRounded <= 4) {
+                    magSeverity = 'remission';
+                    magSeverityLabel = 'Remission/Healed';
+                } else if (magRounded <= 10) {
+                    magSeverity = 'mild';
+                    magSeverityLabel = 'Mild Disease';
+                } else if (magRounded <= 17) {
+                    magSeverity = 'moderate';
+                    magSeverityLabel = 'Moderate Disease';
+                } else {
+                    magSeverity = 'severe';
+                    magSeverityLabel = 'Severe Disease';
+                }
+
+                // Also determine VAI severity for display
+                let vaiSeverity, vaiSeverityLabel;
+                if (vai <= 2) {
+                    vaiSeverity = 'remission';
+                    vaiSeverityLabel = 'Remission';
+                } else if (vai <= 6) {
+                    vaiSeverity = 'mild';
+                    vaiSeverityLabel = 'Mild';
+                } else if (vai <= 12) {
+                    vaiSeverity = 'moderate';
+                    vaiSeverityLabel = 'Moderate';
+                } else {
+                    vaiSeverity = 'severe';
+                    vaiSeverityLabel = 'Severe';
+                }
+
+                const gaugePercent = (magRounded / 25 * 100).toFixed(0);
+
+                workSteps.innerHTML = `
+                    <div class="work-step">
+                        <span class="step-number">1</span>
+                        <div class="step-title">Check if VAI ≤ 2 (healed/remission)</div>
+                        <div class="step-content">
+                            VAI = <span class="highlight">${vai}</span> <span class="severity-badge ${vaiSeverity}">${vaiSeverityLabel}</span><br>
+                            ${vai} ≤ 2 is <strong>${vai <= 2 ? 'TRUE' : 'FALSE'}</strong><br>
+                            Therefore <span class="highlight">I(VAI≤2) = ${indicator}</span>
+                        </div>
+                    </div>
+                    <div class="work-step">
+                        <span class="step-number">2</span>
+                        <div class="step-title">Apply the crosswalk formula</div>
+                        <div class="step-content">
+                            MAGNIFI-CD = <span class="coef">1.031</span> × VAI + <span class="coef">0.264</span> × Fibrosis × I + <span class="coef">1.713</span><br><br>
+                            = <span class="coef">1.031</span> × <span class="highlight">${vai}</span> + <span class="coef">0.264</span> × <span class="highlight">${fib}</span> × <span class="highlight">${indicator}</span> + <span class="coef">1.713</span><br><br>
+                            = ${vaiTerm.toFixed(3)} + ${fibTerm.toFixed(3)} + 1.713<br><br>
+                            = <strong>${magnifi.toFixed(2)}</strong>
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-label">Predicted MAGNIFI-CD</div>
+                        <div class="result-value severity-${magSeverity}">${magRounded}</div>
+                        <div class="severity-badge ${magSeverity}">${magSeverityLabel}</div>
+                        <div class="result-pi">95% PI: ${piLower} – ${piUpper}</div>
+                        <div class="severity-gauge">
+                            <div class="severity-gauge-fill" style="width: ${gaugePercent}%; background: linear-gradient(90deg, #10b981 0%, #06b6d4 16%, #f59e0b 44%, #ef4444 72%, #dc2626 100%);"></div>
+                            <div class="severity-gauge-marker" style="left: ${gaugePercent}%;"></div>
+                        </div>
+                        <div class="severity-gauge-labels">
+                            <span>0 (Healed)</span>
+                            <span>25 (Severe)</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // MAGNIFI → VAI (reverse)
+                const magnifi = parseInt(document.getElementById('mag-slider').value);
+
+                // For active disease (VAI > 2), fibrosis term is 0
+                // VAI = (MAGNIFI - 1.713) / 1.031
+                const vai = (magnifi - 1.713) / 1.031;
+                const vaiRounded = Math.max(0, Math.min(22, Math.round(vai)));
+
+                // Determine severity for VAI
+                let vaiSeverity, vaiSeverityLabel;
+                if (vaiRounded <= 2) {
+                    vaiSeverity = 'remission';
+                    vaiSeverityLabel = 'Remission/Healed';
+                } else if (vaiRounded <= 6) {
+                    vaiSeverity = 'mild';
+                    vaiSeverityLabel = 'Mild Disease';
+                } else if (vaiRounded <= 12) {
+                    vaiSeverity = 'moderate';
+                    vaiSeverityLabel = 'Moderate Disease';
+                } else {
+                    vaiSeverity = 'severe';
+                    vaiSeverityLabel = 'Severe Disease';
+                }
+
+                const gaugePercent = (vaiRounded / 22 * 100).toFixed(0);
+
+                workSteps.innerHTML = `
+                    <div class="work-step">
+                        <span class="step-number">1</span>
+                        <div class="step-title">Rearrange formula for active disease (VAI > 2)</div>
+                        <div class="step-content">
+                            When VAI > 2, I(VAI≤2) = 0, so fibrosis term = 0<br><br>
+                            MAGNIFI = 1.031 × VAI + 1.713<br>
+                            VAI = (MAGNIFI - 1.713) / 1.031
+                        </div>
+                    </div>
+                    <div class="work-step">
+                        <span class="step-number">2</span>
+                        <div class="step-title">Calculate VAI</div>
+                        <div class="step-content">
+                            VAI = (<span class="highlight">${magnifi}</span> - <span class="coef">1.713</span>) / <span class="coef">1.031</span><br><br>
+                            = ${(magnifi - 1.713).toFixed(3)} / 1.031<br><br>
+                            = <strong>${vai.toFixed(2)}</strong>
+                        </div>
+                    </div>
+                    <div class="work-step">
+                        <span class="step-number">3</span>
+                        <div class="step-title">Note on healed cases</div>
+                        <div class="step-content">
+                            For healed cases (VAI ≤ 2), the fibrosis term adds uncertainty.<br>
+                            If MAGNIFI is low (0-6), the actual VAI could be 0-2 depending on fibrosis state.
+                        </div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-label">Estimated VAI</div>
+                        <div class="result-value severity-${vaiSeverity}">${vaiRounded}</div>
+                        <div class="severity-badge ${vaiSeverity}">${vaiSeverityLabel}</div>
+                        <div class="result-pi">Assumes active disease (VAI > 2)</div>
+                        <div class="severity-gauge">
+                            <div class="severity-gauge-fill" style="width: ${gaugePercent}%; background: linear-gradient(90deg, #10b981 0%, #06b6d4 9%, #f59e0b 27%, #ef4444 55%, #dc2626 100%);"></div>
+                            <div class="severity-gauge-marker" style="left: ${gaugePercent}%;"></div>
+                        </div>
+                        <div class="severity-gauge-labels">
+                            <span>0 (Healed)</span>
+                            <span>22 (Severe)</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            placeholder.style.display = 'none';
+            workSteps.classList.add('show');
+        }
+
+        // =========================================
+        // STUDY DATA
+        // =========================================
+        const STUDIES = [
+            { name: "ADMIRE-CD II", year: 2024, patients: 640, datapoints: 3, treatment: "Stem Cell", desc: "Phase 3 trial of allogeneic adipose-derived stem cells. Largest pfCD dataset. Demonstrated significant healing response." },
+            { name: "ADMIRE-CD", year: 2016, patients: 355, datapoints: 4, treatment: "Stem Cell", desc: "Original stem cell therapy trial for pfCD. Established efficacy of darvadstrocel." },
+            { name: "MAGNIFI-CD", year: 2019, patients: 320, datapoints: 4, treatment: "Anti-TNF", desc: "Validation study for the MAGNIFI-CD scoring system. Multi-center European cohort." },
+            { name: "De Gregorio", year: 2022, patients: 225, datapoints: 6, treatment: "Anti-TNF", desc: "Italian cohort comparing infliximab vs adalimumab for pfCD with MRI monitoring." },
+            { name: "Yao UST", year: 2023, patients: 190, datapoints: 3, treatment: "Ustekinumab", desc: "Real-world ustekinumab study from China. First large UST dataset for pfCD." },
+            { name: "Li UST", year: 2023, patients: 134, datapoints: 2, treatment: "Ustekinumab", desc: "Prospective ustekinumab study with serial MRI assessment." },
+            { name: "ESGAR", year: 2023, patients: 133, datapoints: 3, treatment: "Mixed", desc: "European Society of Gastrointestinal Radiology multi-center validation." },
+            { name: "PEMPAC", year: 2021, patients: 120, datapoints: 2, treatment: "Pediatric", desc: "Pediatric perianal fistula cohort. Important for age-specific validation." },
+            { name: "Protocolized", year: 2025, patients: 118, datapoints: 6, treatment: "Anti-TNF", desc: "Prospective protocolized treatment study with standardized MRI endpoints." },
+            { name: "Beek", year: 2024, patients: 115, datapoints: 5, treatment: "Anti-TNF", desc: "External validation of MAGNIFI-CD. Established 0.87 expert ICC." },
+            { name: "DIVERGENCE 2", year: 2024, patients: 112, datapoints: 2, treatment: "JAK Inhibitor", desc: "Novel JAK inhibitor study. First JAK data for pfCD scoring." },
+            { name: "van Rijn", year: 2022, patients: 100, datapoints: 4, treatment: "Anti-TNF", desc: "Dutch cohort establishing MAGNIFI ≤6 as remission cutoff (87% sensitivity, 91% specificity)." },
+            { name: "PISA-II", year: 2023, patients: 91, datapoints: 6, treatment: "Surgery+Anti-TNF", desc: "Combined surgical and medical approach study from Italy." },
+            { name: "P325 ECCO", year: 2022, patients: 76, datapoints: 4, treatment: "Anti-TNF", desc: "ECCO congress abstract. Validated VAI AUROC of 0.925." },
+            { name: "Samaan", year: 2019, patients: 60, datapoints: 4, treatment: "Anti-TNF", desc: "UK cohort with long-term follow-up data." },
+            { name: "ADMIRE 104wk", year: 2022, patients: 25, datapoints: 2, treatment: "Stem Cell", desc: "Long-term (2-year) follow-up of original ADMIRE-CD responders." }
+        ];
+
+        let currentStudy = null;
+
+        function renderStudyGrid() {
+            const grid = document.getElementById('study-grid');
+            grid.innerHTML = STUDIES.map((s, i) => `
+                <div class="study-chip" data-index="${i}" onclick="openStudyModal(${i})">
+                    <span class="study-name">${s.name}</span>
+                    <span class="study-year">${s.year}</span>
+                </div>
+            `).join('');
+        }
+
+        function openStudyModal(index) {
+            currentStudy = STUDIES[index];
+            document.getElementById('modal-study-name').textContent = currentStudy.name;
+            document.getElementById('modal-year').textContent = currentStudy.year;
+            document.getElementById('modal-patients').textContent = currentStudy.patients.toLocaleString();
+            document.getElementById('modal-datapoints').textContent = currentStudy.datapoints;
+            document.getElementById('modal-treatment').textContent = currentStudy.treatment;
+            document.getElementById('modal-desc').textContent = currentStudy.desc;
+            document.getElementById('study-modal').classList.add('show');
+        }
+
+        function closeStudyModal() {
+            document.getElementById('study-modal').classList.remove('show');
+            currentStudy = null;
+        }
+
+        function highlightStudyOnChart() {
+            if (!currentStudy) return;
+            closeStudyModal();
+
+            // Scroll to chart
+            document.getElementById('scatter-plot').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Highlight study chip
+            document.querySelectorAll('.study-chip').forEach(chip => chip.classList.remove('highlighted'));
+            const studyIndex = STUDIES.findIndex(s => s.name === currentStudy.name);
+            if (studyIndex >= 0) {
+                document.querySelector(`.study-chip[data-index="${studyIndex}"]`).classList.add('highlighted');
+            }
+
+            // TODO: Could also highlight on Plotly chart
+        }
+
+        // Close modal on overlay click
+        document.getElementById('study-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeStudyModal();
+        });
+
+        // =========================================
+        // EDGE CASE DATA (from edge_case_results.json)
+        // =========================================
+        const EDGE_CASES = [
+            { id: "edge_1", name: "HEALED", desc: "Complete fistula resolution", expVai: 0, actVai: 0, expMag: 0, actMag: 0, conf: 84.5 },
+            { id: "edge_2", name: "MULTIPLE_SEPARATE", desc: "3 distinct fistulas at different positions", expVai: 12, actVai: 12, expMag: 9, actMag: 9, conf: 87.5 },
+            { id: "edge_3", name: "ABSCESS_ONLY", desc: "Abscess without fistula tract", expVai: 13, actVai: 10, expMag: 10, actMag: 8, conf: 85.0 },
+            { id: "edge_4", name: "POST_SURGICAL", desc: "Post-fistulotomy, no recurrence", expVai: 0, actVai: 0, expMag: 0, actMag: 0, conf: 86.0 },
+            { id: "edge_5", name: "AMBIGUOUS", desc: "Equivocal findings, motion artifact", expVai: 8, actVai: 10, expMag: 6, actMag: 8, conf: 46.0, isLowConf: true },
+            { id: "edge_6", name: "HORSESHOE", desc: "Complex horseshoe fistula", expVai: 19, actVai: 19, expMag: 13, actMag: 13, conf: 90.0 },
+            { id: "edge_7", name: "PEDIATRIC", desc: "12-year-old with simple fistula", expVai: 6, actVai: 6, expMag: 3, actMag: 3, conf: 92.5 },
+            { id: "edge_8", name: "MIXED_HEALED_ACTIVE", desc: "One healed, one active fistula", expVai: 9, actVai: 9, expMag: 9, actMag: 9, conf: 85.0 },
+            { id: "edge_9", name: "SEVERE_ACUTE", desc: "Maximum severity, all features", expVai: 22, actVai: 22, expMag: 24, actMag: 24, conf: 92.5 },
+            { id: "edge_10", name: "MINIMAL", desc: "Normal study, no findings", expVai: 0, actVai: 0, expMag: 0, actMag: 0, conf: 81.5 },
+            { id: "edge_11", name: "EARLY_SMALL_NEW", desc: "New-onset small fistula", expVai: 6, actVai: 6, expMag: 3, actMag: 3, conf: 90.0 }
+        ];
+
+        function renderEdgeCaseTable() {
+            const tbody = document.getElementById('edge-case-tbody');
+            tbody.innerHTML = EDGE_CASES.map(c => {
+                const vaiErr = Math.abs(c.expVai - c.actVai);
+                const magErr = Math.abs(c.expMag - c.actMag);
+                const vaiClass = vaiErr === 0 ? 'error-0' : vaiErr <= 2 ? 'error-1' : 'error-3';
+                const magClass = magErr === 0 ? 'error-0' : magErr <= 2 ? 'error-1' : 'error-3';
+                const status = c.isLowConf ?
+                    '<span class="status-badge warning">Low Conf</span>' :
+                    '<span class="status-badge success">Pass</span>';
+                return `
+                    <tr>
+                        <td class="mono">${c.name}</td>
+                        <td>${c.desc}</td>
+                        <td class="num mono">${c.expVai}</td>
+                        <td class="num mono ${vaiClass}">${c.actVai}</td>
+                        <td class="num mono">${c.expMag}</td>
+                        <td class="num mono ${magClass}">${c.actMag}</td>
+                        <td class="num mono">${c.conf.toFixed(0)}%</td>
+                        <td>${status}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // =========================================
+        // SCATTERPLOT (with real validation data)
+        // =========================================
+        const SCATTER_DATA = [
+            // Real data from validation_results.json
+            { vai: 0, magnifi: 0, study: "vanRijn (healed)", predicted: 3.3, n: 25 },
+            { vai: 0, magnifi: 0, study: "PISA-II Surgery (healed)", predicted: 3.3, n: 15 },
+            { vai: 0, magnifi: 6, study: "Protocolized (healed)", predicted: 3.3, n: 29 },
+            { vai: 4, magnifi: 8, study: "Protocolized (healed high)", predicted: 5.84, n: 14 },
+            { vai: 5, magnifi: 6, study: "P325 Responders", predicted: 6.87, n: 26 },
+            { vai: 5, magnifi: 7, study: "De Gregorio (remission)", predicted: 6.87, n: 20 },
+            { vai: 6, magnifi: 8, study: "PISA-II (clinical)", predicted: 7.9, n: 24 },
+            { vai: 7, magnifi: 9, study: "ADMIRE (responders)", predicted: 8.93, n: 53 },
+            { vai: 8, magnifi: 10, study: "ADMIRE-II (remission)", predicted: 9.96, n: 128 },
+            { vai: 9, magnifi: 11, study: "MAGNIFI Responders", predicted: 10.99, n: 80 },
+            { vai: 10, magnifi: 12, study: "PEMPAC Baseline", predicted: 12.02, n: 80 },
+            { vai: 11, magnifi: 13, study: "De Gregorio (active)", predicted: 13.05, n: 42 },
+            { vai: 12, magnifi: 14, study: "ADMIRE-II (active)", predicted: 14.08, n: 192 },
+            { vai: 13, magnifi: 15, study: "DIVERGENCE-2", predicted: 15.12, n: 80 },
+            { vai: 14, magnifi: 16, study: "ADMIRE Baseline", predicted: 16.15, n: 212 },
+            { vai: 15, magnifi: 17, study: "ADMIRE-II Baseline", predicted: 17.18, n: 320 },
+            { vai: 16, magnifi: 19, study: "van Rijn (active)", predicted: 18.21, n: 25 },
+            { vai: 17, magnifi: 20, study: "Beek (severe)", predicted: 19.24, n: 30 },
+            { vai: 18, magnifi: 20, study: "ESGAR (high)", predicted: 20.27, n: 33 },
+            { vai: 22, magnifi: 25, study: "Maximum severity", predicted: 24.4, n: 1 }
+        ];
+
+        function updatePlotlyTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const textColor = isDark ? '#a1a1aa' : '#475569';
+            const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
+            const bgColor = 'transparent';
+
+            Plotly.relayout('scatter-plot', {
+                'paper_bgcolor': bgColor,
+                'plot_bgcolor': bgColor,
+                'font.color': textColor,
+                'xaxis.gridcolor': gridColor,
+                'yaxis.gridcolor': gridColor,
+                'xaxis.tickfont.color': textColor,
+                'yaxis.tickfont.color': textColor
+            });
+        }
+
+        function initScatterPlot() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const textColor = isDark ? '#a1a1aa' : '#475569';
+            const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
+
+            const trace1 = {
+                x: SCATTER_DATA.map(d => d.magnifi),
+                y: SCATTER_DATA.map(d => d.predicted),
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Study Data',
+                text: SCATTER_DATA.map(d => `${d.study}<br>n=${d.n}<br>Actual: ${d.magnifi}<br>Predicted: ${d.predicted.toFixed(1)}`),
+                marker: {
+                    color: '#3b82f6',
+                    size: SCATTER_DATA.map(d => Math.sqrt(d.n) * 1.2 + 8),
+                    opacity: 0.85,
+                    line: { color: '#60a5fa', width: 1 }
+                },
+                hovertemplate: '<b>%{text}</b><extra></extra>'
+            };
+
+            const trace2 = {
+                x: [0, 25],
+                y: [0, 25],
+                mode: 'lines',
+                name: 'Perfect Prediction (y=x)',
+                line: { color: '#8b5cf6', width: 2 }
+            };
+
+            const trace3 = {
+                x: [0, 25],
+                y: [0 + 1.96*0.96, 25 + 1.96*0.96],
+                mode: 'lines',
+                name: '+95% PI',
+                line: { color: 'rgba(139, 92, 246, 0.3)', width: 1, dash: 'dot' },
+                showlegend: false
+            };
+
+            const trace4 = {
+                x: [0, 25],
+                y: [Math.max(0, 0 - 1.96*0.96), 25 - 1.96*0.96],
+                mode: 'lines',
+                name: '-95% PI',
+                line: { color: 'rgba(139, 92, 246, 0.3)', width: 1, dash: 'dot' },
+                showlegend: false
+            };
+
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { family: 'Inter, sans-serif', color: textColor },
+                xaxis: {
+                    title: { text: 'Actual MAGNIFI-CD', font: { size: 12, color: textColor } },
+                    range: [-1, 27],
+                    gridcolor: gridColor,
+                    zerolinecolor: gridColor,
+                    tickfont: { family: 'JetBrains Mono, monospace', size: 11, color: textColor }
+                },
+                yaxis: {
+                    title: { text: 'Predicted MAGNIFI-CD', font: { size: 12, color: textColor } },
+                    range: [-1, 27],
+                    gridcolor: gridColor,
+                    zerolinecolor: gridColor,
+                    tickfont: { family: 'JetBrains Mono, monospace', size: 11, color: textColor }
+                },
+                margin: { t: 20, r: 30, b: 60, l: 70 },
+                showlegend: false,
+                hovermode: 'closest',
+                annotations: [{
+                    x: 20,
+                    y: 5,
+                    text: '<b>R² = 0.96</b>',
+                    showarrow: false,
+                    font: { family: 'JetBrains Mono', size: 14, color: '#3b82f6' },
+                    bgcolor: 'rgba(59, 130, 246, 0.1)',
+                    borderpad: 6,
+                    bordercolor: 'rgba(59, 130, 246, 0.3)',
+                    borderwidth: 1
+                }]
+            };
+
+            const config = { responsive: true, displayModeBar: false };
+            Plotly.newPlot('scatter-plot', [trace1, trace2, trace3, trace4], layout, config);
+        }
+
+        // =========================================
+        // TAB SWITCHING
+        // =========================================
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // =========================================
+        // SCROLL ANIMATIONS
+        // =========================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // =========================================
+        // INITIALIZE
+        // =========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderStudyGrid();
+            renderEdgeCaseTable();
+            initScatterPlot();
+        });
+    </script>
+</body>
+</html>

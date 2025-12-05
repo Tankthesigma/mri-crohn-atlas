@@ -1,0 +1,186 @@
+{
+  "generated_at": "2025-12-04T13:19:24.316104",
+  "version": "V4_calibrated",
+  "summary": {
+    "total_cases": 11,
+    "mean_confidence": 0.752090909090909,
+    "overall_accuracy": 1.0,
+    "calibration_gap": -0.24790909090909097
+  },
+  "calibration_by_bin": {
+    "very_high": {
+      "range": [
+        0.75,
+        1.0
+      ],
+      "n_cases": 7,
+      "n_correct": 7,
+      "accuracy": 1.0,
+      "expected_accuracy": 0.875
+    },
+    "high": {
+      "range": [
+        0.55,
+        0.75
+      ],
+      "n_cases": 3,
+      "n_correct": 3,
+      "accuracy": 1.0,
+      "expected_accuracy": 0.65
+    },
+    "moderate": {
+      "range": [
+        0.4,
+        0.55
+      ],
+      "n_cases": 1,
+      "n_correct": 1,
+      "accuracy": 1.0,
+      "expected_accuracy": 0.47500000000000003
+    },
+    "low": {
+      "range": [
+        0.0,
+        0.4
+      ],
+      "n_cases": 0,
+      "n_correct": 0,
+      "accuracy": null,
+      "expected_accuracy": null
+    }
+  },
+  "detailed_results": [
+    {
+      "id": "edge_1",
+      "name": "HEALED",
+      "confidence": 0.671,
+      "vai": 0,
+      "expected_vai": 0,
+      "vai_err": 0,
+      "magnifi": 0,
+      "expected_magnifi": 0,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_2",
+      "name": "MULTIPLE_SEPARATE",
+      "confidence": 0.8009999999999999,
+      "vai": 12,
+      "expected_vai": 12,
+      "vai_err": 0,
+      "magnifi": 9,
+      "expected_magnifi": 9,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_3",
+      "name": "ABSCESS_ONLY",
+      "confidence": 0.6479999999999999,
+      "vai": 10,
+      "expected_vai": 10,
+      "vai_err": 0,
+      "magnifi": 8,
+      "expected_magnifi": 10,
+      "magnifi_err": 2,
+      "is_correct": true
+    },
+    {
+      "id": "edge_4",
+      "name": "POST_SURGICAL",
+      "confidence": 0.6559999999999999,
+      "vai": 0,
+      "expected_vai": 0,
+      "vai_err": 0,
+      "magnifi": 0,
+      "expected_magnifi": 0,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_5",
+      "name": "AMBIGUOUS",
+      "confidence": 0.43399999999999994,
+      "vai": 11,
+      "expected_vai": 8,
+      "vai_err": 3,
+      "magnifi": 9,
+      "expected_magnifi": 6,
+      "magnifi_err": 3,
+      "is_correct": true
+    },
+    {
+      "id": "edge_6",
+      "name": "HORSESHOE",
+      "confidence": 0.85,
+      "vai": 19,
+      "expected_vai": 19,
+      "vai_err": 0,
+      "magnifi": 13,
+      "expected_magnifi": 13,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_7",
+      "name": "PEDIATRIC",
+      "confidence": 0.85,
+      "vai": 6,
+      "expected_vai": 6,
+      "vai_err": 0,
+      "magnifi": 3,
+      "expected_magnifi": 3,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_8",
+      "name": "MIXED_HEALED_ACTIVE",
+      "confidence": 0.85,
+      "vai": 9,
+      "expected_vai": 9,
+      "vai_err": 0,
+      "magnifi": 9,
+      "expected_magnifi": 9,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_9",
+      "name": "SEVERE_ACUTE",
+      "confidence": 0.85,
+      "vai": 22,
+      "expected_vai": 22,
+      "vai_err": 0,
+      "magnifi": 24,
+      "expected_magnifi": 24,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_10",
+      "name": "MINIMAL",
+      "confidence": 0.8130000000000001,
+      "vai": 0,
+      "expected_vai": 0,
+      "vai_err": 0,
+      "magnifi": 0,
+      "expected_magnifi": 0,
+      "magnifi_err": 0,
+      "is_correct": true
+    },
+    {
+      "id": "edge_11",
+      "name": "EARLY_SMALL_NEW",
+      "confidence": 0.85,
+      "vai": 6,
+      "expected_vai": 6,
+      "vai_err": 0,
+      "magnifi": 3,
+      "expected_magnifi": 3,
+      "magnifi_err": 0,
+      "is_correct": true
+    }
+  ]
+}

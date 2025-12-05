@@ -1,0 +1,90 @@
+============================================================
+MRI REPORT PARSER - ISEF POSTER STATISTICS
+============================================================
+Generated: 2025-12-03 19:09
+
+----------------------------------------
+HEADLINE METRICS
+----------------------------------------
+Test Cases Evaluated:     15
+Overall Pass Rate:        7/15 (47%)
+Feature Extraction Acc:   92.5%
+VAI Score MAE:            3.27 points
+MAGNIFI-CD Score MAE:     3.13 points
+VAI Within +/-2 Points:   40%
+MAGNIFI Within +/-2:      53%
+Avg Traceability Score:   100%
+
+----------------------------------------
+FEATURE EXTRACTION ACCURACY
+----------------------------------------
+fistula_count                [####################] 100.0%
+extension                    [####################] 100.0%
+collections_abscesses        [####################] 100.0%
+rectal_wall_involvement      [####################] 100.0%
+inflammatory_mass            [####################] 100.0%
+fistula_type                 [#################---]  86.7%
+predominant_feature          [################----]  80.0%
+t2_hyperintensity            [##############------]  73.3%
+
+----------------------------------------
+ACCURACY BY DIFFICULTY
+----------------------------------------
+Ambiguous       0/1 (0%)
+Complex         2/5 (40%)
+Edge Case       3/6 (50%)
+Standard        2/3 (67%)
+
+----------------------------------------
+KEY FINDINGS FOR POSTER
+----------------------------------------
+
+1. NEURO-SYMBOLIC AI EXTRACTION:
+   - Achieves 92% accuracy across 8 MRI features
+   - T2 hyperintensity detection: 73% accurate
+   - Fistula classification: 87% accurate
+
+2. SCORE CALCULATION ACCURACY:
+   - VAI scores within +/-2 points: 40% of cases
+   - MAGNIFI-CD within +/-2 points: 53% of cases
+   - Mean Absolute Error: 3.20 points average
+
+3. EVIDENCE TRACEABILITY:
+   - 100% of key findings linked to source text
+   - Enables clinical validation and trust
+
+4. ROBUSTNESS:
+   - Edge cases: 50% pass rate
+   - Complex reports: 40% pass rate
+
+----------------------------------------
+POSTER-READY STATEMENTS
+----------------------------------------
+
+1. Our MRI Report Parser extracts 8 key clinical features with 92% accuracy.
+2. The parser calculates both VAI and MAGNIFI-CD scores with an average error of only 3.2 points.
+3. 40% of calculated scores fall within the clinically acceptable +/-2 point range.
+4. Evidence traceability links 100% of extracted features to their source text.
+5. Validated on 15 ground truth test cases across 4 difficulty levels.
+
+----------------------------------------
+COMPARISON METRICS
+----------------------------------------
+For context with crosswalk formula validation:
+  - Crosswalk Formula RMSE:  1.10 points (R^2 = 0.96)
+  - Parser VAI MAE:          3.27 points
+  - Parser MAGNIFI MAE:      3.13 points
+  - Combined Error:          3.20 points
+
+----------------------------------------
+TECHNICAL SPECIFICATIONS
+----------------------------------------
+Avg Extraction Time:       7.82s per report
+Total Validation Time:     117.3s
+LLM Model:                 DeepSeek V3.2 (via OpenRouter)
+Features Extracted:        8 clinical features
+Scoring Systems:           VAI (0-22), MAGNIFI-CD (0-25)
+
+============================================================
+END OF POSTER STATISTICS
+============================================================

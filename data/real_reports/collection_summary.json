@@ -1,0 +1,23 @@
+{
+  "generated_at": "2025-12-03T18:30:05.175293",
+  "total_reports": 30,
+  "by_source": {
+    "radiopaedia": 15,
+    "pubmed_central": 15
+  },
+  "by_fistula_type": {
+    "intersphincteric": 4,
+    "transsphincteric": 3,
+    "null": 20,
+    "complex": 3
+  },
+  "by_severity": {
+    "null": 27,
+    "severe": 2,
+    "moderate to severe": 1
+  },
+  "by_activity": {
+    "null": 27,
+    "active": 3
+  }
+}

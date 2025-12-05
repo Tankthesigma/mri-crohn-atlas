@@ -1,0 +1,212 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-12-04",
+    "description": "Adversarial test cases designed to stress-test the MRI Report Parser",
+    "purpose": "Test parser robustness against edge cases, errors, and unusual inputs"
+  },
+  "test_cases": [
+    {
+      "id": "adv_1",
+      "name": "OCR_ERRORS",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles OCR errors and typos in scanned reports",
+      "report_text": "MRI pe1vis for periana1 fistula. Transsph1ncteric fistu1a identified at 6 o'c1ock position with T2 hyperintens1ty. Sma11 abscess measur1ng 1.5 cm noted. No supra1evator extension. Recta1 wa11 norma1.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 16,
+        "expected_magnifi_score": 11,
+        "notes": "1->l substitution errors. Parser should still extract key features."
+      }
+    },
+    {
+      "id": "adv_2",
+      "name": "EXTREMELY_LONG",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles very long verbose reports without losing key information",
+      "report_text": "CLINICAL HISTORY: This is a 45-year-old male patient with a known diagnosis of Crohn's disease, first diagnosed in 2015, who has been on multiple biologic therapies including infliximab, adalimumab, and most recently ustekinumab. The patient presents with persistent perianal symptoms including pain, discharge, and difficulty sitting. Previous surgical history includes examination under anesthesia with seton placement in 2020. The patient has been followed by gastroenterology and colorectal surgery. Current medications include mesalamine, prednisone taper, and ustekinumab 90mg q8 weeks. Allergies include penicillin. Family history significant for IBD in mother.\n\nTECHNIQUE: MRI of the pelvis was performed on a 3T scanner using dedicated phased-array surface coil. Protocol includes axial and coronal T2-weighted sequences, axial T1-weighted pre and post gadolinium sequences, and STIR sequences. Contrast: 15ml of Gadavist was administered intravenously.\n\nCOMPARISON: Prior MRI pelvis dated 2024-06-15.\n\nFINDINGS:\nAnal Canal and Sphincter Complex: The internal and external anal sphincter muscles are identified and show asymmetric signal abnormality. There is focal disruption of the external anal sphincter at the 6 o'clock position.\n\nFistula Assessment: A single transsphincteric fistula tract is identified. The tract originates at the 6 o'clock position at the level of the dentate line, traverses both the internal and external anal sphincter, and extends into the left ischioanal fossa before reaching the perianal skin. The tract measures approximately 4.5 cm in total length. There is moderate T2 hyperintensity within the tract consistent with active inflammation. A seton suture is noted within the tract, appearing as a linear signal void.\n\nCollections: A small rim-enhancing collection measuring 1.2 x 0.8 cm is noted at the external opening in the left perianal region. No other collections are identified.\n\nExtension Assessment: The fistula extends into the ischioanal fossa but there is no supralevator extension. No horseshoe component is identified. No extension to the contralateral side.\n\nRectal Wall: The rectal wall thickness is within normal limits. No mucosal enhancement abnormality. No stricture or mass.\n\nAdditional Findings: Mild prostatic enlargement, benign-appearing. Small amount of physiologic free fluid in the pelvis. No concerning lymphadenopathy. Visualized portions of the bowel appear unremarkable.\n\nIMPRESSION:\n1. Known transsphincteric perianal fistula at 6 o'clock with seton in place. Moderate T2 hyperintensity suggests ongoing active inflammation.\n2. Small perianal collection at external opening, decreased in size compared to prior.\n3. No new fistula tracts. No supralevator extension.\n4. Recommend continued current treatment regimen with follow-up imaging in 6 months to assess response.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "seton_in_place": true,
+        "treatment_status": "on_biologics",
+        "expected_vai_score": 12,
+        "expected_magnifi_score": 9,
+        "notes": "Very long report (~500 words). Parser should extract key findings from FINDINGS and IMPRESSION sections. With seton: VAI = 0+3+4(reduced)+4+0 = 11-12. MAGNIFI = 1+2(reduced)+2+4 = 9."
+      }
+    },
+    {
+      "id": "adv_3",
+      "name": "MEDICAL_LATIN",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles reports with heavy use of Latin medical terminology",
+      "report_text": "Examinatio per imagines MRI pelvis. Fistula in ano transsphincteric locata ad horam sextam. Tractus demonstrat hyperintensitas T2 moderata. Abscessus perirectalis dimensione 2.3 cm observatur. Musculi sphincter ani internus et externus integri. Extensio ad fossa ischioanalis sinistra praesens. Murus rectalis sine abnormalitate.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 16,
+        "expected_magnifi_score": 11,
+        "notes": "Heavy Latin terminology. Key terms: fistula in ano, hyperintensitas T2, abscessus. Parser should handle medical Latin."
+      }
+    },
+    {
+      "id": "adv_4",
+      "name": "CONTRADICTORY",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles reports with conflicting information",
+      "report_text": "MRI pelvis shows complex perianal fistula. Moderate T2 hyperintensity noted, however the tract appears completely fibrotic. No active inflammation. The fistula is both draining and completely healed. Large 3cm collection present, but no abscess identified. Findings indicate both active disease and complete remission.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "none",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 11,
+        "expected_magnifi_score": 9,
+        "notes": "Contradictory report - parser should extract definite findings (fistula, T2 signal, collection) and flag LOW CONFIDENCE due to conflicts."
+      }
+    },
+    {
+      "id": "adv_5",
+      "name": "MINIMAL_TEXT",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles extremely short/terse reports",
+      "report_text": "Fistula. TS type. T2+. Abscess 1cm. No rectal involvement.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "mild",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 14,
+        "expected_magnifi_score": 10,
+        "notes": "Extremely terse abbreviations. TS=transsphincteric, T2+=T2 hyperintensity. Parser should handle brevity."
+      }
+    },
+    {
+      "id": "adv_6",
+      "name": "NUMBERS_HEAVY",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles reports with many numerical measurements",
+      "report_text": "MRI pelvis performed 2024-12-04. Patient ID 12345678. FOV 240mm. Slice 3mm. Matrix 512x512. Two (2) fistula tracts: First at 3 o'clock, 2.4cm length, 0.3cm diameter. Second at 9 o'clock, 3.1cm length, 0.4cm diameter. Abscess #1: 1.8 x 1.2 x 1.5 cm at 6 o'clock. Abscess #2: 0.8 x 0.6 x 0.7 cm at 12 o'clock. T2 signal intensity ratio 2.3 (moderate hyperintensity). Enhancement ratio 1.8. Rectal wall 4mm (normal <5mm). ADC 1.2 x 10^-3 mm2/s. VAI estimated 15, MAGNIFI 13.",
+      "ground_truth": {
+        "fistula_count": 2,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 15,
+        "expected_magnifi_score": 13,
+        "notes": "Numbers-heavy report with technical parameters. Parser should extract clinical numbers (fistula count=2, abscess sizes) not technical parameters."
+      }
+    },
+    {
+      "id": "adv_7",
+      "name": "ALL_CAPS",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles reports in all capital letters (older EMR systems)",
+      "report_text": "MRI PELVIS FOR PERIANAL FISTULA. TRANSSPHINCTERIC FISTULA AT 6 O'CLOCK POSITION. MARKED T2 HYPERINTENSITY WITHIN THE TRACT. SUPRALEVATOR EXTENSION PRESENT. 2.5 CM PRESACRAL ABSCESS. RECTAL WALL THICKENING WITH MUCOSAL ENHANCEMENT. NO INFLAMMATORY MASS. SEVERE PERIANAL CROHN'S DISEASE.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": false,
+        "expected_vai_score": 20,
+        "expected_magnifi_score": 17,
+        "notes": "All caps from legacy EMR. VAI: 0+3+8+4+4+1 = 20. MAGNIFI: 1+6+3+4+2+0 = 16-17."
+      }
+    },
+    {
+      "id": "adv_8",
+      "name": "NEGATIVE_HEAVY",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles reports with many negative findings - still extracts the positive ones",
+      "report_text": "No fistula at 12 o'clock. No fistula at 3 o'clock. No abscess in right ischioanal fossa. No abscess in left ischioanal fossa. No supralevator collection. No inflammatory mass. However, there IS a small intersphincteric fistula at 6 o'clock with mild T2 signal and NO associated collection. No extension beyond intersphincteric space. No rectal wall abnormality. No horseshoe component. No pelvic lymphadenopathy.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 5,
+        "expected_magnifi_score": 3,
+        "notes": "Many negatives obscuring single positive finding. Parser must find the ONE positive fistula at 6 o'clock. VAI: 0+1+4+0 = 5. MAGNIFI: 1+2+0 = 3."
+      }
+    },
+    {
+      "id": "adv_9",
+      "name": "GARBLED_SECTIONS",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles reports with some garbled/corrupted sections",
+      "report_text": "MRI Pelvis\n\n[IMAGE DATA CORRUPTED - SECTION UNREADABLE]\n\n...continuing findings... transsphincteric fistula at 6 o'clock with moderate T2 hyperintensity. Associated 1.5cm perianal abscess.\n\n[ENCODING ERROR - kjh$#@%^&]\n\nIMPRESSION: Active perianal fistulizing Crohn's disease with abscess. No rectal wall involvement. Recommend EUA and drainage.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 16,
+        "expected_magnifi_score": 11,
+        "notes": "Partially corrupted report. Parser should extract from readable sections. Should flag MODERATE confidence due to incomplete data."
+      }
+    },
+    {
+      "id": "adv_10",
+      "name": "DIFFERENTIAL_HEAVY",
+      "difficulty": "adversarial",
+      "what_it_tests": "Handles reports focused on differential diagnosis rather than definitive findings",
+      "report_text": "MRI pelvis with findings that may represent either: (1) Perianal Crohn's fistula versus (2) Cryptoglandular abscess versus (3) Hidradenitis suppurativa versus (4) Pilonidal disease. The tract-like structure at 6 o'clock could be a fistula or inflammatory tract. If this is a fistula, it would be classified as intersphincteric. The T2 signal could indicate mild inflammation or artifact. A possible 1cm collection may be present or may represent fat. Definitive diagnosis cannot be made on imaging alone. Clinical correlation essential. Consider EUA for tissue diagnosis.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "none",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "expected_vai_score": 9,
+        "expected_magnifi_score": 7,
+        "notes": "Heavy differential diagnosis language. Parser should extract probable findings with LOW CONFIDENCE flag. VAI: 0+1+4+4 = 9. MAGNIFI: 1+2+0+4 = 7."
+      }
+    }
+  ]
+}

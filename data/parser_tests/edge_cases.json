@@ -1,0 +1,267 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-12-03",
+    "description": "Edge case test suite for MRI Report Parser stress testing",
+    "purpose": "Test parser handling of unusual, ambiguous, and edge scenarios"
+  },
+  "test_cases": [
+    {
+      "id": "edge_1",
+      "name": "HEALED",
+      "difficulty": "edge_case",
+      "what_it_tests": "Complete fistula resolution - should score 0/0",
+      "report_text": "Previously noted transsphincteric fistula now shows complete resolution. No residual tract identified. No enhancement. Scar tissue only. No T2 hyperintensity. The sphincter complex is intact. No perianal collection or abscess. Findings consistent with complete healing.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0,
+        "expected_treatment_status": "post_surgical",
+        "expected_interpretation": "Healed/Remission"
+      }
+    },
+    {
+      "id": "edge_2",
+      "name": "MULTIPLE_SEPARATE",
+      "difficulty": "edge_case",
+      "what_it_tests": "Multiple distinct fistulas with separate origins - should count as 3",
+      "report_text": "Three distinct perianal fistula tracts identified. First: intersphincteric fistula at 3 o'clock position with internal opening at dentate line. Second: transsphincteric fistula at 7 o'clock position, separate internal opening, extending into left ischioanal fossa. Third: superficial fistula at 11 o'clock position with separate internal opening. No connection between the three tracts. All show mild T2 hyperintensity. No abscess or collection.",
+      "ground_truth": {
+        "fistula_count": 3,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 12,
+        "expected_magnifi_score": 9,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Moderate Active Disease",
+        "notes": "MAGNIFI: 3+ fistulas (5pts) + mild T2 (2pts) + moderate ext (2pts) = 9"
+      }
+    },
+    {
+      "id": "edge_3",
+      "name": "ABSCESS_ONLY",
+      "difficulty": "edge_case",
+      "what_it_tests": "Abscess without definite fistula tract - common clinical scenario",
+      "report_text": "3.2 cm rim-enhancing perirectal abscess at 5 o'clock position. The collection shows T2 hyperintensity centrally with peripheral enhancement. No definite fistula tract identified connecting to the anal canal. No internal opening visualized. Differential includes cryptoglandular abscess versus early fistula formation. Recommend drainage and follow-up MRI.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 10,
+        "expected_magnifi_score": 10,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Moderate Active Disease",
+        "notes": "VAI: 0 (no fistula) + 0 (no type) + 6 (mod T2) + 4 (abscess) = 10. MAGNIFI: 0 (no fistulas) + 4 (mod T2) + 2 (mod ext) + 4 (abscess) = 10"
+      }
+    },
+    {
+      "id": "edge_4",
+      "name": "POST_SURGICAL",
+      "difficulty": "edge_case",
+      "what_it_tests": "Post-fistulotomy follow-up with no recurrence",
+      "report_text": "Status post fistulotomy 6 months prior for right-sided transsphincteric fistula. Surgical site shows expected post-operative changes with granulation tissue. No recurrent fistula tract identified. No T2 hyperintensity. No collection or abscess. The internal and external sphincters show post-surgical changes but are intact. No active inflammation. Findings consistent with successful surgical treatment.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0,
+        "expected_treatment_status": "post_surgical",
+        "expected_interpretation": "Healed/Remission"
+      }
+    },
+    {
+      "id": "edge_5",
+      "name": "AMBIGUOUS",
+      "difficulty": "edge_case",
+      "what_it_tests": "Uncertain findings with limited evaluation - parser should handle uncertainty",
+      "report_text": "Some changes noted in the perirectal region at 6 o'clock. Possible tract versus post-inflammatory changes - findings are equivocal. Limited evaluation due to motion artifact. No definite abscess, though small fluid signal cannot be excluded. Clinical correlation recommended. Consider repeat MRI with sedation if symptoms persist.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "none",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 8,
+        "expected_magnifi_score": 6,
+        "expected_treatment_status": "unknown",
+        "expected_interpretation": "Equivocal",
+        "notes": "AMBIGUOUS case - parser should return LOW CONFIDENCE (<50%) to flag uncertainty. VAI: 0 (no fistula) + 4 (mild T2) + 4 (possible collection) = 8. MAGNIFI: 0 + 2 (mild T2) + 4 (collection) = 6. Low confidence is the success criterion here."
+      }
+    },
+    {
+      "id": "edge_6",
+      "name": "HORSESHOE",
+      "difficulty": "edge_case",
+      "what_it_tests": "Complex horseshoe fistula - severe extension pattern",
+      "report_text": "Complex horseshoe fistula with posterior midline origin at 6 o'clock position. The primary tract extends through the intersphincteric space bilaterally, forming a horseshoe configuration crossing the posterior midline. Secondary tracts extend into both ischioanal fossae. Multiple small collections measuring up to 1.5 cm along the tract course. Marked T2 hyperintensity throughout. No supralevator extension. Rectal wall appears normal.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 19,
+        "expected_magnifi_score": 13,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Active Disease",
+        "notes": "MAGNIFI: 1 fistula (1pt) + marked T2 (6pts) + mod ext (2pts) + abscess (4pts) = 13. Horseshoe is counted as 1 complex fistula."
+      }
+    },
+    {
+      "id": "edge_7",
+      "name": "PEDIATRIC",
+      "difficulty": "edge_case",
+      "what_it_tests": "Pediatric Crohn's patient - typically simpler disease",
+      "report_text": "In this 12-year-old with known Crohn's disease, there is a simple intersphincteric fistula at the 6 o'clock position. The tract is linear, measuring 2.1 cm in length. Mild T2 hyperintensity is present consistent with mild inflammation. No abscess or collection. No extension beyond the intersphincteric space. Sphincter complex intact. Findings discussed with pediatric GI team.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 6,
+        "expected_magnifi_score": 3,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Mild Active Disease",
+        "notes": "MAGNIFI: 1 fistula (1pt) + mild T2 (2pts) + no ext (0pts) = 3. Simple intersphincteric."
+      }
+    },
+    {
+      "id": "edge_8",
+      "name": "MIXED_HEALED_ACTIVE",
+      "difficulty": "edge_case",
+      "what_it_tests": "Two fistulas with different activity states - mixed scenario",
+      "report_text": "Two perianal fistulas identified. Right-sided transsphincteric tract at 3 o'clock shows low T2 signal, no enhancement, thin fibrotic appearance - consistent with healed fistula. Left-sided intersphincteric tract at 9 o'clock demonstrates marked T2 hyperintensity, avid enhancement, and a small 0.8 cm associated abscess - active inflammatory fistula. Overall pattern suggests mixed disease activity with one healed and one active fistula.",
+      "ground_truth": {
+        "fistula_count": 2,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "expected_vai_score": 9,
+        "expected_magnifi_score": 9,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Mixed Activity",
+        "notes": "MAGNIFI: 2 fistulas (3pts) + mod ext (2pts) + abscess (4pts) = 9. Mixed healed/active - conservative T2 score due to one healed tract."
+      }
+    },
+    {
+      "id": "edge_9",
+      "name": "SEVERE_ACUTE",
+      "difficulty": "edge_case",
+      "what_it_tests": "Maximum severity case - all features present",
+      "report_text": "Severe perianal Crohn's disease with extensive findings. Large 4 cm presacral abscess with marked T2 hyperintensity. Complex branching fistula system with horseshoe configuration and supralevator extension. Three branches identified: high transsphincteric at 6 o'clock, intersphincteric at 3 o'clock, and extrasphincteric at 9 o'clock. Marked rectal wall thickening with mucosal hyperenhancement. Inflammatory mass in the right ischioanal fossa measuring 3.5 x 2.8 cm with central necrosis. Recommend urgent surgical consultation.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 22,
+        "expected_magnifi_score": 24,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Severe Active Disease",
+        "notes": "VAI max=22: 0 (1 fistula) + 3 (complex) + 8 (marked T2) + 4 (abscess) + 4 (rectal) + 3 (severe ext adjustment) = 22 capped. MAGNIFI: 1 fistula (1pt) + marked T2 (6pts) + severe ext (3pts) + abscess (4pts) + rectal (2pts) + mass (4pts) + inflammatory (4pts) = 24"
+      }
+    },
+    {
+      "id": "edge_10",
+      "name": "MINIMAL",
+      "difficulty": "edge_case",
+      "what_it_tests": "Completely normal study - baseline negative case",
+      "report_text": "MRI pelvis performed for evaluation of perianal symptoms. Study is unremarkable. No fistula tract identified. No abscess or collection. No inflammatory changes in the perianal region. Normal rectal wall without thickening or enhancement abnormality. Internal and external sphincters appear normal. No perirectal abnormality. No pelvic lymphadenopathy. Conclusion: Normal MRI pelvis, no evidence of perianal fistula or inflammation.",
+      "ground_truth": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Healed/Remission"
+      }
+    },
+    {
+      "id": "edge_11",
+      "name": "EARLY_SMALL_NEW",
+      "difficulty": "edge_case",
+      "what_it_tests": "Early small fistula - NEW onset, NOT healed. Must not classify as remission.",
+      "report_text": "First MRI for new perianal symptoms. No prior imaging available for comparison. Small 1.5 cm intersphincteric fistula tract identified at 6 o'clock position with mild T2 hyperintensity and subtle enhancement. No abscess or collection. No extension beyond intersphincteric space. Sphincter complex intact. Findings consistent with early perianal fistulizing disease.",
+      "ground_truth": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "disease_phase": "new_onset",
+        "has_prior_comparison": false,
+        "expected_vai_score": 6,
+        "expected_magnifi_score": 3,
+        "expected_treatment_status": "no_treatment",
+        "expected_interpretation": "Early Active Disease",
+        "must_not_say": [
+          "Healed",
+          "Remission",
+          "resolved"
+        ],
+        "notes": "MAGNIFI: 1 fistula (1pt) + mild T2 (2pts) = 3. Early/new-onset small fistula."
+      }
+    }
+  ]
+}

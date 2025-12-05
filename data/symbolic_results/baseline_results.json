@@ -1,0 +1,24 @@
+{
+  "linear": {
+    "intercept": 1.3008512149048979,
+    "coef_vai": 1.0388318566213817,
+    "coef_fibrosis": 0.11777769487823489,
+    "r2": 0.961066104077956,
+    "rmse": 0.9611431011345254
+  },
+  "neuro_symbolic": {
+    "intercept": 1.713,
+    "coef_vai": 1.031,
+    "coef_fibrosis_healed": 0.264,
+    "r2": 0.9611,
+    "rmse": 0.96,
+    "formula": "MAGNIFI-CD = 1.031×VAI + 0.264×Fibrosis×I(VAI≤2) + 1.713"
+  },
+  "piecewise": {
+    "active_slope": 1.0138934320877755,
+    "active_intercept": 1.8651692509410012,
+    "healed_slope": 0.09756097560975666,
+    "healed_intercept": 1.3527204502814227,
+    "r2": 0.9602227924960477
+  }
+}

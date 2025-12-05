@@ -1,0 +1,406 @@
+[
+  {
+    "filename": "van_Rijn_2022_Fibrosis_MAGNIFI-CD.pdf",
+    "extraction_timestamp": "2024-10-22T10:30:00Z",
+    "paper_title": "Fibrosis and MAGNIFI-CD Activity Index at Magnetic Resonance Imaging to Predict Treatment Outcome in Perianal Fistulizing Crohn\u2019s Disease Patients",
+    "publication_year": 2022,
+    "study_type": "Retrospective cohort study",
+    "n_patients": 50,
+    "has_paired_vai_magnificd_scores": false,
+    "paired_scores": [],
+    "vai_summary": null,
+    "magnificd_summary": {
+      "pre_treatment_median": 16,
+      "pre_treatment_iqr": "9-20",
+      "pre_treatment_closed_median": 11,
+      "pre_treatment_closed_iqr": "7-18",
+      "pre_treatment_open_median": 19,
+      "pre_treatment_open_iqr": "15-23",
+      "post_treatment_closed_median": 0,
+      "post_treatment_closed_iqr": "0-5",
+      "post_treatment_open_median": 16,
+      "post_treatment_open_iqr": "10-20",
+      "post_treatment_anti_tnf_closed_median": 5,
+      "post_treatment_anti_tnf_closed_iqr": "3-5",
+      "post_treatment_surgical_closed_median": 0,
+      "post_treatment_surgical_closed_iqr": "0-2",
+      "post_treatment_anti_tnf_open_median": 16,
+      "post_treatment_anti_tnf_open_iqr": "9-18",
+      "post_treatment_surgical_open_median": 18,
+      "post_treatment_surgical_open_iqr": "16-20",
+      "range": "0-25"
+    },
+    "fibrosis_summary": {
+      "pre_treatment_less_than_40_percent": 38,
+      "pre_treatment_less_than_40_percent_percentage": 79,
+      "post_treatment_100_percent_fibrotic_n": 14,
+      "post_treatment_100_percent_fibrotic_closed_n": 14,
+      "post_treatment_0_percent_fibrotic_open_n": "All",
+      "post_treatment_60_percent_fibrotic_anti_tnf_closed_percentage": 67,
+      "post_treatment_60_percent_fibrotic_surgical_closed_percentage": 100
+    },
+    "correlations": [
+      {
+        "system_a": "MAGNIFI-CD index",
+        "system_b": "Long-term clinical closure",
+        "correlation_coefficient": null,
+        "correlation_type": "ROC AUC",
+        "p_value": null,
+        "confidence_interval": "0.89-1.00",
+        "n_patients": 46,
+        "context": "Predictive accuracy for long-term clinical closure"
+      },
+      {
+        "system_a": "Degree of fibrosis",
+        "system_b": "Long-term clinical closure",
+        "correlation_coefficient": null,
+        "correlation_type": "ROC AUC",
+        "p_value": null,
+        "confidence_interval": "0.82-0.99",
+        "n_patients": 50,
+        "context": "Predictive accuracy for long-term clinical closure"
+      }
+    ],
+    "vai_magnificd_correlation": null,
+    "scatterplots": [
+      {
+        "figure_reference": "Figure 5",
+        "x_axis": "MAGNIFI-CD index",
+        "y_axis": "Long-term clinical closure status (open/closed)",
+        "n_datapoints": 46,
+        "correlation_shown": null,
+        "regression_line": null,
+        "estimated_points": [
+          {
+            "description": "Closed fistulas clustered at low MAGNIFI-CD scores (median 0, IQR 0-5)",
+            "x_range": "0-5",
+            "y_value": "Closed"
+          },
+          {
+            "description": "Open fistulas clustered at higher MAGNIFI-CD scores (median 16, IQR 10-20)"
+          }
+        ]
+      },
+      {
+        "figure_reference": "Figure 3",
+        "x_axis": "Degree of fibrosis (100% to 0%)",
+        "y_axis": "Long-term clinical closure status (open/closed)",
+        "n_datapoints": 50,
+        "correlation_shown": null,
+        "regression_line": null,
+        "estimated_points": [
+          {
+            "description": "100% fibrosis: all points in 'closed' category",
+            "x_value": "100%",
+            "y_value": "Closed"
+          },
+          {
+            "description": "0% fibrosis: all points in 'open' category",
+            "x_value": "0%",
+            "y_value": "Open"
+          }
+        ]
+      }
+    ],
+    "tables_with_scores": [
+      {
+        "table_reference": "Table 1",
+        "columns": [
+          "Item",
+          "Scoring options",
+          "MAGNIFI-CD Weight"
+        ],
+        "has_vai": false,
+        "has_magnificd": true,
+        "has_fibrosis": true,
+        "row_summaries": [
+          "Degree of fibrosis: 100%, 80\u201399%, 60\u201379%, 40\u201359%, 20\u201339%, 1\u201319%, 0%",
+          "Number of tracts: 0=None, 1=Single unbranched, 2=Complex (Weight=3)",
+          "Hyperintensity on post-contrast T1-weighted images: 0=Absent/mild, 1=Pronounced (Weight=2)",
+          "Dominant feature: 0=Fibrous, 1=Granulation tissue, 2=Fluid/pus",
+          "Fistula length: 0=<2.5 cm, 1=2.5\u20135 cm, 2=>5 cm (Weight=2)",
+          "Extension: 0=Absent, 1=Horseshoe, 2=Infralevatoric/supralevatoric (Weight=2)",
+          "Inflammatory mass: 0=Absent, 1=Focal, 2=Diffuse, 3=Collections small, 4=Collections medium, 5=Collections large (Weight=1)",
+          "Total MAGNIFI-CD Range: 0-25"
+        ]
+      },
+      {
+        "table_reference": "Table 2",
+        "columns": [
+          "Total n=50",
+          "N [%] or median [IQR]"
+        ],
+        "has_vai": false,
+        "has_magnificd": true,
+        "has_fibrosis": true,
+        "row_summaries": [
+          "Pre-treatment MRI characteristics [n=48]",
+          "Degree of fibrosis <40%: 38 [79%]",
+          "MAGNIFI-CD: 16 [9\u201320]"
+        ]
+      },
+      {
+        "table_reference": "Table 3",
+        "columns": [
+          "Item",
+          "\u03ba or ICC [95% CI]"
+        ],
+        "has_vai": false,
+        "has_magnificd": true,
+        "has_fibrosis": true,
+        "row_summaries": [
+          "Degree of fibrosis: 0.77 [0.64\u20130.89]",
+          "MAGNIFI-CD index: 0.88 [0.79\u20130.93]"
+        ]
+      }
+    ],
+    "component_mappings": [
+      {
+        "vai_component": null,
+        "magnificd_component": "Number of tracts",
+        "relationship": null,
+        "notes": "MAGNIFI-CD component: 0=None, 1=Single unbranched, 2=Complex (Weight=3)"
+      },
+      {
+        "vai_component": "T2 hyperintensity",
+        "magnificd_component": "Hyperintensity on post-contrast T1-weighted images",
+        "relationship": "Similar concept (inflammation)",
+        "notes": "VAI includes T2 hyperintensity; MAGNIFI-CD includes hyperintensity on post-contrast T1 (Weight=2)"
+      },
+      {
+        "vai_component": "Collection/abscess",
+        "magnificd_component": "Inflammatory mass",
+        "relationship": "Similar concept",
+        "notes": "Both assess presence of abscess/inflammatory collections"
+      },
+      {
+        "vai_component": "Rectal wall involvement",
+        "magnificd_component": "Extension",
+        "relationship": "Similar concept (extent)",
+        "notes": "MAGNIFI-CD extension includes infralevatoric/supralevatoric extension"
+      }
+    ],
+    "vai_components_described": [
+      "T2 hyperintensity",
+      "Collection/abscess",
+      "Rectal wall involvement"
+    ],
+    "magnificd_components_described": [
+      "Degree of fibrosis",
+      "Number of tracts",
+      "Hyperintensity on post-contrast T1-weighted images",
+      "Dominant feature",
+      "Fistula length",
+      "Extension",
+      "Inflammatory mass"
+    ],
+    "fibrosis_definition": "Fibrosis was defined as an absence of hyperintensity on all sequences.",
+    "fibrosis_scoring_method": "The item degree of fibrosis was composed for the current study... It was evaluated by estimating the volume of the fistula tract that consisted of fibrosis on a T2-weighted sequence without fat suppression... No actual fistula volumes were measured.",
+    "conversion_statements": [],
+    "extraction_confidence": 0.85,
+    "key_findings": [
+      "The study evaluates MAGNIFI-CD index and a novel 'degree of fibrosis' score (0-100%) for predicting long-term clinical closure.",
+      "No direct comparison or crosswalk between Van Assche Index (VAI) and MAGNIFI-CD is provided.",
+      "The MAGNIFI-CD index at post-treatment MRI had high accuracy (AUC 0.95) for predicting long-term closure.",
+      "A cut-off point of MAGNIFI-CD index \u22646 predicts long-term clinical closure with 91% specificity and 87% sensitivity.",
+      "A completely fibrotic tract (100% fibrosis) at post-treatment MRI was associated with long-term clinical closure in all 14 patients.",
+      "The degree of fibrosis (0-100%) had an AUC of 0.90 for predicting long-term closure.",
+      "Interobserver agreement for the MAGNIFI-CD index was 'almost perfect' (ICC 0.88).",
+      "The study includes separate analyses for anti-TNF and surgical closure treatment groups."
+    ],
+    "limitations": [
+      "No direct paired VAI and MAGNIFI-CD scores are reported.",
+      "The study focuses on MAGNIFI-CD and a novel fibrosis score, not on VAI.",
+      "The sample size is relatively small (n=50).",
+      "Partially retrospective design with different intervals between treatment and post-treatment MRI."
+    ],
+    "raw_evidence": [
+      "This study evaluated the predictive value of degree of fibrosis and disease activity (MAGNIFI-CD index) at MRI for long-term clinical closure of Crohn\u2019s perianal fistulas.",
+      "Two radiologists scored the degree of fibrosis and MAGNIFI-CD index at pre- and post-treatment MRI.",
+      "Median MAGNIFI-CD index at post-treatment MRI was 0 [IQR 0\u20135] in 25 patients with long-term clinical closure and 16 [IQR 10-20] in 25 patients without.",
+      "ROC analysis shows an AUC of 0.95 [95% CI: 0.89\u20131.00] accuracy in predicting long-term clinical closure. The Youden threshold to determine long-term clinical closure was a MAGNIFI-CD index of 6, with a 91% specificity and 87% sensitivity.",
+      "All 14 patients who had a 100% fibrotic fistula at their post-treatment MRI showed long-term clinical closure.",
+      "The median pre-treatment MAGNIFI-CD index was 11 [IQR 7\u201318] in patients who reached long-term clinical closure after their treatment and 19 [IQR 15\u201323] in patients who did not.",
+      "The MAGNIFI-CD index in the anti-TNF group with a closed fistula at long-term clinical follow-up had a median of 5 [IQR 3\u20135], while in the surgical closure group this was 0 [IQR 0\u20132].",
+      "For the MAGNIFI-CD index as a whole this was \u2018almost perfect\u2019 [ICC 0.88].",
+      "The item degree of fibrosis was composed for the current study to gain insight into the effect of a partially fibrotic tract on long-term outcomes and has not been evaluated previously.",
+      "Fibrosis was defined as an absence of hyperintensity on all sequences.",
+      "Table 1 shows the scoring items and calculation of the MAGNIFI-CD index.",
+      "The degree of fibrosis was assessed on all 50 scans [28 anti-TNF and 22 surgical closure] and the MAGNIFI-CD index on the 46 scans [25 anti-TNF and 21 surgical closure] which had a post-contrast sequence."
+    ]
+  },
+  {
+    "filename": "Radiological_Outcomes_Systematic_Review_2020.pdf",
+    "extraction_timestamp": "2024-10-22T12:00:00Z",
+    "paper_title": "Radiological outcomes in perianal fistulizing Crohn\u2019s disease: A systematic review and meta-analysis",
+    "publication_year": 2020,
+    "study_type": "systematic review and meta-analysis",
+    "n_patients": 259,
+    "has_paired_vai_magnificd_scores": false,
+    "paired_scores": [],
+    "vai_summary": null,
+    "magnificd_summary": null,
+    "fibrosis_summary": null,
+    "correlations": [],
+    "vai_magnificd_correlation": null,
+    "scatterplots": [],
+    "tables_with_scores": [
+      {
+        "table_reference": "Table 1",
+        "columns": [
+          "Study and year of publication",
+          "Number of pfCD patients",
+          "Gender",
+          "Mean/median age (years)",
+          "Induction therapy",
+          "Maintenance therapy"
+        ],
+        "has_vai": false,
+        "has_magnificd": false,
+        "has_fibrosis": false,
+        "row_summaries": [
+          "Bell et al. (2003): 7 patients, 3M/4F, age 39, 7 infliximab induction, no maintenance",
+          "Van Assche et al. (2003): two-part study, 8 patients then 7 patients, infliximab",
+          "Tougeron et al. (2009): 26 patients, infliximab",
+          "Ng et al. (2009): 26 patients, 10M/16F, 19 infliximab/7 adalimumab",
+          "Savoye-Collet et al. (2011): 20 patients, 6M/14F, age 34, 10 infliximab/10 adalimumab",
+          "Karmiris et al. (2011): 59 patients, 22M/37F, age 23, all infliximab",
+          "Horsthius et al. (2011): 16 patients, 9M/7F, age 34, 16 infliximab induction, no maintenance",
+          "Tozer et al. (2012): 41 patients, 16M/25F, age 36, 32 infliximab/9 adalimumab induction, 25 infliximab/16 adalimumab maintenance",
+          "Thomassin et al. (2017): 49 patients, 28M/21F, age 33, 43 infliximab/6 adalimumab"
+        ]
+      },
+      {
+        "table_reference": "Table 2",
+        "columns": [
+          "Study",
+          "Follow-up time (median or mean)",
+          "Clinical, n (%) Remission",
+          "Clinical, n (%) Response",
+          "Clinical, n (%) No response",
+          "Radiological, n (%) Healing",
+          "Radiological, n (%) Improved",
+          "Radiological, n (%) No response",
+          "Odds ratio, 95% CI"
+        ],
+        "has_vai": false,
+        "has_magnificd": false,
+        "has_fibrosis": false,
+        "row_summaries": [
+          "Van Assche et al. (2003) part 1: 6 weeks clinical/MRI, 4/8 remission, 1/8 response, 3/8 no response, 0/8 healing, 2/8 improved, 6/8 no response, OR 0.030 (0.00-0.56)",
+          "Van Assche et al. (2003) part 2: 10 weeks clinical/MRI, 4/7 remission, 2/7 response, 1/7 no response, 0/7 healing, 6/7 improved, 1/7 no response",
+          "Tougeron et al. (2009): 8-12 weeks clinical, 13/26 remission",
+          "Karmiris et al. (2011): 11 weeks MRI, 3/29 healing",
+          "Horsthius et al. (2011): 12 weeks clinical/MRI, 6/16 remission, 1/16 response, 9/16 no response, 1/16 healing, OR 0.17 (0.030-0.90)"
+        ]
+      },
+      {
+        "table_reference": "Table 3",
+        "columns": [
+          "Study",
+          "Follow up time (median or mean)",
+          "Clinical, n (%) Remission",
+          "Clinical, n (%) Response",
+          "Clinical, n (%) No response",
+          "Radiological, n (%) Healing",
+          "Radiological, n (%) Improved",
+          "Radiological, n (%) No response",
+          "Odds ratio, 95 CI"
+        ],
+        "has_vai": false,
+        "has_magnificd": false,
+        "has_fibrosis": false,
+        "row_summaries": [
+          "Bell et al. (2003): 14 weeks, 4/7 remission, 1/7 response, 2/7 no response, 2/7 healing, 3/7 improved, 2/7 no response, OR 0.30 (0.030-2.76)",
+          "Van Assche et al. (2003): 46 weeks MRI, 2/6 healing, 1/7 improved, 3/6 no response",
+          "Tougeron et al. (2009): 255 weeks clinical, 74 weeks MRI, 11/16 remission, 2/14 healing, OR 0.45 (0.050-4.21)",
+          "Ng et al. (2009): 52 weeks clinical, 72 weeks MRI, 12/26 remission, 13/26 response, 1/26 no response, 6/20 healing, 13/20 improved, 1/20 no response, OR 0.50 (0.15-1.71)",
+          "Savoye-Collet et al. (2011): 52 weeks, 7/20 remission, 8/20 response, 5/20 no response, 2/20 healing, 15/20 improved, 3/20 no response, OR 0.21 (0.040-1.16)",
+          "Karmiris et al. (2011): 36 weeks clinical, 94.5 weeks MRI, 24/59 remission, 21/59 response, 14/59 no response, 1/13 healing, OR 0.12 (0.010-1.00)",
+          "Tozer et al. (2012): 156 weeks, 4/19 remission, 7/19 response, 7/19 no response, 6/19 healing, 4/19 improved, 9/19 no response, OR 1.73 (0.40-7.51)",
+          "Thomassin et al. (2017): 160 weeks clinical, >104 weeks MRI, 26/49 remission, 10/49 response, 13/49 no response, 16/49 healing, OR 0.43 (0.19-0.96)"
+        ]
+      }
+    ],
+    "component_mappings": [],
+    "vai_components_described": [
+      "number of tracts",
+      "location",
+      "presence/absence of levatoric extension",
+      "degree of T2 hyperintensity",
+      "presence/absence of collections",
+      "rectal wall involvement"
+    ],
+    "magnificd_components_described": [],
+    "fibrosis_definition": null,
+    "fibrosis_scoring_method": null,
+    "conversion_statements": [
+      "A universally accepted grading system for pfCD is therefore yet to be developed."
+    ],
+    "extraction_confidence": 0.8,
+    "key_findings": [
+      "This is a systematic review of 9 studies (259 patients) reporting MRI outcomes in perianal fistulizing Crohn's disease treated with anti-TNF\u03b1 therapy.",
+      "The van Assche score was assessed in seven papers, with conflicting findings.",
+      "There remains conflicting data regarding the significance of the van Assche score, particularly in real-world studies, as seen in our review.",
+      "No direct mention of MAGNIFI-CD scoring system found in this paper.",
+      "The paper discusses heterogeneity in definitions of radiological and clinical outcomes.",
+      "The odds ratio of MRI healing versus clinical healing was 0.10 (95% CI, 0.02-0.39) in the short term and 0.43 (95% CI, 0.26-0.71) in the long term."
+    ],
+    "limitations": [
+      "No direct comparison between VAI and MAGNIFI-CD found.",
+      "No paired patient scores for both indices found.",
+      "No correlation coefficients between scoring systems reported.",
+      "No scatterplots showing VAI vs MAGNIFI-CD found.",
+      "No fibrosis scoring data found.",
+      "No patient-level data tables found."
+    ],
+    "raw_evidence": [
+      "Composite scores, such as the van Assche score, have been proposed, incorporating anatomical (number of tracts, location, presence/absence of levatoric extension) and inflammatory features (degree of T2 hyperintensity, presence/absence of collections, rectal wall involvement) as a marker of disease severity.",
+      "The van Assche score was assessed in seven papers, with conflicting findings.",
+      "There remains conflicting data regarding the significance of the van Assche score, particularly in real-world studies, as seen in our review.",
+      "A universally accepted grading system for pfCD is therefore yet to be developed.",
+      "The odds ratio of MRI healing versus clinical in the short term was 0.10 (95% confidence interval [CI], 0.02-0.39) and in the long term was 0.43 (95% CI, 0.26-0.71).",
+      "Clinical healing is more common than radiological healing, by a factor of 10 in the short term and 2.33 in the long term."
+    ]
+  },
+  {
+    "filename": "MRI_Role_Review_2018.pdf",
+    "extraction_timestamp": "2025-12-03T00:00:00Z",
+    "paper_title": null,
+    "publication_year": null,
+    "study_type": null,
+    "n_patients": null,
+    "has_paired_vai_magnificd_scores": false,
+    "paired_scores": [],
+    "vai_summary": null,
+    "magnificd_summary": null,
+    "fibrosis_summary": null,
+    "correlations": [],
+    "vai_magnificd_correlation": null,
+    "scatterplots": [],
+    "tables_with_scores": [],
+    "component_mappings": [],
+    "vai_components_described": [],
+    "magnificd_components_described": [],
+    "fibrosis_definition": null,
+    "fibrosis_scoring_method": null,
+    "conversion_statements": [],
+    "extraction_confidence": 0.1,
+    "key_findings": [
+      "The provided content is the homepage of the journal 'Insights into Imaging', not a research paper.",
+      "No research article content, tables, figures, or data related to perianal Crohn's disease, MRI scoring systems, Van Assche Index (VAI), or MAGNIFI-CD was found."
+    ],
+    "limitations": [
+      "The input is a journal homepage, not a research paper. It contains general journal information, metrics, and article listings, but no specific study data.",
+      "No extraction of paired scores, correlations, component mappings, or fibrosis data was possible.",
+      "The filename 'MRI_Role_Review_2018.pdf' suggests a review paper, but the content provided does not match."
+    ],
+    "raw_evidence": [
+      "The provided text is from the SpringerOpen website for the journal 'Insights into Imaging'.",
+      "It includes journal description: 'Insights into Imaging focuses on practices and new techniques applied to all areas of clinical radiology...'",
+      "It lists 'Latest articles' on various topics (azoospermia, thyroid carcinoma, nasopharyngeal carcinoma, uterine fibroids) unrelated to perianal Crohn's disease.",
+      "No mention of Van Assche Index, MAGNIFI-CD, perianal fistula, or Crohn's disease.",
+      "No tables, figures, or data sections are present in the provided text."
+    ]
+  }
+]

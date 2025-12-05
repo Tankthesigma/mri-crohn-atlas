@@ -1,0 +1,97 @@
+{
+  "generated_at": "2025-12-03T22:17:46.934969",
+  "parser_metrics": {
+    "vai": {
+      "icc": 0.9339449295189045,
+      "pearson_r": 0.9354551848876239,
+      "mae": 1.6341463414634145,
+      "rmse": 2.4742577108119104,
+      "within_3_pct": 0.8048780487804879,
+      "n_cases": 41
+    },
+    "magnifi": {
+      "icc": 0.9399135774391632,
+      "pearson_r": 0.9399311672734277,
+      "mae": 1.5609756097560976,
+      "rmse": 2.537523278759015,
+      "within_3_pct": 0.9024390243902439,
+      "n_cases": 41
+    }
+  },
+  "published_expert_reliability": {
+    "van_assche_original": {
+      "source": "Hindryckx et al. 2017 (APT)",
+      "n_raters": 4,
+      "n_cases": 50,
+      "icc_inter": 0.68,
+      "icc_inter_ci": [
+        0.56,
+        0.77
+      ],
+      "icc_intra": 0.81,
+      "notes": "Four experienced radiologists, 3 scoring occasions"
+    },
+    "van_assche_modified": {
+      "source": "De Gregorio et al. 2020",
+      "n_raters": 2,
+      "n_cases": 53,
+      "icc_inter": 0.67,
+      "icc_inter_ci": [
+        0.55,
+        0.75
+      ],
+      "icc_intra": 0.81,
+      "notes": "Modified 7-item version"
+    },
+    "magnifi_cd_original": {
+      "source": "Spinelli et al. 2019 (Gastroenterology)",
+      "n_raters": 4,
+      "n_cases": 160,
+      "icc_inter": 0.74,
+      "icc_inter_ci": [
+        0.63,
+        0.8
+      ],
+      "icc_intra": 0.85,
+      "notes": "ADMIRE-CD validation cohort"
+    },
+    "magnifi_cd_external": {
+      "source": "Beek et al. 2024 (Eur Radiol)",
+      "n_raters": 2,
+      "n_cases": 65,
+      "icc_inter": 0.87,
+      "icc_inter_ci": [
+        0.8,
+        0.92
+      ],
+      "icc_intra": 0.88,
+      "notes": "External validation, complex pfCD"
+    },
+    "esgar_2023": {
+      "source": "ESGAR 2023 Conference",
+      "n_raters": 3,
+      "n_cases": 67,
+      "icc_inter": 0.88,
+      "icc_inter_ci": [
+        0.78,
+        0.92
+      ],
+      "icc_intra": null,
+      "notes": "Multi-center European study"
+    }
+  },
+  "comparison": {
+    "vai_vs_expert": {
+      "parser_icc": 0.9339449295189045,
+      "expert_icc": 0.68,
+      "difference": 0.25394492951890446,
+      "status": "meets_or_exceeds"
+    },
+    "magnifi_vs_expert": {
+      "parser_icc": 0.9399135774391632,
+      "expert_icc": 0.87,
+      "difference": 0.06991357743916315,
+      "status": "meets_or_exceeds"
+    }
+  }
+}

@@ -1,0 +1,1060 @@
+{
+  "generated_at": "2025-12-03T20:17:01.242195",
+  "summary": {
+    "total_cases": 15,
+    "passed_cases": 13,
+    "pass_rate": 0.8666666666666667,
+    "overall_feature_accuracy": 0.9583333333333334,
+    "vai_mae": 1.3333333333333333,
+    "magnifi_mae": 1.3333333333333333,
+    "vai_within_2": 0.7333333333333333,
+    "magnifi_within_2": 0.8666666666666667,
+    "avg_traceability": 0.9888888888888889,
+    "feature_accuracy": {
+      "fistula_count": 1.0,
+      "fistula_type": 0.8666666666666667,
+      "t2_hyperintensity": 0.8666666666666667,
+      "extension": 1.0,
+      "collections_abscesses": 1.0,
+      "rectal_wall_involvement": 0.9333333333333333,
+      "inflammatory_mass": 1.0,
+      "predominant_feature": 1.0
+    },
+    "accuracy_by_difficulty": {
+      "standard": 0.6666666666666666,
+      "edge_case": 1.0,
+      "complex": 0.8,
+      "ambiguous": 1.0
+    },
+    "avg_extraction_time": 7.087627029418945,
+    "total_time": 106.32161712646484
+  },
+  "results": [
+    {
+      "case_id": 1,
+      "difficulty": "standard",
+      "passed": false,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "no_treatment",
+        "negative_findings": [
+          "external sphincter is intact",
+          "no definite side branches"
+        ],
+        "internal_opening": "1-2 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "linear fistulous tract is seen oriented vertically, passing through the left side of the inter-sphincteric plane",
+          "starting superiorly from the level of the dentate line where it is seen abutting the internal sphincter at 1-2 o'clock position",
+          "extending inferiorly to open into a marginally enhancing inflammatory fluid collection (abscess)",
+          "the external sphincter is intact",
+          "no definite side branches"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "mild",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 7,
+        "expected_magnifi_score": 6
+      },
+      "vai_extracted": 9,
+      "vai_expected": 7,
+      "vai_error": 2,
+      "magnifi_extracted": 11,
+      "magnifi_expected": 6,
+      "magnifi_error": 5,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "passing through the left side of the inter-sphincteric plane",
+        "inflammatory fluid collection (abscess)",
+        "external sphincter is intact"
+      ],
+      "extraction_time": 12.017476081848145,
+      "error_message": null
+    },
+    {
+      "case_id": 2,
+      "difficulty": "standard",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": null,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "unknown",
+        "negative_findings": [],
+        "internal_opening": "1 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "A relatively thick-walled fistulous track traverses both internal and external anal sphincters piercing and penetrating through the left ischioanal fossa.",
+          "Its internal opening pierces the anal canal anteriorly near 1 o'clock where a fairly defined restricted collection / abscess formation is seen.",
+          "The collection measures 1.8 x 1.5 cm. It shows restricted diffusion.",
+          "Then the thick track protrudes and proceeds to make a hook down anteriorly along the ischioanal fossa for a length of about 9.7 cm.",
+          "Its external opening being near 3 o'clock.",
+          "The track has a thick enhanced wall and high signal intensity enhanced content."
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 16,
+        "expected_magnifi_score": 17
+      },
+      "vai_extracted": 16,
+      "vai_expected": 16,
+      "vai_error": 0,
+      "magnifi_extracted": 15,
+      "magnifi_expected": 17,
+      "magnifi_error": 2,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "traverses both internal and external anal sphincters",
+        "restricted collection / abscess formation",
+        "high signal intensity enhanced content",
+        "9.7 cm"
+      ],
+      "extraction_time": 4.415517330169678,
+      "error_message": null
+    },
+    {
+      "case_id": 3,
+      "difficulty": "standard",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "unknown",
+        "negative_findings": [
+          "no collection"
+        ],
+        "internal_opening": "12 o'clock",
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "a tortuous-looking fistulous tract is identified at the 12 o'clock position",
+          "hyperintense behavior on T2",
+          "runs caudally between the internal and external anal sphincters towards the ischioanal fossa",
+          "without the presence of a collection"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 11,
+        "expected_magnifi_score": 10
+      },
+      "vai_extracted": 12,
+      "vai_expected": 11,
+      "vai_error": 1,
+      "magnifi_extracted": 11,
+      "magnifi_expected": 10,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "hyperintense behavior on T2",
+        "between the internal and external anal sphincters",
+        "without the presence of a collection"
+      ],
+      "extraction_time": 3.772045135498047,
+      "error_message": null
+    },
+    {
+      "case_id": 4,
+      "difficulty": "edge_case",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "treatment_status": "no_treatment",
+        "negative_findings": [
+          "no abscess",
+          "no fluid in the tract",
+          "evidence of any disease: no"
+        ],
+        "internal_opening": "10 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "simple intersphincteric perianal fistula",
+          "internal opening: 10 o'clock",
+          "shape: linear",
+          "secondary tract or abscess: no",
+          "external opening: right side of the gluteal cleft",
+          "evidence of any disease: no",
+          "no fluid in the tract but there is enhancement",
+          "granulation tissue but no pus"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "expected_vai_score": 2,
+        "expected_magnifi_score": 2
+      },
+      "vai_extracted": 2,
+      "vai_expected": 2,
+      "vai_error": 0,
+      "magnifi_extracted": 1,
+      "magnifi_expected": 2,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "simple intersphincteric perianal fistula",
+        "Secondary tract or abscess: no",
+        "no fluid in the tract",
+        "granulation tissue but no pus"
+      ],
+      "extraction_time": 4.0423359870910645,
+      "error_message": null
+    },
+    {
+      "case_id": 5,
+      "difficulty": "edge_case",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": null,
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "no_treatment",
+        "negative_findings": [
+          "no perianal fistula",
+          "no sinus tract",
+          "no collection",
+          "no subcutaneous edema",
+          "no gross adnexal mass",
+          "no pelvic free fluid"
+        ],
+        "internal_opening": null,
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "No perianal fistula, sinus tract or collection",
+          "No subcutaneous edema",
+          "The internal and external sphincters and the pelvic floor are unremarkable",
+          "No gross adnexal mass",
+          "No pelvic free fluid",
+          "No abnormality demonstrated"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0
+      },
+      "vai_extracted": 0,
+      "vai_expected": 0,
+      "vai_error": 0,
+      "magnifi_extracted": 0,
+      "magnifi_expected": 0,
+      "magnifi_error": 0,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "No perianal fistula",
+        "No abnormality demonstrated"
+      ],
+      "extraction_time": 10.922996997833252,
+      "error_message": null
+    },
+    {
+      "case_id": 6,
+      "difficulty": "complex",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": false,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": null,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "unknown",
+        "negative_findings": [],
+        "internal_opening": "6 o'clock",
+        "external_opening": null,
+        "branching": null,
+        "horseshoe": true,
+        "key_findings": [
+          "Posterior midline fistulous tract seen in the 6 o'clock position",
+          "peripherally enhancing horseshoe abscess measuring 17 x 30 x 44 mm in the intersphincteric space"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "moderate",
+        "extension": "moderate",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 13,
+        "expected_magnifi_score": 11
+      },
+      "vai_extracted": 10,
+      "vai_expected": 13,
+      "vai_error": 3,
+      "magnifi_extracted": 12,
+      "magnifi_expected": 11,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "horseshoe abscess",
+        "peripherally enhancing",
+        "intersphincteric space"
+      ],
+      "extraction_time": 3.8218648433685303,
+      "error_message": null
+    },
+    {
+      "case_id": 7,
+      "difficulty": "complex",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "severe",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "unknown",
+        "negative_findings": [
+          "No abscess formation or side branches"
+        ],
+        "internal_opening": "7 o'clock",
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "A long fistulous tract at the right side of the perianal region piercing the internal sphincter at 7 o'clock with the surrounding inflammatory region",
+          "The tract shows mild restriction on diffusion-weighted imaging",
+          "No abscess formation or side branches",
+          "Features are of intersphincteric fistula with the track extending into the right medial thigh soft tissues"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "intersphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "severe",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 9,
+        "expected_magnifi_score": 8
+      },
+      "vai_extracted": 10,
+      "vai_expected": 9,
+      "vai_error": 1,
+      "magnifi_extracted": 10,
+      "magnifi_expected": 8,
+      "magnifi_error": 2,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "piercing the internal sphincter",
+        "surrounding inflammatory region",
+        "mild restriction on diffusion-weighted imaging",
+        "extending into the right medial thigh soft tissues"
+      ],
+      "extraction_time": 12.883365154266357,
+      "error_message": null
+    },
+    {
+      "case_id": 8,
+      "difficulty": "edge_case",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": false,
+        "t2_hyperintensity": false,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "unknown",
+        "negative_findings": [
+          "no abscess"
+        ],
+        "internal_opening": "6 o'clock",
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "Fistulous tract from the low anterior anal canal just above the anal verge (well below puborectalis) to the base of the scrotum.",
+          "There is associated skin thickening and enhancement due to inflammation, but no distinct abscess."
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "simple",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 7,
+        "expected_magnifi_score": 6
+      },
+      "vai_extracted": 6,
+      "vai_expected": 7,
+      "vai_error": 1,
+      "magnifi_extracted": 7,
+      "magnifi_expected": 6,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "well below puborectalis",
+        "enhancement due to inflammation",
+        "no distinct abscess"
+      ],
+      "extraction_time": 3.7314229011535645,
+      "error_message": null
+    },
+    {
+      "case_id": 9,
+      "difficulty": "edge_case",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": null,
+        "collections_abscesses": false,
+        "rectal_wall_involvement": null,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "unknown",
+        "negative_findings": [
+          "no complex fistulas",
+          "no abscess",
+          "no inflammatory mass"
+        ],
+        "internal_opening": null,
+        "external_opening": null,
+        "branching": null,
+        "horseshoe": null,
+        "key_findings": [
+          "Penetrating disease sinus tracts in the ileum in the mid and left lower abdomen.",
+          "No complex fistulas, abscess or an inflammatory mass.",
+          "An additional pelvic MRI confirmed the left sacroiliitis but did not show any significant perianal complications such as a fistula or an abscess."
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0
+      },
+      "vai_extracted": 0,
+      "vai_expected": 0,
+      "vai_error": 0,
+      "magnifi_extracted": 0,
+      "magnifi_expected": 0,
+      "magnifi_error": 0,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "did not show any significant perianal complications",
+        "No complex fistulas, abscess or an inflammatory mass"
+      ],
+      "extraction_time": 3.6751251220703125,
+      "error_message": null
+    },
+    {
+      "case_id": 10,
+      "difficulty": "ambiguous",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": false,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "complex",
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "unknown",
+        "negative_findings": [],
+        "internal_opening": null,
+        "external_opening": true,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "low fistula dye spilling in the anal canal and rectum",
+          "opacification of the right perianal fistula which travels superiorly",
+          "the tract communicates with the anal canal and rectum"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "mild",
+        "collections_abscesses": null,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": null,
+        "predominant_feature": null,
+        "expected_vai_score": 4,
+        "expected_magnifi_score": 4
+      },
+      "vai_extracted": 7,
+      "vai_expected": 4,
+      "vai_error": 3,
+      "magnifi_extracted": 3,
+      "magnifi_expected": 4,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "communicates with the anal canal and rectum",
+        "travels superiorly"
+      ],
+      "extraction_time": 3.8078010082244873,
+      "error_message": null
+    },
+    {
+      "case_id": 11,
+      "difficulty": "complex",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "mixed",
+        "treatment_status": "seton_in_place",
+        "negative_findings": [
+          "no discrete abscess"
+        ],
+        "internal_opening": "6 o'clock",
+        "external_opening": null,
+        "branching": true,
+        "horseshoe": false,
+        "key_findings": [
+          "High transphincteric perianal fistula at the 6 o'clock position with seton in situ",
+          "The fistula extends from the anal canal through both sphincters into the ischioanal fossa",
+          "Mild surrounding T2 hyperintensity indicating residual inflammation",
+          "A second seton is noted in a smaller branch tract at the 5 o'clock position",
+          "No discrete abscess collection",
+          "Post-treatment changes noted"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 2,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "mild",
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "mixed",
+        "expected_vai_score": 9,
+        "expected_magnifi_score": 9
+      },
+      "vai_extracted": 8,
+      "vai_expected": 9,
+      "vai_error": 1,
+      "magnifi_extracted": 6,
+      "magnifi_expected": 9,
+      "magnifi_error": 3,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "High transphincteric",
+        "through both sphincters",
+        "mild surrounding T2 hyperintensity",
+        "second seton",
+        "Post-treatment changes"
+      ],
+      "extraction_time": 4.8783040046691895,
+      "error_message": null
+    },
+    {
+      "case_id": 12,
+      "difficulty": "edge_case",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": null,
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "treatment_status": "unknown",
+        "negative_findings": [
+          "No perianal involvement",
+          "The anal sphincter complex appears normal"
+        ],
+        "internal_opening": null,
+        "external_opening": null,
+        "branching": null,
+        "horseshoe": null,
+        "key_findings": [
+          "A vesicovaginal fistula is identified with abnormal communication between the bladder and vaginal vault",
+          "The fistulous tract shows enhancement",
+          "No perianal involvement",
+          "The anal sphincter complex appears normal"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 0,
+        "fistula_type": null,
+        "t2_hyperintensity": null,
+        "t2_hyperintensity_degree": null,
+        "extension": "none",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": null,
+        "expected_vai_score": 0,
+        "expected_magnifi_score": 0
+      },
+      "vai_extracted": 1,
+      "vai_expected": 0,
+      "vai_error": 1,
+      "magnifi_extracted": 1,
+      "magnifi_expected": 0,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "vesicovaginal fistula",
+        "No perianal involvement",
+        "anal sphincter complex appears normal"
+      ],
+      "extraction_time": 8.031468868255615,
+      "error_message": null
+    },
+    {
+      "case_id": 13,
+      "difficulty": "complex",
+      "passed": false,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "extrasphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "unknown",
+        "negative_findings": [
+          "No horseshoe extension identified"
+        ],
+        "internal_opening": null,
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "extrasphincteric fistula originating above the levator plate and extending into the left gluteal region",
+          "tract shows marked T2 hyperintensity with extensive surrounding soft tissue edema",
+          "3.2 x 2.8 cm rim-enhancing collection is present in the gluteal musculature consistent with abscess",
+          "rectal wall shows focal inflammatory changes at the site of the internal opening",
+          "No horseshoe extension identified"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "extrasphincteric",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": false,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 18,
+        "expected_magnifi_score": 19
+      },
+      "vai_extracted": 22,
+      "vai_expected": 18,
+      "vai_error": 4,
+      "magnifi_extracted": 20,
+      "magnifi_expected": 19,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "extrasphincteric fistula",
+        "above the levator plate",
+        "marked T2 hyperintensity",
+        "rim-enhancing collection",
+        "rectal wall shows focal inflammatory changes"
+      ],
+      "extraction_time": 11.876314163208008,
+      "error_message": null
+    },
+    {
+      "case_id": 14,
+      "difficulty": "complex",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 2,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": "inflammatory",
+        "treatment_status": "unknown",
+        "negative_findings": [],
+        "internal_opening": "11 o'clock, 5 o'clock",
+        "external_opening": null,
+        "branching": true,
+        "horseshoe": true,
+        "key_findings": [
+          "High transsphincteric fistula at 11 o'clock with horseshoe extension crossing the posterior midline",
+          "Intersphincteric fistula at 5 o'clock",
+          "Both tracts demonstrate marked T2 hyperintensity and avid post-contrast enhancement",
+          "Large inflammatory mass measuring 4.2 x 3.1 cm in the right ischioanal fossa with central necrosis",
+          "Moderate rectal wall thickening with mucosal hyperenhancement"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 2,
+        "fistula_type": "complex",
+        "t2_hyperintensity": true,
+        "t2_hyperintensity_degree": "marked",
+        "extension": "severe",
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": "inflammatory",
+        "expected_vai_score": 22,
+        "expected_magnifi_score": 25
+      },
+      "vai_extracted": 22,
+      "vai_expected": 22,
+      "vai_error": 0,
+      "magnifi_extracted": 25,
+      "magnifi_expected": 25,
+      "magnifi_error": 0,
+      "traceability_score": 0.8333333333333334,
+      "key_sentences_found": [
+        "horseshoe extension",
+        "marked T2 hyperintensity",
+        "Large inflammatory mass",
+        "central necrosis",
+        "Moderate rectal wall thickening"
+      ],
+      "extraction_time": 9.761672973632812,
+      "error_message": null
+    },
+    {
+      "case_id": 15,
+      "difficulty": "edge_case",
+      "passed": true,
+      "features_correct": {
+        "fistula_count": true,
+        "fistula_type": true,
+        "t2_hyperintensity": true,
+        "extension": true,
+        "collections_abscesses": true,
+        "rectal_wall_involvement": true,
+        "inflammatory_mass": true,
+        "predominant_feature": true
+      },
+      "features_extracted": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "moderate",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "treatment_status": "post_surgical",
+        "negative_findings": [
+          "no abscess",
+          "no collection",
+          "rectal wall normal"
+        ],
+        "internal_opening": null,
+        "external_opening": null,
+        "branching": false,
+        "horseshoe": false,
+        "key_findings": [
+          "marked decrease in T2 signal intensity",
+          "tract appears as a thin linear hypointense structure without surrounding edema",
+          "no abscess or collection",
+          "no residual enhancement",
+          "findings consistent with fibrotic healing",
+          "rectal wall is normal in appearance"
+        ]
+      },
+      "features_expected": {
+        "fistula_count": 1,
+        "fistula_type": "transsphincteric",
+        "t2_hyperintensity": false,
+        "t2_hyperintensity_degree": null,
+        "extension": "mild",
+        "collections_abscesses": false,
+        "rectal_wall_involvement": false,
+        "inflammatory_mass": false,
+        "predominant_feature": "fibrotic",
+        "expected_vai_score": 3,
+        "expected_magnifi_score": 2
+      },
+      "vai_extracted": 6,
+      "vai_expected": 3,
+      "vai_error": 3,
+      "magnifi_extracted": 3,
+      "magnifi_expected": 2,
+      "magnifi_error": 1,
+      "traceability_score": 1.0,
+      "key_sentences_found": [
+        "marked decrease in T2 signal intensity",
+        "thin linear hypointense structure",
+        "No residual enhancement",
+        "fibrotic healing"
+      ],
+      "extraction_time": 8.676694869995117,
+      "error_message": null
+    }
+  ]
+}
