@@ -19,7 +19,9 @@ from pydantic import BaseModel, Field
 # Configuration
 PAPERS_DIR = Path(__file__).parent.parent.parent / "data" / "papers"
 OUTPUT_DIR = Path(__file__).parent.parent.parent / "data"
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "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")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+if not OPENROUTER_API_KEY:
+    raise ValueError("OPENROUTER_API_KEY environment variable not set. Run: export OPENROUTER_API_KEY='your-key'")
 
 # New papers to extract (from tuff papers folder)
 NEW_PAPERS = [

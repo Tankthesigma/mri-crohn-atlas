@@ -1,0 +1,13 @@
+{
+  "name": "mri-crohn-atlas",
+  "version": "1.0.0",
+  "description": "MRI-Crohn Atlas - ISEF 2026 Project",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-config.js",
+    "start": "python3 -m http.server 8080 -d src/web"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

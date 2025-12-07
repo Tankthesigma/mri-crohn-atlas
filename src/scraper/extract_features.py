@@ -172,8 +172,10 @@ def load_scraped_reports(data_dir: Path) -> List[Dict]:
 
 def main():
     """Main function to run feature extraction"""
-    # API key
-    api_key = "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"
+    # API key from environment variable
+    api_key = os.getenv("OPENROUTER_API_KEY", "")
+    if not api_key:
+        raise ValueError("OPENROUTER_API_KEY environment variable not set. Run: export OPENROUTER_API_KEY='your-key'")
 
     data_dir = Path(__file__).parent.parent.parent / "data" / "real_reports"
 

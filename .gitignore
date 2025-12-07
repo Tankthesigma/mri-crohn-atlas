@@ -45,3 +45,7 @@ env/
 # Environment variables
 .env
 .env.local
+
+# API configuration (contains secrets)
+config.js
+src/web/config.js

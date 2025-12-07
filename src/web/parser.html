@@ -1492,6 +1492,9 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
         </p>
     </footer>
 
+    <!-- Load config (gitignored - contains API key) -->
+    <script src="config.js" onerror="console.warn('config.js not found. Parser will show setup instructions.')"></script>
+
     <script>
         // Theme toggle functionality
         function toggleTheme() {
@@ -1540,12 +1543,31 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
             document.getElementById('report-input').value = EXAMPLE_REPORTS[index].text;
         }
 
+        // Get API key from config
+        function getApiKey() {
+            if (typeof window !== 'undefined' && window.CONFIG && window.CONFIG.OPENROUTER_API_KEY) {
+                const key = window.CONFIG.OPENROUTER_API_KEY;
+                if (key && key !== 'your-openrouter-api-key-here' && key.startsWith('sk-or-')) {
+                    return key;
+                }
+            }
+            return null;
+        }
+
         async function parseReport() {
             const reportText = document.getElementById('report-input').value.trim();
             const parseBtn = document.getElementById('parse-btn');
             const errorDiv = document.getElementById('parser-error');
             const resultsPanel = document.getElementById('results-panel');
             const placeholder = document.getElementById('placeholder');
+
+            // Check API key first
+            const apiKey = getApiKey();
+            if (!apiKey) {
+                errorDiv.innerHTML = '<strong>API key not configured.</strong><br>To use the parser:<br>1. Copy <code>config.example.js</code> to <code>config.js</code><br>2. Add your OpenRouter API key<br>3. Refresh the page<br><br>See CLAUDE.md for detailed instructions.';
+                errorDiv.classList.add('show');
+                return;
+            }
 
             if (!reportText || reportText.length < 50) {
                 errorDiv.textContent = 'Please enter a valid MRI report (at least 50 characters).';
@@ -1561,7 +1583,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                 const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer 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',
+                        'Authorization': `Bearer ${apiKey}`,
                         'Content-Type': 'application/json',
                         'HTTP-Referer': window.location.origin,
                         'X-Title': 'MRI-Crohn Atlas Parser'

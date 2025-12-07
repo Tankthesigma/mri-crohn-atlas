@@ -33,7 +33,9 @@ from tqdm.asyncio import tqdm_asyncio
 INPUT_FOLDER = "./data/papers"
 OUTPUT_CSV = "data/extraction_results.csv"
 FAILED_LOG = "data/failed_log.txt"
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "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")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+if not OPENROUTER_API_KEY:
+    raise ValueError("OPENROUTER_API_KEY environment variable not set. Run: export OPENROUTER_API_KEY='your-key'")
 
 # ============ PIPELINE SETTINGS ============
 TEST_MODE = False

@@ -198,8 +198,8 @@ def main():
     parser.add_argument(
         "--api-key",
         type=str,
-        default="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",
-        help="OpenRouter API key for feature extraction"
+        default=os.getenv("OPENROUTER_API_KEY", ""),
+        help="OpenRouter API key for feature extraction (or set OPENROUTER_API_KEY env var)"
     )
 
     args = parser.parse_args()

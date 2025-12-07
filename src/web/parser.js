@@ -9,7 +9,21 @@ const MRIReportParser = (function() {
 
     // OpenRouter API configuration
     const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
-    const API_KEY = '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';
+
+    /**
+     * Get API key from config. Returns null if not configured.
+     * Config should be loaded via config.js (gitignored) before this script.
+     */
+    function getApiKey() {
+        if (typeof window !== 'undefined' && window.CONFIG && window.CONFIG.OPENROUTER_API_KEY) {
+            const key = window.CONFIG.OPENROUTER_API_KEY;
+            // Check it's not the placeholder
+            if (key && key !== 'your-openrouter-api-key-here' && key.startsWith('sk-or-')) {
+                return key;
+            }
+        }
+        return null;
+    }
 
     // VAI Component Weights (based on Van Assche Index)
     const VAI_WEIGHTS = {
@@ -129,9 +143,21 @@ IMPORTANT:
 - Return ONLY valid JSON, no markdown or explanations`;
 
     /**
+     * Check if API is configured and ready to use
+     */
+    function isApiConfigured() {
+        return getApiKey() !== null;
+    }
+
+    /**
      * Parse a report using LLM
      */
     async function parseReport(reportText) {
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            throw new Error('API key not configured. Copy config.example.js to config.js and add your OpenRouter API key. See CLAUDE.md for instructions.');
+        }
+
         if (!reportText || reportText.trim().length < 20) {
             throw new Error('Report text is too short. Please enter a valid MRI report.');
         }
@@ -142,7 +168,7 @@ IMPORTANT:
             const response = await fetch(OPENROUTER_URL, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${API_KEY}`,
+                    'Authorization': `Bearer ${apiKey}`,
                     'Content-Type': 'application/json',
                     'HTTP-Referer': window.location.origin,
                     'X-Title': 'MRI-Crohn Atlas Parser'
@@ -466,6 +492,7 @@ IMPORTANT:
         applyCrosswalk,
         getInterpretation,
         highlightEvidence,
+        isApiConfigured,
         EXAMPLE_REPORTS,
         HIGHLIGHT_COLORS
     };

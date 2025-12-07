@@ -39,17 +39,20 @@ No published direct correlation between VAI and MAGNIFI-CD exists in the literat
 - API key updated in parser.html
 
 ### Known Issues:
-- API key exposed in frontend code (acceptable for demo, not production)
-- For production: should use backend proxy or serverless function
+- API key is loaded from gitignored config.js (secure for production)
+- For local dev: copy config.example.js to config.js and add your key
+- For Vercel: add OPENROUTER_API_KEY environment variable in dashboard
 
 ---
 
 ## PRIORITY FIXES (Do These First)
 
-1. **API Key Security (For Production):**
-   - Create backend proxy for API calls
-   - Or use Vercel serverless functions
-   - Never expose API keys in client-side code for production
+1. **API Key Security (COMPLETED Dec 7):**
+   - ✅ Removed hardcoded API keys from all files
+   - ✅ Created config.example.js template
+   - ✅ Added config.js to .gitignore
+   - ✅ Build script generates config.js from Vercel env vars
+   - ✅ Parser shows helpful error when API key not configured
 
 2. **UI Fixes (COMPLETED Dec 7):**
    - ✅ Scatterplot color-coded by study with legend
@@ -111,13 +114,43 @@ No published direct correlation between VAI and MAGNIFI-CD exists in the literat
 
 ### Commands:
 ```bash
-# Run locally
+# Run locally (see API Key Setup below first!)
 cd src/web && python3 -m http.server 8080
 # Or use: python3 src/web/serve.py
 
 # Deploy (auto on push)
 git add . && git commit -m "message" && git push origin main
 ```
+
+### API Key Setup
+
+The parser requires an OpenRouter API key. **Never commit API keys to git.**
+
+#### Local Development:
+1. Copy `src/web/config.example.js` to `src/web/config.js`
+2. Edit `config.js` and replace `'your-openrouter-api-key-here'` with your actual key
+3. `config.js` is gitignored - it won't be committed
+
+```bash
+cd src/web
+cp config.example.js config.js
+# Edit config.js with your API key
+```
+
+#### Vercel Deployment:
+1. Go to your Vercel project dashboard
+2. Navigate to **Settings > Environment Variables**
+3. Add a new variable:
+   - Name: `OPENROUTER_API_KEY`
+   - Value: Your OpenRouter API key (starts with `sk-or-`)
+4. Redeploy the project
+
+The build script (`scripts/build-config.js`) automatically generates `config.js` from the environment variable during deployment.
+
+#### Get an API Key:
+1. Go to https://openrouter.ai/keys
+2. Create a new API key
+3. The parser uses the `deepseek/deepseek-chat` model (very affordable)
 
 ---
 
@@ -185,7 +218,6 @@ ADMIRE-CD II (2024, n=640), ADMIRE-CD (2016, n=355), MAGNIFI-CD (2019, n=320), D
 2. **Complex multi-fistula with seton:** T2 reduction may be overestimated with 3+ fistulas
 3. **Ambiguous reports:** Parser flags low confidence (<50%) for vague findings
 4. **Confidence calibration:** V4 is 24.8% underconfident (conservative for clinical use)
-5. **API key in frontend:** Currently exposed for demo purposes; production should use backend proxy
 
 ---
 
@@ -223,7 +255,15 @@ ADMIRE-CD II (2024, n=640), ADMIRE-CD (2016, n=355), MAGNIFI-CD (2019, n=320), D
 
 ## SESSION LOG
 
-### Dec 7, 2025
+### Dec 7, 2025 (API Security Fix)
+- Removed hardcoded API keys from parser.js and parser.html
+- Created config.example.js template for API key configuration
+- Added config.js to .gitignore (never committed)
+- Created vercel.json and scripts/build-config.js for Vercel deployment
+- Parser now shows user-friendly error when API key not configured
+- Updated CLAUDE.md with API key setup instructions
+
+### Dec 7, 2025 (Earlier)
 - Updated OpenRouter API key in parser.html
 - Added color-coded scatterplot by study (12 unique colors with legend)
 - Added residual plot showing error vs predicted values

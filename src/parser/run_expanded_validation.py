@@ -13,9 +13,13 @@ from pathlib import Path
 from datetime import datetime
 
 # Configuration
+import os
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-API_KEY = "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"
+API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 MODEL = "deepseek/deepseek-chat"
+
+if not API_KEY:
+    raise ValueError("OPENROUTER_API_KEY environment variable not set. Run: export OPENROUTER_API_KEY='your-key'")
 
 # Import from validate_parser
 sys.path.insert(0, str(Path(__file__).parent))
