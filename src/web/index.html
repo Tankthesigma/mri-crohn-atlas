@@ -852,6 +852,117 @@
         }
 
         /* =========================================
+           PARSER METRICS GRID
+           ========================================= */
+        .parser-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-4);
+        }
+
+        @media (max-width: 768px) {
+            .parser-metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .parser-metric {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            text-align: center;
+        }
+
+        .parser-metric-value {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .parser-metric-label {
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            margin-top: var(--space-1);
+        }
+
+        .parser-metric-ci {
+            font-size: 0.6875rem;
+            color: var(--gray-400);
+            margin-top: var(--space-1);
+            font-family: var(--font-mono);
+        }
+
+        /* =========================================
+           CHALLENGING CASES
+           ========================================= */
+        .challenging-cases {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .challenging-case {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            background: var(--gray-50);
+        }
+
+        .challenging-case.highlighted-warning {
+            background: #FEF3C7;
+            border-color: #FCD34D;
+            border-width: 2px;
+        }
+
+        .challenging-case-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-2);
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .challenging-case-name {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--gray-900);
+        }
+
+        .challenging-case-desc {
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin-bottom: var(--space-3);
+        }
+
+        .challenging-case-scores {
+            display: flex;
+            gap: var(--space-4);
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--gray-500);
+            flex-wrap: wrap;
+        }
+
+        .error-tag {
+            background: #FEE2E2;
+            color: #991B1B;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .success-tag {
+            background: #D1FAE5;
+            color: #065F46;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        /* =========================================
            UTILITIES
            ========================================= */
         .hidden { display: none !important; }
@@ -859,6 +970,146 @@
         .mt-4 { margin-top: var(--space-4); }
         .mt-6 { margin-top: var(--space-6); }
         .mb-4 { margin-bottom: var(--space-4); }
+
+        /* =========================================
+           DARK MODE TOGGLE
+           ========================================= */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            padding: var(--space-2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            transition: all 0.15s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--gray-100);
+            color: var(--gray-900);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .theme-toggle .sun { display: none; }
+        .theme-toggle .moon { display: block; }
+
+        /* =========================================
+           DARK MODE STYLES
+           ========================================= */
+        [data-theme="dark"] {
+            --white: #111827;
+            --gray-50: #1F2937;
+            --gray-100: #374151;
+            --gray-200: #4B5563;
+            --gray-300: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-500: #D1D5DB;
+            --gray-600: #E5E7EB;
+            --gray-700: #F3F4F6;
+            --gray-800: #F9FAFB;
+            --gray-900: #FFFFFF;
+
+            --primary-light: rgba(0, 102, 204, 0.2);
+        }
+
+        [data-theme="dark"] body {
+            background: #0F172A;
+        }
+
+        [data-theme="dark"] nav {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .card,
+        [data-theme="dark"] .chart-container {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .formula-section {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] section {
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] footer {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .modal-content {
+            background: #1E293B;
+        }
+
+        [data-theme="dark"] .modal {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        [data-theme="dark"] .limitations-card {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        [data-theme="dark"] .limitations-title {
+            color: #FCD34D;
+        }
+
+        [data-theme="dark"] .limitations-list li {
+            color: #FDE68A;
+        }
+
+        [data-theme="dark"] .calc-slider {
+            background: var(--gray-200);
+        }
+
+        [data-theme="dark"] table th {
+            background: #1E293B;
+        }
+
+        [data-theme="dark"] .metric-card,
+        [data-theme="dark"] .parser-metric,
+        [data-theme="dark"] .stat-item {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .challenging-case {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .challenging-case.highlighted-warning {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        [data-theme="dark"] .study-chip {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun { display: block; }
+        [data-theme="dark"] .theme-toggle .moon { display: none; }
+
+        [data-theme="dark"] .theme-toggle {
+            border-color: #334155;
+            color: #E5E7EB;
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            background: #334155;
+        }
     </style>
 </head>
 <body>
@@ -871,6 +1122,14 @@
                 <li><a href="#validation">Validation</a></li>
                 <li><a href="#methodology">Studies</a></li>
                 <li><a href="parser.html">Parser</a></li>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+                    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </button>
                 <span class="nav-badge">ISEF 2026</span>
             </ul>
         </div>
@@ -1031,9 +1290,89 @@
                 </div>
             </div>
 
-            <!-- Parser Accuracy Table -->
+            <!-- Parser Performance Summary -->
             <div class="card mt-6">
-                <div class="card-title">Parser Accuracy (Edge Cases)</div>
+                <div class="card-title">Parser Performance Summary</div>
+                <div class="parser-metrics-grid">
+                    <div class="parser-metric">
+                        <div class="parser-metric-value">15/15</div>
+                        <div class="parser-metric-label">Real-World Cases</div>
+                        <div class="parser-metric-ci">95% CI: 78-100%</div>
+                    </div>
+                    <div class="parser-metric">
+                        <div class="parser-metric-value">10/11</div>
+                        <div class="parser-metric-label">Edge Cases</div>
+                        <div class="parser-metric-ci">1 flagged as low confidence</div>
+                    </div>
+                    <div class="parser-metric">
+                        <div class="parser-metric-value">0.93</div>
+                        <div class="parser-metric-label">VAI MAE</div>
+                        <div class="parser-metric-ci">on 0-22 scale</div>
+                    </div>
+                    <div class="parser-metric">
+                        <div class="parser-metric-value">0.73</div>
+                        <div class="parser-metric-label">MAGNIFI MAE</div>
+                        <div class="parser-metric-ci">on 0-25 scale</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenging Cases - Intellectual Honesty -->
+            <div class="card mt-6">
+                <div class="card-title">Challenging Cases &amp; Honest Limitations</div>
+                <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: var(--space-4);">
+                    The parser correctly identified uncertainty in ambiguous reports. These cases demonstrate intellectual honesty about limitations.
+                </p>
+                <div class="challenging-cases">
+                    <div class="challenging-case highlighted-warning">
+                        <div class="challenging-case-header">
+                            <span class="challenging-case-name">AMBIGUOUS</span>
+                            <span class="status-badge warning">Low Confidence (46%)</span>
+                        </div>
+                        <div class="challenging-case-desc">
+                            Equivocal findings - report contained contradictory or vague descriptions.
+                            Parser correctly flagged uncertainty rather than guessing.
+                        </div>
+                        <div class="challenging-case-scores">
+                            <span>Expected: VAI 8, MAG 6</span>
+                            <span>Actual: VAI 10, MAG 8</span>
+                            <span class="error-tag">Error: VAI +2, MAG +2</span>
+                        </div>
+                    </div>
+                    <div class="challenging-case">
+                        <div class="challenging-case-header">
+                            <span class="challenging-case-name">ABSCESS_ONLY</span>
+                            <span class="status-badge success">Pass (85%)</span>
+                        </div>
+                        <div class="challenging-case-desc">
+                            Abscess without clear fistula tract. Challenging because scoring systems assume tract presence.
+                        </div>
+                        <div class="challenging-case-scores">
+                            <span>Expected: VAI 13, MAG 10</span>
+                            <span>Actual: VAI 10, MAG 8</span>
+                            <span class="error-tag">Error: VAI -3, MAG -2</span>
+                        </div>
+                    </div>
+                    <div class="challenging-case">
+                        <div class="challenging-case-header">
+                            <span class="challenging-case-name">MIXED_HEALED_ACTIVE</span>
+                            <span class="status-badge success">Pass (85%)</span>
+                        </div>
+                        <div class="challenging-case-desc">
+                            One healed tract and one active tract in same patient. Required aggregating mixed disease states.
+                        </div>
+                        <div class="challenging-case-scores">
+                            <span>Expected: VAI 9, MAG 9</span>
+                            <span>Actual: VAI 9, MAG 9</span>
+                            <span class="success-tag">Exact match</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Edge Case Table -->
+            <div class="card mt-6">
+                <div class="card-title">Complete Edge Case Results (11 cases)</div>
                 <div class="table-container">
                     <table>
                         <thead>
@@ -1162,6 +1501,46 @@
 
     <script>
         // =========================================
+        // THEME TOGGLE
+        // =========================================
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (prefersDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            // Re-render charts with appropriate colors
+            reinitChartsForTheme();
+        }
+
+        function reinitChartsForTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            // Plotly relayout for dark mode
+            const darkLayout = {
+                paper_bgcolor: isDark ? '#1E293B' : 'white',
+                plot_bgcolor: isDark ? '#1E293B' : 'white',
+                font: { color: isDark ? '#E5E7EB' : '#475569' },
+                xaxis: { gridcolor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)', tickfont: { color: isDark ? '#E5E7EB' : '#475569' } },
+                yaxis: { gridcolor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)', tickfont: { color: isDark ? '#E5E7EB' : '#475569' } }
+            };
+            Plotly.relayout('scatter-plot', darkLayout);
+            Plotly.relayout('residual-plot', darkLayout);
+            Plotly.relayout('bland-altman-plot', darkLayout);
+        }
+
+        // Initialize theme on page load (before DOMContentLoaded to prevent flash)
+        initTheme();
+
+        // =========================================
         // CALCULATOR
         // =========================================
         let calcDirection = 'vai-to-mag';
@@ -1254,6 +1633,9 @@
                             <span>25 (Severe)</span>
                         </div>
                     </div>
+                    <button class="btn btn-secondary mt-4" style="width: 100%;" onclick="showOnScatterplot(${magRounded}, ${magnifi})">
+                        Show on Scatterplot
+                    </button>
                 `;
             } else {
                 const magnifi = parseInt(document.getElementById('mag-slider').value);
@@ -1408,8 +1790,9 @@
                 const status = c.isLowConf ?
                     '<span class="status-badge warning">Low Conf</span>' :
                     '<span class="status-badge success">Pass</span>';
+                const rowClass = c.isLowConf ? 'style="background: #FEF3C7;"' : '';
                 return `
-                    <tr>
+                    <tr ${rowClass}>
                         <td class="mono">${c.name}</td>
                         <td>${c.desc}</td>
                         <td class="num mono">${c.expVai}</td>
@@ -1469,6 +1852,18 @@
             const textColor = '#475569';
             const gridColor = 'rgba(0,0,0,0.08)';
 
+            // Severity zone shapes (background shading)
+            const severityZones = [
+                // Remission (0-4): Green
+                { type: 'rect', x0: 0, x1: 4, y0: 0, y1: 4, fillcolor: 'rgba(16, 185, 129, 0.08)', line: { width: 0 }, layer: 'below' },
+                // Mild (5-10): Teal
+                { type: 'rect', x0: 4, x1: 10, y0: 4, y1: 10, fillcolor: 'rgba(20, 184, 166, 0.08)', line: { width: 0 }, layer: 'below' },
+                // Moderate (11-17): Orange
+                { type: 'rect', x0: 10, x1: 17, y0: 10, y1: 17, fillcolor: 'rgba(245, 158, 11, 0.08)', line: { width: 0 }, layer: 'below' },
+                // Severe (18-25): Red
+                { type: 'rect', x0: 17, x1: 27, y0: 17, y1: 27, fillcolor: 'rgba(239, 68, 68, 0.08)', line: { width: 0 }, layer: 'below' }
+            ];
+
             const studyGroups = {};
             SCATTER_DATA.forEach(d => {
                 if (!studyGroups[d.study]) studyGroups[d.study] = [];
@@ -1481,7 +1876,7 @@
                 mode: 'markers',
                 type: 'scatter',
                 name: study,
-                text: points.map(d => `<b>${d.label}</b><br>n=${d.n}<br>Actual: ${d.magnifi}<br>Predicted: ${d.predicted.toFixed(1)}`),
+                text: points.map(d => `<b>${d.label}</b><br>n=${d.n} patients<br>Actual: ${d.magnifi}<br>Predicted: ${d.predicted.toFixed(1)}<br>Study: ${study}`),
                 marker: {
                     color: STUDY_COLORS[study] || STUDY_COLORS['Other'],
                     size: points.map(d => Math.sqrt(d.n) * 1.2 + 8),
@@ -1526,17 +1921,50 @@
                     font: { size: 10 }
                 },
                 hovermode: 'closest',
-                annotations: [{
-                    x: 4, y: 24,
-                    text: '<b>R-squared = 0.96</b>',
-                    showarrow: false,
-                    font: { size: 12, color: '#0066CC' },
-                    bgcolor: '#E6F0FA',
-                    borderpad: 6
-                }]
+                shapes: severityZones,
+                annotations: [
+                    { x: 4, y: 24, text: '<b>R² = 0.96</b>', showarrow: false, font: { size: 12, color: '#0066CC' }, bgcolor: '#E6F0FA', borderpad: 6 },
+                    // Severity zone labels
+                    { x: 2, y: 2, text: 'Remission', showarrow: false, font: { size: 9, color: '#10B981' }, opacity: 0.8 },
+                    { x: 7, y: 7, text: 'Mild', showarrow: false, font: { size: 9, color: '#14B8A6' }, opacity: 0.8 },
+                    { x: 13.5, y: 13.5, text: 'Moderate', showarrow: false, font: { size: 9, color: '#F59E0B' }, opacity: 0.8 },
+                    { x: 22, y: 22, text: 'Severe', showarrow: false, font: { size: 9, color: '#EF4444' }, opacity: 0.8 }
+                ]
             };
 
             Plotly.newPlot('scatter-plot', [...studyTraces, perfectLine], layout, { responsive: true, displayModeBar: false });
+        }
+
+        // Store user calculation result for plotting
+        let userCalculationResult = null;
+        let userMarkerAdded = false;
+
+        function showOnScatterplot(magnifi, predicted) {
+            // Reinitialize plot to remove old marker, then add new one
+            if (userMarkerAdded) {
+                initScatterPlot();
+            }
+            userCalculationResult = { magnifi, predicted };
+            // Add user marker
+            const userMarker = {
+                x: [magnifi],
+                y: [predicted],
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Your Result',
+                text: [`<b>Your Calculation</b><br>MAGNIFI-CD: ${magnifi}<br>Predicted: ${predicted.toFixed(1)}`],
+                marker: {
+                    color: '#DC2626',
+                    size: 20,
+                    symbol: 'star',
+                    line: { color: 'white', width: 2 }
+                },
+                hovertemplate: '%{text}<extra></extra>'
+            };
+            Plotly.addTraces('scatter-plot', userMarker);
+            userMarkerAdded = true;
+            // Scroll to chart
+            document.getElementById('scatter-plot').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function initResidualPlot() {
