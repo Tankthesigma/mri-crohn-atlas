@@ -49,3 +49,6 @@ env/
 # API configuration (contains secrets)
 config.js
 src/web/config.js
+
+# Build output
+dist/

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Build script for Vercel deployment
- * Generates config.js from environment variables
+ * 1. Copies all files from src/web to dist/
+ * 2. Generates config.js with API key from environment variable
  *
  * In Vercel dashboard:
  * 1. Go to Project Settings > Environment Variables
@@ -15,13 +16,59 @@ const path = require('path');
 console.log('=== MRI-Crohn Atlas Build Script ===');
 console.log('Working directory:', process.cwd());
 
+const projectRoot = path.join(__dirname, '..');
+const sourceDir = path.join(projectRoot, 'src', 'web');
+const distDir = path.join(projectRoot, 'dist');
+
+console.log('Source directory:', sourceDir);
+console.log('Output directory:', distDir);
+
+// Step 1: Create dist directory
+if (!fs.existsSync(distDir)) {
+    console.log('Creating dist directory...');
+    fs.mkdirSync(distDir, { recursive: true });
+}
+
+// Step 2: Copy all files from src/web to dist
+function copyDir(src, dest) {
+    const entries = fs.readdirSync(src, { withFileTypes: true });
+
+    for (const entry of entries) {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+
+        if (entry.isDirectory()) {
+            if (!fs.existsSync(destPath)) {
+                fs.mkdirSync(destPath, { recursive: true });
+            }
+            copyDir(srcPath, destPath);
+        } else {
+            // Skip config.js if it exists in source (we'll generate a new one)
+            if (entry.name === 'config.js') {
+                console.log('Skipping existing config.js (will generate new one)');
+                continue;
+            }
+            fs.copyFileSync(srcPath, destPath);
+        }
+    }
+}
+
+console.log('Copying files from src/web to dist...');
+try {
+    copyDir(sourceDir, distDir);
+    console.log('Files copied successfully');
+} catch (error) {
+    console.error('FAILED to copy files:', error.message);
+    process.exit(1);
+}
+
+// Step 3: Generate config.js with API key
 const apiKey = process.env.OPENROUTER_API_KEY;
 
 if (!apiKey) {
     console.warn('WARNING: OPENROUTER_API_KEY environment variable not set.');
     console.warn('Parser will show "API key not configured" error to users.');
     console.warn('To fix: Add OPENROUTER_API_KEY in Vercel Project Settings > Environment Variables');
-    // Still create an empty config so the file exists (avoids 404)
 } else {
     console.log('API key found: sk-or-....' + apiKey.slice(-4));
 }
@@ -39,28 +86,22 @@ if (typeof window !== 'undefined') {
 }
 `;
 
-const outputPath = path.join(__dirname, '..', 'src', 'web', 'config.js');
+const configPath = path.join(distDir, 'config.js');
 
 try {
-    // Ensure the directory exists
-    const outputDir = path.dirname(outputPath);
-    if (!fs.existsSync(outputDir)) {
-        console.log('Creating directory:', outputDir);
-        fs.mkdirSync(outputDir, { recursive: true });
-    }
+    fs.writeFileSync(configPath, configContent);
+    console.log('SUCCESS: config.js generated at:', configPath);
 
-    fs.writeFileSync(outputPath, configContent);
-    console.log('SUCCESS: config.js generated at:', outputPath);
-
-    // Verify the file was created
-    if (fs.existsSync(outputPath)) {
-        const stats = fs.statSync(outputPath);
-        console.log('File size:', stats.size, 'bytes');
-    }
+    const stats = fs.statSync(configPath);
+    console.log('File size:', stats.size, 'bytes');
 } catch (error) {
     console.error('FAILED to write config.js:', error.message);
-    console.error('Full error:', error);
     process.exit(1);
 }
 
-console.log('=== Build Complete ===');
+// Step 4: List output directory contents
+console.log('\nOutput directory contents:');
+const files = fs.readdirSync(distDir);
+files.forEach(f => console.log('  -', f));
+
+console.log('\n=== Build Complete ===');
