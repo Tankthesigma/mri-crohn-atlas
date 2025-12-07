@@ -1,0 +1,345 @@
+{
+  "method": "Adversarial Testing",
+  "description": "Stress-testing the parser with edge cases, errors, and unusual inputs",
+  "n_test_cases": 10,
+  "categories_tested": [
+    "Typos/OCR Artifacts",
+    "Verbose Reports",
+    "Latin Terminology",
+    "Contradictions",
+    "Minimal/Terse",
+    "Numbers Heavy",
+    "Legacy Formatting",
+    "Many Negatives",
+    "Corrupted Data",
+    "Differential Diagnosis"
+  ],
+  "test_case_results": [
+    {
+      "id": "adv_1",
+      "name": "OCR_ERRORS",
+      "category": "Typos/OCR Artifacts",
+      "what_it_tests": "Handles OCR errors and typos in scanned reports",
+      "report_characteristics": {
+        "char_count": 199,
+        "word_count": 27,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [],
+      "ground_truth": {
+        "expected_vai": 16,
+        "expected_magnifi": 11,
+        "fistula_count": 1,
+        "notes": "1->l substitution errors. Parser should still extract key features."
+      },
+      "report_text_preview": "MRI pe1vis for periana1 fistula. Transsph1ncteric fistu1a identified at 6 o'c1ock position with T2 hyperintens1ty. Sma11 abscess measur1ng 1.5 cm noted. No supra1evator extension. Recta1 wa11 norma1."
+    },
+    {
+      "id": "adv_2",
+      "name": "EXTREMELY_LONG",
+      "category": "Verbose Reports",
+      "what_it_tests": "Handles very long verbose reports without losing key information",
+      "report_characteristics": {
+        "char_count": 2844,
+        "word_count": 399,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [
+        "very_long"
+      ],
+      "ground_truth": {
+        "expected_vai": 12,
+        "expected_magnifi": 9,
+        "fistula_count": 1,
+        "notes": "Very long report (~500 words). Parser should extract key findings from FINDINGS and IMPRESSION sections. With seton: VAI = 0+3+4(reduced)+4+0 = 11-12. MAGNIFI = 1+2(reduced)+2+4 = 9."
+      },
+      "report_text_preview": "CLINICAL HISTORY: This is a 45-year-old male patient with a known diagnosis of Crohn's disease, first diagnosed in 2015, who has been on multiple biologic therapies including infliximab, adalimumab, a..."
+    },
+    {
+      "id": "adv_3",
+      "name": "MEDICAL_LATIN",
+      "category": "Latin Terminology",
+      "what_it_tests": "Handles reports with heavy use of Latin medical terminology",
+      "report_characteristics": {
+        "char_count": 329,
+        "word_count": 41,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [],
+      "ground_truth": {
+        "expected_vai": 16,
+        "expected_magnifi": 11,
+        "fistula_count": 1,
+        "notes": "Heavy Latin terminology. Key terms: fistula in ano, hyperintensitas T2, abscessus. Parser should handle medical Latin."
+      },
+      "report_text_preview": "Examinatio per imagines MRI pelvis. Fistula in ano transsphincteric locata ad horam sextam. Tractus demonstrat hyperintensitas T2 moderata. Abscessus perirectalis dimensione 2.3 cm observatur. Musculi..."
+    },
+    {
+      "id": "adv_4",
+      "name": "CONTRADICTORY",
+      "category": "Contradictions",
+      "what_it_tests": "Handles reports with conflicting information",
+      "report_characteristics": {
+        "char_count": 318,
+        "word_count": 43,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [],
+      "ground_truth": {
+        "expected_vai": 11,
+        "expected_magnifi": 9,
+        "fistula_count": 1,
+        "notes": "Contradictory report - parser should extract definite findings (fistula, T2 signal, collection) and flag LOW CONFIDENCE due to conflicts."
+      },
+      "report_text_preview": "MRI pelvis shows complex perianal fistula. Moderate T2 hyperintensity noted, however the tract appears completely fibrotic. No active inflammation. The fistula is both draining and completely healed. ..."
+    },
+    {
+      "id": "adv_5",
+      "name": "MINIMAL_TEXT",
+      "category": "Minimal/Terse",
+      "what_it_tests": "Handles extremely short/terse reports",
+      "report_characteristics": {
+        "char_count": 58,
+        "word_count": 9,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [
+        "very_short"
+      ],
+      "ground_truth": {
+        "expected_vai": 14,
+        "expected_magnifi": 10,
+        "fistula_count": 1,
+        "notes": "Extremely terse abbreviations. TS=transsphincteric, T2+=T2 hyperintensity. Parser should handle brevity."
+      },
+      "report_text_preview": "Fistula. TS type. T2+. Abscess 1cm. No rectal involvement."
+    },
+    {
+      "id": "adv_6",
+      "name": "NUMBERS_HEAVY",
+      "category": "Numbers Heavy",
+      "what_it_tests": "Handles reports with many numerical measurements",
+      "report_characteristics": {
+        "char_count": 471,
+        "word_count": 80,
+        "has_numbers": true,
+        "has_special_chars": true,
+        "is_all_caps": false,
+        "has_negatives": false,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [
+        "special_chars"
+      ],
+      "ground_truth": {
+        "expected_vai": 15,
+        "expected_magnifi": 13,
+        "fistula_count": 2,
+        "notes": "Numbers-heavy report with technical parameters. Parser should extract clinical numbers (fistula count=2, abscess sizes) not technical parameters."
+      },
+      "report_text_preview": "MRI pelvis performed 2024-12-04. Patient ID 12345678. FOV 240mm. Slice 3mm. Matrix 512x512. Two (2) fistula tracts: First at 3 o'clock, 2.4cm length, 0.3cm diameter. Second at 9 o'clock, 3.1cm length,..."
+    },
+    {
+      "id": "adv_7",
+      "name": "ALL_CAPS",
+      "category": "Legacy Formatting",
+      "what_it_tests": "Handles reports in all capital letters (older EMR systems)",
+      "report_characteristics": {
+        "char_count": 285,
+        "word_count": 37,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": true,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [
+        "all_caps"
+      ],
+      "ground_truth": {
+        "expected_vai": 20,
+        "expected_magnifi": 17,
+        "fistula_count": 1,
+        "notes": "All caps from legacy EMR. VAI: 0+3+8+4+4+1 = 20. MAGNIFI: 1+6+3+4+2+0 = 16-17."
+      },
+      "report_text_preview": "MRI PELVIS FOR PERIANAL FISTULA. TRANSSPHINCTERIC FISTULA AT 6 O'CLOCK POSITION. MARKED T2 HYPERINTENSITY WITHIN THE TRACT. SUPRALEVATOR EXTENSION PRESENT. 2.5 CM PRESACRAL ABSCESS. RECTAL WALL THICKE..."
+    },
+    {
+      "id": "adv_8",
+      "name": "NEGATIVE_HEAVY",
+      "category": "Many Negatives",
+      "what_it_tests": "Handles reports with many negative findings - still extracts the positive ones",
+      "report_characteristics": {
+        "char_count": 412,
+        "word_count": 61,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [],
+      "ground_truth": {
+        "expected_vai": 5,
+        "expected_magnifi": 3,
+        "fistula_count": 1,
+        "notes": "Many negatives obscuring single positive finding. Parser must find the ONE positive fistula at 6 o'clock. VAI: 0+1+4+0 = 5. MAGNIFI: 1+2+0 = 3."
+      },
+      "report_text_preview": "No fistula at 12 o'clock. No fistula at 3 o'clock. No abscess in right ischioanal fossa. No abscess in left ischioanal fossa. No supralevator collection. No inflammatory mass. However, there IS a smal..."
+    },
+    {
+      "id": "adv_9",
+      "name": "GARBLED_SECTIONS",
+      "category": "Corrupted Data",
+      "what_it_tests": "Handles reports with some garbled/corrupted sections",
+      "report_characteristics": {
+        "char_count": 345,
+        "word_count": 43,
+        "has_numbers": true,
+        "has_special_chars": true,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": false
+      },
+      "difficulty_factors": [
+        "special_chars"
+      ],
+      "ground_truth": {
+        "expected_vai": 16,
+        "expected_magnifi": 11,
+        "fistula_count": 1,
+        "notes": "Partially corrupted report. Parser should extract from readable sections. Should flag MODERATE confidence due to incomplete data."
+      },
+      "report_text_preview": "MRI Pelvis\n\n[IMAGE DATA CORRUPTED - SECTION UNREADABLE]\n\n...continuing findings... transsphincteric fistula at 6 o'clock with moderate T2 hyperintensity. Associated 1.5cm perianal abscess.\n\n[ENCODING ..."
+    },
+    {
+      "id": "adv_10",
+      "name": "DIFFERENTIAL_HEAVY",
+      "category": "Differential Diagnosis",
+      "what_it_tests": "Handles reports focused on differential diagnosis rather than definitive findings",
+      "report_characteristics": {
+        "char_count": 571,
+        "word_count": 84,
+        "has_numbers": true,
+        "has_special_chars": false,
+        "is_all_caps": false,
+        "has_negatives": true,
+        "has_conditionals": true
+      },
+      "difficulty_factors": [
+        "uncertain_language"
+      ],
+      "ground_truth": {
+        "expected_vai": 9,
+        "expected_magnifi": 7,
+        "fistula_count": 1,
+        "notes": "Heavy differential diagnosis language. Parser should extract probable findings with LOW CONFIDENCE flag. VAI: 0+1+4+4 = 9. MAGNIFI: 1+2+0+4 = 7."
+      },
+      "report_text_preview": "MRI pelvis with findings that may represent either: (1) Perianal Crohn's fistula versus (2) Cryptoglandular abscess versus (3) Hidradenitis suppurativa versus (4) Pilonidal disease. The tract-like str..."
+    }
+  ],
+  "failure_modes": {
+    "OCR_ERRORS": {
+      "expected_issue": "Character substitution errors (1\u2192l, O\u21920)",
+      "mitigation": "Fuzzy matching, context-aware interpretation",
+      "risk_level": "Medium"
+    },
+    "EXTREMELY_LONG": {
+      "expected_issue": "Key findings buried in verbose text",
+      "mitigation": "Focus on FINDINGS and IMPRESSION sections",
+      "risk_level": "Low"
+    },
+    "MEDICAL_LATIN": {
+      "expected_issue": "Unrecognized Latin medical terms",
+      "mitigation": "Medical terminology mapping",
+      "risk_level": "Medium"
+    },
+    "CONTRADICTORY": {
+      "expected_issue": "Conflicting statements in same report",
+      "mitigation": "Flag low confidence, extract definite findings",
+      "risk_level": "High"
+    },
+    "MINIMAL_TEXT": {
+      "expected_issue": "Insufficient information for accurate scoring",
+      "mitigation": "Use abbreviation expansion, flag uncertainty",
+      "risk_level": "Medium"
+    },
+    "NUMBERS_HEAVY": {
+      "expected_issue": "Confusion between technical and clinical numbers",
+      "mitigation": "Context-aware number extraction",
+      "risk_level": "Low"
+    },
+    "ALL_CAPS": {
+      "expected_issue": "Parsing issues with uppercase text",
+      "mitigation": "Case normalization in preprocessing",
+      "risk_level": "Low"
+    },
+    "NEGATIVE_HEAVY": {
+      "expected_issue": "Missing positive findings among many negatives",
+      "mitigation": "Explicit positive finding extraction",
+      "risk_level": "Medium"
+    },
+    "GARBLED_SECTIONS": {
+      "expected_issue": "Incomplete or corrupted data",
+      "mitigation": "Skip corrupted sections, flag missing data",
+      "risk_level": "High"
+    },
+    "DIFFERENTIAL_HEAVY": {
+      "expected_issue": "Uncertain language, no definitive findings",
+      "mitigation": "Extract probable findings, flag low confidence",
+      "risk_level": "High"
+    }
+  },
+  "pass_criteria": {
+    "vai_tolerance": 3,
+    "magnifi_tolerance": 3,
+    "or_low_confidence": true,
+    "low_confidence_threshold": 0.5
+  },
+  "expected_score_ranges": {
+    "vai_min": 5,
+    "vai_max": 20,
+    "vai_mean": 13.4,
+    "magnifi_min": 3,
+    "magnifi_max": 17,
+    "magnifi_mean": 10.1
+  },
+  "risk_assessment": {
+    "high_risk_categories": [
+      "CONTRADICTORY",
+      "GARBLED_SECTIONS",
+      "DIFFERENTIAL_HEAVY"
+    ],
+    "medium_risk_categories": [
+      "OCR_ERRORS",
+      "MEDICAL_LATIN",
+      "MINIMAL_TEXT",
+      "NEGATIVE_HEAVY"
+    ],
+    "low_risk_categories": [
+      "EXTREMELY_LONG",
+      "NUMBERS_HEAVY",
+      "ALL_CAPS"
+    ]
+  }
+}

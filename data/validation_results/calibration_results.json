@@ -1,0 +1,297 @@
+{
+  "method": "Calibration Analysis",
+  "description": "Assessing whether parser confidence matches actual accuracy",
+  "n_total_cases": 26,
+  "overall_statistics": {
+    "mean_confidence": 0.8085769230769232,
+    "overall_accuracy": 0.9230769230769231,
+    "calibration_gap": 0.11449999999999994,
+    "assessment": "UNDERCONFIDENT (predictions better than confidence suggests)"
+  },
+  "expected_calibration_error": 0.1884615384615385,
+  "calibration_by_bin": [
+    {
+      "bin": "0-50%",
+      "bin_lower": 0,
+      "bin_upper": 0.5,
+      "n_cases": 1,
+      "n_correct": 1,
+      "accuracy": 1.0,
+      "expected_accuracy": 0.25,
+      "calibration_error": 0.75
+    },
+    {
+      "bin": "50-70%",
+      "bin_lower": 0.5,
+      "bin_upper": 0.7,
+      "n_cases": 3,
+      "n_correct": 3,
+      "accuracy": 1.0,
+      "expected_accuracy": 0.6,
+      "calibration_error": 0.4
+    },
+    {
+      "bin": "70-85%",
+      "bin_lower": 0.7,
+      "bin_upper": 0.85,
+      "n_cases": 22,
+      "n_correct": 20,
+      "accuracy": 0.9090909090909091,
+      "expected_accuracy": 0.7749999999999999,
+      "calibration_error": 0.13409090909090915
+    }
+  ],
+  "reliability_diagram_data": [
+    {
+      "confidence_midpoint": 0.25,
+      "accuracy": 1.0,
+      "n_cases": 1
+    },
+    {
+      "confidence_midpoint": 0.6,
+      "accuracy": 1.0,
+      "n_cases": 3
+    },
+    {
+      "confidence_midpoint": 0.7749999999999999,
+      "accuracy": 0.9090909090909091,
+      "n_cases": 22
+    }
+  ],
+  "raw_cases": [
+    {
+      "id": "edge_1",
+      "name": "HEALED",
+      "confidence": 0.671,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_2",
+      "name": "MULTIPLE_SEPARATE",
+      "confidence": 0.8009999999999999,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_3",
+      "name": "ABSCESS_ONLY",
+      "confidence": 0.6479999999999999,
+      "vai_error": 0,
+      "magnifi_error": 2,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_4",
+      "name": "POST_SURGICAL",
+      "confidence": 0.6559999999999999,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_5",
+      "name": "AMBIGUOUS",
+      "confidence": 0.43399999999999994,
+      "vai_error": 3,
+      "magnifi_error": 3,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_6",
+      "name": "HORSESHOE",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_7",
+      "name": "PEDIATRIC",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_8",
+      "name": "MIXED_HEALED_ACTIVE",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_9",
+      "name": "SEVERE_ACUTE",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_10",
+      "name": "MINIMAL",
+      "confidence": 0.8130000000000001,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": "edge_11",
+      "name": "EARLY_SMALL_NEW",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "edge_cases"
+    },
+    {
+      "id": 1,
+      "name": "standard",
+      "confidence": 0.85,
+      "vai_error": 2,
+      "magnifi_error": 5,
+      "is_correct": false,
+      "source": "validation"
+    },
+    {
+      "id": 2,
+      "name": "standard",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 2,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 3,
+      "name": "standard",
+      "confidence": 0.85,
+      "vai_error": 1,
+      "magnifi_error": 1,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 4,
+      "name": "edge_case",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 1,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 5,
+      "name": "edge_case",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 6,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 7,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 1,
+      "magnifi_error": 2,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 8,
+      "name": "edge_case",
+      "confidence": 0.85,
+      "vai_error": 1,
+      "magnifi_error": 1,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 9,
+      "name": "edge_case",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 10,
+      "name": "ambiguous",
+      "confidence": 0.85,
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 11,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 1,
+      "magnifi_error": 3,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 12,
+      "name": "edge_case",
+      "confidence": 0.85,
+      "vai_error": 1,
+      "magnifi_error": 1,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 13,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 4,
+      "magnifi_error": 1,
+      "is_correct": false,
+      "source": "validation"
+    },
+    {
+      "id": 14,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 0,
+      "magnifi_error": 0,
+      "is_correct": true,
+      "source": "validation"
+    },
+    {
+      "id": 15,
+      "name": "edge_case",
+      "confidence": 0.85,
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "is_correct": true,
+      "source": "validation"
+    }
+  ]
+}

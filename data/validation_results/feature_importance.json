@@ -1,0 +1,200 @@
+{
+  "method": "Feature Importance Analysis",
+  "description": "Analyzing which features contribute most to predictions",
+  "crosswalk_analysis": {
+    "formula": "MAGNIFI-CD = 1.031\u00d7VAI + 0.264\u00d7Fibrosis\u00d7I(VAI\u22642) + 1.713",
+    "partial_r2": {
+      "vai_only": 0.9672997808690248,
+      "vai_plus_fibrosis": 0.9676489091317719,
+      "full_model": 0.9674840684951537
+    },
+    "partial_r2_contributions": {
+      "vai": 0.9672997808690248,
+      "fibrosis": 0.0003491282627471337,
+      "interaction": -0.00016484063661825754
+    },
+    "contribution_percentages": {
+      "vai": 99.98095186968654,
+      "fibrosis": 0.03608620277232839,
+      "interaction": -0.01703807245887308
+    },
+    "sensitivities": {
+      "d_magnifi_d_vai": 1.031,
+      "d_magnifi_d_fibrosis_healed": 0.264,
+      "d_magnifi_d_fibrosis_active": 0
+    }
+  },
+  "parser_analysis": {
+    "feature_importance": {
+      "fistula_count": {
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      "fistula_type": {
+        "accuracy": 0.8666666666666667,
+        "n_correct": 13,
+        "n_incorrect": 2,
+        "mean_error_when_correct": 2.6153846153846154,
+        "mean_error_when_incorrect": 3.0,
+        "error_impact": 0.3846153846153846,
+        "importance_score": 0.9000000000000001
+      },
+      "t2_hyperintensity": {
+        "accuracy": 0.8666666666666667,
+        "n_correct": 13,
+        "n_incorrect": 2,
+        "mean_error_when_correct": 2.6153846153846154,
+        "mean_error_when_incorrect": 3.0,
+        "error_impact": 0.3846153846153846,
+        "importance_score": 0.9000000000000001
+      },
+      "extension": {
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      "collections_abscesses": {
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      "rectal_wall_involvement": {
+        "accuracy": 0.9333333333333333,
+        "n_correct": 14,
+        "n_incorrect": 1,
+        "mean_error_when_correct": 2.5714285714285716,
+        "mean_error_when_incorrect": 4.0,
+        "error_impact": 1.4285714285714284,
+        "importance_score": 1.0666666666666667
+      },
+      "inflammatory_mass": {
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      "predominant_feature": {
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      }
+    },
+    "ranked_features": [
+      {
+        "feature": "rectal_wall_involvement",
+        "accuracy": 0.9333333333333333,
+        "n_correct": 14,
+        "n_incorrect": 1,
+        "mean_error_when_correct": 2.5714285714285716,
+        "mean_error_when_incorrect": 4.0,
+        "error_impact": 1.4285714285714284,
+        "importance_score": 1.0666666666666667
+      },
+      {
+        "feature": "fistula_count",
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      {
+        "feature": "extension",
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      {
+        "feature": "collections_abscesses",
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      {
+        "feature": "inflammatory_mass",
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      {
+        "feature": "predominant_feature",
+        "accuracy": 1.0,
+        "n_correct": 15,
+        "n_incorrect": 0,
+        "mean_error_when_correct": 2.6666666666666665,
+        "mean_error_when_incorrect": 0.0,
+        "error_impact": 0.0,
+        "importance_score": 1.0
+      },
+      {
+        "feature": "fistula_type",
+        "accuracy": 0.8666666666666667,
+        "n_correct": 13,
+        "n_incorrect": 2,
+        "mean_error_when_correct": 2.6153846153846154,
+        "mean_error_when_incorrect": 3.0,
+        "error_impact": 0.3846153846153846,
+        "importance_score": 0.9000000000000001
+      },
+      {
+        "feature": "t2_hyperintensity",
+        "accuracy": 0.8666666666666667,
+        "n_correct": 13,
+        "n_incorrect": 2,
+        "mean_error_when_correct": 2.6153846153846154,
+        "mean_error_when_incorrect": 3.0,
+        "error_impact": 0.3846153846153846,
+        "importance_score": 0.9000000000000001
+      }
+    ]
+  },
+  "minimum_viable_report": {
+    "essential": [
+      "fistula_count",
+      "extension",
+      "collections_abscesses",
+      "rectal_wall_involvement",
+      "inflammatory_mass",
+      "predominant_feature"
+    ],
+    "recommended": [
+      "fistula_type",
+      "t2_hyperintensity"
+    ],
+    "optional": []
+  }
+}

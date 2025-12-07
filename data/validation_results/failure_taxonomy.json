@@ -1,0 +1,480 @@
+{
+  "method": "Failure Mode Taxonomy",
+  "description": "Categorizing errors by root cause",
+  "failure_modes": {
+    "A": {
+      "name": "Missing Information",
+      "description": "Report lacks key features needed for accurate scoring",
+      "examples": [
+        "No T2 signal mentioned",
+        "Extension not described",
+        "Fibrosis state unclear"
+      ],
+      "color": "#e74c3c",
+      "recommendation": "Enhance parser to flag when key features are missing and request clarification"
+    },
+    "B": {
+      "name": "Ambiguous Language",
+      "description": "Report uses vague or interpretable language",
+      "examples": [
+        "\"may represent\"",
+        "\"possible fistula\"",
+        "\"cannot exclude\""
+      ],
+      "color": "#f39c12",
+      "recommendation": "Implement uncertainty quantification and report confidence intervals"
+    },
+    "C": {
+      "name": "Unusual Anatomy",
+      "description": "Atypical anatomical presentation not well modeled",
+      "examples": [
+        "Horseshoe extension",
+        "Multiple separate fistulas",
+        "Extrasphincteric"
+      ],
+      "color": "#9b59b6",
+      "recommendation": "Expand training data to include more unusual anatomical presentations"
+    },
+    "D": {
+      "name": "Parser Error",
+      "description": "Parser misinterprets or hallucinates findings",
+      "examples": [
+        "Misread \"no fistula\"",
+        "Wrong count",
+        "Incorrect T2 grading"
+      ],
+      "color": "#e67e22",
+      "recommendation": "Improve parser accuracy through additional training examples"
+    },
+    "E": {
+      "name": "Formula Limitation",
+      "description": "Crosswalk formula systematically mis-predicts",
+      "examples": [
+        "Healed edge cases",
+        "Very severe disease",
+        "Fibrosis term applicability"
+      ],
+      "color": "#3498db",
+      "recommendation": "Consider formula refinement for edge cases (especially healed state)"
+    },
+    "F": {
+      "name": "Ground Truth Error",
+      "description": "Expected scores may be incorrect or debatable",
+      "examples": [
+        "Radiologist disagreement",
+        "Scoring ambiguity",
+        "Study methodology"
+      ],
+      "color": "#2ecc71",
+      "recommendation": "Establish gold standard with multiple radiologist consensus"
+    }
+  },
+  "total_errors_analyzed": 34,
+  "distribution": {
+    "A": {
+      "count": 1,
+      "percentage": 2.941176470588235
+    },
+    "B": {
+      "count": 2,
+      "percentage": 5.88235294117647
+    },
+    "C": {
+      "count": 3,
+      "percentage": 8.823529411764707
+    },
+    "D": {
+      "count": 7,
+      "percentage": 20.588235294117645
+    },
+    "E": {
+      "count": 7,
+      "percentage": 20.588235294117645
+    },
+    "F": {
+      "count": 14,
+      "percentage": 41.17647058823529
+    }
+  },
+  "all_errors": [
+    {
+      "source": "LOSO",
+      "study": "ADMIRE_Followup_2022",
+      "vai": 0.0,
+      "fibrosis": 6,
+      "error": -1.7589156213800026,
+      "abs_error": 1.7589156213800026,
+      "data_source": "admire_longterm_remission",
+      "failure_mode": "E",
+      "explanation": "Healed/remission edge case - formula limitation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Beek_2024",
+      "vai": 10.0,
+      "fibrosis": 3,
+      "error": 1.5093559007129205,
+      "abs_error": 1.5093559007129205,
+      "data_source": "beek_remitters_bl",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Beek_2024",
+      "vai": 15.0,
+      "fibrosis": 2,
+      "error": 0.9732735606542384,
+      "abs_error": 0.9732735606542384,
+      "data_source": "beek_nonresp_fu",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Beek_2024",
+      "vai": 17.0,
+      "fibrosis": 2,
+      "error": 0.958840624630767,
+      "abs_error": 0.958840624630767,
+      "data_source": "beek_responders_bl",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Beek_2024",
+      "vai": 17.0,
+      "fibrosis": 2,
+      "error": 0.958840624630767,
+      "abs_error": 0.958840624630767,
+      "data_source": "beek_nonresp_bl",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "ESGAR_2023",
+      "vai": 15.0,
+      "fibrosis": 2,
+      "error": 0.7992465609427626,
+      "abs_error": 0.7992465609427626,
+      "data_source": "esgar_baseline_median",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "MAGNIFI-CD_Validation_2019",
+      "vai": 14.0,
+      "fibrosis": 2,
+      "error": -0.9620784988060826,
+      "abs_error": 0.9620784988060826,
+      "data_source": "magnificd_validation_responders_bl",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "MAGNIFI-CD_Validation_2019",
+      "vai": 13.0,
+      "fibrosis": 2,
+      "error": -0.8207463717242778,
+      "abs_error": 0.8207463717242778,
+      "data_source": "magnificd_validation_nonresp_wk24",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "P325_ECCO_2022",
+      "vai": 5.0,
+      "fibrosis": 4,
+      "error": -0.972123100031359,
+      "abs_error": 0.972123100031359,
+      "data_source": "p325_responders_fu",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "PISA2_2023",
+      "vai": 0.0,
+      "fibrosis": 6,
+      "error": -2.235641361710657,
+      "abs_error": 2.235641361710657,
+      "data_source": "pisa2_surgery_healed",
+      "failure_mode": "E",
+      "explanation": "Healed/remission edge case - formula limitation"
+    },
+    {
+      "source": "LOSO",
+      "study": "PISA2_2023",
+      "vai": 0.0,
+      "fibrosis": 6,
+      "error": -2.235641361710657,
+      "abs_error": 2.235641361710657,
+      "data_source": "pisa2_antitnf_healed",
+      "failure_mode": "E",
+      "explanation": "Healed/remission edge case - formula limitation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Protocolized_2025",
+      "vai": 0.0,
+      "fibrosis": 6,
+      "error": 6.0000000000000036,
+      "abs_error": 6.0000000000000036,
+      "data_source": "protocolized_healed_median",
+      "failure_mode": "E",
+      "explanation": "Healed/remission edge case - formula limitation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Protocolized_2025",
+      "vai": 4.0,
+      "fibrosis": 6,
+      "error": 2.3012327671755237,
+      "abs_error": 2.3012327671755237,
+      "data_source": "protocolized_healed_iqr_high",
+      "failure_mode": "E",
+      "explanation": "Large residual - systematic formula limitation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Protocolized_2025",
+      "vai": 8.0,
+      "fibrosis": 1,
+      "error": -0.9251504819851348,
+      "abs_error": 0.9251504819851348,
+      "data_source": "protocolized_active_iqr_low",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Protocolized_2025",
+      "vai": 0.0,
+      "fibrosis": 5,
+      "error": 2.754602669389367,
+      "abs_error": 2.754602669389367,
+      "data_source": "protocolized_healed_iqr_low",
+      "failure_mode": "E",
+      "explanation": "Healed/remission edge case - formula limitation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Samaan_2019",
+      "vai": 9.6,
+      "fibrosis": 3,
+      "error": -0.6923577474077725,
+      "abs_error": 0.6923577474077725,
+      "data_source": "samaan_responders_fu",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Samaan_2019",
+      "vai": 11.5,
+      "fibrosis": 2,
+      "error": -0.6555820173671059,
+      "abs_error": 0.6555820173671059,
+      "data_source": "samaan_nonresp_bl",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "Samaan_2019",
+      "vai": 11.5,
+      "fibrosis": 2,
+      "error": -0.6555820173671059,
+      "abs_error": 0.6555820173671059,
+      "data_source": "samaan_nonresp_fu",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "vanRijn_2022",
+      "vai": 0.0,
+      "fibrosis": 6,
+      "error": -1.7567644251987056,
+      "abs_error": 1.7567644251987056,
+      "data_source": "vanrijn_posttreat_closed",
+      "failure_mode": "E",
+      "explanation": "Healed/remission edge case - formula limitation"
+    },
+    {
+      "source": "LOSO",
+      "study": "vanRijn_2022",
+      "vai": 13.0,
+      "fibrosis": 1,
+      "error": 0.8999891720442115,
+      "abs_error": 0.8999891720442115,
+      "data_source": "vanrijn_posttreat_open",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "LOSO",
+      "study": "vanRijn_2022",
+      "vai": 16.0,
+      "fibrosis": 1,
+      "error": 0.8356856951968545,
+      "abs_error": 0.8356856951968545,
+      "data_source": "vanrijn_pretreat_open",
+      "failure_mode": "F",
+      "explanation": "Within expected variance - possible ground truth variation"
+    },
+    {
+      "source": "Parser",
+      "case_id": 1,
+      "difficulty": "standard",
+      "vai_error": 2,
+      "magnifi_error": 5,
+      "total_error": 7,
+      "failure_mode": "D",
+      "explanation": "Standard case with error - parser issue"
+    },
+    {
+      "source": "Parser",
+      "case_id": 6,
+      "difficulty": "complex",
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "total_error": 4,
+      "failure_mode": "C",
+      "explanation": "Complex anatomy - unusual presentation"
+    },
+    {
+      "source": "Parser",
+      "case_id": 10,
+      "difficulty": "ambiguous",
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "total_error": 4,
+      "failure_mode": "B",
+      "explanation": "Ambiguous case - expected uncertainty"
+    },
+    {
+      "source": "Parser",
+      "case_id": 11,
+      "difficulty": "complex",
+      "vai_error": 1,
+      "magnifi_error": 3,
+      "total_error": 4,
+      "failure_mode": "C",
+      "explanation": "Complex anatomy - unusual presentation"
+    },
+    {
+      "source": "Parser",
+      "case_id": 13,
+      "difficulty": "complex",
+      "vai_error": 4,
+      "magnifi_error": 1,
+      "total_error": 5,
+      "failure_mode": "C",
+      "explanation": "Complex anatomy - unusual presentation"
+    },
+    {
+      "source": "Parser",
+      "case_id": 15,
+      "difficulty": "edge_case",
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "total_error": 4,
+      "failure_mode": "A",
+      "explanation": "Edge case - likely missing information"
+    },
+    {
+      "source": "Calibration",
+      "case_id": "edge_5",
+      "name": "AMBIGUOUS",
+      "confidence": 0.43399999999999994,
+      "vai_error": 3,
+      "magnifi_error": 3,
+      "total_error": 6,
+      "failure_mode": "B",
+      "explanation": "Low confidence - parser detected ambiguity"
+    },
+    {
+      "source": "Calibration",
+      "case_id": 1,
+      "name": "standard",
+      "confidence": 0.85,
+      "vai_error": 2,
+      "magnifi_error": 5,
+      "total_error": 7,
+      "failure_mode": "D",
+      "explanation": "High confidence but wrong - parser error"
+    },
+    {
+      "source": "Calibration",
+      "case_id": 6,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "total_error": 4,
+      "failure_mode": "D",
+      "explanation": "High confidence but wrong - parser error"
+    },
+    {
+      "source": "Calibration",
+      "case_id": 10,
+      "name": "ambiguous",
+      "confidence": 0.85,
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "total_error": 4,
+      "failure_mode": "D",
+      "explanation": "High confidence but wrong - parser error"
+    },
+    {
+      "source": "Calibration",
+      "case_id": 11,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 1,
+      "magnifi_error": 3,
+      "total_error": 4,
+      "failure_mode": "D",
+      "explanation": "High confidence but wrong - parser error"
+    },
+    {
+      "source": "Calibration",
+      "case_id": 13,
+      "name": "complex",
+      "confidence": 0.85,
+      "vai_error": 4,
+      "magnifi_error": 1,
+      "total_error": 5,
+      "failure_mode": "D",
+      "explanation": "High confidence but wrong - parser error"
+    },
+    {
+      "source": "Calibration",
+      "case_id": 15,
+      "name": "edge_case",
+      "confidence": 0.85,
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "total_error": 4,
+      "failure_mode": "D",
+      "explanation": "High confidence but wrong - parser error"
+    }
+  ],
+  "severity_statistics": {
+    "loso": {
+      "count": 21,
+      "mean_abs_error": 1.5076976466698226,
+      "max_abs_error": 6.0000000000000036
+    },
+    "parser": {
+      "count": 13,
+      "mean_total_error": 4.769230769230769
+    }
+  }
+}

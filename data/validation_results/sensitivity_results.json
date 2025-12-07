@@ -1,0 +1,189 @@
+{
+  "method": "Monte Carlo Sensitivity Analysis",
+  "description": "Testing error propagation through the crosswalk formula",
+  "formula": "MAGNIFI-CD = 1.031\u00d7VAI + 0.264\u00d7Fibrosis\u00d7I(VAI\u22642) + 1.713",
+  "n_simulations": 1000,
+  "n_datapoints": 60,
+  "noise_levels_tested": [
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0
+  ],
+  "results_by_noise_level": [
+    {
+      "vai_noise_sigma": 0.5,
+      "n_simulations": 1000,
+      "n_datapoints": 60,
+      "magnifi_error": {
+        "mean": 0.020091752818816623,
+        "std": 0.503196737858757,
+        "median": 0.001226798551291708,
+        "q25": -0.3054220174998705,
+        "q75": 0.3501861905084154,
+        "min": -2.302018791649136,
+        "max": 2.032271636070849,
+        "abs_mean": 0.39190756357501727,
+        "abs_std": 0.31625795979820137
+      },
+      "mae": {
+        "mean": 0.3919075635750173,
+        "std": 0.03953108999193077
+      },
+      "rmse": {
+        "mean": 0.5014442418721017,
+        "std": 0.04652212179533619
+      },
+      "error_amplification_factor": 0.7838151271500345,
+      "threshold_crossings_per_sim": 0.001
+    },
+    {
+      "vai_noise_sigma": 1.0,
+      "n_simulations": 1000,
+      "n_datapoints": 60,
+      "magnifi_error": {
+        "mean": 0.04319468473331058,
+        "std": 0.9966699398930983,
+        "median": 0.006471587066694262,
+        "q25": -0.6012813178423979,
+        "q75": 0.6930528614436469,
+        "min": -4.601320551419585,
+        "max": 4.332288702658744,
+        "abs_mean": 0.7769594041761406,
+        "abs_std": 0.6257402289592535
+      },
+      "mae": {
+        "mean": 0.7769594041761406,
+        "std": 0.07678350411561279
+      },
+      "rmse": {
+        "mean": 0.9935351892826647,
+        "std": 0.09002542714578982
+      },
+      "error_amplification_factor": 0.7769594041761406,
+      "threshold_crossings_per_sim": 0.175
+    },
+    {
+      "vai_noise_sigma": 1.5,
+      "n_simulations": 1000,
+      "n_datapoints": 60,
+      "magnifi_error": {
+        "mean": 0.05409043786119496,
+        "std": 1.4736722548318328,
+        "median": 0.0,
+        "q25": -0.9110207530787697,
+        "q75": 1.021109964549475,
+        "min": -5.868406799998983,
+        "max": 7.055310420070434,
+        "abs_mean": 1.1507229045945582,
+        "abs_std": 0.9222106521671809
+      },
+      "mae": {
+        "mean": 1.1507229045945582,
+        "std": 0.11685674003209721
+      },
+      "rmse": {
+        "mean": 1.46818207228222,
+        "std": 0.13811984925505744
+      },
+      "error_amplification_factor": 0.7671486030630388,
+      "threshold_crossings_per_sim": 0.837
+    },
+    {
+      "vai_noise_sigma": 2.0,
+      "n_simulations": 1000,
+      "n_datapoints": 60,
+      "magnifi_error": {
+        "mean": 0.0660048138251224,
+        "std": 1.9540375651762096,
+        "median": 0.0024232791648763907,
+        "q25": -1.2105410657585132,
+        "q75": 1.3384254110742537,
+        "min": -8.255419183155281,
+        "max": 7.584430758119108,
+        "abs_mean": 1.5244213286997395,
+        "abs_std": 1.2242381525557757
+      },
+      "mae": {
+        "mean": 1.5244213286997395,
+        "std": 0.15599467400292977
+      },
+      "rmse": {
+        "mean": 1.9465360127999587,
+        "std": 0.1833493726215002
+      },
+      "error_amplification_factor": 0.7622106643498697,
+      "threshold_crossings_per_sim": 1.657
+    },
+    {
+      "vai_noise_sigma": 2.5,
+      "n_simulations": 1000,
+      "n_datapoints": 60,
+      "magnifi_error": {
+        "mean": 0.08502143654392656,
+        "std": 2.433219560763698,
+        "median": 0.0,
+        "q25": -1.516328140285582,
+        "q75": 1.649747226581936,
+        "min": -10.812999999999999,
+        "max": 10.875416751090743,
+        "abs_mean": 1.898098443000045,
+        "abs_std": 1.5247978148711654
+      },
+      "mae": {
+        "mean": 1.8980984430000454,
+        "std": 0.19611776633948114
+      },
+      "rmse": {
+        "mean": 2.423421041100243,
+        "std": 0.23412930851922376
+      },
+      "error_amplification_factor": 0.759239377200018,
+      "threshold_crossings_per_sim": 2.439
+    },
+    {
+      "vai_noise_sigma": 3.0,
+      "n_simulations": 1000,
+      "n_datapoints": 60,
+      "magnifi_error": {
+        "mean": 0.10798017694225394,
+        "std": 2.8923067694819165,
+        "median": 0.0,
+        "q25": -1.8112691339262128,
+        "q75": 1.947297470622214,
+        "min": -11.733723641836901,
+        "max": 12.118946271194513,
+        "abs_mean": 2.256545427665613,
+        "abs_std": 1.8124847310487382
+      },
+      "mae": {
+        "mean": 2.2565454276656127,
+        "std": 0.23051452180085985
+      },
+      "rmse": {
+        "mean": 2.8817603813283967,
+        "std": 0.26936085834696494
+      },
+      "error_amplification_factor": 0.7521818092218711,
+      "threshold_crossings_per_sim": 3.391
+    }
+  ],
+  "theoretical_analysis": {
+    "expected_amplification": 1.031,
+    "formula_type": "Linear in VAI",
+    "error_propagation": "\u03c3_MAGNIFI \u2248 1.031 \u00d7 \u03c3_VAI"
+  },
+  "empirical_analysis": {
+    "mean_amplification_factor": 0.7669258308601621,
+    "std_amplification_factor": 0.010682314740325945,
+    "linearity_r2": 0.9999019673253615,
+    "linearity_slope": 0.7463031349159928
+  },
+  "clinical_implications": {
+    "1pt_vai_error": "1.03 pt MAGNIFI error",
+    "2pt_vai_error": "2.06 pt MAGNIFI error",
+    "3pt_vai_error": "3.09 pt MAGNIFI error"
+  }
+}
