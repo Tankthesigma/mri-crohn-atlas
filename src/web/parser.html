@@ -1063,7 +1063,176 @@
         .hl-rectal_wall_involvement { border-color: #ec4899; background-color: rgba(236, 72, 153, 0.1); }
         .hl-inflammatory_mass { border-color: #f59e0b; background-color: rgba(245, 158, 11, 0.1); }
         .hl-predominant_feature { border-color: #06b6d4; background-color: rgba(6, 182, 212, 0.1); }
+
+        /* ============================================
+           DARK MODE TOGGLE
+           ============================================ */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            transition: all 0.15s;
+            margin-right: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--gray-100);
+            color: var(--gray-900);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .theme-toggle .sun { display: none; }
+        .theme-toggle .moon { display: block; }
+
+        /* ============================================
+           DARK MODE STYLES
+           ============================================ */
+        [data-theme="dark"] {
+            --gray-50: #1F2937;
+            --gray-100: #374151;
+            --gray-200: #4B5563;
+            --gray-300: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-500: #D1D5DB;
+            --gray-600: #E5E7EB;
+            --gray-700: #F3F4F6;
+            --gray-800: #F9FAFB;
+            --gray-900: #FFFFFF;
+
+            --primary-light: rgba(0, 102, 204, 0.2);
+            --success-light: rgba(5, 150, 105, 0.2);
+            --warning-light: rgba(217, 119, 6, 0.2);
+            --danger-light: rgba(220, 38, 38, 0.2);
+            --info-light: rgba(8, 145, 178, 0.2);
+        }
+
+        [data-theme="dark"] body {
+            background: #0F172A;
+        }
+
+        [data-theme="dark"] nav {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .header {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .card {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .report-textarea {
+            background: #0F172A;
+            border-color: #4B5563;
+            color: #F9FAFB;
+        }
+
+        [data-theme="dark"] .report-textarea::placeholder {
+            color: #9CA3AF;
+        }
+
+        [data-theme="dark"] .example-btn {
+            background: #1E293B;
+            border-color: #4B5563;
+            color: #E5E7EB;
+        }
+
+        [data-theme="dark"] .example-btn:hover {
+            background: #334155;
+            border-color: #6B7280;
+        }
+
+        [data-theme="dark"] .score-card {
+            background: #0F172A;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .confidence-box {
+            background: #0F172A;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .highlighted-text {
+            background: #0F172A;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .validation-section {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .stat-card,
+        [data-theme="dark"] .icc-card {
+            background: #0F172A;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .limitations-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        [data-theme="dark"] .limitations-box h4 {
+            color: #FCD34D;
+        }
+
+        [data-theme="dark"] .limitations-box ul {
+            color: #FDE68A;
+        }
+
+        [data-theme="dark"] footer {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .features-table th {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .features-table td {
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun { display: block; }
+        [data-theme="dark"] .theme-toggle .moon { display: none; }
+
+        [data-theme="dark"] .theme-toggle {
+            border-color: #334155;
+            color: #E5E7EB;
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            background: #334155;
+        }
     </style>
+    <script>
+        // Initialize theme immediately to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (prefersDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -1078,6 +1247,14 @@
                 <li><a href="index.html#crosswalk">Crosswalk</a></li>
                 <li><a href="index.html#validation">Validation</a></li>
                 <li><a href="parser.html" class="active">Parser</a></li>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+                    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </button>
             </ul>
             <div class="nav-badge">ISEF 2026</div>
         </div>
@@ -1818,6 +1995,14 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             }
 
             resultsPanel.classList.add('show');
+        }
+
+        // Theme toggle function
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         }
     </script>
 </body>
