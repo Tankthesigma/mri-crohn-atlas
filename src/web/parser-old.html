@@ -4,390 +4,466 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MRI Report Parser | MRI-Crohn Atlas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* =========================================
-           CLEAN MEDICAL DESIGN SYSTEM
-           ========================================= */
-        :root {
-            /* Primary - Medical Blue */
-            --primary: #0066CC;
-            --primary-light: #E6F0FA;
-            --primary-dark: #004C99;
+        /* Light theme (default) */
+        :root, html[data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-elevated: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.8);
+            --bg-glass-hover: rgba(255, 255, 255, 0.95);
 
-            /* Neutrals */
-            --white: #FFFFFF;
-            --gray-50: #F9FAFB;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-            --gray-300: #D1D5DB;
-            --gray-400: #9CA3AF;
-            --gray-500: #6B7280;
-            --gray-600: #4B5563;
-            --gray-700: #374151;
-            --gray-800: #1F2937;
-            --gray-900: #111827;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-subtle: rgba(0, 0, 0, 0.04);
+            --border-hover: rgba(0, 0, 0, 0.12);
 
-            /* Semantic */
-            --success: #059669;
-            --warning: #D97706;
-            --danger: #DC2626;
-            --info: #0284C7;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-dimmed: #94a3b8;
 
-            /* Severity Scale */
-            --severity-remission: #10B981;
-            --severity-mild: #14B8A6;
-            --severity-moderate: #F59E0B;
-            --severity-severe: #EF4444;
+            --accent-blue: #2563eb;
+            --accent-blue-light: #3b82f6;
+            --accent-purple: #7c3aed;
+            --accent-cyan: #0891b2;
+            --accent-green: #059669;
+            --accent-emerald: #10b981;
+            --accent-orange: #ea580c;
+            --accent-red: #dc2626;
 
-            /* Typography */
-            --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            --gradient-hero: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.05) 50%, rgba(8, 145, 178, 0.03) 100%);
+            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.15), transparent);
+            --gradient-accent: linear-gradient(135deg, #2563eb, #7c3aed);
 
-            /* Spacing */
-            --space-1: 0.25rem;
-            --space-2: 0.5rem;
-            --space-3: 0.75rem;
-            --space-4: 1rem;
-            --space-6: 1.5rem;
-            --space-8: 2rem;
-            --space-12: 3rem;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 
-            /* Borders & Shadows */
-            --radius-sm: 4px;
-            --radius-md: 6px;
-            --radius-lg: 8px;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-glow: 0 0 60px rgba(37, 99, 235, 0.15);
+
+            --nav-bg: rgba(255, 255, 255, 0.9);
         }
 
-        /* Dark Mode */
+        /* Dark theme */
         html[data-theme="dark"] {
-            --white: #111827;
-            --gray-50: #1F2937;
-            --gray-100: #374151;
-            --gray-200: #4B5563;
-            --gray-300: #6B7280;
-            --gray-400: #9CA3AF;
-            --gray-500: #D1D5DB;
-            --gray-600: #E5E7EB;
-            --gray-700: #F3F4F6;
-            --gray-800: #F9FAFB;
-            --gray-900: #FFFFFF;
-            --primary-light: #1E3A5F;
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-tertiary: #18181b;
+            --bg-elevated: #1f1f23;
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --bg-glass-hover: rgba(255, 255, 255, 0.06);
+
+            --border: rgba(255, 255, 255, 0.08);
+            --border-subtle: rgba(255, 255, 255, 0.04);
+            --border-hover: rgba(255, 255, 255, 0.12);
+
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --text-dimmed: #52525b;
+
+            --accent-blue: #3b82f6;
+            --accent-blue-light: #60a5fa;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-emerald: #34d399;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+
+            --gradient-hero: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(6, 182, 212, 0.05) 100%);
+            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.3), transparent);
+            --gradient-accent: linear-gradient(135deg, #3b82f6, #8b5cf6);
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 60px rgba(59, 130, 246, 0.3);
+
+            --nav-bg: rgba(10, 10, 11, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { font-size: 16px; scroll-behavior: smooth; }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
 
         body {
-            font-family: var(--font-primary);
-            background: var(--white);
-            color: var(--gray-900);
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
 
-        /* =========================================
-           NAVIGATION
-           ========================================= */
+        /* Navigation */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-200);
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 var(--space-6);
-            height: 56px;
-        }
-
-        .nav-logo {
-            font-weight: 600;
-            font-size: 1.125rem;
-            color: var(--gray-900);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--space-1);
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--gray-600);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            padding: var(--space-2) var(--space-3);
-            border-radius: var(--radius-sm);
-            transition: color 0.15s, background 0.15s;
-        }
-
-        .nav-links a:hover {
-            color: var(--gray-900);
-            background: var(--gray-100);
-        }
-
-        .nav-links a.active {
-            color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .nav-badge {
-            font-size: 0.75rem;
-            color: var(--gray-500);
-            background: var(--gray-100);
-            padding: var(--space-1) var(--space-2);
-            border-radius: var(--radius-sm);
-            margin-left: var(--space-4);
-        }
-
+        /* Theme Toggle */
         .theme-toggle {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--gray-200);
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            background: var(--white);
-            color: var(--gray-600);
+            background: var(--bg-glass);
+            color: var(--text-secondary);
             cursor: pointer;
-            transition: all 0.15s;
-            margin-left: var(--space-2);
+            transition: all 0.2s ease;
         }
 
         .theme-toggle:hover {
-            background: var(--gray-100);
-            color: var(--gray-900);
+            background: var(--bg-glass-hover);
+            border-color: var(--border-hover);
+            color: var(--text-primary);
         }
 
-        .theme-toggle svg { width: 18px; height: 18px; }
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
         .theme-toggle .sun-icon { display: none; }
         .theme-toggle .moon-icon { display: block; }
         html[data-theme="dark"] .theme-toggle .sun-icon { display: block; }
         html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
 
-        /* =========================================
-           HERO SECTION
-           ========================================= */
-        .hero {
-            padding: var(--space-12) var(--space-6);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-content {
-            max-width: 720px;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: var(--space-3);
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.125rem;
-            color: var(--gray-600);
-            margin-bottom: var(--space-6);
-            line-height: 1.6;
-        }
-
-        .stats-row {
-            display: flex;
-            gap: var(--space-8);
-            flex-wrap: wrap;
-        }
-
-        .stat-item { text-align: left; }
-
-        .stat-value {
-            font-family: var(--font-mono);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.8125rem;
-            color: var(--gray-500);
-        }
-
-        .stat-ci {
-            font-size: 0.75rem;
-            color: var(--gray-400);
-        }
-
-        /* =========================================
-           SECTIONS
-           ========================================= */
-        section {
-            padding: var(--space-12) var(--space-6);
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: var(--space-8);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: var(--space-2);
-        }
-
-        .section-desc {
-            color: var(--gray-600);
-            max-width: 600px;
-        }
-
-        /* =========================================
-           CARDS
-           ========================================= */
-        .card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .card-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: var(--space-4);
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: var(--space-2);
+            gap: 1rem;
         }
 
-        .card-icon {
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            height: 64px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: var(--primary-light);
-            border-radius: var(--radius-md);
-            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.875rem;
         }
 
-        /* =========================================
-           PARSER GRID
-           ========================================= */
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--bg-glass-hover);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-badge {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 2rem 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: var(--gradient-hero);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: var(--gradient-glow);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 50%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-blue-light);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Parser Section */
+        .parser-section {
+            padding: 2rem 0 4rem;
+        }
+
         .parser-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-6);
+            gap: 2rem;
         }
 
         @media (max-width: 900px) {
-            .parser-grid { grid-template-columns: 1fr; }
+            .parser-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-glass-hover);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1rem;
         }
 
         /* Textarea */
         .report-textarea {
             width: 100%;
             min-height: 280px;
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: var(--space-4);
-            font-family: var(--font-primary);
+            padding: 1rem;
+            font-family: var(--font-sans);
             font-size: 0.9375rem;
-            color: var(--gray-900);
+            color: var(--text-primary);
             resize: vertical;
-            transition: all 0.15s;
+            transition: all 0.2s ease;
         }
 
         .report-textarea::placeholder {
-            color: var(--gray-400);
+            color: var(--text-dimmed);
         }
 
         .report-textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         /* Example Buttons */
         .example-buttons {
             display: flex;
-            gap: var(--space-2);
+            gap: 0.5rem;
             flex-wrap: wrap;
-            margin: var(--space-4) 0;
+            margin: 1rem 0;
         }
 
         .example-label {
             font-size: 0.75rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
             display: flex;
             align-items: center;
         }
 
         .example-btn {
-            padding: var(--space-2) var(--space-3);
+            padding: 0.5rem 0.875rem;
             border-radius: var(--radius-sm);
             font-size: 0.8125rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.15s;
-            border: 1px solid var(--gray-200);
-            background: var(--gray-50);
-            color: var(--gray-600);
+            transition: all 0.2s ease;
+            border: 1px solid var(--border);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
         }
 
         .example-btn:hover {
-            background: var(--gray-100);
-            color: var(--gray-900);
-            border-color: var(--gray-300);
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border-color: var(--border-hover);
         }
 
         /* Parse Button */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
+        .parse-btn {
             width: 100%;
-            padding: var(--space-3) var(--space-6);
-            background: var(--primary);
-            color: var(--white);
+            padding: 0.875rem 1.5rem;
+            background: var(--gradient-accent);
             border: none;
             border-radius: var(--radius-md);
-            font-size: 0.9375rem;
+            color: white;
             font-weight: 600;
+            font-size: 0.9375rem;
             cursor: pointer;
-            transition: all 0.15s;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
+        .parse-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
         }
 
-        .btn-primary:disabled {
+        .parse-btn:disabled {
             opacity: 0.7;
             cursor: not-allowed;
+            transform: none;
         }
 
         .spinner {
@@ -399,53 +475,67 @@
             animation: spin 0.8s linear infinite;
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
         /* Error Display */
         .parser-error {
-            margin-top: var(--space-3);
-            padding: var(--space-3) var(--space-4);
-            background: #FEF2F2;
-            border: 1px solid #FECACA;
+            margin-top: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             border-radius: var(--radius-sm);
-            color: var(--danger);
+            color: var(--accent-red);
             font-size: 0.875rem;
             display: none;
         }
 
-        .parser-error.show { display: block; }
+        .parser-error.show {
+            display: block;
+        }
 
         /* Results Panel */
-        .results-panel { display: none; }
-        .results-panel.show { display: block; }
+        .results-panel {
+            display: none;
+        }
+
+        .results-panel.show {
+            display: block;
+        }
 
         /* Placeholder */
         .placeholder {
             text-align: center;
-            padding: var(--space-12) var(--space-6);
-            color: var(--gray-400);
+            padding: 4rem 1.5rem;
+            color: var(--text-muted);
         }
 
         .placeholder svg {
-            margin-bottom: var(--space-4);
+            margin-bottom: 1rem;
             opacity: 0.4;
+        }
+
+        .placeholder p {
+            font-size: 0.9375rem;
         }
 
         /* Score Cards */
         .score-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-4);
-            margin-bottom: var(--space-4);
+            gap: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .score-card {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: var(--space-4);
+            padding: 1.25rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .score-card::before {
@@ -455,18 +545,22 @@
             left: 0;
             right: 0;
             height: 3px;
-            border-radius: var(--radius-md) var(--radius-md) 0 0;
         }
 
-        .score-card.vai::before { background: var(--primary); }
-        .score-card.magnifi::before { background: var(--info); }
+        .score-card.vai::before {
+            background: var(--gradient-accent);
+        }
+
+        .score-card.magnifi::before {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+        }
 
         .score-label {
             font-size: 0.6875rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: var(--space-2);
+            margin-bottom: 0.5rem;
         }
 
         .score-value {
@@ -476,36 +570,41 @@
             line-height: 1;
         }
 
-        .score-card.vai .score-value { color: var(--primary); }
-        .score-card.magnifi .score-value { color: var(--info); }
+        .score-card.vai .score-value {
+            color: var(--accent-blue);
+        }
+
+        .score-card.magnifi .score-value {
+            color: var(--accent-purple);
+        }
 
         .score-range {
             font-size: 0.75rem;
-            color: var(--gray-400);
-            margin-top: var(--space-1);
+            color: var(--text-dimmed);
+            margin-top: 0.25rem;
         }
 
         .score-pi {
             font-family: var(--font-mono);
             font-size: 0.6875rem;
-            color: var(--gray-500);
-            margin-top: var(--space-2);
+            color: var(--text-muted);
+            margin-top: 0.5rem;
         }
 
         /* Confidence Indicator */
         .confidence-box {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: var(--space-4);
-            margin-bottom: var(--space-4);
+            padding: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .confidence-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: var(--space-2);
+            margin-bottom: 0.625rem;
         }
 
         .confidence-label {
@@ -517,20 +616,31 @@
             font-family: var(--font-mono);
             font-size: 0.8125rem;
             font-weight: 600;
-            padding: var(--space-1) var(--space-2);
-            border-radius: 100px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
         }
 
-        .confidence-value.high { background: #D1FAE5; color: #065F46; }
-        .confidence-value.medium { background: #FEF3C7; color: #92400E; }
-        .confidence-value.low { background: #FEE2E2; color: #991B1B; }
+        .confidence-value.high {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+        }
+
+        .confidence-value.medium {
+            background: rgba(249, 115, 22, 0.15);
+            color: var(--accent-orange);
+        }
+
+        .confidence-value.low {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+        }
 
         .confidence-bar-track {
             height: 6px;
-            background: var(--gray-200);
+            background: var(--bg-elevated);
             border-radius: 3px;
             overflow: hidden;
-            margin-bottom: var(--space-2);
+            margin-bottom: 0.625rem;
         }
 
         .confidence-bar {
@@ -539,21 +649,29 @@
             transition: width 0.5s ease;
         }
 
-        .confidence-bar.high { background: var(--success); }
-        .confidence-bar.medium { background: var(--warning); }
-        .confidence-bar.low { background: var(--danger); }
+        .confidence-bar.high {
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-emerald));
+        }
+
+        .confidence-bar.medium {
+            background: linear-gradient(90deg, var(--accent-orange), #fbbf24);
+        }
+
+        .confidence-bar.low {
+            background: linear-gradient(90deg, var(--accent-red), #f87171);
+        }
 
         .confidence-breakdown {
             display: flex;
-            gap: var(--space-4);
+            gap: 1rem;
             font-size: 0.6875rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
         }
 
         .conf-stat {
             display: flex;
             align-items: center;
-            gap: var(--space-1);
+            gap: 0.25rem;
         }
 
         .conf-dot {
@@ -562,74 +680,93 @@
             border-radius: 50%;
         }
 
-        .conf-dot.high { background: var(--success); }
-        .conf-dot.medium { background: var(--warning); }
-        .conf-dot.low { background: var(--danger); }
+        .conf-dot.high { background: var(--accent-green); }
+        .conf-dot.medium { background: var(--accent-orange); }
+        .conf-dot.low { background: var(--accent-red); }
 
-        /* Interpretation Box */
+        /* Interpretation Box - Severity Color Coding */
+        /* remission=blue/teal, mild=green, moderate=orange, severe=red */
         .interpretation-box {
-            padding: var(--space-4);
+            padding: 1rem 1.25rem;
             border-radius: var(--radius-md);
-            margin-bottom: var(--space-4);
+            margin-bottom: 1.25rem;
         }
 
-        .interpretation-box.healed { background: #D1FAE5; border: 1px solid #A7F3D0; }
-        .interpretation-box.mild { background: #CCFBF1; border: 1px solid #99F6E4; }
-        .interpretation-box.moderate { background: #FEF3C7; border: 1px solid #FDE68A; }
-        .interpretation-box.active { background: #FEE2E2; border: 1px solid #FECACA; }
-        .interpretation-box.severe { background: #FEE2E2; border: 1px solid #FECACA; }
+        .interpretation-box.healed {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .interpretation-box.mild {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .interpretation-box.moderate {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .interpretation-box.active {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .interpretation-box.severe {
+            background: rgba(185, 28, 28, 0.15);
+            border: 1px solid rgba(185, 28, 28, 0.4);
+        }
 
         .interpretation-status {
             font-size: 1.125rem;
             font-weight: 700;
-            margin-bottom: var(--space-1);
+            margin-bottom: 0.25rem;
         }
 
-        .interpretation-box.healed .interpretation-status { color: #065F46; }
-        .interpretation-box.mild .interpretation-status { color: #115E59; }
-        .interpretation-box.moderate .interpretation-status { color: #92400E; }
-        .interpretation-box.active .interpretation-status,
-        .interpretation-box.severe .interpretation-status { color: #991B1B; }
+        .interpretation-box.healed .interpretation-status { color: var(--accent-cyan); }
+        .interpretation-box.mild .interpretation-status { color: var(--accent-green); }
+        .interpretation-box.moderate .interpretation-status { color: var(--accent-orange); }
+        .interpretation-box.active .interpretation-status { color: #f87171; }
+        .interpretation-box.severe .interpretation-status { color: #dc2626; }
 
         .interpretation-desc {
             font-size: 0.8125rem;
-            color: var(--gray-700);
+            color: var(--text-secondary);
         }
 
-        /* Evidence Section */
-        .evidence-section h4,
-        .features-section h4 {
+        /* Evidence Highlight */
+        .evidence-section h4 {
             font-size: 0.75rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: var(--space-2);
+            margin-bottom: 0.625rem;
         }
 
         .highlighted-text {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: var(--space-4);
+            padding: 1rem;
             font-size: 0.875rem;
             line-height: 1.8;
             max-height: 160px;
             overflow-y: auto;
-            margin-bottom: var(--space-2);
+            margin-bottom: 0.75rem;
         }
 
         .highlight-legend {
             display: flex;
-            gap: var(--space-3);
+            gap: 0.75rem;
             flex-wrap: wrap;
             font-size: 0.6875rem;
-            margin-bottom: var(--space-4);
+            margin-bottom: 1.25rem;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: var(--space-1);
+            gap: 0.375rem;
         }
 
         .legend-dot {
@@ -644,6 +781,14 @@
         }
 
         /* Features Table */
+        .features-section h4 {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.625rem;
+        }
+
         .features-table {
             width: 100%;
             border-collapse: collapse;
@@ -652,388 +797,269 @@
 
         .features-table th {
             text-align: left;
-            padding: var(--space-3);
+            padding: 0.75rem;
             font-weight: 600;
-            color: var(--gray-500);
-            border-bottom: 1px solid var(--gray-200);
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
             font-size: 0.6875rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .features-table td {
-            padding: var(--space-3);
-            border-bottom: 1px solid var(--gray-100);
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .features-table tr:last-child td { border-bottom: none; }
+        .features-table tr:last-child td {
+            border-bottom: none;
+        }
 
         .confidence-badge {
             display: inline-block;
-            padding: var(--space-1) var(--space-2);
-            border-radius: 100px;
+            padding: 0.25rem 0.625rem;
+            border-radius: 20px;
             font-size: 0.625rem;
             font-weight: 600;
             text-transform: uppercase;
         }
 
-        .confidence-badge.high { background: #D1FAE5; color: #065F46; }
-        .confidence-badge.medium { background: #FEF3C7; color: #92400E; }
-        .confidence-badge.low { background: #FEE2E2; color: #991B1B; }
+        .confidence-badge.high {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+        }
+
+        .confidence-badge.medium {
+            background: rgba(249, 115, 22, 0.15);
+            color: var(--accent-orange);
+        }
+
+        .confidence-badge.low {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+        }
 
         .feature-evidence {
             max-width: 140px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            color: var(--gray-500);
+            color: var(--text-muted);
             font-size: 0.75rem;
         }
 
-        /* Treatment Badges */
+        /* Treatment Status */
         .treatment-badges {
             display: flex;
-            gap: var(--space-2);
+            gap: 0.5rem;
             flex-wrap: wrap;
-            margin-bottom: var(--space-4);
+            margin-bottom: 1rem;
         }
 
         .treatment-badge {
             font-size: 0.6875rem;
-            padding: var(--space-1) var(--space-2);
-            border-radius: 100px;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
             font-weight: 500;
-            background: var(--primary-light);
-            color: var(--primary);
         }
 
-        /* =========================================
-           METHODOLOGY SLIDESHOW
-           ========================================= */
-        .methodology-slideshow {
-            position: relative;
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            margin-bottom: var(--space-8);
-            overflow: hidden;
+        /* Validation Section */
+        .validation-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
         }
 
-        .slideshow-slide {
-            display: none;
-            animation: fadeIn 0.3s ease;
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .slideshow-slide.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(10px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .slide-counter {
-            position: absolute;
-            top: var(--space-4);
-            right: var(--space-4);
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.75rem;
-            color: var(--gray-500);
-            font-family: var(--font-mono);
-        }
-
-        .slide-title {
-            font-size: 1.125rem;
             font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: var(--space-3);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
         }
 
-        .slide-content {
-            color: var(--gray-700);
-            font-size: 0.9375rem;
-            line-height: 1.7;
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
         }
 
-        .slide-content ul {
-            margin-left: var(--space-4);
-            margin-top: var(--space-2);
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .slide-content li { margin-bottom: var(--space-1); }
-
-        .slide-code {
-            font-family: var(--font-mono);
-            background: var(--gray-100);
-            padding: var(--space-3);
-            border-radius: var(--radius-sm);
-            margin-top: var(--space-3);
-            font-size: 0.875rem;
-            color: var(--gray-800);
-        }
-
-        .slideshow-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: var(--space-6);
-            padding-top: var(--space-4);
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .slideshow-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-md);
-            background: var(--white);
-            color: var(--gray-600);
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .slideshow-arrow:hover:not(:disabled) {
-            background: var(--gray-100);
-            color: var(--gray-900);
-            border-color: var(--gray-300);
-        }
-
-        .slideshow-arrow:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .slideshow-dots {
-            display: flex;
-            gap: var(--space-2);
-        }
-
-        .slideshow-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--gray-300);
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .slideshow-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        .slideshow-dot:hover:not(.active) {
-            background: var(--gray-400);
-        }
-
-        /* =========================================
-           VALIDATION SECTION
-           ========================================= */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-4);
-            margin-bottom: var(--space-8);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         @media (max-width: 800px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .stat-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: var(--space-6);
+            padding: 1.5rem;
             text-align: center;
-            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
         }
 
         .stat-card .value {
             font-family: var(--font-mono);
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--accent-blue-light);
             line-height: 1;
         }
 
         .stat-card .label {
             font-size: 0.8125rem;
-            color: var(--gray-600);
-            margin-top: var(--space-2);
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
         }
 
         .stat-card .detail {
-            font-size: 0.75rem;
-            color: var(--gray-400);
-            margin-top: var(--space-1);
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
         }
 
-        /* ICC Cards */
+        /* ICC Comparison */
         .icc-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-4);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         @media (max-width: 700px) {
-            .icc-grid { grid-template-columns: 1fr; }
+            .icc-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .icc-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            box-shadow: var(--shadow-sm);
+            padding: 1.5rem;
         }
 
         .icc-card h4 {
             font-size: 0.75rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: var(--space-4);
+            margin-bottom: 1rem;
         }
 
         .icc-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: var(--space-3) 0;
-            border-bottom: 1px solid var(--gray-100);
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .icc-row:last-child { border-bottom: none; }
+        .icc-row:last-child {
+            border-bottom: none;
+        }
 
         .icc-label {
             font-size: 0.8125rem;
-            color: var(--gray-600);
+            color: var(--text-secondary);
         }
 
         .icc-values {
             display: flex;
             align-items: center;
-            gap: var(--space-2);
+            gap: 0.5rem;
         }
 
         .icc-value {
             font-family: var(--font-mono);
             font-size: 0.8125rem;
             font-weight: 600;
-            padding: var(--space-1) var(--space-2);
+            padding: 0.25rem 0.625rem;
             border-radius: var(--radius-sm);
         }
 
-        .icc-value.parser { background: #D1FAE5; color: #065F46; }
-        .icc-value.expert { background: #FEE2E2; color: #991B1B; }
+        .icc-value.parser {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+        }
+
+        .icc-value.expert {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+        }
 
         .exceeds-badge {
-            background: #D1FAE5;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: var(--radius-sm);
-            padding: var(--space-1) var(--space-2);
+            padding: 0.25rem 0.5rem;
             font-size: 0.625rem;
             font-weight: 600;
-            color: #065F46;
+            color: var(--accent-green);
             text-transform: uppercase;
         }
 
         .icc-source {
             font-size: 0.6875rem;
-            color: var(--gray-400);
-            margin-top: var(--space-3);
+            color: var(--text-dimmed);
+            margin-top: 0.75rem;
         }
-
-        /* Error Distribution */
-        .error-bars {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .error-bar-row {
-            display: grid;
-            grid-template-columns: 100px 1fr 70px;
-            align-items: center;
-            gap: var(--space-3);
-        }
-
-        .error-label {
-            font-size: 0.75rem;
-            color: var(--gray-600);
-            text-align: right;
-        }
-
-        .error-bar-track {
-            height: 20px;
-            background: var(--gray-100);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-        }
-
-        .error-bar-fill {
-            height: 100%;
-            border-radius: var(--radius-sm);
-        }
-
-        .error-count {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--gray-500);
-        }
-
-        /* Limitations */
-        .limitations-card {
-            background: #FFFBEB;
-            border: 1px solid #FCD34D;
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            max-width: 800px;
-            margin: var(--space-8) auto 0;
-        }
-
-        .limitations-card h4 {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #92400E;
-            margin-bottom: var(--space-4);
-        }
-
-        .limitations-card ul {
-            margin-left: var(--space-4);
-            font-size: 0.875rem;
-            color: var(--gray-700);
-            line-height: 1.8;
-        }
-
-        .limitations-card li { margin-bottom: var(--space-2); }
-        .limitations-card strong { color: var(--gray-900); }
 
         /* Footer */
         footer {
-            background: var(--gray-50);
-            border-top: 1px solid var(--gray-200);
-            padding: var(--space-8);
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 2rem;
             text-align: center;
         }
 
         .footer-text {
             font-size: 0.8125rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
         }
 
         .footer-text a {
-            color: var(--primary);
+            color: var(--accent-blue);
             text-decoration: none;
         }
 
-        .footer-text a:hover { text-decoration: underline; }
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
 
         /* Highlight Colors */
         .hl-fistula_type { border-color: #3b82f6; background-color: rgba(59, 130, 246, 0.1); }
@@ -1044,189 +1070,126 @@
         .hl-rectal_wall_involvement { border-color: #ec4899; background-color: rgba(236, 72, 153, 0.1); }
         .hl-inflammatory_mass { border-color: #f59e0b; background-color: rgba(245, 158, 11, 0.1); }
         .hl-predominant_feature { border-color: #06b6d4; background-color: rgba(6, 182, 212, 0.1); }
+
+        /* Error Distribution Bars */
+        .error-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .error-bar-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 70px;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .error-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .error-bar-track {
+            height: 20px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .error-bar-fill {
+            height: 100%;
+            border-radius: var(--radius-sm);
+            transition: width 0.5s ease;
+        }
+
+        .error-count {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-inner">
-            <a href="index.html" class="nav-logo">MRI-Crohn Atlas</a>
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">M</div>
+                <span class="nav-logo-text">MRI-Crohn Atlas</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="index.html#crosswalk">Crosswalk</a></li>
                 <li><a href="index.html#validation">Validation</a></li>
                 <li><a href="parser.html" class="active">Parser Demo</a></li>
-                <li><span class="nav-badge">ISEF 2026</span></li>
-                <li>
-                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"/>
-                            <line x1="12" y1="1" x2="12" y2="3"/>
-                            <line x1="12" y1="21" x2="12" y2="23"/>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                            <line x1="1" y1="12" x2="3" y2="12"/>
-                            <line x1="21" y1="12" x2="23" y2="12"/>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                        </svg>
-                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                        </svg>
-                    </button>
-                </li>
             </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <div class="nav-badge">ISEF 2026</div>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <div class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">MRI Report Parser</h1>
-            <p class="hero-subtitle">AI-powered extraction of clinical features from radiology reports. Calculates VAI + MAGNIFI-CD scores with full evidence traceability.</p>
+            <h1>MRI Report Parser</h1>
+            <p>Paste any pelvic MRI report. AI extracts clinical features and calculates VAI + MAGNIFI-CD scores with full evidence traceability.</p>
             <div class="stats-row">
                 <div class="stat-item">
-                    <div class="stat-value">15/15</div>
-                    <div class="stat-label">Real-World Cases</div>
-                    <div class="stat-ci">95% CI: 78-100%</div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Real-World Accuracy</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value">0.934</div>
+                    <div class="stat-value">0.93</div>
                     <div class="stat-label">VAI ICC</div>
-                    <div class="stat-ci">vs 0.68 expert</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value">0.940</div>
+                    <div class="stat-value">0.94</div>
                     <div class="stat-label">MAGNIFI ICC</div>
-                    <div class="stat-ci">vs 0.87 expert</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value">26</div>
                     <div class="stat-label">Validated Cases</div>
-                    <div class="stat-ci">incl. edge cases</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Parser Methodology Slideshow -->
-    <section style="border-top: none; padding-top: 0;">
-        <div class="container">
-            <div class="methodology-slideshow" id="parser-methodology">
-                <div class="slide-counter"><span id="parser-slide-current">1</span> / 5</div>
-
-                <div class="slideshow-slide active" data-slide="1">
-                    <div class="slide-title">1. Report Ingestion</div>
-                    <div class="slide-content">
-                        <p>The parser accepts free-text MRI radiology reports describing perianal fistulas. Reports can be from any institution in any format.</p>
-                        <ul>
-                            <li>Handles structured and unstructured report formats</li>
-                            <li>Accepts findings, impressions, or full reports</li>
-                            <li>Minimum 50 characters for meaningful analysis</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="slideshow-slide" data-slide="2">
-                    <div class="slide-title">2. LLM Feature Extraction</div>
-                    <div class="slide-content">
-                        <p>DeepSeek LLM extracts 8 clinical features with structured prompting:</p>
-                        <ul>
-                            <li><strong>Fistula count</strong> - number of distinct tracts</li>
-                            <li><strong>Fistula type</strong> - Parks classification</li>
-                            <li><strong>T2 hyperintensity</strong> - inflammation marker</li>
-                            <li><strong>Extension</strong> - anatomical spread</li>
-                            <li><strong>Collections/abscesses</strong> - present or absent</li>
-                            <li><strong>Rectal wall involvement</strong> - mucosal disease</li>
-                            <li><strong>Inflammatory mass</strong> - phlegmon detection</li>
-                            <li><strong>Predominant feature</strong> - inflammatory vs fibrotic</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="slideshow-slide" data-slide="3">
-                    <div class="slide-title">3. Evidence Traceability</div>
-                    <div class="slide-content">
-                        <p>Each extracted feature includes the exact quote from the report that supports it.</p>
-                        <ul>
-                            <li>Color-coded highlighting shows which text supports each feature</li>
-                            <li>Confidence scores (high/medium/low) reflect extraction certainty</li>
-                            <li>Negative findings explicitly tracked (e.g., "no abscess")</li>
-                        </ul>
-                        <div class="slide-code">
-                            "fistula_type": {<br>
-                            &nbsp;&nbsp;"value": "transsphincteric",<br>
-                            &nbsp;&nbsp;"confidence": "high",<br>
-                            &nbsp;&nbsp;"evidence": "transsphincteric fistula at 6 o'clock"<br>
-                            }
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slideshow-slide" data-slide="4">
-                    <div class="slide-title">4. Score Calculation</div>
-                    <div class="slide-content">
-                        <p>Features are converted to standardized scores using published criteria:</p>
-                        <ul>
-                            <li><strong>Van Assche Index (0-22)</strong> - original 2003 scoring system</li>
-                            <li><strong>MAGNIFI-CD (0-25)</strong> - modern 2017 scoring system</li>
-                            <li>Seton-aware scoring reduces T2 penalty for managed disease</li>
-                            <li>95% prediction interval from crosswalk formula</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="slideshow-slide" data-slide="5">
-                    <div class="slide-title">5. Clinical Interpretation</div>
-                    <div class="slide-content">
-                        <p>Scores are mapped to severity categories with treatment guidance:</p>
-                        <ul>
-                            <li><strong>Remission (VAI 0-2)</strong> - healed or minimal residual</li>
-                            <li><strong>Mild (VAI 3-6)</strong> - low-grade active disease</li>
-                            <li><strong>Moderate (VAI 7-12)</strong> - significant activity</li>
-                            <li><strong>Severe (VAI 13+)</strong> - high burden disease</li>
-                        </ul>
-                        <p style="margin-top: var(--space-3);"><strong>Important:</strong> Parser is a research tool. Clinical decisions require physician review.</p>
-                    </div>
-                </div>
-
-                <div class="slideshow-nav">
-                    <button class="slideshow-arrow" id="parser-prev" onclick="changeSlide('parser', -1)" disabled>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="15 18 9 12 15 6"/>
-                        </svg>
-                    </button>
-                    <div class="slideshow-dots" id="parser-dots">
-                        <div class="slideshow-dot active" onclick="goToSlide('parser', 1)"></div>
-                        <div class="slideshow-dot" onclick="goToSlide('parser', 2)"></div>
-                        <div class="slideshow-dot" onclick="goToSlide('parser', 3)"></div>
-                        <div class="slideshow-dot" onclick="goToSlide('parser', 4)"></div>
-                        <div class="slideshow-dot" onclick="goToSlide('parser', 5)"></div>
-                    </div>
-                    <button class="slideshow-arrow" id="parser-next" onclick="changeSlide('parser', 1)">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"/>
-                        </svg>
-                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Parser Tool -->
-    <section>
+    <section class="parser-section">
         <div class="container">
             <div class="parser-grid">
                 <!-- Input Panel -->
-                <div class="card">
-                    <div class="card-title">
+                <div class="glass-card">
+                    <div class="card-header">
                         <div class="card-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                                 <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
                             </svg>
                         </div>
-                        Input Report
+                        <span class="card-title">Input Report</span>
                     </div>
 
                     <textarea id="report-input" class="report-textarea" placeholder="Paste MRI report findings here...
@@ -1241,7 +1204,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                         <button class="example-btn" onclick="loadExample(2)">Complex Crohn's</button>
                     </div>
 
-                    <button id="parse-btn" class="btn-primary" onclick="parseReport()">
+                    <button id="parse-btn" class="parse-btn" onclick="parseReport()">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"/>
                             <path d="m21 21-4.35-4.35"/>
@@ -1253,16 +1216,16 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                 </div>
 
                 <!-- Results Panel -->
-                <div class="card">
+                <div class="glass-card">
                     <div id="results-panel" class="results-panel">
-                        <div class="card-title">
-                            <div class="card-icon" style="background: #D1FAE5; color: #065F46;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                     <polyline points="22 4 12 14.01 9 11.01"/>
                                 </svg>
                             </div>
-                            Analysis Results
+                            <span class="card-title">Analysis Results</span>
                         </div>
 
                         <!-- Score Cards -->
@@ -1296,7 +1259,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                         <div id="treatment-badges" class="treatment-badges" style="display: none;"></div>
 
                         <!-- Interpretation -->
-                        <div id="interpretation-box" class="interpretation-box moderate">
+                        <div id="interpretation-box" class="interpretation-box active">
                             <div class="interpretation-status" id="interpretation-status">--</div>
                             <div class="interpretation-desc" id="interpretation-desc">Parse a report to see clinical interpretation</div>
                         </div>
@@ -1341,34 +1304,41 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
     </section>
 
     <!-- Validation Section -->
-    <section>
+    <section class="validation-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Parser Validation</h2>
-                <p class="section-desc">Tested against 26 cases including real-world Radiopaedia reports, pediatric cases, and challenging edge cases.</p>
+                <div class="section-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    Validation Results
+                </div>
+                <h2 class="section-title">Parser Performance</h2>
+                <p class="section-desc">Validated against 26 test cases including real-world Radiopaedia reports, pediatric cases, and challenging edge cases.</p>
             </div>
 
             <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="value">15/15</div>
+                    <div class="value">100%</div>
                     <div class="label">Real-World Accuracy</div>
-                    <div class="detail">95% CI: 78-100%</div>
+                    <div class="detail">15/15 cases</div>
                 </div>
                 <div class="stat-card">
-                    <div class="value">10/10</div>
-                    <div class="label">Radiopaedia Cases</div>
-                    <div class="detail">Within ±3 pts</div>
+                    <div class="value">100%</div>
+                    <div class="label">Radiopaedia</div>
+                    <div class="detail">10/10 cases</div>
                 </div>
                 <div class="stat-card">
-                    <div class="value">3/3</div>
+                    <div class="value">100%</div>
                     <div class="label">Pediatric Cases</div>
-                    <div class="detail">Within ±3 pts</div>
+                    <div class="detail">3/3 cases</div>
                 </div>
                 <div class="stat-card">
-                    <div class="value">11/11</div>
+                    <div class="value">100%</div>
                     <div class="label">Edge Cases</div>
-                    <div class="detail">Within ±3 pts</div>
+                    <div class="detail">11/11 cases</div>
                 </div>
             </div>
 
@@ -1407,7 +1377,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
             </div>
 
             <!-- MAE Stats -->
-            <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 500px; margin: var(--space-8) auto;">
+            <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 500px; margin: 0 auto;">
                 <div class="stat-card">
                     <div class="value">0.93</div>
                     <div class="label">VAI MAE</div>
@@ -1421,37 +1391,37 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
             </div>
 
             <!-- Error Distribution -->
-            <div style="margin-top: var(--space-8);">
-                <h3 style="text-align: center; font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-6);">Error Distribution (15 Real-World Cases)</h3>
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center; font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">Error Distribution (15 Real-World Cases)</h3>
                 <div class="icc-grid">
                     <div class="icc-card">
                         <h4>VAI Error Distribution</h4>
-                        <div class="error-bars">
+                        <div class="error-bars" id="vai-error-dist">
                             <div class="error-bar-row">
                                 <span class="error-label">0 pts (exact)</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 60%; background: var(--success);"></div>
+                                    <div class="error-bar-fill" style="width: 60%; background: var(--accent-green);"></div>
                                 </div>
                                 <span class="error-count">9 cases</span>
                             </div>
                             <div class="error-bar-row">
                                 <span class="error-label">1 pt</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 20%; background: var(--info);"></div>
+                                    <div class="error-bar-fill" style="width: 20%; background: var(--accent-cyan);"></div>
                                 </div>
                                 <span class="error-count">3 cases</span>
                             </div>
                             <div class="error-bar-row">
                                 <span class="error-label">2 pts</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 6.7%; background: var(--warning);"></div>
+                                    <div class="error-bar-fill" style="width: 6.7%; background: var(--accent-orange);"></div>
                                 </div>
                                 <span class="error-count">1 case</span>
                             </div>
                             <div class="error-bar-row">
                                 <span class="error-label">3 pts</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 13.3%; background: var(--danger);"></div>
+                                    <div class="error-bar-fill" style="width: 13.3%; background: var(--accent-red);"></div>
                                 </div>
                                 <span class="error-count">2 cases</span>
                             </div>
@@ -1459,32 +1429,32 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                     </div>
                     <div class="icc-card">
                         <h4>MAGNIFI Error Distribution</h4>
-                        <div class="error-bars">
+                        <div class="error-bars" id="magnifi-error-dist">
                             <div class="error-bar-row">
                                 <span class="error-label">0 pts (exact)</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 66.7%; background: var(--success);"></div>
+                                    <div class="error-bar-fill" style="width: 66.7%; background: var(--accent-green);"></div>
                                 </div>
                                 <span class="error-count">10 cases</span>
                             </div>
                             <div class="error-bar-row">
                                 <span class="error-label">1 pt</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 13.3%; background: var(--info);"></div>
+                                    <div class="error-bar-fill" style="width: 13.3%; background: var(--accent-cyan);"></div>
                                 </div>
                                 <span class="error-count">2 cases</span>
                             </div>
                             <div class="error-bar-row">
                                 <span class="error-label">2 pts</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 13.3%; background: var(--warning);"></div>
+                                    <div class="error-bar-fill" style="width: 13.3%; background: var(--accent-orange);"></div>
                                 </div>
                                 <span class="error-count">2 cases</span>
                             </div>
                             <div class="error-bar-row">
                                 <span class="error-label">3 pts</span>
                                 <div class="error-bar-track">
-                                    <div class="error-bar-fill" style="width: 6.7%; background: var(--danger);"></div>
+                                    <div class="error-bar-fill" style="width: 6.7%; background: var(--accent-red);"></div>
                                 </div>
                                 <span class="error-count">1 case</span>
                             </div>
@@ -1493,22 +1463,24 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                 </div>
             </div>
 
-            <!-- Limitations -->
-            <div class="limitations-card">
-                <h4>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                        <line x1="12" y1="9" x2="12" y2="13"/>
-                        <line x1="12" y1="17" x2="12.01" y2="17"/>
-                    </svg>
-                    Known Limitations
-                </h4>
-                <ul>
-                    <li><strong>Healed cases:</strong> Formula predicts MAGNIFI ~3.3 for fully healed (VAI=0, Fibrosis=6), but some studies report MAGNIFI=0</li>
-                    <li><strong>Complex multi-fistula with seton:</strong> T2 reduction may be overestimated when 3+ fistulas present</li>
-                    <li><strong>Ambiguous reports:</strong> Parser correctly flags low confidence (&lt;50%) for vague or contradictory findings</li>
-                    <li><strong>Confidence calibration:</strong> V4 is 24.8% underconfident (safer for clinical use)</li>
-                </ul>
+            <!-- Honest Limitations -->
+            <div style="margin-top: 3rem;">
+                <div class="icc-card" style="max-width: 700px; margin: 0 auto; background: rgba(249, 115, 22, 0.05); border-color: rgba(249, 115, 22, 0.2);">
+                    <h4 style="color: var(--accent-orange); display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        Known Limitations
+                    </h4>
+                    <ul style="margin-top: 1rem; padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.8;">
+                        <li><strong>Healed cases:</strong> Formula predicts MAGNIFI ~3.3 for fully healed (VAI=0, Fibrosis=6), but some studies report MAGNIFI=0</li>
+                        <li><strong>Complex multi-fistula with seton:</strong> T2 reduction may be overestimated when 3+ fistulas present</li>
+                        <li><strong>Ambiguous reports:</strong> Parser correctly flags low confidence (&lt;50%) for vague or contradictory findings</li>
+                        <li><strong>Confidence calibration:</strong> V4 is 24.8% underconfident (safer for clinical use)</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1524,7 +1496,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
     <script src="config.js" onerror="console.warn('config.js not found. Parser will show setup instructions.')"></script>
 
     <script>
-        // Theme toggle
+        // Theme toggle functionality
         function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
@@ -1533,65 +1505,13 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
             localStorage.setItem('theme', newTheme);
         }
 
-        // Initialize theme
+        // Initialize theme from localStorage
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
 
-        // Slideshow functionality
-        const slideshows = {};
-
-        function initSlideshow(id, totalSlides) {
-            slideshows[id] = { current: 1, total: totalSlides };
-            updateSlideshow(id);
-        }
-
-        function changeSlide(id, direction) {
-            const show = slideshows[id];
-            show.current += direction;
-            if (show.current < 1) show.current = 1;
-            if (show.current > show.total) show.current = show.total;
-            updateSlideshow(id);
-        }
-
-        function goToSlide(id, slideNum) {
-            slideshows[id].current = slideNum;
-            updateSlideshow(id);
-        }
-
-        function updateSlideshow(id) {
-            const show = slideshows[id];
-            const container = document.getElementById(id);
-
-            // Update slides
-            container.querySelectorAll('.slideshow-slide').forEach((slide, i) => {
-                slide.classList.toggle('active', i + 1 === show.current);
-            });
-
-            // Update counter
-            document.getElementById(`${id}-slide-current`).textContent = show.current;
-
-            // Update dots
-            container.querySelectorAll('.slideshow-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i + 1 === show.current);
-            });
-
-            // Update arrows
-            document.getElementById(`${id}-prev`).disabled = show.current === 1;
-            document.getElementById(`${id}-next`).disabled = show.current === show.total;
-        }
-
-        // Initialize slideshows
-        initSlideshow('parser-methodology', 5);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') changeSlide('parser-methodology', -1);
-            if (e.key === 'ArrowRight') changeSlide('parser-methodology', 1);
-        });
-
-        // Highlight colors
+        // Highlight colors for features
         const HIGHLIGHT_COLORS = {
             fistula_type: '#3b82f6',
             fistula_count: '#8b5cf6',
@@ -1830,6 +1750,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             const hasSeton = treatmentStatus === 'seton_in_place';
             const treatmentNote = hasSeton ? ' Currently managed with seton.' : '';
 
+            // Severity color coding: healed=teal, mild=green, moderate=orange, active=red, severe=dark red
             if (vai <= 2 && magnifi <= 4) {
                 return { status: 'Healed/Remission', class: 'healed', desc: 'Fistula appears healed with minimal residual activity.' + treatmentNote };
             }
@@ -1936,9 +1857,9 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     'on_medication': 'On Medication',
                     'no_treatment': 'No Current Treatment'
                 };
-                let badgesHtml = `<span class="treatment-badge">${treatmentLabels[treatmentStatus] || treatmentStatus}</span>`;
+                let badgesHtml = `<span class="treatment-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);">${treatmentLabels[treatmentStatus] || treatmentStatus}</span>`;
                 if (negativeFindings.length > 0) {
-                    badgesHtml += `<span class="treatment-badge" style="background: #E0F2FE; color: #0369A1;">${negativeFindings.join(', ')}</span>`;
+                    badgesHtml += `<span class="treatment-badge" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);">${negativeFindings.join(', ')}</span>`;
                 }
                 treatmentBadges.innerHTML = badgesHtml;
             } else {
