@@ -963,6 +963,270 @@
         }
 
         /* =========================================
+           METHODOLOGY SLIDESHOW
+           ========================================= */
+        .methodology-slideshow {
+            position: relative;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin: var(--space-8) 0;
+            overflow: hidden;
+        }
+
+        .slideshow-slide {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .slideshow-slide.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-counter {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            font-family: var(--font-mono);
+        }
+
+        .slide-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--space-3);
+        }
+
+        .slide-content {
+            color: var(--gray-700);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        .slide-content ul {
+            margin-left: var(--space-4);
+            margin-top: var(--space-2);
+        }
+
+        .slide-content li { margin-bottom: var(--space-1); }
+
+        .slide-stat {
+            display: inline-block;
+            margin-top: var(--space-3);
+            padding: var(--space-2) var(--space-4);
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .slide-code {
+            font-family: var(--font-mono);
+            background: var(--gray-100);
+            padding: var(--space-3);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-3);
+            font-size: 0.875rem;
+            color: var(--gray-800);
+        }
+
+        .slideshow-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-6);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .slideshow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .slideshow-arrow:hover:not(:disabled) {
+            background: var(--gray-100);
+            color: var(--gray-900);
+            border-color: var(--gray-300);
+        }
+
+        .slideshow-arrow:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slideshow-dots {
+            display: flex;
+            gap: var(--space-2);
+        }
+
+        .slideshow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gray-300);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .slideshow-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .slideshow-dot:hover:not(.active) {
+            background: var(--gray-400);
+        }
+
+        /* =========================================
+           VALIDATION STUDIES ACCORDION
+           ========================================= */
+        .accordion {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-top: var(--space-6);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .accordion-item:last-child { border-bottom: none; }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-4);
+            background: var(--white);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .accordion-header:hover { background: var(--gray-50); }
+
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-900);
+        }
+
+        .accordion-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            font-family: var(--font-mono);
+        }
+
+        .accordion-status {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .accordion-badge {
+            font-size: 0.6875rem;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .accordion-badge.pass { background: #D1FAE5; color: #065F46; }
+        .accordion-badge.addressed { background: #FEF3C7; color: #92400E; }
+
+        .accordion-arrow {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-400);
+            transition: transform 0.2s;
+        }
+
+        .accordion-item.open .accordion-arrow { transform: rotate(180deg); }
+
+        .accordion-content {
+            display: none;
+            padding: 0 var(--space-4) var(--space-4);
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .accordion-item.open .accordion-content { display: block; }
+
+        .accordion-detail {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: var(--space-2);
+            margin-top: var(--space-2);
+        }
+
+        .accordion-detail-label {
+            font-weight: 600;
+            color: var(--gray-500);
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+        }
+
+        .accordion-summary-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-4);
+            padding: var(--space-4);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+        }
+
+        @media (max-width: 600px) {
+            .accordion-summary-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .accordion-stat {
+            text-align: center;
+        }
+
+        .accordion-stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .accordion-stat-label {
+            font-size: 0.6875rem;
+            color: var(--gray-500);
+            margin-top: var(--space-1);
+        }
+
+        /* =========================================
            UTILITIES
            ========================================= */
         .hidden { display: none !important; }
@@ -1174,6 +1438,98 @@
                     <div class="stat-value">0.96</div>
                     <div class="stat-label">RMSE (points)</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Crosswalk Methodology Slideshow -->
+        <div class="methodology-slideshow" id="crosswalk-methodology">
+            <div class="slide-counter"><span id="crosswalk-methodology-slide-current">1</span> / 5</div>
+
+            <div class="slideshow-slide active" data-slide="1">
+                <div class="slide-title">Step 1: Literature Mining</div>
+                <div class="slide-content">
+                    <p>Systematically extracted VAI and MAGNIFI-CD scores from peer-reviewed studies on perianal fistulizing Crohn's disease (pfCD).</p>
+                    <ul>
+                        <li>Searched PubMed, ECCO abstracts, and clinical trial databases</li>
+                        <li>Included studies reporting both scoring systems</li>
+                        <li>Covered multiple treatment modalities (biologics, stem cells, surgery)</li>
+                    </ul>
+                    <div class="slide-stat">17 studies | 2,818 patients</div>
+                </div>
+            </div>
+
+            <div class="slideshow-slide" data-slide="2">
+                <div class="slide-title">Step 2: Data Extraction</div>
+                <div class="slide-content">
+                    <p>Collected matched VAI and MAGNIFI-CD data points from published tables and figures.</p>
+                    <ul>
+                        <li>Extracted baseline and follow-up scores</li>
+                        <li>Recorded treatment type and patient counts</li>
+                        <li>Noted fibrosis state when reported (for healed cases)</li>
+                    </ul>
+                    <div class="slide-stat">83 matched data points</div>
+                </div>
+            </div>
+
+            <div class="slideshow-slide" data-slide="3">
+                <div class="slide-title">Step 3: Symbolic Regression</div>
+                <div class="slide-content">
+                    <p>Used PySR (Python Symbolic Regression) to discover the optimal mathematical relationship.</p>
+                    <ul>
+                        <li>Explored millions of candidate equations</li>
+                        <li>Balanced model complexity vs. fit quality</li>
+                        <li>Identified fibrosis interaction for healed cases (VAI ≤ 2)</li>
+                    </ul>
+                    <div class="slide-code">MAGNIFI = 1.031 × VAI + 0.264 × Fibrosis × I(VAI≤2) + 1.713</div>
+                </div>
+            </div>
+
+            <div class="slideshow-slide" data-slide="4">
+                <div class="slide-title">Step 4: Rigorous Validation</div>
+                <div class="slide-content">
+                    <p>Conducted 19 statistical studies to verify robustness and identify limitations.</p>
+                    <ul>
+                        <li>10-fold cross-validation: R² = 0.94 ± 0.05</li>
+                        <li>Leave-one-study-out: R² = 0.94 ± 0.08</li>
+                        <li>Addressed heteroscedasticity with HC3 robust SEs</li>
+                        <li>Documented temporal drift as limitation</li>
+                    </ul>
+                    <div class="slide-stat">R² = 0.968 | RMSE = 0.96 pts</div>
+                </div>
+            </div>
+
+            <div class="slideshow-slide" data-slide="5">
+                <div class="slide-title">Result: Universal Translator</div>
+                <div class="slide-content">
+                    <p>The first validated crosswalk between VAI and MAGNIFI-CD enables:</p>
+                    <ul>
+                        <li>Direct comparison of 20+ years of pfCD research</li>
+                        <li>Meta-analysis across previously incompatible studies</li>
+                        <li>Standardized clinical trial endpoints</li>
+                        <li>Real-time score conversion in clinical practice</li>
+                    </ul>
+                    <div class="slide-stat">Unlocking decades of research data</div>
+                </div>
+            </div>
+
+            <div class="slideshow-nav">
+                <button class="slideshow-arrow" id="crosswalk-methodology-prev" onclick="changeSlide('crosswalk-methodology', -1)" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+                <div class="slideshow-dots" id="crosswalk-methodology-dots">
+                    <div class="slideshow-dot active" onclick="goToSlide('crosswalk-methodology', 1)"></div>
+                    <div class="slideshow-dot" onclick="goToSlide('crosswalk-methodology', 2)"></div>
+                    <div class="slideshow-dot" onclick="goToSlide('crosswalk-methodology', 3)"></div>
+                    <div class="slideshow-dot" onclick="goToSlide('crosswalk-methodology', 4)"></div>
+                    <div class="slideshow-dot" onclick="goToSlide('crosswalk-methodology', 5)"></div>
+                </div>
+                <button class="slideshow-arrow" id="crosswalk-methodology-next" onclick="changeSlide('crosswalk-methodology', 1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
@@ -1402,6 +1758,381 @@
                     <li>Confidence calibration: V4 is 24.8% underconfident (conservative for clinical use)</li>
                 </ul>
             </div>
+
+            <!-- 19 Validation Studies Accordion -->
+            <div class="card mt-6">
+                <div class="card-title">19 Validation Studies</div>
+                <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: var(--space-4);">
+                    Comprehensive statistical validation across 19 studies. Click any study to see details.
+                </p>
+
+                <!-- Summary Stats -->
+                <div class="accordion-summary-stats">
+                    <div class="accordion-stat">
+                        <div class="accordion-stat-value">0.968</div>
+                        <div class="accordion-stat-label">R²</div>
+                    </div>
+                    <div class="accordion-stat">
+                        <div class="accordion-stat-value">[0.94, 0.99]</div>
+                        <div class="accordion-stat-label">95% CI</div>
+                    </div>
+                    <div class="accordion-stat">
+                        <div class="accordion-stat-value">100%</div>
+                        <div class="accordion-stat-label">Power</div>
+                    </div>
+                    <div class="accordion-stat">
+                        <div class="accordion-stat-value">29.75</div>
+                        <div class="accordion-stat-label">Effect Size</div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-item" id="accordion-item-1">
+                        <div class="accordion-header" onclick="toggleAccordion(1)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">1</span>
+                                Baseline OLS Regression
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Does a linear model fit the data?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Ordinary Least Squares regression</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>R² = 0.968, p < 0.001</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-2">
+                        <div class="accordion-header" onclick="toggleAccordion(2)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">2</span>
+                                10-Fold Cross-Validation
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Does model generalize to unseen data?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Repeated 10-fold CV, 100 iterations</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>CV R² = 0.94 ± 0.05</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-3">
+                        <div class="accordion-header" onclick="toggleAccordion(3)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">3</span>
+                                Leave-One-Study-Out CV
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Does model work across different studies?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Leave-one-group-out validation</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>LOSO R² = 0.94 ± 0.08</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-4">
+                        <div class="accordion-header" onclick="toggleAccordion(4)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">4</span>
+                                Bootstrap Confidence Intervals
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>How precise are coefficient estimates?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>10,000 bootstrap resamples</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>VAI coef: 1.031 [0.964, 1.098]</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-5">
+                        <div class="accordion-header" onclick="toggleAccordion(5)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">5</span>
+                                Prediction Interval Coverage
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Are prediction intervals well-calibrated?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>95% PI coverage check</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>94.0% coverage (target: 95%)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-6">
+                        <div class="accordion-header" onclick="toggleAccordion(6)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">6</span>
+                                Influential Point Analysis
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Do outliers unduly influence the model?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Cook's distance, DFBETAS</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>No points exceed influence thresholds</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-7">
+                        <div class="accordion-header" onclick="toggleAccordion(7)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">7</span>
+                                Sample Size Adequacy
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Is sample size sufficient for regression?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Power analysis, events-per-variable</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>n=83, EPV=27.7 (>10 required)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-8">
+                        <div class="accordion-header" onclick="toggleAccordion(8)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">8</span>
+                                Multicollinearity Check
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Are predictors highly correlated?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Variance Inflation Factor (VIF)</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>VIF = 1.02 (no multicollinearity)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-9">
+                        <div class="accordion-header" onclick="toggleAccordion(9)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">9</span>
+                                Linearity Assumption
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Is relationship truly linear?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>RESET test, residual plots</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>RESET p = 0.42 (linear is adequate)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-10">
+                        <div class="accordion-header" onclick="toggleAccordion(10)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">10</span>
+                                Treatment Subgroup Analysis
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Does formula work across treatments?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Stratified analysis by treatment type</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>Consistent across biologics, stem cells, surgery</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-11">
+                        <div class="accordion-header" onclick="toggleAccordion(11)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">11</span>
+                                Heteroscedasticity Test
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge addressed">⚠️ Addressed</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Is error variance constant?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Breusch-Pagan, White tests</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>Heteroscedasticity detected (19:1 variance ratio)</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Fix</span><span>Use HC3 robust standard errors</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-12">
+                        <div class="accordion-header" onclick="toggleAccordion(12)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">12</span>
+                                Residual Normality
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge addressed">⚠️ Addressed</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Are residuals normally distributed?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Shapiro-Wilk, Q-Q plots</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>Non-normal (skew=2.33, kurtosis=10.12)</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Fix</span><span>HC3 SEs valid for large samples</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-13">
+                        <div class="accordion-header" onclick="toggleAccordion(13)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">13</span>
+                                Severity Range Coverage
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Does data cover full severity range?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Range analysis, distribution plots</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>VAI 0-22, MAGNIFI 0-25 covered</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-14">
+                        <div class="accordion-header" onclick="toggleAccordion(14)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">14</span>
+                                External Validation (Radiopaedia)
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Does parser work on real cases?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>10 Radiopaedia pfCD cases</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>10/10 within ±3 pts (100%)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-15">
+                        <div class="accordion-header" onclick="toggleAccordion(15)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">15</span>
+                                Edge Case Testing
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Does parser handle edge cases?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>11 synthetic edge cases</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>10/11 pass, 1 flagged as low confidence</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-16">
+                        <div class="accordion-header" onclick="toggleAccordion(16)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">16</span>
+                                Inter-rater Reliability
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>How does parser compare to experts?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>ICC comparison with literature</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>Parser ICC 0.934 vs Expert 0.68 (+37%)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-17">
+                        <div class="accordion-header" onclick="toggleAccordion(17)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">17</span>
+                                Confidence Calibration
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Are confidence scores well-calibrated?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Expected vs actual accuracy analysis</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>24.8% underconfident (conservative)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-18">
+                        <div class="accordion-header" onclick="toggleAccordion(18)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">18</span>
+                                Temporal Stability
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge addressed">⚠️ Addressed</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Is formula stable across time periods?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>Pre/post-2020 Chow test</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>Minor drift: 1.15 pts/decade (p=0.025)</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Fix</span><span>Clinically negligible, note as limitation</span></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" id="accordion-item-19">
+                        <div class="accordion-header" onclick="toggleAccordion(19)">
+                            <div class="accordion-title">
+                                <span class="accordion-number">19</span>
+                                Robust Standard Errors
+                            </div>
+                            <div class="accordion-status">
+                                <span class="accordion-badge pass">✓ PASS</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-detail"><span class="accordion-detail-label">Question</span><span>Are inferences valid despite violations?</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Method</span><span>HC3 heteroscedasticity-consistent SEs</span></div>
+                            <div class="accordion-detail"><span class="accordion-detail-label">Result</span><span>VAI: 1.031 (SE=0.034), 95% CI [0.964, 1.098]</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1504,13 +2235,9 @@
         // THEME TOGGLE
         // =========================================
         function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            } else if (prefersDark) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
+            // Default to light mode, sync with localStorage
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
         }
 
         function toggleTheme() {
@@ -2066,6 +2793,65 @@
             Plotly.newPlot('bland-altman-plot', [trace, meanLine, upperLine, lowerLine], layout, { responsive: true, displayModeBar: false });
         }
 
+        // =========================================
+        // SLIDESHOW FUNCTIONALITY
+        // =========================================
+        const slideshows = {};
+
+        function initSlideshow(id, totalSlides) {
+            slideshows[id] = { current: 1, total: totalSlides };
+            updateSlideshow(id);
+        }
+
+        function changeSlide(id, direction) {
+            const show = slideshows[id];
+            show.current += direction;
+            if (show.current < 1) show.current = 1;
+            if (show.current > show.total) show.current = show.total;
+            updateSlideshow(id);
+        }
+
+        function goToSlide(id, slideNum) {
+            slideshows[id].current = slideNum;
+            updateSlideshow(id);
+        }
+
+        function updateSlideshow(id) {
+            const show = slideshows[id];
+            const container = document.getElementById(id);
+            if (!container) return;
+
+            // Update slides
+            container.querySelectorAll('.slideshow-slide').forEach((slide, i) => {
+                slide.classList.toggle('active', i + 1 === show.current);
+            });
+
+            // Update counter
+            const counter = document.getElementById(`${id}-slide-current`);
+            if (counter) counter.textContent = show.current;
+
+            // Update dots
+            container.querySelectorAll('.slideshow-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i + 1 === show.current);
+            });
+
+            // Update arrows
+            const prevBtn = document.getElementById(`${id}-prev`);
+            const nextBtn = document.getElementById(`${id}-next`);
+            if (prevBtn) prevBtn.disabled = show.current === 1;
+            if (nextBtn) nextBtn.disabled = show.current === show.total;
+        }
+
+        // =========================================
+        // ACCORDION FUNCTIONALITY
+        // =========================================
+        function toggleAccordion(index) {
+            const item = document.getElementById(`accordion-item-${index}`);
+            if (item) {
+                item.classList.toggle('open');
+            }
+        }
+
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -2082,6 +2868,8 @@
             initScatterPlot();
             initResidualPlot();
             initBlandAltmanPlot();
+            // Initialize slideshows
+            initSlideshow('crosswalk-methodology', 5);
         });
     </script>
 </body>
