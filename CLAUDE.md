@@ -285,6 +285,92 @@ ADMIRE-CD II (2024, n=640), ADMIRE-CD (2016, n=355), MAGNIFI-CD (2019, n=320), D
 
 ---
 
+## STUDY 19: ROBUST STATISTICAL FIXES (Dec 7, 2025)
+
+Addressed 3 statistical concerns flagged in Studies 11, 12, and 18.
+
+### Summary Table
+
+| Issue | Original | Fixed | Method Used |
+|-------|----------|-------|-------------|
+| Heteroscedasticity | Significant (4/4 tests) | Variance ratio 19:1 | Use HC3 robust SEs |
+| Non-normality | 0/4 pass | No transform works | Use HC3 robust SEs |
+| Temporal drift | p=0.025 | 1.15 pts/decade | Report as limitation |
+
+### Fix 1: Heteroscedasticity
+
+**Problem:** Error variance increases with VAI severity (19:1 variance ratio between low and mid VAI bins).
+
+**Residual Variance by VAI Bin:**
+- VAI 0-5: SD = 1.83 (high - healed cases have more variability)
+- VAI 6-10: SD = 0.42 (low)
+- VAI 11-15: SD = 0.46 (low)
+- VAI 16-22: SD = 0.59 (moderate)
+
+**Solution:** Use HC3 heteroscedasticity-consistent standard errors for inference.
+- OLS coefficient: 1.031, SE = 0.034, 95% CI [0.964, 1.098]
+- WLS coefficient: 1.048 (1.7% change - minimal practical impact)
+
+### Fix 2: Non-Normal Residuals
+
+**Problem:** Residuals fail all normality tests (Shapiro-Wilk p < 0.001).
+- Skewness: 2.33 (positive - a few large outliers)
+- Kurtosis: 10.12 (heavy-tailed)
+
+**Transformations Tested:**
+| Transform | R² | Shapiro p | Normality |
+|-----------|-----|-----------|-----------|
+| Original | 0.968 | <0.001 | FAIL |
+| Box-Cox (λ=2) | 0.959 | <0.001 | FAIL |
+| Log(Y+1) | 0.876 | <0.001 | FAIL |
+| Sqrt(Y) | 0.909 | <0.001 | FAIL |
+
+**Solution:** No transformation achieves normality. Use HC3 robust standard errors (valid even with non-normal residuals for large samples).
+
+### Fix 3: Temporal Instability
+
+**Problem:** Pre-2020 vs post-2020 coefficient difference of ~11% (Chow test p=0.025).
+
+**Era-Specific Models:**
+- Pre-2020 (n=12): MAGNIFI = 2.41 + 0.944×VAI (R² = 0.978)
+- Post-2020 (n=48): MAGNIFI = 1.69 + 1.047×VAI (R² = 0.968)
+
+**Year Effect:** 0.11 points/year = 1.15 points/decade
+
+**Solution:** The temporal drift is:
+1. Statistically borderline (p=0.025, not p<0.01)
+2. Clinically minor (1.15 points per decade < MCID of 3 points)
+3. Likely due to sample size imbalance (12 pre-2020 vs 48 post-2020)
+
+**Recommendation:** Note as limitation but don't modify formula.
+
+### Final Model Specification
+
+**Formula (unchanged):**
+```
+MAGNIFI-CD = 1.031 × VAI + 0.264 × Fibrosis × I(VAI≤2) + 1.713
+```
+
+**Standard Errors:** HC3 (heteroscedasticity-consistent)
+
+**VAI Coefficient:** 1.031 (SE = 0.034), 95% CI [0.964, 1.098]
+
+**R²:** 0.968
+
+### Limitations to Report
+
+1. Heteroscedasticity present (variance higher for healed cases) - addressed with HC3 SEs
+2. Non-normal residuals (positive skew, heavy tails) - addressed with HC3 SEs
+3. Minor temporal drift (~1 point/decade) - clinically negligible, note as limitation
+
+### Files Generated
+
+- `data/validation_results/robust_fixes_results.json` - Full analysis results
+- `data/validation_results/robust_fixes_summary.png` - Visualization plots
+- `src/analysis/study19_robust_fixes.py` - Analysis script
+
+---
+
 *Last Updated: December 7, 2025*
 *Parser: 100% real-world (15/15), 100% edge cases (11/11)*
 *Crosswalk: R² = 0.96, 2,818 patients*

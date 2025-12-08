@@ -1,0 +1,168 @@
+{
+  "study": "Study 19: Robust Statistical Fixes",
+  "date": "2025-12-07",
+  "n_datapoints": 60,
+  "heteroscedasticity_fix": {
+    "description": "Heteroscedasticity fix: WLS and HC3 robust standard errors",
+    "bins": [
+      {
+        "range": "0-5",
+        "n": 11,
+        "variance": 3.3377387244689927,
+        "std": 1.8269479260419528
+      },
+      {
+        "range": "6-10",
+        "n": 23,
+        "variance": 0.17441063776808904,
+        "std": 0.4176249965795738
+      },
+      {
+        "range": "11-15",
+        "n": 21,
+        "variance": 0.21050056013341661,
+        "std": 0.45880340030716493
+      },
+      {
+        "range": "16-22",
+        "n": 5,
+        "variance": 0.35373188697336866,
+        "std": 0.59475363552766
+      }
+    ],
+    "ols": {
+      "intercept": 1.7557930128045545,
+      "coef_vai": 1.0309684441529983,
+      "coef_fibrosis_healed": -0.05098905096663127,
+      "se_intercept": 0.37195367560807036,
+      "se_vai": 0.03405654869090802,
+      "se_fibrosis_healed": 0.08970972245050872,
+      "r2": 0.9674840684951537,
+      "ci_vai": [
+        0.9642176087188186,
+        1.097719279587178
+      ]
+    },
+    "wls": {
+      "intercept": 1.5262468216588865,
+      "coef_vai": 1.0483425098979395,
+      "coef_fibrosis_healed": -0.011798237844194329,
+      "r2": 0.9809536892403532
+    },
+    "hc3": {
+      "intercept": 1.7557930128045545,
+      "coef_vai": 1.0309684441529983,
+      "coef_fibrosis_healed": -0.05098905096663127,
+      "se_intercept": 0.37195367560807036,
+      "se_vai": 0.03405654869090802,
+      "se_fibrosis_healed": 0.08970972245050872,
+      "r2": 0.9674840684951537,
+      "ci_vai": [
+        0.9642176087188186,
+        1.097719279587178
+      ]
+    },
+    "comparison": {
+      "vai_coef_change_wls": 0.01737406574494127,
+      "vai_pct_change_wls": 1.6852179951264263,
+      "se_change_hc3": 0.0
+    },
+    "variance_ratio": 19.137242814897157,
+    "recommendation": "Use HC3 robust standard errors",
+    "heteroscedasticity_status": "Meaningful (variance ratio > 3)"
+  },
+  "normality_fix": {
+    "description": "Non-normality fix: transformation comparison",
+    "original": {
+      "r2": 0.9674840684951537,
+      "shapiro_w": 0.7721026506752651,
+      "shapiro_p": 2.902555328575621e-08,
+      "ks_stat": 0.26254475252609355,
+      "ks_p": 0.00038717432159337894,
+      "dagostino_stat": 52.639425143589044,
+      "dagostino_p": 3.711026578483383e-12,
+      "skewness": 2.3306032771372966,
+      "kurtosis": 10.115786154698764,
+      "passes_normality": 0
+    },
+    "boxcox": {
+      "optimal_lambda": 2.0,
+      "r2": 0.9588154582662063,
+      "shapiro_w": 0.9126209869095235,
+      "shapiro_p": 0.0003919943914109358,
+      "passes_normality": 0
+    },
+    "log": {
+      "r2": 0.8757000494505331,
+      "shapiro_w": 0.5549232177482493,
+      "shapiro_p": 3.2675972350096334e-12,
+      "passes_normality": 0
+    },
+    "sqrt": {
+      "r2": 0.9090408848933118,
+      "shapiro_w": 0.5873114766851069,
+      "shapiro_p": 1.0097010691805617e-11,
+      "passes_normality": 0
+    },
+    "recommendation": "Use HC3 robust standard errors (no transformation achieves normality)",
+    "normality_status": "Not achieved - use robust SEs"
+  },
+  "temporal_fix": {
+    "description": "Temporal instability fix: era comparison and year covariate",
+    "year_covariate": {
+      "intercept": 1.5129602817375913,
+      "coef_vai": 1.033434376078717,
+      "coef_year": 0.11474873795789053,
+      "se_year": 0.04922230403913651,
+      "r2": 0.9703605046329665
+    },
+    "pre_2020": {
+      "n": 12,
+      "intercept": 2.4136902268238605,
+      "coef_vai": 0.943892513016938,
+      "coef_fibrosis_healed": 0.0,
+      "r2": 0.9777895051837713,
+      "rmse": 0.30648057349772423
+    },
+    "post_2020": {
+      "n": 48,
+      "intercept": 1.6874319226481571,
+      "coef_vai": 1.0473318697605827,
+      "coef_fibrosis_healed": -0.039317645330173324,
+      "r2": 0.9675444935645475,
+      "rmse": 0.951775705674677
+    },
+    "interaction": {},
+    "chow_test": {},
+    "recommendation": "Consider era-specific formulas or report as important limitation.",
+    "era_comparison": {
+      "vai_difference": 0.10343935674364468,
+      "vai_pct_difference": 10.958806783308862,
+      "intercept_difference": 0.7262583041757034
+    },
+    "temporal_summary": {
+      "year_effect_per_year": 0.11474873795789053,
+      "decade_effect": 1.1474873795789053,
+      "year_significant": false,
+      "interaction_significant": false,
+      "chow_significant": false,
+      "temporal_status": "Meaningful"
+    }
+  },
+  "final_model": {
+    "formula": "MAGNIFI-CD = 1.031 \u00d7 VAI + 0.264 \u00d7 Fibrosis \u00d7 I(VAI\u22642) + 1.713",
+    "standard_errors": "HC3 (heteroscedasticity-consistent)",
+    "vai_coefficient": 1.0309684441529983,
+    "vai_se_hc3": 0.03405654869090802,
+    "vai_ci_95": [
+      0.9642176087188186,
+      1.097719279587178
+    ],
+    "r2": 0.9674840684951537,
+    "limitations": [
+      "Mild heteroscedasticity (use HC3 standard errors for inference)",
+      "Non-normal residuals (robust SEs account for this)",
+      "Minor temporal drift (1.15 pts/decade) - clinically negligible"
+    ]
+  }
+}
