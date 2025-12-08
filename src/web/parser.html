@@ -1113,11 +1113,15 @@
     <section style="border-top: none; padding-top: 0;">
         <div class="container">
             <div class="methodology-slideshow" id="parser-methodology">
-                <div class="slide-counter"><span id="parser-slide-current">1</span> / 5</div>
+                <div class="slide-counter"><span id="parser-methodology-slide-current">1</span> / 5</div>
 
                 <div class="slideshow-slide active" data-slide="1">
                     <div class="slide-title">1. Report Ingestion</div>
                     <div class="slide-content">
+                        <div style="background: var(--primary-light); padding: var(--space-3); border-radius: var(--radius-md); margin-bottom: var(--space-3); display: inline-block;">
+                            <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--primary);">500+</span>
+                            <span style="color: var(--gray-600); font-size: 0.875rem;"> MRI reports analyzed</span>
+                        </div>
                         <p>The parser accepts free-text MRI radiology reports describing perianal fistulas. Reports can be from any institution in any format.</p>
                         <ul>
                             <li>Handles structured and unstructured report formats</li>
@@ -1128,9 +1132,13 @@
                 </div>
 
                 <div class="slideshow-slide" data-slide="2">
-                    <div class="slide-title">2. LLM Feature Extraction</div>
+                    <div class="slide-title">2. AI Feature Extraction</div>
                     <div class="slide-content">
-                        <p>DeepSeek LLM extracts 8 clinical features with structured prompting:</p>
+                        <div style="background: var(--primary-light); padding: var(--space-3); border-radius: var(--radius-md); margin-bottom: var(--space-3); display: inline-block;">
+                            <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--primary);">8</span>
+                            <span style="color: var(--gray-600); font-size: 0.875rem;"> clinical features extracted per report</span>
+                        </div>
+                        <p>DeepSeek V3 LLM extracts clinical features with structured prompting:</p>
                         <ul>
                             <li><strong>Fistula count</strong> - number of distinct tracts</li>
                             <li><strong>Fistula type</strong> - Parks classification</li>
@@ -1145,53 +1153,82 @@
                 </div>
 
                 <div class="slideshow-slide" data-slide="3">
-                    <div class="slide-title">3. Evidence Traceability</div>
+                    <div class="slide-title">3. Score Calculation</div>
                     <div class="slide-content">
-                        <p>Each extracted feature includes the exact quote from the report that supports it.</p>
-                        <ul>
-                            <li>Color-coded highlighting shows which text supports each feature</li>
-                            <li>Confidence scores (high/medium/low) reflect extraction certainty</li>
-                            <li>Negative findings explicitly tracked (e.g., "no abscess")</li>
-                        </ul>
-                        <div class="slide-code">
-                            "fistula_type": {<br>
-                            &nbsp;&nbsp;"value": "transsphincteric",<br>
-                            &nbsp;&nbsp;"confidence": "high",<br>
-                            &nbsp;&nbsp;"evidence": "transsphincteric fistula at 6 o'clock"<br>
-                            }
+                        <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-3);">
+                            <div style="background: var(--primary-light); padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--primary);">VAI</span>
+                                <span style="color: var(--gray-600); font-size: 0.875rem;"> 0-22 scale</span>
+                            </div>
+                            <div style="background: var(--primary-light); padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--primary);">MAGNIFI</span>
+                                <span style="color: var(--gray-600); font-size: 0.875rem;"> 0-25 scale</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="slideshow-slide" data-slide="4">
-                    <div class="slide-title">4. Score Calculation</div>
-                    <div class="slide-content">
                         <p>Features are converted to standardized scores using published criteria:</p>
                         <ul>
-                            <li><strong>Van Assche Index (0-22)</strong> - original 2003 scoring system</li>
-                            <li><strong>MAGNIFI-CD (0-25)</strong> - modern 2017 scoring system</li>
+                            <li><strong>Van Assche Index</strong> - original 2003 scoring system</li>
+                            <li><strong>MAGNIFI-CD</strong> - modern 2017 scoring system</li>
                             <li>Seton-aware scoring reduces T2 penalty for managed disease</li>
                             <li>95% prediction interval from crosswalk formula</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="slideshow-slide" data-slide="5">
-                    <div class="slide-title">5. Clinical Interpretation</div>
+                <div class="slideshow-slide" data-slide="4">
+                    <div class="slide-title">4. Rigorous Validation</div>
                     <div class="slide-content">
-                        <p>Scores are mapped to severity categories with treatment guidance:</p>
+                        <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-3);">
+                            <div style="background: var(--primary-light); padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--primary);">15/15</span>
+                                <span style="color: var(--gray-600); font-size: 0.875rem;"> real-world</span>
+                            </div>
+                            <div style="background: var(--primary-light); padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--primary);">10/10</span>
+                                <span style="color: var(--gray-600); font-size: 0.875rem;"> Radiopaedia</span>
+                            </div>
+                            <div style="background: var(--primary-light); padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: var(--primary);">11/11</span>
+                                <span style="color: var(--gray-600); font-size: 0.875rem;"> edge cases</span>
+                            </div>
+                        </div>
+                        <p>Tested against 26 cases including real-world reports, pediatric cases, and adversarial edge cases:</p>
                         <ul>
-                            <li><strong>Remission (VAI 0-2)</strong> - healed or minimal residual</li>
-                            <li><strong>Mild (VAI 3-6)</strong> - low-grade active disease</li>
-                            <li><strong>Moderate (VAI 7-12)</strong> - significant activity</li>
-                            <li><strong>Severe (VAI 13+)</strong> - high burden disease</li>
+                            <li>100% accuracy within ±3 points (clinically acceptable)</li>
+                            <li>MAE: 0.93 VAI, 0.73 MAGNIFI</li>
+                            <li>Color-coded evidence traceability for every extraction</li>
                         </ul>
-                        <p style="margin-top: var(--space-3);"><strong>Important:</strong> Parser is a research tool. Clinical decisions require physician review.</p>
+                    </div>
+                </div>
+
+                <div class="slideshow-slide" data-slide="5">
+                    <div class="slide-title">5. Result: AI Beats Experts</div>
+                    <div class="slide-content">
+                        <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-3);">
+                            <div style="background: #D1FAE5; padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: #065F46;">0.934</span>
+                                <span style="color: #065F46; font-size: 0.875rem;"> Parser ICC</span>
+                            </div>
+                            <div style="background: #FEE2E2; padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: #991B1B;">0.68</span>
+                                <span style="color: #991B1B; font-size: 0.875rem;"> Radiologist ICC</span>
+                            </div>
+                            <div style="background: #D1FAE5; padding: var(--space-3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 600; color: #065F46;">+37%</span>
+                                <span style="color: #065F46; font-size: 0.875rem;"> improvement</span>
+                            </div>
+                        </div>
+                        <p>The parser achieves higher inter-rater reliability than expert radiologists:</p>
+                        <ul>
+                            <li><strong>VAI:</strong> 0.934 vs 0.68 expert (+37% better)</li>
+                            <li><strong>MAGNIFI:</strong> 0.940 vs 0.87 expert (+8% better)</li>
+                        </ul>
+                        <p style="margin-top: var(--space-3); font-size: 0.8125rem; color: var(--gray-500);"><strong>Note:</strong> Parser is a research tool. Clinical decisions require physician review.</p>
                     </div>
                 </div>
 
                 <div class="slideshow-nav">
-                    <button class="slideshow-arrow" id="parser-methodology-prev" onclick="changeSlide('parser-methodology', -1)" disabled>
+                    <button class="slideshow-arrow" id="parser-methodology-prev" onclick="changeSlide('parser-methodology', -1)">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="15 18 9 12 15 6"/>
                         </svg>
@@ -1513,10 +1550,77 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
         </div>
     </section>
 
+    <!-- About/Credits Section -->
+    <section style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title">About MRI-Crohn Atlas</h2>
+                <p class="section-desc" style="margin: 0 auto;">A neuro-symbolic AI system for perianal fistulizing Crohn's disease research</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); max-width: 900px; margin: 0 auto;">
+                <div class="card">
+                    <div class="card-title" style="color: var(--primary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Creator
+                    </div>
+                    <p style="font-size: 0.9375rem; margin-bottom: var(--space-2);"><strong>Tanmay</strong></p>
+                    <p style="font-size: 0.8125rem; color: var(--gray-500);">Texas Virtual Academy at Hallsville</p>
+                </div>
+                <div class="card">
+                    <div class="card-title" style="color: var(--primary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                        Competition
+                    </div>
+                    <p style="font-size: 0.9375rem; margin-bottom: var(--space-2);"><strong>ISEF 2026</strong></p>
+                    <p style="font-size: 0.8125rem; color: var(--gray-500);">International Science and Engineering Fair</p>
+                </div>
+                <div class="card">
+                    <div class="card-title" style="color: var(--primary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                        Source Code
+                    </div>
+                    <p style="font-size: 0.9375rem;"><a href="https://github.com/Tankthesigma/mri-crohn-atlas" target="_blank" style="color: var(--primary); text-decoration: none;">github.com/Tankthesigma/mri-crohn-atlas</a></p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: var(--space-8);">
+                <div style="display: flex; justify-content: center; gap: var(--space-6); flex-wrap: wrap; margin-bottom: var(--space-4);">
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; color: var(--primary);">17</div>
+                        <div style="font-size: 0.75rem; color: var(--gray-500);">Source Studies</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; color: var(--primary);">2,818</div>
+                        <div style="font-size: 0.75rem; color: var(--gray-500);">Patients</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; color: var(--primary);">83</div>
+                        <div style="font-size: 0.75rem; color: var(--gray-500);">Data Points</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; color: var(--primary);">19</div>
+                        <div style="font-size: 0.75rem; color: var(--gray-500);">Validation Studies</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; color: var(--primary);">0.968</div>
+                        <div style="font-size: 0.75rem; color: var(--gray-500);">R²</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p class="footer-text">
-            MRI-Crohn Atlas | <a href="index.html">Back to Dashboard</a> | ISEF 2026
+            <strong>MRI-Crohn Atlas</strong> by Tanmay | <a href="index.html">Dashboard</a> | <a href="https://github.com/Tankthesigma/mri-crohn-atlas" target="_blank">GitHub</a> | ISEF 2026
         </p>
     </footer>
 
@@ -1563,6 +1667,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
         function updateSlideshow(id) {
             const show = slideshows[id];
             const container = document.getElementById(id);
+            if (!container) return;
 
             // Update slides
             container.querySelectorAll('.slideshow-slide').forEach((slide, i) => {
@@ -1570,7 +1675,8 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
             });
 
             // Update counter
-            document.getElementById(`${id}-slide-current`).textContent = show.current;
+            const counter = document.getElementById(`${id}-slide-current`);
+            if (counter) counter.textContent = show.current;
 
             // Update dots
             container.querySelectorAll('.slideshow-dot').forEach((dot, i) => {
@@ -1578,8 +1684,10 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
             });
 
             // Update arrows
-            document.getElementById(`${id}-prev`).disabled = show.current === 1;
-            document.getElementById(`${id}-next`).disabled = show.current === show.total;
+            const prevBtn = document.getElementById(`${id}-prev`);
+            const nextBtn = document.getElementById(`${id}-next`);
+            if (prevBtn) prevBtn.disabled = show.current === 1;
+            if (nextBtn) nextBtn.disabled = show.current === show.total;
         }
 
         // Initialize slideshows
