@@ -1102,6 +1102,42 @@
             border-color: #334155;
         }
 
+        /* Keep yellow background in dark mode with dark text for readability */
+        html[data-theme="dark"] .limitations-card {
+            background: #FFFBEB;
+            border-color: #FCD34D;
+        }
+
+        html[data-theme="dark"] .limitations-card h4 {
+            color: #92400E;
+        }
+
+        html[data-theme="dark"] .limitations-card ul,
+        html[data-theme="dark"] .limitations-card li {
+            color: #78350F;
+        }
+
+        html[data-theme="dark"] .limitations-card strong {
+            color: #92400E;
+        }
+
+        /* Medium confidence badges - dark text on yellow */
+        html[data-theme="dark"] .confidence-value.medium,
+        html[data-theme="dark"] .confidence-badge.medium {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        html[data-theme="dark"] .interpretation-box.moderate {
+            background: #FEF3C7;
+            border-color: #FDE68A;
+        }
+
+        html[data-theme="dark"] .interpretation-box.moderate p,
+        html[data-theme="dark"] .interpretation-box.moderate span {
+            color: #78350F;
+        }
+
         /* =========================================
            CLICKABLE STAT EXPLANATIONS
            ========================================= */

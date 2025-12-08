@@ -1320,17 +1320,22 @@
             background: rgba(0, 0, 0, 0.7);
         }
 
+        /* Keep yellow background in dark mode with dark text for readability */
         [data-theme="dark"] .limitations-card {
-            background: rgba(245, 158, 11, 0.1);
-            border-color: rgba(245, 158, 11, 0.3);
+            background: #FEF3C7;
+            border-color: #FDE68A;
         }
 
         [data-theme="dark"] .limitations-title {
-            color: #FCD34D;
+            color: #92400E;
         }
 
         [data-theme="dark"] .limitations-list li {
-            color: #FDE68A;
+            color: #78350F;
+        }
+
+        [data-theme="dark"] .limitations-list li::before {
+            background: #92400E;
         }
 
         [data-theme="dark"] .calc-slider {
@@ -1353,9 +1358,44 @@
             border-color: #334155;
         }
 
+        /* Keep yellow background in dark mode with dark text */
         [data-theme="dark"] .challenging-case.highlighted-warning {
-            background: rgba(245, 158, 11, 0.15);
-            border-color: rgba(245, 158, 11, 0.4);
+            background: #FEF3C7;
+            border-color: #FDE68A;
+        }
+
+        [data-theme="dark"] .challenging-case.highlighted-warning .case-title,
+        [data-theme="dark"] .challenging-case.highlighted-warning .case-detail,
+        [data-theme="dark"] .challenging-case.highlighted-warning p,
+        [data-theme="dark"] .challenging-case.highlighted-warning span {
+            color: #78350F;
+        }
+
+        [data-theme="dark"] .challenging-case.highlighted-warning .status-badge.warning {
+            background: #FDE68A;
+            color: #78350F;
+        }
+
+        /* Edge case table row with yellow background - dark text in both modes */
+        .low-confidence-row {
+            background: #FEF3C7 !important;
+        }
+
+        .low-confidence-row td {
+            color: #78350F !important;
+        }
+
+        [data-theme="dark"] .low-confidence-row {
+            background: #FEF3C7 !important;
+        }
+
+        [data-theme="dark"] .low-confidence-row td {
+            color: #78350F !important;
+        }
+
+        [data-theme="dark"] .low-confidence-row .status-badge.warning {
+            background: #FDE68A;
+            color: #78350F;
         }
 
         [data-theme="dark"] .study-chip {
@@ -2802,7 +2842,7 @@
                 const status = c.isLowConf ?
                     '<span class="status-badge warning">Low Conf</span>' :
                     '<span class="status-badge success">Pass</span>';
-                const rowClass = c.isLowConf ? 'style="background: #FEF3C7;"' : '';
+                const rowClass = c.isLowConf ? 'class="low-confidence-row"' : '';
                 return `
                     <tr ${rowClass}>
                         <td class="mono">${c.name}</td>
