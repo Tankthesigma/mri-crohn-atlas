@@ -1,0 +1,1860 @@
+[
+  {
+    "case_id": "existing_rp_001",
+    "source": "radiopaedia",
+    "case_type": "Simple Intersphincteric",
+    "severity": "Moderate",
+    "expected_vai": 7,
+    "expected_magnifi": 6,
+    "predicted_vai": 11,
+    "predicted_magnifi": 10,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 2,
+      "hyperintensity": 4,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a single linear fistulous tract passing through the inter-sphincteric plane, indicating a simple intersphincteric fistula (location score 1). The tract extends vertically with no definite side branches, suggesting mild extension (extension score 2). There is a marginally enhancing inflammatory fluid collection (abscess), which scores 4 for collections. The T2 hyperintensity is not explicitly described, but the presence of an abscess suggests mild activity (hyperintensity score 4). No rectal wall involvement is noted.",
+    "flags": [
+      "abscess"
+    ],
+    "error": null,
+    "vai_error": 4,
+    "magnifi_error": 4
+  },
+  {
+    "case_id": "existing_rp_002",
+    "source": "radiopaedia",
+    "case_type": "With Abscess",
+    "severity": "Severe",
+    "expected_vai": 16,
+    "expected_magnifi": 17,
+    "predicted_vai": 17,
+    "predicted_magnifi": 17,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 3,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a complex transsphincteric fistula with marked T2 hyperintensity and a thick-walled abscess (1.8 x 1.5 cm) showing restricted diffusion. The tract extends for approximately 9.7 cm, indicating moderate extension. The fistula is active with high signal intensity and enhancement.",
+    "flags": [
+      "complex transsphincteric",
+      "marked T2 hyperintensity",
+      "abscess present"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "existing_rp_003",
+    "source": "radiopaedia",
+    "case_type": "Transsphincteric",
+    "severity": "Moderate",
+    "expected_vai": 11,
+    "expected_magnifi": 10,
+    "predicted_vai": 11,
+    "predicted_magnifi": 8,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 6,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a single tortuous fistulous tract at the 12 o'clock position with hyperintense behavior on T2, indicating moderate activity. The tract runs between the internal and external anal sphincters, classifying it as transsphincteric (complex type). There is no mention of abscess or collection, and the rectal wall appears normal.",
+    "flags": [
+      "transsphincteric",
+      "moderate T2 hyperintensity"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": -2
+  },
+  {
+    "case_id": "existing_rp_004",
+    "source": "radiopaedia",
+    "case_type": "Healed/Fibrotic",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 2,
+    "predicted_vai": 3,
+    "predicted_magnifi": 1,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Simple intersphincteric fistula with no T2 hyperintensity (granulation tissue but no pus) and no abscess or rectal wall involvement.",
+    "flags": [
+      "healed/fibrotic"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "existing_rp_005",
+    "source": "radiopaedia",
+    "case_type": "Normal/No Fistula",
+    "severity": "N/A",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 0,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 0,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report explicitly states 'No perianal fistula, sinus tract or collection' and concludes 'No abnormality demonstrated.' This clearly indicates the absence of any fistula, abscess, or related abnormalities.",
+    "flags": [
+      "No fistula"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "existing_rp_006",
+    "source": "radiopaedia",
+    "case_type": "Horseshoe",
+    "severity": "Severe",
+    "expected_vai": 13,
+    "expected_magnifi": 11,
+    "predicted_vai": 19,
+    "predicted_magnifi": 17,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "Posterior midline fistulous tract with a peripherally enhancing horseshoe abscess measuring 17 x 30 x 44 mm in the intersphincteric space. The abscess is large and horseshoe-shaped, indicating severe extension and marked T2 hyperintensity.",
+    "flags": [
+      "horseshoe",
+      "large abscess"
+    ],
+    "error": null,
+    "vai_error": 6,
+    "magnifi_error": 6
+  },
+  {
+    "case_id": "existing_rp_007",
+    "source": "radiopaedia",
+    "case_type": "Simple Intersphincteric",
+    "severity": "Moderate",
+    "expected_vai": 9,
+    "expected_magnifi": 8,
+    "predicted_vai": 7,
+    "predicted_magnifi": 5,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 2,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a single intersphincteric fistula tract with mild T2 hyperintensity and extension into the right medial thigh soft tissues. No abscess or side branches are noted.",
+    "flags": [
+      "intersphincteric",
+      "mild hyperintensity"
+    ],
+    "error": null,
+    "vai_error": -2,
+    "magnifi_error": -3
+  },
+  {
+    "case_id": "existing_rp_008",
+    "source": "radiopaedia",
+    "case_type": "Simple Intersphincteric",
+    "severity": "Mild",
+    "expected_vai": 7,
+    "expected_magnifi": 6,
+    "predicted_vai": 11,
+    "predicted_magnifi": 9,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 6,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a single fistulous tract extending from the low anterior anal canal to the base of the scrotum, indicating a complex transsphincteric fistula. There is associated skin thickening and enhancement due to inflammation, suggesting moderate T2 hyperintensity. No distinct abscess is noted.",
+    "flags": [
+      "transsphincteric",
+      "moderate T2 hyperintensity"
+    ],
+    "error": null,
+    "vai_error": 4,
+    "magnifi_error": 3
+  },
+  {
+    "case_id": "existing_rp_009",
+    "source": "radiopaedia",
+    "case_type": "Normal/No Fistula",
+    "severity": "N/A",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 0,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 0,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report explicitly states no complex fistulas, abscess, or inflammatory mass. Additionally, a pelvic MRI confirmed no significant perianal complications such as a fistula or abscess.",
+    "flags": [
+      "No perianal complications"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "existing_rp_010",
+    "source": "radiopaedia",
+    "case_type": "Ambiguous/Equivocal",
+    "severity": "Mild",
+    "expected_vai": 4,
+    "expected_magnifi": 4,
+    "predicted_vai": 7,
+    "predicted_magnifi": 5,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 2
+    },
+    "reasoning": "The report describes a single right perianal fistula that communicates with the anal canal and rectum, indicating a complex transsphincteric type. There is no mention of T2 hyperintensity, suggesting the tract may be fibrotic or healed. The rectal wall is involved as the fistula communicates with the rectum.",
+    "flags": [
+      "fibrotic/healed tract",
+      "rectal wall involvement"
+    ],
+    "error": null,
+    "vai_error": 3,
+    "magnifi_error": 1
+  },
+  {
+    "case_id": "existing_rp_011",
+    "source": "radiopaedia",
+    "case_type": "Post-Surgical",
+    "severity": "Moderate",
+    "expected_vai": 9,
+    "expected_magnifi": 9,
+    "predicted_vai": 11,
+    "predicted_magnifi": 9,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a high transphincteric fistula at 6 o'clock with a second smaller branch tract at 5 o'clock, indicating two distinct tracts. The fistula is complex (transsphincteric), extending through both sphincters into the ischioanal fossa, warranting moderate extension. Mild T2 hyperintensity suggests residual inflammation. No abscess is noted.",
+    "flags": [
+      "multiple tracts",
+      "post-treatment changes"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "existing_rp_012",
+    "source": "radiopaedia",
+    "case_type": "Normal/No Fistula",
+    "severity": "N/A",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 0,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 0,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "No perianal fistula or involvement identified. The report describes a vesicovaginal fistula, which is not relevant to perianal fistula scoring.",
+    "flags": [
+      "Non-perianal fistula (vesicovaginal)"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "existing_pmc_001",
+    "source": "pubmed_central",
+    "case_type": "Extrasphincteric",
+    "severity": "Severe",
+    "expected_vai": 18,
+    "expected_magnifi": 19,
+    "predicted_vai": 20,
+    "predicted_magnifi": 21,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 3,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The MRI demonstrates an extrasphincteric fistula with marked T2 hyperintensity, extensive soft tissue edema, and a large abscess in the gluteal musculature. The rectal wall shows focal inflammatory changes. No horseshoe extension is identified.",
+    "flags": [
+      "extrasphincteric",
+      "large abscess",
+      "marked T2 hyperintensity"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 2
+  },
+  {
+    "case_id": "existing_pmc_002",
+    "source": "pubmed_central",
+    "case_type": "Complex/Branching",
+    "severity": "Severe",
+    "expected_vai": 22,
+    "expected_magnifi": 25,
+    "predicted_vai": 22,
+    "predicted_magnifi": 25,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "Multiple complex fistulous tracts with horseshoe extension, marked T2 hyperintensity, large inflammatory mass, and rectal wall involvement indicate severe active disease.",
+    "flags": [
+      "horseshoe",
+      "large abscess",
+      "marked T2 hyperintensity",
+      "rectal wall involvement"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "existing_pmc_003",
+    "source": "pubmed_central",
+    "case_type": "Healed/Fibrotic",
+    "severity": "Mild",
+    "expected_vai": 3,
+    "expected_magnifi": 2,
+    "predicted_vai": 3,
+    "predicted_magnifi": 1,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a previously identified transsphincteric tract that now appears fibrotic with no T2 hyperintensity, no abscess, and no rectal wall involvement. The tract is counted for anatomy but scores 0 for T2 hyperintensity due to fibrotic healing.",
+    "flags": [
+      "fibrotic",
+      "healed"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "edge_healed_001",
+    "source": "edge_cases",
+    "case_type": "Healed/Fibrotic",
+    "severity": "Remission",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 0,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 0,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report indicates complete resolution of the previously noted transsphincteric fistula with no residual tract, no enhancement, and no T2 hyperintensity. Scar tissue is present, but there is no evidence of active disease, abscess, or collection. Findings are consistent with complete healing.",
+    "flags": [
+      "healed"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "edge_complex_001",
+    "source": "edge_cases",
+    "case_type": "Complex/Branching",
+    "severity": "Moderate",
+    "expected_vai": 12,
+    "expected_magnifi": 9,
+    "predicted_vai": 12,
+    "predicted_magnifi": 11,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Three distinct fistula tracts identified: intersphincteric, transsphincteric, and superficial. All show mild T2 hyperintensity. No abscess or collection present.",
+    "flags": [
+      "multiple tracts",
+      "mild T2 hyperintensity"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 2
+  },
+  {
+    "case_id": "edge_abscess_001",
+    "source": "edge_cases",
+    "case_type": "With Abscess",
+    "severity": "Moderate",
+    "expected_vai": 10,
+    "expected_magnifi": 10,
+    "predicted_vai": 6,
+    "predicted_magnifi": 6,
+    "confidence": 75,
+    "vai_breakdown": {
+      "tracts": 0,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The report describes a 3.2 cm rim-enhancing perirectal abscess with T2 hyperintensity centrally and peripheral enhancement, indicating an active collection. No definite fistula tract or internal opening is identified, but there is mention of possible early fistula formation. The rectal wall is not explicitly described as normal, so we assume involvement due to the proximity of the abscess.",
+    "flags": [
+      "equivocal",
+      "possible early fistula",
+      "no definite tract"
+    ],
+    "error": null,
+    "vai_error": -4,
+    "magnifi_error": -4
+  },
+  {
+    "case_id": "edge_postsurg_001",
+    "source": "edge_cases",
+    "case_type": "Post-Surgical",
+    "severity": "Remission",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 0,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 0,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "No recurrent fistula tract identified, no T2 hyperintensity, no collection or abscess, and no active inflammation. Findings consistent with successful surgical treatment.",
+    "flags": [
+      "post-surgical changes",
+      "no active disease"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "edge_ambig_001",
+    "source": "edge_cases",
+    "case_type": "Ambiguous/Equivocal",
+    "severity": "Moderate",
+    "expected_vai": 8,
+    "expected_magnifi": 6,
+    "predicted_vai": 5,
+    "predicted_magnifi": 4,
+    "confidence": 50,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Equivocal findings suggest a possible tract with mild T2 hyperintensity. No definite abscess is identified, but small fluid signal cannot be excluded. Limited evaluation due to motion artifact.",
+    "flags": [
+      "equivocal",
+      "motion artifact"
+    ],
+    "error": null,
+    "vai_error": -3,
+    "magnifi_error": -2
+  },
+  {
+    "case_id": "edge_horseshoe_001",
+    "source": "edge_cases",
+    "case_type": "Horseshoe",
+    "severity": "Severe",
+    "expected_vai": 19,
+    "expected_magnifi": 13,
+    "predicted_vai": 21,
+    "predicted_magnifi": 24,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 1,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "Complex horseshoe fistula with bilateral extension, marked T2 hyperintensity, and multiple small collections. The horseshoe configuration mandates extension score 4. Multiple tracts (primary + secondary) give tract count 2. Intersphincteric location gives location score 1. Marked T2 hyperintensity gives 8 points. Collections present give 4 points. Normal rectal wall gives 0 points.",
+    "flags": [
+      "horseshoe",
+      "bilateral extension",
+      "multiple collections"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 11
+  },
+  {
+    "case_id": "edge_peds_001",
+    "source": "edge_cases",
+    "case_type": "Pediatric",
+    "severity": "Mild",
+    "expected_vai": 6,
+    "expected_magnifi": 3,
+    "predicted_vai": 5,
+    "predicted_magnifi": 4,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a simple intersphincteric fistula at the 6 o'clock position with mild T2 hyperintensity, indicating mild inflammation. No abscess or collection is present, and there is no extension beyond the intersphincteric space.",
+    "flags": [
+      "simple intersphincteric fistula",
+      "mild inflammation"
+    ],
+    "error": null,
+    "vai_error": -1,
+    "magnifi_error": 1
+  },
+  {
+    "case_id": "edge_mixed_001",
+    "source": "edge_cases",
+    "case_type": "Healed/Fibrotic",
+    "severity": "Moderate",
+    "expected_vai": 9,
+    "expected_magnifi": 9,
+    "predicted_vai": 13,
+    "predicted_magnifi": 11,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "Two fistulas identified: one healed right-sided transsphincteric tract (fibrotic, low T2 signal) and one active left-sided intersphincteric tract (marked T2 hyperintensity, avid enhancement, small abscess). Mixed disease activity.",
+    "flags": [
+      "mixed healed and active",
+      "small abscess"
+    ],
+    "error": null,
+    "vai_error": 4,
+    "magnifi_error": 2
+  },
+  {
+    "case_id": "edge_severe_001",
+    "source": "edge_cases",
+    "case_type": "Complex/Branching",
+    "severity": "Severe",
+    "expected_vai": 22,
+    "expected_magnifi": 24,
+    "predicted_vai": 22,
+    "predicted_magnifi": 25,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "Severe perianal Crohn's disease with a large 4 cm presacral abscess (Collections = 4), complex branching fistula system with horseshoe configuration (Extension = 4), and marked T2 hyperintensity (Hyperintensity = 8). Three fistula branches identified (Tracts = 2), including high transsphincteric, intersphincteric, and extrasphincteric types (Location = 2). Marked rectal wall thickening (Rectal Wall = 2). Inflammatory mass in the right ischioanal fossa (Inflammatory Mass = 4).",
+    "flags": [
+      "horseshoe",
+      "large abscess",
+      "inflammatory mass",
+      "severe disease"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 1
+  },
+  {
+    "case_id": "edge_normal_001",
+    "source": "edge_cases",
+    "case_type": "Normal/No Fistula",
+    "severity": "N/A",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 0,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 0,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report explicitly states that no fistula tract, abscess, or inflammatory changes were identified. The rectal wall is normal without thickening or enhancement abnormality. The conclusion confirms a normal MRI pelvis with no evidence of perianal fistula or inflammation.",
+    "flags": [
+      "No fistula",
+      "No abscess",
+      "Normal rectal wall"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "edge_early_001",
+    "source": "edge_cases",
+    "case_type": "Simple Intersphincteric",
+    "severity": "Mild",
+    "expected_vai": 6,
+    "expected_magnifi": 3,
+    "predicted_vai": 5,
+    "predicted_magnifi": 4,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Single intersphincteric fistula tract with mild T2 hyperintensity and no abscess or extension.",
+    "flags": [
+      "early disease"
+    ],
+    "error": null,
+    "vai_error": -1,
+    "magnifi_error": 1
+  },
+  {
+    "case_id": "synth_trans_remission_001",
+    "source": "synthetic_literature",
+    "case_type": "Transsphincteric",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 2,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a fibrotic/healed transsphincteric fistula with no T2 hyperintensity, no collections, and a normal rectal wall. The tract is barely perceptible as a thin hypointense linear structure, indicating healing.",
+    "flags": [
+      "healed"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_trans_remission_002",
+    "source": "synthetic_literature",
+    "case_type": "Transsphincteric",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 3,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Residual fibrotic strand noted in the expected tract location with low T2 signal intensity, consistent with a healed fistula. No active inflammation, collections, or rectal wall involvement.",
+    "flags": [
+      "healed",
+      "fibrotic"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_trans_remission_003",
+    "source": "synthetic_literature",
+    "case_type": "Transsphincteric",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 3,
+    "predicted_magnifi": 1,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Fibrotic transsphincteric fistula without active inflammation, no T2 hyperintensity, no collections.",
+    "flags": [
+      "healed",
+      "fibrotic"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_complex_remission_001",
+    "source": "synthetic_literature",
+    "case_type": "Complex/Branching",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 3,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes complete resolution of active disease with fibrosed tracts (no T2 hyperintensity or enhancement). The fistula was previously complex with multiple secondary tracts (now fibrosed), warranting 2 points for tract count and 2 points for location (complex type). No extension, collections, or rectal wall involvement are present.",
+    "flags": [
+      "healed",
+      "fibrotic",
+      "radiological remission"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_complex_remission_002",
+    "source": "synthetic_literature",
+    "case_type": "Complex/Branching",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 2,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes complete healing of previously complex fistula system with fibrotic transformation and no residual inflammation. T2 signal within tracts is low, isointense to muscle, and no contrast enhancement is identified. No perianal fluid collections are present. The external sphincter shows focal scarring but maintains continuity. No active disease is noted.",
+    "flags": [
+      "healed",
+      "fibrotic"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_complex_mild_001",
+    "source": "synthetic_literature",
+    "case_type": "Complex/Branching",
+    "severity": "Mild",
+    "expected_vai": 6,
+    "expected_magnifi": 5,
+    "predicted_vai": 9,
+    "predicted_magnifi": 7,
+    "confidence": 85,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 1,
+      "extension": 3,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 2
+    },
+    "reasoning": "The MRI report describes an intersphincteric fistula with early secondary tract formation, indicating two distinct tracts (primary and secondary). The primary tract shows minimal T2 hyperintensity, and there is minimal rectal wall involvement. No abscess is present. The extension is moderate due to the secondary branch.",
+    "flags": [
+      "early secondary tract formation",
+      "minimal rectal wall involvement"
+    ],
+    "error": null,
+    "vai_error": 3,
+    "magnifi_error": 2
+  },
+  {
+    "case_id": "synth_complex_mild_002",
+    "source": "synthetic_literature",
+    "case_type": "Complex/Branching",
+    "severity": "Mild",
+    "expected_vai": 6,
+    "expected_magnifi": 5,
+    "predicted_vai": 7,
+    "predicted_magnifi": 5,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 2,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Primary intersphincteric tract with a small secondary extension. Subtle T2 signal abnormality suggests low-grade inflammation. No abscess or rectal wall involvement.",
+    "flags": [
+      "low-grade inflammation",
+      "anatomical complexity"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_complex_mild_003",
+    "source": "synthetic_literature",
+    "case_type": "Complex/Branching",
+    "severity": "Mild",
+    "expected_vai": 6,
+    "expected_magnifi": 5,
+    "predicted_vai": 7,
+    "predicted_magnifi": 5,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 1,
+      "extension": 3,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a bifurcating fistula tract pattern with a primary intersphincteric tract dividing into two terminal branches, indicating two distinct tracts (2 points). The location is intersphincteric (1 point). The extension is moderate due to the bifurcation (3 points). There is mild T2 hyperintensity (4 points). No abscess or collection is present (0 points), and the rectal wall is normal (0 points).",
+    "flags": [
+      "bifurcating tract",
+      "mild activity"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_fibrotic_severe_001",
+    "source": "synthetic_literature",
+    "case_type": "Healed/Fibrotic",
+    "severity": "Severe",
+    "expected_vai": 8,
+    "expected_magnifi": 8,
+    "predicted_vai": 5,
+    "predicted_magnifi": 3,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 1
+    },
+    "reasoning": "Multiple fibrosed tracts identified with low T2 signal, indicating mature scar tissue. No active inflammation or fluid collections. Rectal wall shows chronic fibrotic thickening. The severity of anatomical damage is noted, but no active disease components are present.",
+    "flags": [
+      "fibrotic",
+      "chronic scarring",
+      "no active inflammation"
+    ],
+    "error": null,
+    "vai_error": -3,
+    "magnifi_error": -5
+  },
+  {
+    "case_id": "synth_fibrotic_severe_002",
+    "source": "synthetic_literature",
+    "case_type": "Healed/Fibrotic",
+    "severity": "Severe",
+    "expected_vai": 10,
+    "expected_magnifi": 8,
+    "predicted_vai": 3,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "All identified tracts are fibrosed without active inflammation, contributing to anatomy score only. Multiple fibrotic cords and severe anatomical damage noted, but no active disease components (T2 hyperintensity or collections).",
+    "flags": [
+      "fibrotic",
+      "severe anatomical damage",
+      "no active disease"
+    ],
+    "error": null,
+    "vai_error": -7,
+    "magnifi_error": -8
+  },
+  {
+    "case_id": "synth_postsurg_severe_001",
+    "source": "synthetic_literature",
+    "case_type": "Post-Surgical",
+    "severity": "Severe",
+    "expected_vai": 20,
+    "expected_magnifi": 21,
+    "predicted_vai": 22,
+    "predicted_magnifi": 25,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The report describes multiple new fistula tracts with marked T2 hyperintensity and avid enhancement, indicating severe activity. A large 3.5 cm abscess is present, contributing to the collections score. Extension into the supralevator space and significant disruption of the external sphincter suggest severe extension. Thickened rectal wall with mucosal hyperenhancement indicates rectal wall involvement.",
+    "flags": [
+      "large abscess",
+      "marked T2 hyperintensity",
+      "severe extension",
+      "rectal wall involvement"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 4
+  },
+  {
+    "case_id": "synth_postsurg_severe_002",
+    "source": "synthetic_literature",
+    "case_type": "Post-Surgical",
+    "severity": "Severe",
+    "expected_vai": 22,
+    "expected_magnifi": 23,
+    "predicted_vai": 22,
+    "predicted_magnifi": 25,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The report describes a seton tract with marked T2 hyperintensity and a new secondary tract, indicating at least two distinct fistula tracts (2 points). The fistula is complex (transsphincteric or worse, 2 points) with a horseshoe pattern (extension 4 points). There is marked T2 hyperintensity (8 points), a large horseshoe collection (4 points), and marked rectal wall inflammation (2 points). The inflammatory phlegmon and severe disease progression further support high scores.",
+    "flags": [
+      "horseshoe",
+      "large abscess",
+      "rectal wall involvement",
+      "inflammatory phlegmon",
+      "treatment failure"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 2
+  },
+  {
+    "case_id": "synth_postsurg_mild_001",
+    "source": "synthetic_literature",
+    "case_type": "Post-Surgical",
+    "severity": "Mild",
+    "expected_vai": 5,
+    "expected_magnifi": 5,
+    "predicted_vai": 5,
+    "predicted_magnifi": 4,
+    "confidence": 85,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a small residual tract with mild T2 hyperintensity, indicating minor residual disease. The tract is intersphincteric (does not extend through the sphincter complex) and there is no abscess or collection. The findings suggest partial healing with mild residual activity.",
+    "flags": [
+      "residual tract",
+      "post-surgical changes",
+      "partial healing"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_ambig_remission_001",
+    "source": "synthetic_literature",
+    "case_type": "Ambiguous/Equivocal",
+    "severity": "Remission",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 2,
+    "predicted_magnifi": 0,
+    "confidence": 85,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a very subtle linear structure at 6 o'clock that may represent a fibrosed prior tract. There is no T2 hyperintensity, no enhancement, and no inflammatory changes, suggesting a healed/fibrotic tract. No abscess or rectal wall involvement is noted.",
+    "flags": [
+      "healed",
+      "equivocal"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_ambig_remission_002",
+    "source": "synthetic_literature",
+    "case_type": "Ambiguous/Equivocal",
+    "severity": "Remission",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 1,
+    "predicted_magnifi": 0,
+    "confidence": 85,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes questionable residual soft tissue at the site of a prior intersphincteric fistula, with no definite T2 hyperintensity, tract morphology, fluid, or enhancement. Findings favor complete healing with possible minimal scar tissue. The tract is counted for anatomy (1 point), but no activity points are given due to fibrotic/healed status.",
+    "flags": [
+      "equivocal",
+      "healed"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_ambig_severe_001",
+    "source": "synthetic_literature",
+    "case_type": "Ambiguous/Equivocal",
+    "severity": "Severe",
+    "expected_vai": 18,
+    "expected_magnifi": 18,
+    "predicted_vai": 14,
+    "predicted_magnifi": 17,
+    "confidence": 60,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 3,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a large collection in the left ischioanal fossa (3-4 cm), which scores 4 points for collections. Multiple fistula tracts are suspected, though their exact course is unclear, leading to a tract count of 2. The marked T2 signal abnormality suggests severe activity, scoring 8 points. Extension is estimated as moderate (3 points) due to the presence of multiple tracts and a large collection. Rectal wall involvement is possible but uncertain, so it is scored as 0. The overall findings suggest severe active disease, but confidence is reduced due to motion artifacts and technical limitations.",
+    "flags": [
+      "equivocal",
+      "large abscess",
+      "marked T2 hyperintensity"
+    ],
+    "error": null,
+    "vai_error": -4,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_ambig_severe_002",
+    "source": "synthetic_literature",
+    "case_type": "Ambiguous/Equivocal",
+    "severity": "Severe",
+    "expected_vai": 20,
+    "expected_magnifi": 19,
+    "predicted_vai": 19,
+    "predicted_magnifi": 21,
+    "confidence": 85,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The MRI report describes a large posterior collection with marked T2 hyperintensity, consistent with an abscess (Collections = 4, T2 = 8). Multiple tract-like structures are present, suggesting either multiple fistulas or a complex single fistula with extensive branching (Tracts = 2, Extension = 4). The rectal wall is involved (Rectal Wall = 2). The severity of the findings indicates a complex fistula with severe activity.",
+    "flags": [
+      "large abscess",
+      "marked T2 hyperintensity",
+      "rectal wall involvement",
+      "complex fistula"
+    ],
+    "error": null,
+    "vai_error": -1,
+    "magnifi_error": 2
+  },
+  {
+    "case_id": "synth_horseshoe_remission_001",
+    "source": "synthetic_literature",
+    "case_type": "Horseshoe",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 3,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Fibrosed tract remnants visible with low T2 signal, no active inflammation or collections. Previously extensive horseshoe fistula now resolved with fibrotic changes.",
+    "flags": [
+      "healed",
+      "fibrotic",
+      "post-surgical changes"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_horseshoe_remission_002",
+    "source": "synthetic_literature",
+    "case_type": "Horseshoe",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 3,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a healed horseshoe fistula with fibrotic residua, no active tracts, no T2 hyperintensity, and no collections. The tract count is 1 (fibrotic residua), location is complex (horseshoe), but extension and hyperintensity scores are 0 due to healing.",
+    "flags": [
+      "healed",
+      "fibrotic",
+      "horseshoe"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_horseshoe_mild_001",
+    "source": "synthetic_literature",
+    "case_type": "Horseshoe",
+    "severity": "Mild",
+    "expected_vai": 6,
+    "expected_magnifi": 5,
+    "predicted_vai": 11,
+    "predicted_magnifi": 9,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 4,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes an early horseshoe pattern fistula with minimal bilateral extension along the intersphincteric plane. Mild T2 hyperintensity is noted along the tract, and there is no discrete abscess or collection. The sphincter muscles are intact, and there is no rectal wall involvement.",
+    "flags": [
+      "horseshoe",
+      "limited disease activity"
+    ],
+    "error": null,
+    "vai_error": 5,
+    "magnifi_error": 4
+  },
+  {
+    "case_id": "synth_horseshoe_moderate_001",
+    "source": "synthetic_literature",
+    "case_type": "Horseshoe",
+    "severity": "Moderate",
+    "expected_vai": 13,
+    "expected_magnifi": 11,
+    "predicted_vai": 15,
+    "predicted_magnifi": 16,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 4,
+      "hyperintensity": 6,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "Horseshoe fistula with moderate T2 hyperintensity and a small collection. The tract is intersphincteric with bilateral extension (horseshoe configuration). No rectal wall involvement.",
+    "flags": [
+      "horseshoe",
+      "small collection"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 5
+  },
+  {
+    "case_id": "synth_horseshoe_moderate_002",
+    "source": "synthetic_literature",
+    "case_type": "Horseshoe",
+    "severity": "Moderate",
+    "expected_vai": 11,
+    "expected_magnifi": 9,
+    "predicted_vai": 15,
+    "predicted_magnifi": 14,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 6,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a horseshoe fistula with moderate T2 hyperintensity, indicating active disease. The extension score is 4 due to the horseshoe pattern. A small residual collection (0.8 cm) is present, contributing to the collections score. The fistula is complex (transsphincteric), and there is no rectal wall involvement.",
+    "flags": [
+      "horseshoe",
+      "moderate activity",
+      "small residual collection"
+    ],
+    "error": null,
+    "vai_error": 4,
+    "magnifi_error": 5
+  },
+  {
+    "case_id": "synth_extra_remission_001",
+    "source": "synthetic_literature",
+    "case_type": "Extrasphincteric",
+    "severity": "Remission",
+    "expected_vai": 3,
+    "expected_magnifi": 1,
+    "predicted_vai": 3,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a completely healed suprasphincteric/extrasphincteric fistula with only a thin fibrotic strand remaining. There is no T2 hyperintensity, no collections, and no rectal wall involvement. The tract is counted for anatomy (1 point for tract count, 2 points for complex location), but no activity points are given.",
+    "flags": [
+      "healed",
+      "fibrotic"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_extra_mild_001",
+    "source": "synthetic_literature",
+    "case_type": "Extrasphincteric",
+    "severity": "Mild",
+    "expected_vai": 8,
+    "expected_magnifi": 6,
+    "predicted_vai": 9,
+    "predicted_magnifi": 7,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 3,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a suprasphincteric fistula with mild T2 hyperintensity, indicating low-grade activity. The tract is complex (extrasphincteric) and shows moderate extension. No abscess or collection is present, and the rectal wall appears normal.",
+    "flags": [
+      "complex fistula",
+      "low-grade activity"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 1
+  },
+  {
+    "case_id": "synth_extra_moderate_001",
+    "source": "synthetic_literature",
+    "case_type": "Extrasphincteric",
+    "severity": "Moderate",
+    "expected_vai": 14,
+    "expected_magnifi": 13,
+    "predicted_vai": 15,
+    "predicted_magnifi": 17,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 3,
+      "hyperintensity": 6,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "Extrasphincteric fistula with moderate T2 hyperintensity and a small supralevator collection (1.5 cm). The tract shows moderate extension with surrounding inflammation but no horseshoe pattern. Focal rectal wall thickening is present.",
+    "flags": [
+      "extrasphincteric",
+      "moderate activity",
+      "small collection",
+      "rectal wall involvement"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 4
+  },
+  {
+    "case_id": "synth_peds_remission_001",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 2,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a fibrotic remnant of a previously documented intersphincteric fistula with no active inflammation, low T2 signal, and no enhancement. No perianal collections or rectal wall involvement are noted. The tract is counted for anatomy but scores 0 for T2 hyperintensity due to its fibrotic nature.",
+    "flags": [
+      "healed"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_peds_remission_002",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Remission",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 1,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 0,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report indicates a completely healed perianal fistula with only minimal fibrotic changes. No active tract, T2 hyperintensity, collections, or rectal wall involvement were identified. The sphincter muscles and rectum appear normal.",
+    "flags": [
+      "healed"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_peds_remission_003",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Remission",
+    "expected_vai": 2,
+    "expected_magnifi": 1,
+    "predicted_vai": 3,
+    "predicted_magnifi": 1,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a transsphincteric fistula in radiological remission, visible as a thin hypointense linear structure without T2 hyperintensity or enhancement. No abscess or rectal wall involvement is noted. The tract is counted for anatomy, but no activity points are given due to fibrotic/healed status.",
+    "flags": [
+      "healed",
+      "fibrotic"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_peds_moderate_001",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Moderate",
+    "expected_vai": 14,
+    "expected_magnifi": 13,
+    "predicted_vai": 13,
+    "predicted_magnifi": 12,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 6,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "Single transsphincteric fistula with moderate T2 hyperintensity, moderate extension, small perianal collection, and mild rectal wall thickening.",
+    "flags": [
+      "active inflammation",
+      "small collection"
+    ],
+    "error": null,
+    "vai_error": -1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_peds_moderate_002",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Moderate",
+    "expected_vai": 13,
+    "expected_magnifi": 12,
+    "predicted_vai": 11,
+    "predicted_magnifi": 12,
+    "confidence": 85,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 2,
+      "hyperintensity": 6,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "Intersphincteric fistula with moderate T2 hyperintensity and small abscess (1.5 cm). No horseshoe or supralevator extension. Moderate inflammatory changes but no rectal wall involvement.",
+    "flags": [
+      "small abscess (1.5 cm)",
+      "moderate inflammatory changes"
+    ],
+    "error": null,
+    "vai_error": -2,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_peds_moderate_003",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Moderate",
+    "expected_vai": 12,
+    "expected_magnifi": 11,
+    "predicted_vai": 13,
+    "predicted_magnifi": 11,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 1,
+      "extension": 3,
+      "hyperintensity": 6,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI report describes a branching fistula pattern with a primary tract at 6 o'clock and a small secondary branch, indicating two distinct tracts. The primary tract extends through the intersphincteric space, classifying it as a simple/intersphincteric fistula. Moderate T2 signal abnormality is noted throughout, suggesting moderate hyperintensity. There is no discrete abscess, but a small amount of perilesional fluid is present, which does not meet the criteria for a collection. No rectal proctitis is observed.",
+    "flags": [
+      "complex anatomy",
+      "moderate severity"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_peds_severe_001",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Severe",
+    "expected_vai": 21,
+    "expected_magnifi": 22,
+    "predicted_vai": 22,
+    "predicted_magnifi": 25,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The MRI report describes extensive perianal fistulizing disease with a high transsphincteric fistula showing marked T2 hyperintensity, a large 3.5 cm ischioanal abscess, and secondary tracts with a horseshoe configuration. There is marked rectal wall thickening and an inflammatory phlegmon. These findings indicate severe disease.",
+    "flags": [
+      "horseshoe",
+      "large abscess",
+      "marked T2 hyperintensity",
+      "rectal wall involvement",
+      "inflammatory phlegmon"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 3
+  },
+  {
+    "case_id": "synth_peds_severe_002",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Severe",
+    "expected_vai": 22,
+    "expected_magnifi": 24,
+    "predicted_vai": 22,
+    "predicted_magnifi": 25,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "Severe and extensive perianal fistulizing disease with multiple complex interconnected tracts, marked T2 hyperintensity, large presacral abscess, bilateral sphincter compromise, marked rectal wall involvement, and inflammatory mass effect.",
+    "flags": [
+      "horseshoe",
+      "large abscess",
+      "severe disease"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 1
+  },
+  {
+    "case_id": "synth_peds_severe_003",
+    "source": "synthetic_literature",
+    "case_type": "Pediatric",
+    "severity": "Severe",
+    "expected_vai": 20,
+    "expected_magnifi": 21,
+    "predicted_vai": 22,
+    "predicted_magnifi": 25,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 2,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The report describes extensive fistulizing disease with multiple tracts (transsphincteric and intersphincteric), large bilateral ischioanal abscesses, marked T2 hyperintensity, horseshoe extension, and severe rectal wall inflammation. These findings correspond to the highest scores in all categories for both VAI and MAGNIFI-CD.",
+    "flags": [
+      "horseshoe",
+      "severe inflammation",
+      "multiple abscesses",
+      "rectal wall involvement"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 4
+  },
+  {
+    "case_id": "synth_abscess_mild_001",
+    "source": "synthetic_literature",
+    "case_type": "With Abscess",
+    "severity": "Mild",
+    "expected_vai": 9,
+    "expected_magnifi": 7,
+    "predicted_vai": 9,
+    "predicted_magnifi": 7,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 4,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "The MRI demonstrates a small intersphincteric fistula with a tiny associated collection (0.9 x 0.7 cm), indicating a small early abscess. Mild T2 hyperintensity is noted around the collection. The fistula tract is short and simple with no secondary extensions, and the rectal wall is normal.",
+    "flags": [
+      "small abscess",
+      "mild T2 hyperintensity"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_abscess_mild_002",
+    "source": "synthetic_literature",
+    "case_type": "With Abscess",
+    "severity": "Mild",
+    "expected_vai": 8,
+    "expected_magnifi": 6,
+    "predicted_vai": 7,
+    "predicted_magnifi": 5,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 4,
+      "collections": 4,
+      "rectal_wall": 0
+    },
+    "reasoning": "A single superficial fistula tract is present at 6 o'clock with a very small collection (0.6 cm) showing mild rim enhancement. The tract exhibits mild T2 hyperintensity, and there is no deep extension or rectal wall involvement. The findings indicate very mild disease.",
+    "flags": [
+      "small collection"
+    ],
+    "error": null,
+    "vai_error": -1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_simple_remission_001",
+    "source": "synthetic_literature",
+    "case_type": "Simple Intersphincteric",
+    "severity": "Remission",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 2,
+    "predicted_magnifi": 0,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a completely healed intersphincteric fistula with no active components (no T2 hyperintensity, no enhancement, no collections). The fibrotic tract is still counted for anatomy (1 tract, intersphincteric location), but all activity-related scores are 0.",
+    "flags": [
+      "healed",
+      "radiological remission"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_simple_remission_002",
+    "source": "synthetic_literature",
+    "case_type": "Simple Intersphincteric",
+    "severity": "Remission",
+    "expected_vai": 0,
+    "expected_magnifi": 0,
+    "predicted_vai": 2,
+    "predicted_magnifi": 0,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 0,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The previously identified fistula tract is no longer visible as an active structure, with only minimal scarring remaining. No T2 signal abnormality or enhancement is present, indicating a healed/fibrotic tract. No perianal collections or rectal wall involvement are noted.",
+    "flags": [
+      "healed"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_simple_severe_001",
+    "source": "synthetic_literature",
+    "case_type": "Simple Intersphincteric",
+    "severity": "Severe",
+    "expected_vai": 16,
+    "expected_magnifi": 16,
+    "predicted_vai": 17,
+    "predicted_magnifi": 19,
+    "confidence": 95,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 1,
+      "extension": 2,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 1
+    },
+    "reasoning": "The MRI report describes a single intersphincteric fistula (1 tract, simple location) with marked T2 hyperintensity (8 points) and a large 3 cm abscess (4 points). The extension is described as extensive with surrounding edema, warranting a moderate extension score (2 points). The rectal wall shows mild proctitis (1 point). The severe inflammation and abscess indicate high activity.",
+    "flags": [
+      "severe inflammation",
+      "large abscess"
+    ],
+    "error": null,
+    "vai_error": 1,
+    "magnifi_error": 3
+  },
+  {
+    "case_id": "synth_trans_mild_001",
+    "source": "synthetic_literature",
+    "case_type": "Transsphincteric",
+    "severity": "Mild",
+    "expected_vai": 7,
+    "expected_magnifi": 5,
+    "predicted_vai": 7,
+    "predicted_magnifi": 5,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 4,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "Single transsphincteric fistula with mild T2 hyperintensity, minimal extension, no abscess or rectal wall involvement.",
+    "flags": [
+      "transsphincteric",
+      "mild activity"
+    ],
+    "error": null,
+    "vai_error": 0,
+    "magnifi_error": 0
+  },
+  {
+    "case_id": "synth_trans_mild_002",
+    "source": "synthetic_literature",
+    "case_type": "Transsphincteric",
+    "severity": "Mild",
+    "expected_vai": 6,
+    "expected_magnifi": 5,
+    "predicted_vai": 5,
+    "predicted_magnifi": 4,
+    "confidence": 90,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 2,
+      "hyperintensity": 0,
+      "collections": 0,
+      "rectal_wall": 0
+    },
+    "reasoning": "The report describes a single transsphincteric fistula (1 tract, complex type) with mild T2 hyperintensity (scored as 0 due to significant improvement and minimal residual inflammation). No abscess or rectal wall involvement is noted. The extension is scored as 2 for a simple linear tract with mild extension.",
+    "flags": [
+      "residual mild disease",
+      "improved from previous marked hyperintensity"
+    ],
+    "error": null,
+    "vai_error": -1,
+    "magnifi_error": -1
+  },
+  {
+    "case_id": "synth_trans_severe_001",
+    "source": "synthetic_literature",
+    "case_type": "Transsphincteric",
+    "severity": "Severe",
+    "expected_vai": 18,
+    "expected_magnifi": 18,
+    "predicted_vai": 20,
+    "predicted_magnifi": 23,
+    "confidence": 100,
+    "vai_breakdown": {
+      "tracts": 1,
+      "location": 2,
+      "extension": 4,
+      "hyperintensity": 8,
+      "collections": 4,
+      "rectal_wall": 2
+    },
+    "reasoning": "The MRI report describes a high transsphincteric fistula with severe disease activity, marked T2 hyperintensity, severe extension into the ischioanal fossa, a 2.8 cm abscess, marked surrounding soft tissue inflammation, and rectal wall thickening with enhancement. The fistula is complex with supralevator extension and significant external sphincter involvement.",
+    "flags": [
+      "severe disease activity",
+      "large abscess",
+      "supralevator extension",
+      "rectal wall involvement"
+    ],
+    "error": null,
+    "vai_error": 2,
+    "magnifi_error": 5
+  }
+]
