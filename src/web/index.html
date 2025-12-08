@@ -893,76 +893,6 @@
         }
 
         /* =========================================
-           CHALLENGING CASES
-           ========================================= */
-        .challenging-cases {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .challenging-case {
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-md);
-            padding: var(--space-4);
-            background: var(--gray-50);
-        }
-
-        .challenging-case.highlighted-warning {
-            background: #FEF3C7;
-            border-color: #FCD34D;
-            border-width: 2px;
-        }
-
-        .challenging-case-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: var(--space-2);
-            flex-wrap: wrap;
-            gap: var(--space-2);
-        }
-
-        .challenging-case-name {
-            font-family: var(--font-mono);
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: var(--gray-900);
-        }
-
-        .challenging-case-desc {
-            font-size: 0.8125rem;
-            color: var(--gray-600);
-            line-height: 1.5;
-            margin-bottom: var(--space-3);
-        }
-
-        .challenging-case-scores {
-            display: flex;
-            gap: var(--space-4);
-            font-size: 0.75rem;
-            font-family: var(--font-mono);
-            color: var(--gray-500);
-            flex-wrap: wrap;
-        }
-
-        .error-tag {
-            background: #FEE2E2;
-            color: #991B1B;
-            padding: 2px 8px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-        }
-
-        .success-tag {
-            background: #D1FAE5;
-            color: #065F46;
-            padding: 2px 8px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-        }
-
-        /* =========================================
            METHODOLOGY SLIDESHOW
            ========================================= */
         .methodology-slideshow {
@@ -1351,51 +1281,6 @@
         [data-theme="dark"] .stat-item {
             background: #1E293B;
             border-color: #334155;
-        }
-
-        [data-theme="dark"] .challenging-case {
-            background: #1E293B;
-            border-color: #334155;
-        }
-
-        /* Keep yellow background in dark mode with dark text */
-        [data-theme="dark"] .challenging-case.highlighted-warning {
-            background: #FEF3C7;
-            border-color: #FDE68A;
-        }
-
-        [data-theme="dark"] .challenging-case.highlighted-warning .case-title,
-        [data-theme="dark"] .challenging-case.highlighted-warning .case-detail,
-        [data-theme="dark"] .challenging-case.highlighted-warning p,
-        [data-theme="dark"] .challenging-case.highlighted-warning span {
-            color: #78350F;
-        }
-
-        [data-theme="dark"] .challenging-case.highlighted-warning .status-badge.warning {
-            background: #FDE68A;
-            color: #78350F;
-        }
-
-        /* Edge case table row with yellow background - dark text in both modes */
-        .low-confidence-row {
-            background: #FEF3C7 !important;
-        }
-
-        .low-confidence-row td {
-            color: #78350F !important;
-        }
-
-        [data-theme="dark"] .low-confidence-row {
-            background: #FEF3C7 !important;
-        }
-
-        [data-theme="dark"] .low-confidence-row td {
-            color: #78350F !important;
-        }
-
-        [data-theme="dark"] .low-confidence-row .status-badge.warning {
-            background: #FDE68A;
-            color: #78350F;
         }
 
         [data-theme="dark"] .study-chip {
@@ -1995,92 +1880,6 @@
                         <div class="parser-metric-ci">on 0-25 scale</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Challenging Cases - Intellectual Honesty -->
-            <div class="card mt-6">
-                <div class="card-title">Challenging Cases &amp; Honest Limitations</div>
-                <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: var(--space-4);">
-                    The parser correctly identified uncertainty in ambiguous reports. These cases demonstrate intellectual honesty about limitations.
-                </p>
-                <div class="challenging-cases">
-                    <div class="challenging-case highlighted-warning">
-                        <div class="challenging-case-header">
-                            <span class="challenging-case-name">AMBIGUOUS</span>
-                            <span class="status-badge warning">Low Confidence (46%)</span>
-                        </div>
-                        <div class="challenging-case-desc">
-                            Equivocal findings - report contained contradictory or vague descriptions.
-                            Parser correctly flagged uncertainty rather than guessing.
-                        </div>
-                        <div class="challenging-case-scores">
-                            <span>Expected: VAI 8, MAG 6</span>
-                            <span>Actual: VAI 10, MAG 8</span>
-                            <span class="error-tag">Error: VAI +2, MAG +2</span>
-                        </div>
-                    </div>
-                    <div class="challenging-case">
-                        <div class="challenging-case-header">
-                            <span class="challenging-case-name">ABSCESS_ONLY</span>
-                            <span class="status-badge success">Pass (85%)</span>
-                        </div>
-                        <div class="challenging-case-desc">
-                            Abscess without clear fistula tract. Challenging because scoring systems assume tract presence.
-                        </div>
-                        <div class="challenging-case-scores">
-                            <span>Expected: VAI 13, MAG 10</span>
-                            <span>Actual: VAI 10, MAG 8</span>
-                            <span class="error-tag">Error: VAI -3, MAG -2</span>
-                        </div>
-                    </div>
-                    <div class="challenging-case">
-                        <div class="challenging-case-header">
-                            <span class="challenging-case-name">MIXED_HEALED_ACTIVE</span>
-                            <span class="status-badge success">Pass (85%)</span>
-                        </div>
-                        <div class="challenging-case-desc">
-                            One healed tract and one active tract in same patient. Required aggregating mixed disease states.
-                        </div>
-                        <div class="challenging-case-scores">
-                            <span>Expected: VAI 9, MAG 9</span>
-                            <span>Actual: VAI 9, MAG 9</span>
-                            <span class="success-tag">Exact match</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Full Edge Case Table -->
-            <div class="card mt-6">
-                <div class="card-title">Complete Edge Case Results (11 cases)</div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Case</th>
-                                <th>Description</th>
-                                <th>Exp VAI</th>
-                                <th>Act VAI</th>
-                                <th>Exp MAG</th>
-                                <th>Act MAG</th>
-                                <th>Conf</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="edge-case-tbody"></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Limitations -->
-            <div class="limitations-card">
-                <div class="limitations-title">Known Limitations</div>
-                <ul class="limitations-list">
-                    <li>Healed case edge: Formula predicts MAGNIFI ~3.3 for VAI=0 with Fibrosis=6, but some studies report MAGNIFI=0</li>
-                    <li>Complex multi-fistula with seton: T2 reduction may be overestimated with 3+ fistulas</li>
-                    <li>Ambiguous reports: Parser flags low confidence (&lt;50%) for vague findings</li>
-                    <li>Confidence calibration: V4 is 24.8% underconfident (conservative for clinical use)</li>
-                </ul>
             </div>
 
             <!-- 19 Validation Studies Accordion -->
@@ -2816,49 +2615,6 @@
         });
 
         // =========================================
-        // EDGE CASE DATA
-        // =========================================
-        const EDGE_CASES = [
-            { id: "edge_1", name: "HEALED", desc: "Complete fistula resolution", expVai: 0, actVai: 0, expMag: 0, actMag: 0, conf: 84.5 },
-            { id: "edge_2", name: "MULTIPLE_SEPARATE", desc: "3 distinct fistulas", expVai: 12, actVai: 12, expMag: 9, actMag: 9, conf: 87.5 },
-            { id: "edge_3", name: "ABSCESS_ONLY", desc: "Abscess without tract", expVai: 13, actVai: 10, expMag: 10, actMag: 8, conf: 85.0 },
-            { id: "edge_4", name: "POST_SURGICAL", desc: "Post-fistulotomy", expVai: 0, actVai: 0, expMag: 0, actMag: 0, conf: 86.0 },
-            { id: "edge_5", name: "AMBIGUOUS", desc: "Equivocal findings", expVai: 8, actVai: 10, expMag: 6, actMag: 8, conf: 46.0, isLowConf: true },
-            { id: "edge_6", name: "HORSESHOE", desc: "Complex horseshoe", expVai: 19, actVai: 19, expMag: 13, actMag: 13, conf: 90.0 },
-            { id: "edge_7", name: "PEDIATRIC", desc: "12yo simple fistula", expVai: 6, actVai: 6, expMag: 3, actMag: 3, conf: 92.5 },
-            { id: "edge_8", name: "MIXED_HEALED_ACTIVE", desc: "One healed, one active", expVai: 9, actVai: 9, expMag: 9, actMag: 9, conf: 85.0 },
-            { id: "edge_9", name: "SEVERE_ACUTE", desc: "Maximum severity", expVai: 22, actVai: 22, expMag: 24, actMag: 24, conf: 92.5 },
-            { id: "edge_10", name: "MINIMAL", desc: "Normal study", expVai: 0, actVai: 0, expMag: 0, actMag: 0, conf: 81.5 },
-            { id: "edge_11", name: "EARLY_SMALL_NEW", desc: "New-onset small", expVai: 6, actVai: 6, expMag: 3, actMag: 3, conf: 90.0 }
-        ];
-
-        function renderEdgeCaseTable() {
-            const tbody = document.getElementById('edge-case-tbody');
-            tbody.innerHTML = EDGE_CASES.map(c => {
-                const vaiErr = Math.abs(c.expVai - c.actVai);
-                const magErr = Math.abs(c.expMag - c.actMag);
-                const vaiClass = vaiErr === 0 ? 'error-0' : vaiErr <= 2 ? 'error-1' : 'error-3';
-                const magClass = magErr === 0 ? 'error-0' : magErr <= 2 ? 'error-1' : 'error-3';
-                const status = c.isLowConf ?
-                    '<span class="status-badge warning">Low Conf</span>' :
-                    '<span class="status-badge success">Pass</span>';
-                const rowClass = c.isLowConf ? 'class="low-confidence-row"' : '';
-                return `
-                    <tr ${rowClass}>
-                        <td class="mono">${c.name}</td>
-                        <td>${c.desc}</td>
-                        <td class="num mono">${c.expVai}</td>
-                        <td class="num mono ${vaiClass}">${c.actVai}</td>
-                        <td class="num mono">${c.expMag}</td>
-                        <td class="num mono ${magClass}">${c.actMag}</td>
-                        <td class="num mono">${c.conf.toFixed(0)}%</td>
-                        <td>${status}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        // =========================================
         // SCATTERPLOT DATA
         // =========================================
         const STUDY_COLORS = {
@@ -3189,7 +2945,6 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             renderStudyGrid();
-            renderEdgeCaseTable();
             initScatterPlot();
             initResidualPlot();
             initBlandAltmanPlot();

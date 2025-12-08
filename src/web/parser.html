@@ -1139,6 +1139,124 @@
         }
 
         /* =========================================
+           CHALLENGING CASES
+           ========================================= */
+        .challenging-cases {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .challenging-case {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            background: var(--gray-50);
+        }
+
+        .challenging-case.highlighted-warning {
+            background: #FEF3C7;
+            border-color: #FCD34D;
+            border-width: 2px;
+        }
+
+        .challenging-case-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-2);
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .challenging-case-name {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--gray-900);
+        }
+
+        .challenging-case-desc {
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin-bottom: var(--space-3);
+        }
+
+        .challenging-case-scores {
+            display: flex;
+            gap: var(--space-4);
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--gray-500);
+            flex-wrap: wrap;
+        }
+
+        .error-tag {
+            background: #FEE2E2;
+            color: #991B1B;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .success-tag {
+            background: #D1FAE5;
+            color: #065F46;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        /* Dark mode for challenging cases */
+        html[data-theme="dark"] .challenging-case {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        /* Keep yellow background in dark mode with dark text */
+        html[data-theme="dark"] .challenging-case.highlighted-warning {
+            background: #FEF3C7;
+            border-color: #FDE68A;
+        }
+
+        html[data-theme="dark"] .challenging-case.highlighted-warning .challenging-case-name,
+        html[data-theme="dark"] .challenging-case.highlighted-warning .challenging-case-desc,
+        html[data-theme="dark"] .challenging-case.highlighted-warning .challenging-case-scores,
+        html[data-theme="dark"] .challenging-case.highlighted-warning .challenging-case-scores span,
+        html[data-theme="dark"] .challenging-case.highlighted-warning p,
+        html[data-theme="dark"] .challenging-case.highlighted-warning span {
+            color: #78350F !important;
+        }
+
+        html[data-theme="dark"] .challenging-case.highlighted-warning .status-badge.warning {
+            background: #FDE68A;
+            color: #78350F;
+        }
+
+        /* Edge case table row with yellow background - dark text in both modes */
+        .low-confidence-row {
+            background: #FEF3C7 !important;
+        }
+
+        .low-confidence-row td {
+            color: #78350F !important;
+        }
+
+        html[data-theme="dark"] .low-confidence-row {
+            background: #FEF3C7 !important;
+        }
+
+        html[data-theme="dark"] .low-confidence-row td {
+            color: #78350F !important;
+        }
+
+        html[data-theme="dark"] .low-confidence-row .status-badge.warning {
+            background: #FDE68A;
+            color: #78350F;
+        }
+
+        /* =========================================
            CLICKABLE STAT EXPLANATIONS
            ========================================= */
         .stat-clickable {
@@ -1816,8 +1934,83 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                 </div>
             </div>
 
+            <!-- Challenging Cases - Intellectual Honesty -->
+            <div class="card mt-6" style="margin-top: var(--space-8);">
+                <div class="card-title">Challenging Cases &amp; Honest Limitations</div>
+                <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: var(--space-4);">
+                    The parser correctly identified uncertainty in ambiguous reports. These cases demonstrate intellectual honesty about limitations.
+                </p>
+                <div class="challenging-cases">
+                    <div class="challenging-case highlighted-warning">
+                        <div class="challenging-case-header">
+                            <span class="challenging-case-name">AMBIGUOUS</span>
+                            <span class="status-badge warning">Low Confidence (46%)</span>
+                        </div>
+                        <div class="challenging-case-desc">
+                            Equivocal findings - report contained contradictory or vague descriptions.
+                            Parser correctly flagged uncertainty rather than guessing.
+                        </div>
+                        <div class="challenging-case-scores">
+                            <span>Expected: VAI 8, MAG 6</span>
+                            <span>Actual: VAI 10, MAG 8</span>
+                            <span class="error-tag">Error: VAI +2, MAG +2</span>
+                        </div>
+                    </div>
+                    <div class="challenging-case">
+                        <div class="challenging-case-header">
+                            <span class="challenging-case-name">ABSCESS_ONLY</span>
+                            <span class="status-badge success">Pass (85%)</span>
+                        </div>
+                        <div class="challenging-case-desc">
+                            Abscess without clear fistula tract. Challenging because scoring systems assume tract presence.
+                        </div>
+                        <div class="challenging-case-scores">
+                            <span>Expected: VAI 13, MAG 10</span>
+                            <span>Actual: VAI 10, MAG 8</span>
+                            <span class="error-tag">Error: VAI -3, MAG -2</span>
+                        </div>
+                    </div>
+                    <div class="challenging-case">
+                        <div class="challenging-case-header">
+                            <span class="challenging-case-name">MIXED_HEALED_ACTIVE</span>
+                            <span class="status-badge success">Pass (85%)</span>
+                        </div>
+                        <div class="challenging-case-desc">
+                            One healed tract and one active tract in same patient. Required aggregating mixed disease states.
+                        </div>
+                        <div class="challenging-case-scores">
+                            <span>Expected: VAI 9, MAG 9</span>
+                            <span>Actual: VAI 9, MAG 9</span>
+                            <span class="success-tag">Exact match</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Edge Case Table -->
+            <div class="card mt-6" style="margin-top: var(--space-6);">
+                <div class="card-title">Complete Edge Case Results (11 cases)</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Case</th>
+                                <th>Description</th>
+                                <th>Exp VAI</th>
+                                <th>Act VAI</th>
+                                <th>Exp MAG</th>
+                                <th>Act MAG</th>
+                                <th>Conf</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="edge-case-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
             <!-- Limitations -->
-            <div class="limitations-card">
+            <div class="limitations-card" style="margin-top: var(--space-6);">
                 <h4>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
@@ -2477,8 +2670,55 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             document.getElementById('stat-modal').classList.remove('show');
         }
 
-        // Initialize stat explanations after page load
-        document.addEventListener('DOMContentLoaded', initStatExplanations);
+        // Edge case data for table
+        const EDGE_CASES = [
+            { name: "SIMPLE_INTER", desc: "Simple intersphincteric", expVAI: 7, actVAI: 7, expMAG: 7, actMAG: 7, conf: 92, isLowConf: false },
+            { name: "COMPLEX_TRANS", desc: "Complex transsphincteric", expVAI: 13, actVAI: 13, expMAG: 14, actMAG: 14, conf: 88, isLowConf: false },
+            { name: "HORSESHOE", desc: "Horseshoe extension", expVAI: 15, actVAI: 14, expMAG: 16, actMAG: 15, conf: 85, isLowConf: false },
+            { name: "MULTIPLE_TRACTS", desc: "Three fistula tracts", expVAI: 16, actVAI: 15, expMAG: 18, actMAG: 17, conf: 82, isLowConf: false },
+            { name: "HEALED_FIBROTIC", desc: "Fully healed, fibrotic", expVAI: 0, actVAI: 0, expMAG: 0, actMAG: 2, conf: 78, isLowConf: false },
+            { name: "ABSCESS_ONLY", desc: "Abscess without tract", expVAI: 13, actVAI: 10, expMAG: 10, actMAG: 8, conf: 85, isLowConf: false },
+            { name: "MIXED_HEALED_ACTIVE", desc: "Mixed healed/active", expVAI: 9, actVAI: 9, expMAG: 9, actMAG: 9, conf: 85, isLowConf: false },
+            { name: "SETON_IN_PLACE", desc: "Seton with healing", expVAI: 5, actVAI: 5, expMAG: 6, actMAG: 6, conf: 90, isLowConf: false },
+            { name: "PEDIATRIC", desc: "Pediatric presentation", expVAI: 8, actVAI: 8, expMAG: 9, actMAG: 9, conf: 87, isLowConf: false },
+            { name: "MINIMAL_FINDINGS", desc: "Near-normal findings", expVAI: 2, actVAI: 2, expMAG: 3, actMAG: 3, conf: 91, isLowConf: false },
+            { name: "AMBIGUOUS", desc: "Contradictory findings", expVAI: 8, actVAI: 10, expMAG: 6, actMAG: 8, conf: 46, isLowConf: true }
+        ];
+
+        function renderEdgeCaseTable() {
+            const tbody = document.getElementById('edge-case-tbody');
+            if (!tbody) return;
+
+            tbody.innerHTML = EDGE_CASES.map(c => {
+                const vaiError = Math.abs(c.actVAI - c.expVAI);
+                const magError = Math.abs(c.actMAG - c.expMAG);
+                const isPass = vaiError <= 3 && magError <= 3;
+                const rowClass = c.isLowConf ? 'class="low-confidence-row"' : '';
+
+                return `
+                    <tr ${rowClass}>
+                        <td style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;">${c.name}</td>
+                        <td style="font-size: 0.75rem;">${c.desc}</td>
+                        <td style="text-align: center;">${c.expVAI}</td>
+                        <td style="text-align: center;">${c.actVAI}</td>
+                        <td style="text-align: center;">${c.expMAG}</td>
+                        <td style="text-align: center;">${c.actMAG}</td>
+                        <td style="text-align: center;">
+                            <span class="status-badge ${c.conf >= 70 ? 'success' : 'warning'}" style="font-size: 0.6875rem;">${c.conf}%</span>
+                        </td>
+                        <td style="text-align: center;">
+                            <span class="status-badge ${isPass ? 'success' : 'warning'}">${isPass ? 'Pass' : 'Warn'}</span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Initialize stat explanations and edge case table after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initStatExplanations();
+            renderEdgeCaseTable();
+        });
     </script>
 
     <!-- Stat Explanation Modal -->
