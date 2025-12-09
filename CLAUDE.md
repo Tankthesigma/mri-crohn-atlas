@@ -1,5 +1,62 @@
 # MRI-Crohn Atlas - ISEF 2026 Project
 
+## ⛔ CRITICAL UI RULES - READ FIRST ⛔
+
+### FORBIDDEN: Purple/Violet Design
+NEVER use these colors ANYWHERE in the project:
+- #8B5CF6 (purple)
+- #7C3AED (purple)
+- #A855F7 (purple)
+- #9333EA (purple)
+- #7E22CE (purple)
+- Any color with "purple", "violet", "indigo" in the name
+- Any gradient containing purple
+- The old "glassmorphism" style with purple glows
+
+The purple design is ARCHIVED in parser-old.html for reference only. NEVER restore it.
+
+### REQUIRED: Clean Medical Design
+ALWAYS use these colors:
+- #FFFFFF - white background (primary)
+- #F9FAFB - light gray background (secondary)
+- #0066CC - primary blue accent
+- #E5E7EB - border gray
+- #111827 - text black
+- #6B7280 - text gray
+- #10B981 - success green
+- #F59E0B - warning amber
+- #EF4444 - error red
+
+### Page Structure (DO NOT MIX)
+
+**index.html (Main Page) - CROSSWALK ONLY:**
+- Title: "MRI-Crohn Atlas: The First Validated Neuro-Symbolic Crosswalk Between Van Assche Index and MAGNIFI-CD for Perianal Fistulizing Crohn's Disease"
+- Hero section with crosswalk formula
+- Calculator tool
+- 19 Crosswalk validation studies (R² = 0.96)
+- Crosswalk methodology slideshow
+- Source studies list
+- NO PARSER CONTENT
+
+**parser.html - PARSER ONLY:**
+- Title: "AI-Powered MRI Report Parser: Automated VAI and MAGNIFI-CD Extraction with Publication-Grade Validation"
+- Parser input tool
+- Parser validation stats (68 cases, ICC 0.940)
+- 6 interactive charts
+- Subgroup analysis
+- "Why 90% Isn't Achievable" section
+- Failure analysis
+- Coverage matrix
+- Clinical implications
+- Known limitations
+- NO CROSSWALK CONTENT
+
+### Reference Commits
+- Clean medical design: fabdf2a (branch: pensive-wiles)
+- If UI ever breaks, restore from: `git checkout fabdf2a -- src/web/index.html src/web/parser.html`
+
+---
+
 ## Project Overview
 
 **ISEF research project** building a **neuro-symbolic AI system** for Perianal Fistulizing Crohn's Disease (pfCD) that:
@@ -401,6 +458,75 @@ ADMIRE-CD II (2024, n=640), ADMIRE-CD (2016, n=355), MAGNIFI-CD (2019, n=320), D
 - Dashboard redesigned with professional medical journal aesthetic
 - Calculator severity gauges added
 - Light/dark mode toggle added
+
+### Dec 8, 2025 (Detailed Validation Results)
+
+**Real API Validation Results (68 cases):**
+| Metric | VAI | MAGNIFI-CD |
+|--------|-----|------------|
+| ICC (95% CI) | 0.940 [0.91-0.96] | 0.961 [0.94-0.98] |
+| Accuracy (±2) | 79.4% | 83.8% |
+| Accuracy (±3) | 85.3% | 91.2% |
+| MAE | 1.65 | 1.47 |
+| R² | 0.879 | 0.921 |
+| vs Radiologists | +38.3% | +10.5% |
+
+**By Severity:**
+- Remission (n=18): 100% accuracy ⭐
+- Mild (n=15): 80% accuracy
+- Moderate (n=14): 64% accuracy
+- Severe (n=17): 65% accuracy
+
+**By Source:**
+- Real (Radiopaedia): 83.3% accuracy, MAE 1.42
+- Synthetic: 81.0% accuracy, MAE 1.50
+- Edge Cases: 63.6% accuracy, MAE 2.73
+
+**V1 vs V2 Prompt Experiment:**
+| Metric | V1 | V2 | Result |
+|--------|----|----|--------|
+| VAI Accuracy | 79.4% | 80.9% | +1.5% ✓ |
+| MAGNIFI Accuracy | 91.2% | 80.9% | -10.3% ✗ |
+| Real Cases | 83.3% | 66.7% | -16.6% ✗ |
+
+Decision: Keep V1 prompt (better overall balance)
+
+**Why 90% Accuracy Isn't Achievable:**
+1. Subjective scoring boundaries - experts disagree
+2. Inherent report ambiguity ("possible", "cannot exclude")
+3. Inter-rater variability - radiologists only achieve ICC ~0.68
+4. 16% of test cases are intentionally challenging edge cases
+
+**Failure Analysis (14 cases with |VAI error| > 2):**
+- Parser overestimate: 8 cases
+- Synthetic case failures: 8 cases
+- Parser underestimate: 7 cases
+- Severe complexity: 7 cases
+- Complex anatomy: 3 cases
+
+**Files Created This Session:**
+- /data/parser_validation/mega_test_cases.json - 68 test cases
+- /data/parser_validation/real_validation_results.json - API results
+- /data/parser_validation/real_validation_metrics.json - Comprehensive metrics
+- /data/parser_validation/failure_analysis.json - Failure breakdown
+- /data/parser_validation/VALIDATION_REPORT.md - Full report
+- /data/parser_validation/run_real_validation.py - Batch validation script
+- /data/parser_validation/calculate_real_metrics.py - Metrics calculator
+- /src/scraping/*.py - Scraping infrastructure
+
+**Scraping Infrastructure:**
+- radiopaedia_scraper.py - Search Radiopaedia
+- pubmed_scraper.py - Search PubMed
+- clean_scraped_cases.py - Clean JSON data
+- auto_score_attempt.py - DeepSeek V3.2 auto-scorer
+- coverage_matrix.py - Generate coverage heatmap
+- gap_filling_scraper.py - Targeted gap searches
+
+**API Configuration:**
+- Model: DeepSeek V3.2 (deepseek/deepseek-v3.2)
+- Provider: OpenRouter
+- Scraper key: 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
+- Web parser: Uses Vercel env variable OPENROUTER_API_KEY
 
 ---
 
