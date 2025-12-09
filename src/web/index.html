@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,19 +29,18 @@
             --text-muted: #71717a;
             --text-dimmed: #52525b;
 
-            --accent-blue: #3b82f6;
-            --accent-blue-light: #60a5fa;
-            --accent-purple: #8b5cf6;
-            --accent-cyan: #06b6d4;
+            --accent-blue: #0066CC;
+            --accent-blue-light: #3399FF;
+            --accent-cyan: #0891B2;
             --accent-green: #10b981;
             --accent-emerald: #34d399;
             --accent-orange: #f97316;
             --accent-red: #ef4444;
             --accent-teal: #14b8a6;
 
-            --gradient-hero: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(6, 182, 212, 0.05) 100%);
-            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.3), transparent);
-            --gradient-accent: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-hero: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(8, 145, 178, 0.05) 100%);
+            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 102, 204, 0.2), transparent);
+            --gradient-accent: linear-gradient(135deg, #0066CC, #0891B2);
 
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Space Grotesk', sans-serif;
@@ -78,8 +77,8 @@
             --text-muted: #64748b;
             --text-dimmed: #94a3b8;
 
-            --gradient-hero: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.05) 50%, rgba(6, 182, 212, 0.03) 100%);
-            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent);
+            --gradient-hero: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(8, 145, 178, 0.03) 100%);
+            --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 102, 204, 0.1), transparent);
 
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -347,7 +346,7 @@
         }
 
         .hero-title-gradient {
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 50%, var(--accent-purple) 100%);
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 50%, var(--accent-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -419,7 +418,7 @@
         }
 
         .formula-var { color: var(--accent-cyan); }
-        .formula-coef { color: var(--accent-purple); }
+        .formula-coef { color: var(--accent-blue); }
         .formula-indicator { color: var(--accent-emerald); font-style: italic; }
         .formula-op { color: var(--text-muted); }
 
@@ -458,7 +457,7 @@
 
         .stat-value.accent-blue { color: var(--accent-blue); }
         .stat-value.accent-green { color: var(--accent-green); }
-        .stat-value.accent-purple { color: var(--accent-purple); }
+        .stat-value.accent-blue { color: var(--accent-blue); }
 
         .stat-label {
             font-size: 0.8125rem;
@@ -738,7 +737,7 @@
         }
 
         .step-content .coef {
-            color: var(--accent-purple);
+            color: var(--accent-blue);
         }
 
         .result-box {
@@ -896,7 +895,7 @@
         }
 
         .legend-dot.blue { background: var(--accent-blue); }
-        .legend-dot.line { background: var(--accent-purple); width: 20px; height: 2px; border-radius: 1px; }
+        .legend-dot.line { background: var(--accent-blue); width: 20px; height: 2px; border-radius: 1px; }
 
         /* =========================================
            METRICS GRID
@@ -954,7 +953,7 @@
 
         .metric-icon.blue { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
         .metric-icon.green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
-        .metric-icon.purple { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+        .metric-icon.purple { background: rgba(0, 102, 204, 0.15); color: var(--accent-blue); }
         .metric-icon.cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
 
         .metric-value {
@@ -968,7 +967,7 @@
 
         .metric-value.blue { color: var(--accent-blue); }
         .metric-value.green { color: var(--accent-green); }
-        .metric-value.purple { color: var(--accent-purple); }
+        .metric-value.purple { color: var(--accent-blue); }
 
         .metric-label {
             font-size: 0.875rem;
@@ -1747,7 +1746,7 @@
                     <span class="stat-label">Accuracy</span>
                 </div>
                 <div class="stat-pill">
-                    <span class="stat-value accent-purple">2,818</span>
+                    <span class="stat-value accent-blue">2,818</span>
                     <span class="stat-divider"></span>
                     <span class="stat-label">Patients</span>
                 </div>
@@ -1978,7 +1977,7 @@
                     <div class="accuracy-detail">Points on 0-22 scale</div>
                 </div>
                 <div class="accuracy-card primary-metric">
-                    <div class="accuracy-value" style="color: var(--accent-purple);">0.73</div>
+                    <div class="accuracy-value" style="color: var(--accent-blue);">0.73</div>
                     <div class="accuracy-label">MAGNIFI Error (avg)</div>
                     <div class="accuracy-detail">Points on 0-25 scale</div>
                 </div>
@@ -2082,7 +2081,7 @@
 
                 <div class="icc-card">
                     <div class="icc-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                             <polyline points="14 2 14 8 20 8"/>
                         </svg>
@@ -2091,7 +2090,7 @@
                     <div class="icc-bar-group">
                         <div class="icc-bar-label">
                             <span class="icc-bar-name">MRI-Crohn Atlas Parser</span>
-                            <span class="icc-bar-value" style="color: var(--accent-purple);">0.940</span>
+                            <span class="icc-bar-value" style="color: var(--accent-blue);">0.940</span>
                         </div>
                         <div class="icc-bar-track">
                             <div class="icc-bar-fill parser" style="width: 94%;"></div>
@@ -2669,7 +2668,7 @@
         // Study color palette - distinct colors for each study category
         const STUDY_COLORS = {
             'ADMIRE': '#3b82f6',       // Blue
-            'ADMIRE-II': '#8b5cf6',    // Purple
+            'ADMIRE-II': '#0066CC',    // Blue
             'MAGNIFI': '#06b6d4',      // Cyan
             'PISA-II': '#10b981',      // Green
             'PEMPAC': '#f59e0b',       // Amber
@@ -2677,7 +2676,7 @@
             'De Gregorio': '#ec4899',  // Pink
             'vanRijn': '#14b8a6',      // Teal
             'Beek': '#f97316',         // Orange
-            'ESGAR': '#a855f7',        // Violet
+            'ESGAR': '#0891B2',        // Cyan
             'Protocolized': '#84cc16', // Lime
             'P325': '#6366f1',         // Indigo
             'Other': '#71717a'         // Gray

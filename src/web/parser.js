@@ -51,7 +51,7 @@ const MRIReportParser = (function() {
     // Feature highlighting colors
     const HIGHLIGHT_COLORS = {
         fistula_type: '#3b82f6',      // blue
-        fistula_count: '#8b5cf6',     // purple
+        fistula_count: '#0066CC',     // blue
         t2_hyperintensity: '#f97316', // orange
         extension: '#22c55e',         // green
         collections: '#ef4444',       // red

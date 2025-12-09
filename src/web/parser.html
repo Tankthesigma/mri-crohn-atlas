@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,9 +26,9 @@
             --text-muted: #64748b;
             --text-dimmed: #94a3b8;
 
-            --accent-blue: #2563eb;
+            --accent-blue: #0066CC;
             --accent-blue-light: #3b82f6;
-            --accent-purple: #7c3aed;
+            --accent-blue: #0066CC;
             --accent-cyan: #0891b2;
             --accent-green: #059669;
             --accent-emerald: #10b981;
@@ -37,7 +37,7 @@
 
             --gradient-hero: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.05) 50%, rgba(8, 145, 178, 0.03) 100%);
             --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.15), transparent);
-            --gradient-accent: linear-gradient(135deg, #2563eb, #7c3aed);
+            --gradient-accent: linear-gradient(135deg, #0066CC, #0066CC);
 
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Space Grotesk', sans-serif;
@@ -57,7 +57,7 @@
         }
 
         /* Dark theme */
-        html[data-theme="dark"] {
+        html[data-theme="light"] {
             --bg-primary: #0a0a0b;
             --bg-secondary: #111113;
             --bg-tertiary: #18181b;
@@ -76,16 +76,16 @@
 
             --accent-blue: #3b82f6;
             --accent-blue-light: #60a5fa;
-            --accent-purple: #8b5cf6;
+            --accent-blue: #0066CC;
             --accent-cyan: #06b6d4;
             --accent-green: #10b981;
             --accent-emerald: #34d399;
             --accent-orange: #f97316;
             --accent-red: #ef4444;
 
-            --gradient-hero: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(6, 182, 212, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(0, 102, 204, 0.1) 50%, rgba(6, 182, 212, 0.05) 100%);
             --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.3), transparent);
-            --gradient-accent: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-accent: linear-gradient(135deg, #3b82f6, #0066CC);
 
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
@@ -151,8 +151,8 @@
 
         .theme-toggle .sun-icon { display: none; }
         .theme-toggle .moon-icon { display: block; }
-        html[data-theme="dark"] .theme-toggle .sun-icon { display: block; }
-        html[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+        html[data-theme="light"] .theme-toggle .sun-icon { display: block; }
+        html[data-theme="light"] .theme-toggle .moon-icon { display: none; }
 
         .nav-right {
             display: flex;
@@ -275,7 +275,7 @@
             font-weight: 700;
             letter-spacing: -0.03em;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 50%, var(--accent-purple) 100%);
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 50%, var(--accent-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -552,7 +552,7 @@
         }
 
         .score-card.magnifi::before {
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
         }
 
         .score-label {
@@ -575,7 +575,7 @@
         }
 
         .score-card.magnifi .score-value {
-            color: var(--accent-purple);
+            color: var(--accent-blue);
         }
 
         .score-range {
@@ -1063,7 +1063,7 @@
 
         /* Highlight Colors */
         .hl-fistula_type { border-color: #3b82f6; background-color: rgba(59, 130, 246, 0.1); }
-        .hl-fistula_count { border-color: #8b5cf6; background-color: rgba(139, 92, 246, 0.1); }
+        .hl-fistula_count { border-color: #0066CC; background-color: rgba(0, 102, 204, 0.1); }
         .hl-t2_hyperintensity { border-color: #f97316; background-color: rgba(249, 115, 22, 0.1); }
         .hl-extension { border-color: #10b981; background-color: rgba(16, 185, 129, 0.1); }
         .hl-collections_abscesses { border-color: #ef4444; background-color: rgba(239, 68, 68, 0.1); }
@@ -1708,8 +1708,8 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                         <li><strong style="color: var(--text-primary);">edge_mixed_001:</strong> VAI 9 → 16 (error: +7) — Healed tract misclassified as active</li>
                     </ol>
 
-                    <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(139, 92, 246, 0.1); border-radius: var(--radius-sm); font-size: 0.8125rem;">
-                        <strong style="color: var(--accent-purple);">Pattern:</strong> <span style="color: var(--text-secondary);">Parser struggles most with ambiguous language and distinguishing healed vs active tracts. These are also the cases where human radiologists disagree most.</span>
+                    <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0, 102, 204, 0.1); border-radius: var(--radius-sm); font-size: 0.8125rem;">
+                        <strong style="color: var(--accent-blue);">Pattern:</strong> <span style="color: var(--text-secondary);">Parser struggles most with ambiguous language and distinguishing healed vs active tracts. These are also the cases where human radiologists disagree most.</span>
                     </div>
                 </div>
             </div>
@@ -1898,7 +1898,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
         // Highlight colors for features
         const HIGHLIGHT_COLORS = {
             fistula_type: '#3b82f6',
-            fistula_count: '#8b5cf6',
+            fistula_count: '#0066CC',
             t2_hyperintensity: '#f97316',
             extension: '#10b981',
             collections_abscesses: '#ef4444',
@@ -2307,16 +2307,16 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
     <script>
         // Chart color scheme
         const chartColors = {
-            blue: 'rgba(59, 130, 246, 0.8)',
-            blueLight: 'rgba(59, 130, 246, 0.2)',
+            blue: 'rgba(0, 102, 204, 0.8)',
+            blueLight: 'rgba(0, 102, 204, 0.2)',
             green: 'rgba(16, 185, 129, 0.8)',
             greenLight: 'rgba(16, 185, 129, 0.2)',
             orange: 'rgba(249, 115, 22, 0.8)',
             orangeLight: 'rgba(249, 115, 22, 0.2)',
             red: 'rgba(239, 68, 68, 0.8)',
             redLight: 'rgba(239, 68, 68, 0.2)',
-            purple: 'rgba(139, 92, 246, 0.8)',
-            purpleLight: 'rgba(139, 92, 246, 0.2)',
+            cyan: 'rgba(8, 145, 178, 0.8)',
+            cyanLight: 'rgba(8, 145, 178, 0.2)',
             gray: 'rgba(156, 163, 175, 0.8)',
             grayLight: 'rgba(156, 163, 175, 0.2)'
         };
@@ -2500,7 +2500,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     datasets: [{
                         label: 'MAGNIFI Scores',
                         data: validationData.magnifiData,
-                        backgroundColor: chartColors.purple,
+                        backgroundColor: chartColors.cyan,
                         pointRadius: 6,
                         pointHoverRadius: 8
                     }]
@@ -2566,7 +2566,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     labels: ['Real (Radiopaedia)', 'Synthetic', 'Edge Cases'],
                     datasets: [{
                         data: [12, 42, 11],
-                        backgroundColor: [chartColors.blue, chartColors.purple, chartColors.orange],
+                        backgroundColor: [chartColors.blue, chartColors.cyan, chartColors.orange],
                         borderColor: ['#fff', '#fff', '#fff'],
                         borderWidth: 2
                     }]
