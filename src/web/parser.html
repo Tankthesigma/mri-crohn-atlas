@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Powered MRI Report Parser: Automated VAI and MAGNIFI-CD Extraction with Publication-Grade Validation</title>
+    <title>CrohnBridge | MRI Report Parser</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* =========================================
@@ -193,11 +193,19 @@
         }
 
         .hero-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--gray-900);
-            margin-bottom: var(--space-3);
+            margin-bottom: var(--space-2);
             line-height: 1.2;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: var(--space-4);
+            letter-spacing: -0.01em;
         }
 
         .hero-subtitle {
@@ -230,6 +238,70 @@
         .stat-ci {
             font-size: 0.75rem;
             color: var(--gray-400);
+        }
+
+        /* =========================================
+           ABOUT SECTION
+           ========================================= */
+        .about-section {
+            padding: var(--space-10) var(--space-6);
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-story, .about-tool {
+            background: var(--gray-50);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .about-story h3, .about-tool h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
+        }
+
+        .about-story p, .about-tool p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: var(--space-3);
+        }
+
+        .about-tool ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .about-tool li {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-4);
+            position: relative;
+        }
+
+        .about-tool li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* =========================================
@@ -1543,7 +1615,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-inner">
-            <a href="index.html" class="nav-logo">MRI-Crohn Atlas</a>
+            <a href="index.html" class="nav-logo">CrohnBridge</a>
             <ul class="nav-links">
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="index.html#crosswalk">Crosswalk</a></li>
@@ -1575,7 +1647,8 @@
     <!-- Hero -->
     <div class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">MRI Report Parser</h1>
+            <h1 class="hero-title">CrohnBridge</h1>
+            <p class="hero-tagline">Neuro-Symbolic AI for Perianal Crohn's Disease Research</p>
             <p class="hero-subtitle">AI-powered extraction of clinical features from radiology reports. Calculates VAI + MAGNIFI-CD scores with full evidence traceability.</p>
             <div class="stats-row">
                 <div class="stat-item">
@@ -1601,6 +1674,34 @@
             </div>
         </div>
     </div>
+
+    <!-- About This Project -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">About This Project</h2>
+            <div class="about-content">
+                <div class="about-story">
+                    <h3>Why I Built This</h3>
+                    <p>
+                        I'm Tanmay, a high school student from Texas. My grandmother has Crohn's disease, and watching her navigate the healthcare system inspired me to find ways technology could help patients like her.
+                    </p>
+                    <p>
+                        Perianal fistulizing Crohn's disease is one of the most debilitating complications of Crohn's. Doctors use MRI scans to assess severity, but two major scoring systems (VAI and MAGNIFI-CD) have never been directly compared—until now.
+                    </p>
+                </div>
+                <div class="about-tool">
+                    <h3>What This Tool Does</h3>
+                    <p>
+                        <strong>CrohnBridge</strong> is a neuro-symbolic AI system with two components:
+                    </p>
+                    <ul>
+                        <li><strong>Crosswalk Calculator:</strong> The first validated formula to convert between VAI and MAGNIFI-CD scores, enabling researchers to compare 20+ years of previously incompatible studies.</li>
+                        <li><strong>MRI Report Parser:</strong> An AI that reads radiology reports and automatically extracts severity scores with 91.2% accuracy—outperforming average radiologist agreement by 38%.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Parser Methodology Slideshow -->
     <section style="border-top: none; padding-top: 0;">
@@ -3134,34 +3235,36 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                 severe: '#EF4444'
             };
 
-            // VAI Scatter Data (simulated based on validation results)
+            // REAL VAI Scatter Data from 68 validated test cases
+            // Data from: /data/parser_validation/real_validation_results.json
             const vaiScatterData = [
-                // Remission cases (18 cases)
-                {x: 0, y: 0, severity: 'remission'}, {x: 1, y: 1, severity: 'remission'}, {x: 2, y: 2, severity: 'remission'},
-                {x: 0, y: 0, severity: 'remission'}, {x: 1, y: 1, severity: 'remission'}, {x: 2, y: 1, severity: 'remission'},
-                {x: 0, y: 0, severity: 'remission'}, {x: 1, y: 2, severity: 'remission'}, {x: 2, y: 2, severity: 'remission'},
-                {x: 0, y: 0, severity: 'remission'}, {x: 1, y: 1, severity: 'remission'}, {x: 2, y: 2, severity: 'remission'},
-                {x: 0, y: 0, severity: 'remission'}, {x: 1, y: 0, severity: 'remission'}, {x: 2, y: 3, severity: 'remission'},
-                {x: 0, y: 1, severity: 'remission'}, {x: 1, y: 1, severity: 'remission'}, {x: 2, y: 2, severity: 'remission'},
-                // Mild cases (15 cases)
-                {x: 3, y: 3, severity: 'mild'}, {x: 4, y: 4, severity: 'mild'}, {x: 5, y: 6, severity: 'mild'},
-                {x: 4, y: 5, severity: 'mild'}, {x: 3, y: 3, severity: 'mild'}, {x: 6, y: 5, severity: 'mild'},
-                {x: 4, y: 4, severity: 'mild'}, {x: 5, y: 5, severity: 'mild'}, {x: 6, y: 7, severity: 'mild'},
-                {x: 3, y: 4, severity: 'mild'}, {x: 5, y: 4, severity: 'mild'}, {x: 6, y: 6, severity: 'mild'},
-                {x: 4, y: 3, severity: 'mild'}, {x: 5, y: 6, severity: 'mild'}, {x: 3, y: 5, severity: 'mild'},
-                // Moderate cases (14 cases)
-                {x: 7, y: 8, severity: 'moderate'}, {x: 8, y: 9, severity: 'moderate'}, {x: 10, y: 8, severity: 'moderate'},
-                {x: 9, y: 10, severity: 'moderate'}, {x: 8, y: 11, severity: 'moderate'}, {x: 11, y: 10, severity: 'moderate'},
-                {x: 7, y: 7, severity: 'moderate'}, {x: 10, y: 12, severity: 'moderate'}, {x: 12, y: 11, severity: 'moderate'},
-                {x: 8, y: 6, severity: 'moderate'}, {x: 9, y: 9, severity: 'moderate'}, {x: 11, y: 13, severity: 'moderate'},
-                {x: 10, y: 10, severity: 'moderate'}, {x: 12, y: 9, severity: 'moderate'},
-                // Severe cases (17 cases)
-                {x: 13, y: 14, severity: 'severe'}, {x: 15, y: 13, severity: 'severe'}, {x: 17, y: 16, severity: 'severe'},
-                {x: 14, y: 15, severity: 'severe'}, {x: 16, y: 18, severity: 'severe'}, {x: 18, y: 17, severity: 'severe'},
-                {x: 13, y: 11, severity: 'severe'}, {x: 15, y: 14, severity: 'severe'}, {x: 19, y: 17, severity: 'severe'},
-                {x: 14, y: 16, severity: 'severe'}, {x: 16, y: 15, severity: 'severe'}, {x: 20, y: 18, severity: 'severe'},
-                {x: 17, y: 19, severity: 'severe'}, {x: 15, y: 12, severity: 'severe'}, {x: 18, y: 20, severity: 'severe'},
-                {x: 14, y: 17, severity: 'severe'}, {x: 16, y: 14, severity: 'severe'}
+                // Radiopaedia real cases (12)
+                {x: 7, y: 9, severity: 'moderate'}, {x: 16, y: 17, severity: 'severe'}, {x: 11, y: 11, severity: 'moderate'},
+                {x: 2, y: 2, severity: 'remission'}, {x: 0, y: 0, severity: 'remission'}, {x: 13, y: 6, severity: 'severe'},
+                {x: 9, y: 9, severity: 'moderate'}, {x: 7, y: 4, severity: 'mild'}, {x: 0, y: 0, severity: 'remission'},
+                {x: 4, y: 3, severity: 'mild'}, {x: 9, y: 11, severity: 'moderate'}, {x: 0, y: 1, severity: 'remission'},
+                // PubMed Central cases (3)
+                {x: 18, y: 17, severity: 'severe'}, {x: 22, y: 22, severity: 'severe'}, {x: 3, y: 2, severity: 'mild'},
+                // Edge cases (11)
+                {x: 0, y: 2, severity: 'remission'}, {x: 12, y: 8, severity: 'moderate'}, {x: 10, y: 12, severity: 'moderate'},
+                {x: 0, y: 2, severity: 'remission'}, {x: 8, y: 0, severity: 'moderate'}, {x: 19, y: 14, severity: 'severe'},
+                {x: 6, y: 6, severity: 'mild'}, {x: 9, y: 16, severity: 'moderate'}, {x: 22, y: 22, severity: 'severe'},
+                {x: 0, y: 0, severity: 'remission'}, {x: 6, y: 6, severity: 'mild'},
+                // Synthetic literature-based cases (42)
+                {x: 2, y: 3, severity: 'remission'}, {x: 2, y: 2, severity: 'remission'}, {x: 2, y: 3, severity: 'remission'},
+                {x: 2, y: 2, severity: 'remission'}, {x: 2, y: 2, severity: 'remission'}, {x: 6, y: 9, severity: 'mild'},
+                {x: 6, y: 8, severity: 'mild'}, {x: 6, y: 6, severity: 'mild'}, {x: 8, y: 6, severity: 'severe'},
+                {x: 10, y: 6, severity: 'severe'}, {x: 20, y: 18, severity: 'severe'}, {x: 22, y: 18, severity: 'severe'},
+                {x: 5, y: 7, severity: 'mild'}, {x: 0, y: 0, severity: 'remission'}, {x: 0, y: 1, severity: 'remission'},
+                {x: 18, y: 16, severity: 'severe'}, {x: 20, y: 20, severity: 'severe'}, {x: 2, y: 0, severity: 'remission'},
+                {x: 2, y: 2, severity: 'remission'}, {x: 6, y: 8, severity: 'mild'}, {x: 13, y: 15, severity: 'moderate'},
+                {x: 11, y: 12, severity: 'moderate'}, {x: 3, y: 2, severity: 'remission'}, {x: 8, y: 9, severity: 'mild'},
+                {x: 14, y: 18, severity: 'moderate'}, {x: 2, y: 2, severity: 'remission'}, {x: 0, y: 0, severity: 'remission'},
+                {x: 2, y: 3, severity: 'remission'}, {x: 14, y: 18, severity: 'moderate'}, {x: 13, y: 14, severity: 'moderate'},
+                {x: 12, y: 12, severity: 'moderate'}, {x: 21, y: 20, severity: 'severe'}, {x: 22, y: 20, severity: 'severe'},
+                {x: 20, y: 20, severity: 'severe'}, {x: 9, y: 10, severity: 'mild'}, {x: 8, y: 10, severity: 'mild'},
+                {x: 0, y: 1, severity: 'remission'}, {x: 0, y: 1, severity: 'remission'}, {x: 16, y: 20, severity: 'severe'},
+                {x: 7, y: 9, severity: 'mild'}, {x: 6, y: 9, severity: 'mild'}, {x: 18, y: 21, severity: 'severe'}
             ];
 
             // VAI Scatter Plot
@@ -3218,12 +3321,37 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                 }
             });
 
-            // MAGNIFI Scatter Data
-            const magnifiScatterData = vaiScatterData.map(d => ({
-                x: Math.round(d.x * 25/22),
-                y: Math.round(d.y * 25/22 + (Math.random() - 0.5) * 2),
-                severity: d.severity
-            }));
+            // REAL MAGNIFI Scatter Data from 68 validated test cases
+            // Data from: /data/parser_validation/real_validation_results.json
+            const magnifiScatterData = [
+                // Radiopaedia real cases (12)
+                {x: 6, y: 7, severity: 'moderate'}, {x: 17, y: 12, severity: 'severe'}, {x: 10, y: 7, severity: 'moderate'},
+                {x: 2, y: 1, severity: 'remission'}, {x: 0, y: 0, severity: 'remission'}, {x: 11, y: 5, severity: 'severe'},
+                {x: 8, y: 10, severity: 'moderate'}, {x: 6, y: 5, severity: 'mild'}, {x: 0, y: 0, severity: 'remission'},
+                {x: 4, y: 5, severity: 'mild'}, {x: 9, y: 8, severity: 'moderate'}, {x: 0, y: 1, severity: 'remission'},
+                // PubMed Central cases (3)
+                {x: 19, y: 17, severity: 'severe'}, {x: 25, y: 24, severity: 'severe'}, {x: 2, y: 0, severity: 'mild'},
+                // Edge cases (11)
+                {x: 0, y: 0, severity: 'remission'}, {x: 9, y: 6, severity: 'moderate'}, {x: 10, y: 12, severity: 'moderate'},
+                {x: 0, y: 0, severity: 'remission'}, {x: 6, y: 0, severity: 'moderate'}, {x: 13, y: 8, severity: 'severe'},
+                {x: 3, y: 5, severity: 'mild'}, {x: 9, y: 11, severity: 'moderate'}, {x: 24, y: 25, severity: 'severe'},
+                {x: 0, y: 0, severity: 'remission'}, {x: 3, y: 3, severity: 'mild'},
+                // Synthetic literature-based cases (42)
+                {x: 1, y: 1, severity: 'remission'}, {x: 1, y: 0, severity: 'remission'}, {x: 1, y: 1, severity: 'remission'},
+                {x: 1, y: 0, severity: 'remission'}, {x: 1, y: 0, severity: 'remission'}, {x: 5, y: 7, severity: 'mild'},
+                {x: 5, y: 4, severity: 'mild'}, {x: 5, y: 3, severity: 'mild'}, {x: 8, y: 7, severity: 'severe'},
+                {x: 8, y: 7, severity: 'severe'}, {x: 21, y: 22, severity: 'severe'}, {x: 23, y: 22, severity: 'severe'},
+                {x: 5, y: 5, severity: 'mild'}, {x: 0, y: 0, severity: 'remission'}, {x: 0, y: 0, severity: 'remission'},
+                {x: 18, y: 15, severity: 'severe'}, {x: 19, y: 17, severity: 'severe'}, {x: 1, y: 0, severity: 'remission'},
+                {x: 1, y: 0, severity: 'remission'}, {x: 5, y: 4, severity: 'mild'}, {x: 11, y: 9, severity: 'moderate'},
+                {x: 9, y: 6, severity: 'moderate'}, {x: 1, y: 0, severity: 'remission'}, {x: 6, y: 6, severity: 'mild'},
+                {x: 13, y: 15, severity: 'moderate'}, {x: 1, y: 1, severity: 'remission'}, {x: 0, y: 0, severity: 'remission'},
+                {x: 1, y: 1, severity: 'remission'}, {x: 13, y: 15, severity: 'moderate'}, {x: 12, y: 13, severity: 'moderate'},
+                {x: 11, y: 8, severity: 'moderate'}, {x: 22, y: 22, severity: 'severe'}, {x: 24, y: 22, severity: 'severe'},
+                {x: 21, y: 19, severity: 'severe'}, {x: 7, y: 5, severity: 'mild'}, {x: 6, y: 7, severity: 'mild'},
+                {x: 0, y: 0, severity: 'remission'}, {x: 0, y: 0, severity: 'remission'}, {x: 16, y: 20, severity: 'severe'},
+                {x: 5, y: 4, severity: 'mild'}, {x: 5, y: 6, severity: 'mild'}, {x: 18, y: 23, severity: 'severe'}
+            ];
 
             // MAGNIFI Scatter Plot
             new Chart(document.getElementById('magnifi-scatter-chart'), {
