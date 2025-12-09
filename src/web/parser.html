@@ -1264,6 +1264,34 @@
             border-color: #334155;
         }
 
+        /* Parser results score cards - ensure visibility in dark mode */
+        html[data-theme="dark"] .score-card {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        html[data-theme="dark"] .score-label {
+            color: #9CA3AF;
+        }
+
+        html[data-theme="dark"] .score-range {
+            color: #6B7280;
+        }
+
+        html[data-theme="dark"] .score-pi {
+            color: #9CA3AF;
+        }
+
+        html[data-theme="dark"] .interpretation-box {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
+        html[data-theme="dark"] .interpretation-box p,
+        html[data-theme="dark"] .interpretation-box span {
+            color: #E5E7EB;
+        }
+
         /* Keep yellow background in dark mode with dark text for readability */
         html[data-theme="dark"] .limitations-card {
             background: #FFFBEB;
@@ -2573,20 +2601,22 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
             }
         }
 
-        // Get chart colors based on current theme
-        function getChartColors() {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            return {
-                text: isDark ? '#E5E7EB' : '#374151',
-                grid: isDark ? '#374151' : '#D1D5DB'
-            };
-        }
-
-        // Initialize theme
+        // Initialize theme FIRST before anything else
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
+
+        // Get chart colors based on current theme
+        function getChartColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            // Light mode: dark text (#1F2937) on light bg
+            // Dark mode: light text (#E5E7EB) on dark bg
+            return {
+                text: isDark ? '#E5E7EB' : '#1F2937',
+                grid: isDark ? '#374151' : '#E5E7EB'
+            };
+        }
 
         // Slideshow functionality
         const slideshows = {};
