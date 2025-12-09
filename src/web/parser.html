@@ -2575,13 +2575,10 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
 
         // Get chart colors based on current theme
         function getChartColors() {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-                          window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             return {
-                axis: isDark ? '#E5E7EB' : '#374151',
-                grid: isDark ? '#374151' : '#E5E7EB',
-                tick: isDark ? '#D1D5DB' : '#4B5563',
-                text: isDark ? '#F3F4F6' : '#1F2937'
+                text: isDark ? '#E5E7EB' : '#374151',
+                grid: isDark ? '#374151' : '#D1D5DB'
             };
         }
 
@@ -3193,44 +3190,27 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
         // Global chart references for theme updates
         const chartInstances = {};
 
-        // Update all charts when theme changes
+        // Update all charts when theme changes - destroy and recreate
         function updateChartsForTheme() {
-            const themeColors = getChartColors();
-            Chart.defaults.color = themeColors.axis;
-
+            // Destroy existing charts
             Object.values(chartInstances).forEach(chart => {
-                if (!chart) return;
-
-                // Update scales
-                if (chart.options.scales) {
-                    Object.values(chart.options.scales).forEach(scale => {
-                        if (scale.title) scale.title.color = themeColors.axis;
-                        if (scale.ticks) scale.ticks.color = themeColors.tick;
-                        if (scale.grid) scale.grid.color = themeColors.grid;
-                    });
-                }
-
-                // Update legend
-                if (chart.options.plugins?.legend?.labels) {
-                    chart.options.plugins.legend.labels.color = themeColors.axis;
-                }
-
-                chart.update();
+                if (chart) chart.destroy();
             });
+            // Clear references
+            Object.keys(chartInstances).forEach(key => delete chartInstances[key]);
+            // Recreate with new colors
+            initValidationCharts();
         }
 
         // Initialize Validation Charts
         function initValidationCharts() {
             // Get current theme colors
             const themeColors = getChartColors();
-            const axisColor = themeColors.axis;
-            const gridColor = themeColors.grid;
-            const tickColor = themeColors.tick;
 
             // Chart.js global defaults
             Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
             Chart.defaults.font.size = 12;
-            Chart.defaults.color = axisColor;
+            Chart.defaults.color = themeColors.text;
 
             // Colors
             const colors = {
@@ -3328,20 +3308,20 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     maintainAspectRatio: false,
                     scales: {
                         x: {
-                            title: { display: true, text: 'Expected VAI', color: axisColor },
+                            title: { display: true, text: 'Expected VAI', color: themeColors.text },
                             min: 0, max: 22,
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         },
                         y: {
-                            title: { display: true, text: 'Predicted VAI', color: axisColor },
+                            title: { display: true, text: 'Predicted VAI', color: themeColors.text },
                             min: 0, max: 22,
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         }
                     },
                     plugins: {
-                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15, color: axisColor } }
+                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15, color: themeColors.text } }
                     }
                 }
             });
@@ -3424,20 +3404,20 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     maintainAspectRatio: false,
                     scales: {
                         x: {
-                            title: { display: true, text: 'Expected MAGNIFI', color: axisColor },
+                            title: { display: true, text: 'Expected MAGNIFI', color: themeColors.text },
                             min: 0, max: 25,
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         },
                         y: {
-                            title: { display: true, text: 'Predicted MAGNIFI', color: axisColor },
+                            title: { display: true, text: 'Predicted MAGNIFI', color: themeColors.text },
                             min: 0, max: 25,
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         }
                     },
                     plugins: {
-                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15, color: axisColor } }
+                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15, color: themeColors.text } }
                     }
                 }
             });
@@ -3470,17 +3450,17 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                         x: {
                             min: 0,
                             max: 1,
-                            title: { display: true, text: 'ICC Value', color: axisColor },
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            title: { display: true, text: 'ICC Value', color: themeColors.text },
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         },
                         y: {
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         }
                     },
                     plugins: {
-                        legend: { position: 'bottom', labels: { color: axisColor } },
+                        legend: { position: 'bottom', labels: { color: themeColors.text } },
                         annotation: {
                             annotations: {
                                 line1: {
@@ -3533,17 +3513,17 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                         x: {
                             min: 0,
                             max: 100,
-                            title: { display: true, text: 'Accuracy (%)', color: axisColor },
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            title: { display: true, text: 'Accuracy (%)', color: themeColors.text },
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         },
                         y: {
-                            ticks: { color: tickColor },
-                            grid: { color: gridColor }
+                            ticks: { color: themeColors.text },
+                            grid: { color: themeColors.grid }
                         }
                     },
                     plugins: {
-                        legend: { position: 'bottom', labels: { color: axisColor } }
+                        legend: { position: 'bottom', labels: { color: themeColors.text } }
                     }
                 }
             });
@@ -3566,7 +3546,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { usePointStyle: true, padding: 15, color: axisColor }
+                            labels: { usePointStyle: true, padding: 15, color: themeColors.text }
                         },
                         tooltip: {
                             callbacks: {
