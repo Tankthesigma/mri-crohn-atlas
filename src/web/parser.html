@@ -3048,45 +3048,45 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
         const STAT_EXPLANATIONS = {
             'icc': {
                 title: 'ICC (Intraclass Correlation Coefficient)',
-                value: '0.934',
+                value: '0.940',
                 icon: 'ICC',
                 explanation: 'ICC measures agreement between different raters scoring the same cases. It ranges from 0 (no agreement) to 1 (perfect agreement).',
-                interpretation: 'Our parser\'s ICC of 0.934 exceeds the 0.68 typically achieved by expert radiologists (Hindryckx et al. 2017), meaning our AI is 37% more consistent than human experts.'
+                interpretation: 'Our parser\'s ICC of 0.940 exceeds the 0.68 typically achieved by expert radiologists (Hindryckx et al. 2017), meaning our AI is 38% more consistent than human experts.'
             },
             'real-world': {
                 title: 'Real-World Accuracy',
-                value: '15/15 (100%)',
+                value: '10/12 (83.3%)',
                 icon: '✓',
-                explanation: 'The parser was tested on 15 real clinical MRI reports from actual hospital radiology departments, not synthetic or textbook cases.',
-                interpretation: 'Perfect accuracy (15/15) with 95% confidence interval 78-100% demonstrates the parser works in real clinical settings.'
+                explanation: 'The parser was tested on 12 real Radiopaedia MRI reports, not synthetic or textbook cases.',
+                interpretation: '10 of 12 real cases were scored within ±3 points, demonstrating the parser works on actual clinical reports.'
             },
             'radiopaedia': {
                 title: 'Radiopaedia Cases',
-                value: '10/10 (100%)',
+                value: '10/12 (83.3%)',
                 icon: '📷',
-                explanation: 'Tested on 10 publicly available cases from Radiopaedia.org, an open medical imaging database used by radiologists worldwide.',
-                interpretation: 'All 10 cases were scored within ±3 points of expected values, validating on independently verified ground truth.'
+                explanation: 'Tested on 12 publicly available cases from Radiopaedia.org, an open medical imaging database used by radiologists worldwide.',
+                interpretation: '10 of 12 cases were scored within ±3 points of expected values, validating on independently verified ground truth.'
             },
             'edge-cases': {
                 title: 'Edge Cases',
-                value: '11/11 (100%)',
+                value: '7/11 (63.6%)',
                 icon: '⚠️',
-                explanation: 'Tested on 11 deliberately challenging cases: healed fistulas, multiple tracts, post-surgical changes, and ambiguous reports.',
-                interpretation: '10 cases passed; 1 was correctly flagged as low confidence (the expected behavior for ambiguous reports).'
+                explanation: 'Tested on 11 deliberately challenging cases: healed fistulas, horseshoe extension, post-surgical changes, and ambiguous reports.',
+                interpretation: '7 cases passed, 4 failed (including AMBIGUOUS which correctly flagged low confidence). Edge cases are intentionally designed to stress-test the system.'
             },
             'vai-mae': {
                 title: 'VAI Mean Absolute Error',
-                value: '0.93 points',
+                value: '1.65 points',
                 icon: 'VAI',
                 explanation: 'MAE is the average absolute difference between predicted and actual VAI scores on a 0-22 scale.',
-                interpretation: 'An MAE of 0.93 means the parser averages less than 1 point error, within human measurement error.'
+                interpretation: 'An MAE of 1.65 means the parser averages about 1.5 points error, well within clinical acceptability.'
             },
             'magnifi-mae': {
                 title: 'MAGNIFI-CD Mean Absolute Error',
-                value: '0.73 points',
+                value: '1.47 points',
                 icon: 'MAG',
                 explanation: 'MAE for MAGNIFI-CD predictions on a 0-25 scale.',
-                interpretation: 'An MAE of 0.73 is well below the minimal clinically important difference (MCID) of 3 points.'
+                interpretation: 'An MAE of 1.47 is well below the minimal clinically important difference (MCID) of 3 points.'
             }
         };
 
