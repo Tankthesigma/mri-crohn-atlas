@@ -3259,7 +3259,8 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                 remission: '#10B981',
                 mild: '#0D9488',
                 moderate: '#F59E0B',
-                severe: '#EF4444'
+                severe: '#EF4444',
+                danger: '#EF4444'
             };
 
             // REAL VAI Scatter Data from 68 validated test cases
@@ -3320,7 +3321,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                         {
                             label: 'Severe',
                             data: vaiScatterData.filter(d => d.severity === 'severe'),
-                            backgroundColor: severityColors.danger,
+                            backgroundColor: severityColors.severe,
                             pointRadius: 6
                         },
                         {
@@ -3416,7 +3417,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                         {
                             label: 'Severe',
                             data: magnifiScatterData.filter(d => d.severity === 'severe'),
-                            backgroundColor: severityColors.danger,
+                            backgroundColor: severityColors.severe,
                             pointRadius: 6
                         },
                         {

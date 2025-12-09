@@ -136,7 +136,7 @@
            HERO SECTION - Compact
            ========================================= */
         .hero {
-            padding: var(--space-8) var(--space-6);
+            padding: var(--space-6) var(--space-6);
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -283,8 +283,10 @@
             border: 1px solid var(--gray-200);
             border-radius: var(--radius-lg);
             padding: var(--space-4);
-            margin: var(--space-4) 0;
-        }
+            /* Layout Fixes */
+            margin: var(--space-4) auto;
+            max-width: 1200px;
+}
 
         .formula-label {
             font-size: 0.6875rem;
@@ -331,7 +333,7 @@
            SECTIONS
            ========================================= */
         section {
-            padding: var(--space-12) var(--space-6);
+            padding: var(--space-8) var(--space-6);
             border-top: 1px solid var(--gray-200);
         }
 
@@ -968,14 +970,18 @@
            METHODOLOGY SLIDESHOW - Compact
            ========================================= */
         .methodology-slideshow {
-            position: relative;
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-lg);
-            padding: var(--space-4);
-            margin-bottom: var(--space-4);
-            overflow: hidden;
-        }
+    position: relative;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+    /* Layout Fixes */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
         .slideshow-slide {
             display: none;
