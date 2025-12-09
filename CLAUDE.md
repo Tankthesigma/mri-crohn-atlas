@@ -528,9 +528,76 @@ Decision: Keep V1 prompt (better overall balance)
 - Scraper key: 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
 - Web parser: Uses Vercel env variable OPENROUTER_API_KEY
 
+### Dec 9, 2025 (UI Fixes)
+
+**Fixed: Formula section and methodology slideshow width**
+- **Problem:** These sections stretched full viewport width instead of matching the 1200px max-width container
+- **Solution:** Added `max-width: 1200px; margin-left: auto; margin-right: auto;` to both `.formula-section` and `.methodology-slideshow` in `/src/web/index.html`
+
+**Fixed: Severe dots invisible on scatter plots (dark mode)**
+- **Problem:** Severe severity dots invisible in dark mode (gray/black on dark background)
+- **Root Cause:** Chart code referenced `severityColors.danger` but object only defined `severityColors.severe`
+- **Solution:** Added `danger: '#EF4444'` to severityColors object in `/src/web/parser.html` around line 2066
+
+**Fixed: Moderate disease box text (yellow background)**
+- **Problem:** Light text on yellow background = invisible in both modes
+- **Solution:** Force dark text (#78350F) on yellow severity boxes (.interpretation-box.moderate) with !important
+
+**Fixed: Chart axis visibility (light/dark mode)**
+- **Problem:** Chart axes invisible in light mode (light text on light background)
+- **Solution:**
+  - Initialize theme BEFORE `getChartColors()` is called
+  - Light mode: use #1F2937 (dark text)
+  - Dark mode: use #E5E7EB (light text)
+  - `updateChartsForTheme()` destroys and recreates charts on theme toggle
+
+**Fixed: Parser results dark mode visibility**
+- Added dark mode CSS for `.score-card`, `.score-label`, `.score-range`, `.score-pi`
+- Added dark mode for `.interpretation-box` text colors
+
+**Fixed: index.html compact styling**
+- Formula section: padding space-4, margin space-4, formula-text 1rem, stat-value 1.25rem
+- Methodology slideshow: padding space-4, slide-title 0.9375rem, slide-content 0.8125rem
+- Hero section: padding space-8, title 1.75rem, tagline 1rem, subtitle 0.9375rem
+
 ---
 
-*Last Updated: December 8, 2025*
+## CSS Architecture Notes
+
+### Spacing Variables
+Uses CSS custom properties: `--space-1` through `--space-12`
+- Compact design uses space-3/space-4
+- Chunky/spacious uses space-6/space-8
+
+### Dark Mode
+- Triggered via `[data-theme="dark"]` attribute on `<html>`
+- Theme persisted in localStorage
+- Charts must be destroyed and recreated on theme toggle
+
+### Yellow Background Rule
+**CRITICAL:** Yellow backgrounds (#FEF3C7, #FDE68A) ALWAYS need dark text (#78350F or #92400E) regardless of light/dark mode. Never use var(--gray-*) on yellow - it becomes invisible in dark mode.
+
+### Chart Colors
+```javascript
+function getChartColors() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    return {
+        text: isDark ? '#E5E7EB' : '#1F2937',
+        grid: isDark ? '#374151' : '#E5E7EB'
+    };
+}
+```
+
+---
+
+## Next Steps
+- Multi-model showdown (fine-tuning Qwen 0.6B vs other models)
+- Publication preparation
+- External validation outreach
+
+---
+
+*Last Updated: December 9, 2025*
 *Parser: ICC 0.940 (VAI), 0.961 (MAGNIFI) — +38% vs radiologists (REAL API)*
 *Validation: 68 test cases, 100% coverage, 85% VAI accuracy (±3)*
 *Crosswalk: R² = 0.96, 2,818 patients*
