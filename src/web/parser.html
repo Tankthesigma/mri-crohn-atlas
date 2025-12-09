@@ -2084,6 +2084,10 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                         <div class="chart-wrapper">
                             <canvas id="icc-comparison-chart"></canvas>
                         </div>
+                        <p class="chart-citation" style="font-size: 0.75rem; color: var(--gray-500); margin-top: 0.75rem; line-height: 1.5;">
+                            Radiologist ICC sources: VAI 0.68 from Samaan et al. <em>Aliment Pharmacol Ther</em> 2019;
+                            MAGNIFI 0.87 from Hindryckx et al. <em>UEG Journal</em> 2019
+                        </p>
                     </div>
                     <div class="chart-container">
                         <h3>Parser Accuracy by Disease Severity</h3>
@@ -2556,13 +2560,29 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
     <script src="config.js" onerror="console.warn('config.js not found. Parser will show setup instructions.')"></script>
 
     <script>
-        // Theme toggle
+        // Theme toggle with chart update
         function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            // Re-render charts with new theme colors
+            if (typeof updateChartsForTheme === 'function') {
+                updateChartsForTheme();
+            }
+        }
+
+        // Get chart colors based on current theme
+        function getChartColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+                          window.matchMedia('(prefers-color-scheme: dark)').matches;
+            return {
+                axis: isDark ? '#E5E7EB' : '#374151',
+                grid: isDark ? '#374151' : '#E5E7EB',
+                tick: isDark ? '#D1D5DB' : '#4B5563',
+                text: isDark ? '#F3F4F6' : '#1F2937'
+            };
         }
 
         // Initialize theme
@@ -3170,16 +3190,42 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             initValidationCharts();
         });
 
+        // Global chart references for theme updates
+        const chartInstances = {};
+
+        // Update all charts when theme changes
+        function updateChartsForTheme() {
+            const themeColors = getChartColors();
+            Chart.defaults.color = themeColors.axis;
+
+            Object.values(chartInstances).forEach(chart => {
+                if (!chart) return;
+
+                // Update scales
+                if (chart.options.scales) {
+                    Object.values(chart.options.scales).forEach(scale => {
+                        if (scale.title) scale.title.color = themeColors.axis;
+                        if (scale.ticks) scale.ticks.color = themeColors.tick;
+                        if (scale.grid) scale.grid.color = themeColors.grid;
+                    });
+                }
+
+                // Update legend
+                if (chart.options.plugins?.legend?.labels) {
+                    chart.options.plugins.legend.labels.color = themeColors.axis;
+                }
+
+                chart.update();
+            });
+        }
+
         // Initialize Validation Charts
         function initValidationCharts() {
-            // Theme detection for dark mode support
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-                          window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            // Dark mode color config
-            const axisColor = isDark ? '#E5E7EB' : '#374151';
-            const gridColor = isDark ? '#374151' : '#E5E7EB';
-            const tickColor = isDark ? '#D1D5DB' : '#4B5563';
+            // Get current theme colors
+            const themeColors = getChartColors();
+            const axisColor = themeColors.axis;
+            const gridColor = themeColors.grid;
+            const tickColor = themeColors.tick;
 
             // Chart.js global defaults
             Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
@@ -3237,7 +3283,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             ];
 
             // VAI Scatter Plot
-            new Chart(document.getElementById('vai-scatter-chart'), {
+            chartInstances.vaiScatter = new Chart(document.getElementById('vai-scatter-chart'), {
                 type: 'scatter',
                 data: {
                     datasets: [
@@ -3333,7 +3379,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             ];
 
             // MAGNIFI Scatter Plot
-            new Chart(document.getElementById('magnifi-scatter-chart'), {
+            chartInstances.magnifiScatter = new Chart(document.getElementById('magnifi-scatter-chart'), {
                 type: 'scatter',
                 data: {
                     datasets: [
@@ -3397,7 +3443,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             });
 
             // ICC Comparison Chart
-            new Chart(document.getElementById('icc-comparison-chart'), {
+            chartInstances.iccComparison = new Chart(document.getElementById('icc-comparison-chart'), {
                 type: 'bar',
                 data: {
                     labels: ['VAI', 'MAGNIFI-CD'],
@@ -3460,7 +3506,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             });
 
             // Severity Accuracy Chart
-            new Chart(document.getElementById('severity-accuracy-chart'), {
+            chartInstances.severityAccuracy = new Chart(document.getElementById('severity-accuracy-chart'), {
                 type: 'bar',
                 data: {
                     labels: ['Remission (n=18)', 'Mild (n=15)', 'Moderate (n=14)', 'Severe (n=17)'],
@@ -3503,7 +3549,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             });
 
             // Dataset Composition Donut Chart
-            new Chart(document.getElementById('dataset-composition-chart'), {
+            chartInstances.datasetComposition = new Chart(document.getElementById('dataset-composition-chart'), {
                 type: 'doughnut',
                 data: {
                     labels: ['Synthetic (literature-based)', 'Real Radiopaedia', 'Edge Cases', 'PubMed Central'],
