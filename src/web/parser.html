@@ -1621,6 +1621,7 @@
                 <li><a href="index.html#crosswalk">Crosswalk</a></li>
                 <li><a href="index.html#validation">Validation</a></li>
                 <li><a href="parser.html" class="active">Parser Demo</a></li>
+                <li><a href="index.html#about">About</a></li>
                 <li><span class="nav-badge">ISEF 2026</span></li>
                 <li>
                     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
@@ -1674,34 +1675,6 @@
             </div>
         </div>
     </div>
-
-    <!-- About This Project -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <h2 class="section-title">About This Project</h2>
-            <div class="about-content">
-                <div class="about-story">
-                    <h3>Why I Built This</h3>
-                    <p>
-                        I'm Tanmay, a high school student from Texas. My grandmother has Crohn's disease, and watching her navigate the healthcare system inspired me to find ways technology could help patients like her.
-                    </p>
-                    <p>
-                        Perianal fistulizing Crohn's disease is one of the most debilitating complications of Crohn's. Doctors use MRI scans to assess severity, but two major scoring systems (VAI and MAGNIFI-CD) have never been directly compared—until now.
-                    </p>
-                </div>
-                <div class="about-tool">
-                    <h3>What This Tool Does</h3>
-                    <p>
-                        <strong>CrohnBridge</strong> is a neuro-symbolic AI system with two components:
-                    </p>
-                    <ul>
-                        <li><strong>Crosswalk Calculator:</strong> The first validated formula to convert between VAI and MAGNIFI-CD scores, enabling researchers to compare 20+ years of previously incompatible studies.</li>
-                        <li><strong>MRI Report Parser:</strong> An AI that reads radiology reports and automatically extracts severity scores with 91.2% accuracy—outperforming average radiologist agreement by 38%.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Parser Methodology Slideshow -->
     <section style="border-top: none; padding-top: 0;">
@@ -2366,44 +2339,44 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                     <div class="challenging-case highlighted-warning">
                         <div class="challenging-case-header">
                             <span class="challenging-case-name">AMBIGUOUS</span>
-                            <span class="status-badge warning">Low Confidence (46%)</span>
+                            <span class="status-badge warning">Low Confidence (50%)</span>
                         </div>
                         <div class="challenging-case-desc">
                             Equivocal findings - report contained contradictory or vague descriptions.
-                            Parser correctly flagged uncertainty rather than guessing.
+                            Parser correctly flagged uncertainty and defaulted to conservative zero scores.
                         </div>
                         <div class="challenging-case-scores">
                             <span>Expected: VAI 8, MAG 6</span>
-                            <span>Actual: VAI 10, MAG 8</span>
-                            <span class="error-tag">Error: VAI +2, MAG +2</span>
+                            <span>Actual: VAI 0, MAG 0</span>
+                            <span class="error-tag">Error: VAI -8, MAG -6</span>
                         </div>
                     </div>
-                    <div class="challenging-case">
+                    <div class="challenging-case highlighted-warning">
                         <div class="challenging-case-header">
-                            <span class="challenging-case-name">ABSCESS_ONLY</span>
-                            <span class="status-badge success">Pass (85%)</span>
+                            <span class="challenging-case-name">HORSESHOE</span>
+                            <span class="status-badge warning">Underscored (90%)</span>
                         </div>
                         <div class="challenging-case-desc">
-                            Abscess without clear fistula tract. Challenging because scoring systems assume tract presence.
+                            Complex horseshoe fistula with posterior extension. Parser consistently underscores these anatomically complex cases.
                         </div>
                         <div class="challenging-case-scores">
-                            <span>Expected: VAI 13, MAG 10</span>
-                            <span>Actual: VAI 10, MAG 8</span>
-                            <span class="error-tag">Error: VAI -3, MAG -2</span>
+                            <span>Expected: VAI 19, MAG 13</span>
+                            <span>Actual: VAI 14, MAG 8</span>
+                            <span class="error-tag">Error: VAI -5, MAG -5</span>
                         </div>
                     </div>
-                    <div class="challenging-case">
+                    <div class="challenging-case highlighted-warning">
                         <div class="challenging-case-header">
-                            <span class="challenging-case-name">MIXED_HEALED_ACTIVE</span>
-                            <span class="status-badge success">Pass (85%)</span>
+                            <span class="challenging-case-name">MIXED_STATE</span>
+                            <span class="status-badge warning">Overscored (90%)</span>
                         </div>
                         <div class="challenging-case-desc">
-                            One healed tract and one active tract in same patient. Required aggregating mixed disease states.
+                            One healed tract and one active tract. Parser overestimated severity due to mixed signals.
                         </div>
                         <div class="challenging-case-scores">
                             <span>Expected: VAI 9, MAG 9</span>
-                            <span>Actual: VAI 9, MAG 9</span>
-                            <span class="success-tag">Exact match</span>
+                            <span>Actual: VAI 16, MAG 11</span>
+                            <span class="error-tag">Error: VAI +7, MAG +2</span>
                         </div>
                     </div>
                 </div>
@@ -2587,7 +2560,7 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
     <!-- Footer -->
     <footer>
         <p class="footer-text">
-            <strong>MRI-Crohn Atlas</strong> by Tanmay | <a href="index.html">Dashboard</a> | <a href="https://github.com/Tankthesigma/mri-crohn-atlas" target="_blank">GitHub</a> | ISEF 2026
+            <strong>CrohnBridge</strong> by Tanmay | <a href="index.html">Dashboard</a> | <a href="index.html#about">About</a> | <a href="https://github.com/Tankthesigma/mri-crohn-atlas" target="_blank">GitHub</a> | ISEF 2026
         </p>
     </footer>
 
@@ -3158,19 +3131,19 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             document.getElementById('stat-modal').classList.remove('show');
         }
 
-        // Edge case data for table
+        // Edge case data for table - REAL data from /data/parser_validation/real_validation_results.json
         const EDGE_CASES = [
-            { name: "SIMPLE_INTER", desc: "Simple intersphincteric", expVAI: 7, actVAI: 7, expMAG: 7, actMAG: 7, conf: 92, isLowConf: false },
-            { name: "COMPLEX_TRANS", desc: "Complex transsphincteric", expVAI: 13, actVAI: 13, expMAG: 14, actMAG: 14, conf: 88, isLowConf: false },
-            { name: "HORSESHOE", desc: "Horseshoe extension", expVAI: 15, actVAI: 14, expMAG: 16, actMAG: 15, conf: 85, isLowConf: false },
-            { name: "MULTIPLE_TRACTS", desc: "Three fistula tracts", expVAI: 16, actVAI: 15, expMAG: 18, actMAG: 17, conf: 82, isLowConf: false },
-            { name: "HEALED_FIBROTIC", desc: "Fully healed, fibrotic", expVAI: 0, actVAI: 0, expMAG: 0, actMAG: 2, conf: 78, isLowConf: false },
-            { name: "ABSCESS_ONLY", desc: "Abscess without tract", expVAI: 13, actVAI: 10, expMAG: 10, actMAG: 8, conf: 85, isLowConf: false },
-            { name: "MIXED_HEALED_ACTIVE", desc: "Mixed healed/active", expVAI: 9, actVAI: 9, expMAG: 9, actMAG: 9, conf: 85, isLowConf: false },
-            { name: "SETON_IN_PLACE", desc: "Seton with healing", expVAI: 5, actVAI: 5, expMAG: 6, actMAG: 6, conf: 90, isLowConf: false },
-            { name: "PEDIATRIC", desc: "Pediatric presentation", expVAI: 8, actVAI: 8, expMAG: 9, actMAG: 9, conf: 87, isLowConf: false },
-            { name: "MINIMAL_FINDINGS", desc: "Near-normal findings", expVAI: 2, actVAI: 2, expMAG: 3, actMAG: 3, conf: 91, isLowConf: false },
-            { name: "AMBIGUOUS", desc: "Contradictory findings", expVAI: 8, actVAI: 10, expMAG: 6, actMAG: 8, conf: 46, isLowConf: true }
+            { name: "HEALED_FIBROTIC", desc: "Healed/fibrotic tract", expVAI: 0, actVAI: 2, expMAG: 0, actMAG: 0, conf: 90, isLowConf: false },
+            { name: "COMPLEX_BRANCH", desc: "Complex/branching", expVAI: 12, actVAI: 8, expMAG: 9, actMAG: 6, conf: 90, isLowConf: false },
+            { name: "WITH_ABSCESS", desc: "Abscess present", expVAI: 10, actVAI: 12, expMAG: 10, actMAG: 12, conf: 70, isLowConf: false },
+            { name: "POST_SURGICAL", desc: "Post-surgical remission", expVAI: 0, actVAI: 2, expMAG: 0, actMAG: 0, conf: 90, isLowConf: false },
+            { name: "AMBIGUOUS", desc: "Equivocal findings", expVAI: 8, actVAI: 0, expMAG: 6, actMAG: 0, conf: 50, isLowConf: true },
+            { name: "HORSESHOE", desc: "Horseshoe extension", expVAI: 19, actVAI: 14, expMAG: 13, actMAG: 8, conf: 90, isLowConf: false },
+            { name: "PEDIATRIC", desc: "Pediatric presentation", expVAI: 6, actVAI: 6, expMAG: 3, actMAG: 5, conf: 90, isLowConf: false },
+            { name: "MIXED_STATE", desc: "Healed + active mixed", expVAI: 9, actVAI: 16, expMAG: 9, actMAG: 11, conf: 90, isLowConf: false },
+            { name: "MAX_SEVERE", desc: "Maximum severity", expVAI: 22, actVAI: 22, expMAG: 24, actMAG: 25, conf: 90, isLowConf: false },
+            { name: "NORMAL", desc: "No fistula (normal)", expVAI: 0, actVAI: 0, expMAG: 0, actMAG: 0, conf: 90, isLowConf: false },
+            { name: "EARLY_SIMPLE", desc: "Simple intersphincteric", expVAI: 6, actVAI: 6, expMAG: 3, actMAG: 3, conf: 90, isLowConf: false }
         ];
 
         function renderEdgeCaseTable() {
@@ -3211,11 +3184,19 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
 
         // Initialize Validation Charts
         function initValidationCharts() {
+            // Theme detection for dark mode support
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+                          window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            // Dark mode color config
+            const axisColor = isDark ? '#E5E7EB' : '#374151';
+            const gridColor = isDark ? '#374151' : '#E5E7EB';
+            const tickColor = isDark ? '#D1D5DB' : '#4B5563';
+
             // Chart.js global defaults
             Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
             Chart.defaults.font.size = 12;
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            Chart.defaults.color = isDark ? '#E5E7EB' : '#374151';
+            Chart.defaults.color = axisColor;
 
             // Colors
             const colors = {
@@ -3312,11 +3293,21 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: { title: { display: true, text: 'Expected VAI' }, min: 0, max: 22 },
-                        y: { title: { display: true, text: 'Predicted VAI' }, min: 0, max: 22 }
+                        x: {
+                            title: { display: true, text: 'Expected VAI', color: axisColor },
+                            min: 0, max: 22,
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        },
+                        y: {
+                            title: { display: true, text: 'Predicted VAI', color: axisColor },
+                            min: 0, max: 22,
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        }
                     },
                     plugins: {
-                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15 } }
+                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15, color: axisColor } }
                     }
                 }
             });
@@ -3398,11 +3389,21 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: { title: { display: true, text: 'Expected MAGNIFI' }, min: 0, max: 25 },
-                        y: { title: { display: true, text: 'Predicted MAGNIFI' }, min: 0, max: 25 }
+                        x: {
+                            title: { display: true, text: 'Expected MAGNIFI', color: axisColor },
+                            min: 0, max: 25,
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        },
+                        y: {
+                            title: { display: true, text: 'Predicted MAGNIFI', color: axisColor },
+                            min: 0, max: 25,
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        }
                     },
                     plugins: {
-                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15 } }
+                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 15, color: axisColor } }
                     }
                 }
             });
@@ -3414,7 +3415,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     labels: ['VAI', 'MAGNIFI-CD'],
                     datasets: [
                         {
-                            label: 'MRI-Crohn Atlas Parser',
+                            label: 'CrohnBridge Parser',
                             data: [0.940, 0.961],
                             backgroundColor: colors.primary,
                             barPercentage: 0.6
@@ -3435,11 +3436,17 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                         x: {
                             min: 0,
                             max: 1,
-                            title: { display: true, text: 'ICC Value' }
+                            title: { display: true, text: 'ICC Value', color: axisColor },
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        },
+                        y: {
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
                         }
                     },
                     plugins: {
-                        legend: { position: 'bottom' },
+                        legend: { position: 'bottom', labels: { color: axisColor } },
                         annotation: {
                             annotations: {
                                 line1: {
@@ -3492,11 +3499,17 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                         x: {
                             min: 0,
                             max: 100,
-                            title: { display: true, text: 'Accuracy (%)' }
+                            title: { display: true, text: 'Accuracy (%)', color: axisColor },
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        },
+                        y: {
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
                         }
                     },
                     plugins: {
-                        legend: { position: 'bottom' }
+                        legend: { position: 'bottom', labels: { color: axisColor } }
                     }
                 }
             });
@@ -3519,7 +3532,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { usePointStyle: true, padding: 15 }
+                            labels: { usePointStyle: true, padding: 15, color: axisColor }
                         },
                         tooltip: {
                             callbacks: {
