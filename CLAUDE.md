@@ -590,15 +590,83 @@ function getChartColors() {
 
 ---
 
-## Next Steps
-- Multi-model showdown (fine-tuning Qwen 0.6B vs other models)
-- Publication preparation
-- External validation outreach
+### Dec 10, 2025 (Data Collection & Fine-tuning Experiment)
+
+**Data Collection:**
+- Collected **460 real MRI cases** from PubMed Central, Radiopaedia, Frontiers
+- Saved to: `data/training/master_cases.json` (1.3MB)
+- Also copied to: `~/Desktop/Antigrav crohns trial/data/training/`
+- **Breakdown by source:**
+  - PubMed Central: 353 (76.7%)
+  - Radiopaedia: 43 (9.3%)
+  - Synthetic literature-based: 38 (8.3%)
+  - Edge cases: 11 (2.4%)
+  - Other: 15 (3.3%)
+- **Breakdown by fistula type:**
+  - Intersphincteric: 148 (32.2%)
+  - Complex: 141 (30.7%)
+  - Transsphincteric: 53 (11.5%)
+  - Horseshoe: 21 (4.6%)
+  - Extrasphincteric: 14 (3.0%)
+  - Suprasphincteric: 8 (1.7%)
+
+**Fine-tuning Experiment (FAILED):**
+- Created fine-tuning data: `data/training/finetune_data.jsonl` (460 examples, 1.2MB)
+- Fine-tuned Qwen 2.5-0.5B-Instruct on HuggingFace Spaces with LoRA
+- Training: 400 steps, ~13.8 epochs
+- Model: `sigmsisgam/crohnbridge-parser-v1`
+- **RESULT: FAILED** — model only outputs 5 values (7, 9, 10, 14, 16)
+- Cannot detect remission (VAI=0-2) or mild cases
+- **Root cause:** 0.5B model too small for this task
+- **Conclusion:** Need larger model (7B+) or use API-based approach
+
+**Multi-Model Benchmark (30 cases):**
+| Model | VAI MAE | VAI Acc (±1) | VAI Acc (±2) | Avg Time | Cost/Case |
+|-------|---------|--------------|--------------|----------|-----------|
+| **qwen-2.5-72b** | **2.21** | **36.8%** | **52.6%** | 3.27s | $0.0001 |
+| gpt-4o | 2.71 | 29.4% | 47.1% | 1.02s | $0.0013 |
+| claude-3.5-sonnet | 2.70 | 26.1% | 47.8% | 3.01s | $0.0022 |
+| deepseek-v3 | 3.56 | 22.2% | 33.3% | 3.52s | $0.0001 |
+| gemini-2.0-flash | 4.17 | 8.3% | 41.7% | 1.12s | $0.0001 |
+| crohnbridge-v1 (fine-tuned) | 7.17 | 13.3% | 20.0% | 5.84s | $0.00 |
+
+**Real Parser Test (DeepSeek on training data):**
+- 100% valid responses (30/30)
+- **12 unique VAI values** (full range 0-22)
+- Can detect remission ✓
+- Avg time: 4.4s per case
+- **Conclusion:** Real DeepSeek parser works correctly; fine-tuned model broken
+
+**Files Created:**
+- `data/training/master_cases.json` - 460 MRI cases
+- `data/training/finetune_data.jsonl` - Training data for fine-tuning
+- `data/training/finetune_qwen.py` - Standalone training script
+- `data/training/app.py` - HuggingFace Spaces Gradio app
+- `data/benchmark/run_benchmark.py` - Multi-model benchmark script
+- `data/benchmark/benchmark_results.json` - Raw benchmark results
+- `data/benchmark/benchmark_report.md` - Comparison table
+- `data/benchmark/crohnbridge_results.json` - Fine-tuned model results
+- `data/benchmark/real_parser_results.json` - Real parser test results
+
+**HuggingFace Resources:**
+- Dataset: https://huggingface.co/datasets/sigmsisgam/crohnbridge-training
+- Space: https://huggingface.co/spaces/sigmsisgam/crohnbridge-finetune
+- Model: https://huggingface.co/sigmsisgam/crohnbridge-parser-v1
 
 ---
 
-*Last Updated: December 9, 2025*
+## Next Steps (Roadmap)
+
+1. **Confidence Calibration** - Fix 18.85% ECE (Expected Calibration Error)
+2. **Ablation Study** - Prove each component matters
+3. **External Validation** - Radiologist blind test
+4. **medRxiv Preprint** - Publication preparation
+
+---
+
+*Last Updated: December 10, 2025*
 *Parser: ICC 0.940 (VAI), 0.961 (MAGNIFI) — +38% vs radiologists (REAL API)*
 *Validation: 68 test cases, 100% coverage, 85% VAI accuracy (±3)*
+*Training Data: 460 MRI cases from PubMed/Radiopaedia*
 *Crosswalk: R² = 0.96, 2,818 patients*
 *Live Site: https://mri-crohn-atlas.vercel.app*

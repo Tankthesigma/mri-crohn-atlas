@@ -1,0 +1,257 @@
+{
+  "model": "deepseek/deepseek-chat",
+  "timestamp": "2025-12-10T11:46:19.275505",
+  "valid": 30,
+  "vai_range": [
+    0,
+    22
+  ],
+  "vai_mean": 4.533333333333333,
+  "vai_unique": 12,
+  "magnifi_range": [
+    0,
+    25
+  ],
+  "results": [
+    {
+      "case_id": "case_0327",
+      "source": "pubmed_central",
+      "fistula_type": "extrasphincteric",
+      "predicted_vai": 1,
+      "predicted_magnifi": 4,
+      "time": 3.363252878189087
+    },
+    {
+      "case_id": "case_0057",
+      "source": "synthetic_literature",
+      "fistula_type": "transsphincteric",
+      "predicted_vai": 20,
+      "predicted_magnifi": 23,
+      "time": 4.883758068084717
+    },
+    {
+      "case_id": "case_0012",
+      "source": "pubmed_central",
+      "fistula_type": "horseshoe",
+      "predicted_vai": 5,
+      "predicted_magnifi": 6,
+      "time": 5.20185399055481
+    },
+    {
+      "case_id": "case_0379",
+      "source": "pubmed_central",
+      "fistula_type": "complex",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 4.504641056060791
+    },
+    {
+      "case_id": "case_0140",
+      "source": "pubmed_central",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 5.685793161392212
+    },
+    {
+      "case_id": "case_0125",
+      "source": "pubmed_central",
+      "fistula_type": null,
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 1.8638501167297363
+    },
+    {
+      "case_id": "case_0114",
+      "source": "pubmed_central",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 3,
+      "predicted_magnifi": 7,
+      "time": 5.751826286315918
+    },
+    {
+      "case_id": "case_0071",
+      "source": "unknown",
+      "fistula_type": "transsphincteric",
+      "predicted_vai": 12,
+      "predicted_magnifi": 11,
+      "time": 1.9763720035552979
+    },
+    {
+      "case_id": "case_0377",
+      "source": "pubmed_central",
+      "fistula_type": "complex",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 4.589380979537964
+    },
+    {
+      "case_id": "case_0052",
+      "source": "synthetic_literature",
+      "fistula_type": "transsphincteric",
+      "predicted_vai": 2,
+      "predicted_magnifi": 1,
+      "time": 2.704148054122925
+    },
+    {
+      "case_id": "case_0346",
+      "source": "pubmed_central",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 5.724035739898682
+    },
+    {
+      "case_id": "case_0456",
+      "source": "frontiers",
+      "fistula_type": "complex",
+      "predicted_vai": 11,
+      "predicted_magnifi": 17,
+      "time": 2.3008360862731934
+    },
+    {
+      "case_id": "case_0279",
+      "source": "pubmed_central",
+      "fistula_type": "complex",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 2.5034842491149902
+    },
+    {
+      "case_id": "case_0044",
+      "source": "synthetic_literature",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 8,
+      "predicted_magnifi": 8,
+      "time": 4.871145963668823
+    },
+    {
+      "case_id": "case_0302",
+      "source": "pubmed_central",
+      "fistula_type": null,
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 3.0154168605804443
+    },
+    {
+      "case_id": "case_0216",
+      "source": "pubmed_central",
+      "fistula_type": "transsphincteric",
+      "predicted_vai": 2,
+      "predicted_magnifi": 2,
+      "time": 5.73074197769165
+    },
+    {
+      "case_id": "case_0016",
+      "source": "pubmed_central",
+      "fistula_type": "transsphincteric",
+      "predicted_vai": 2,
+      "predicted_magnifi": 1,
+      "time": 5.7882161140441895
+    },
+    {
+      "case_id": "case_0015",
+      "source": "pubmed_central",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 22,
+      "predicted_magnifi": 25,
+      "time": 3.7577621936798096
+    },
+    {
+      "case_id": "case_0047",
+      "source": "synthetic_literature",
+      "fistula_type": "extrasphincteric",
+      "predicted_vai": 2,
+      "predicted_magnifi": 0,
+      "time": 3.9905760288238525
+    },
+    {
+      "case_id": "case_0111",
+      "source": "pubmed_central",
+      "fistula_type": "complex",
+      "predicted_vai": 18,
+      "predicted_magnifi": 17,
+      "time": 3.4332869052886963
+    },
+    {
+      "case_id": "case_0119",
+      "source": "pubmed_central",
+      "fistula_type": null,
+      "predicted_vai": 6,
+      "predicted_magnifi": 11,
+      "time": 5.679548025131226
+    },
+    {
+      "case_id": "case_0258",
+      "source": "pubmed_central",
+      "fistula_type": null,
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 5.224109172821045
+    },
+    {
+      "case_id": "case_0308",
+      "source": "pubmed_central",
+      "fistula_type": "complex",
+      "predicted_vai": 20,
+      "predicted_magnifi": 23,
+      "time": 5.630025148391724
+    },
+    {
+      "case_id": "case_0013",
+      "source": "radiopaedia",
+      "fistula_type": "complex",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 4.776631832122803
+    },
+    {
+      "case_id": "case_0287",
+      "source": "pubmed_central",
+      "fistula_type": "complex",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 5.257375955581665
+    },
+    {
+      "case_id": "case_0101",
+      "source": "pubmed_central",
+      "fistula_type": null,
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 6.145052909851074
+    },
+    {
+      "case_id": "case_0366",
+      "source": "pubmed_central",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 4.2987380027771
+    },
+    {
+      "case_id": "case_0332",
+      "source": "pubmed_central",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 2.8189597129821777
+    },
+    {
+      "case_id": "case_0359",
+      "source": "pubmed_central",
+      "fistula_type": "complex",
+      "predicted_vai": 0,
+      "predicted_magnifi": 2,
+      "time": 4.414453983306885
+    },
+    {
+      "case_id": "case_0214",
+      "source": "pubmed_central",
+      "fistula_type": "intersphincteric",
+      "predicted_vai": 2,
+      "predicted_magnifi": 2,
+      "time": 4.753906965255737
+    }
+  ]
+}

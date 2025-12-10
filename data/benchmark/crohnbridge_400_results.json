@@ -1,0 +1,311 @@
+{
+  "model": "crohnbridge-parser-v1",
+  "training_steps": 400,
+  "valid_cases": 30,
+  "vai_mae": 7.166666666666667,
+  "vai_accuracy_1pt": 13.333333333333334,
+  "vai_accuracy_2pt": 20.0,
+  "magnifi_mae": 7.541666666666667,
+  "results": [
+    {
+      "case_id": "existing_rp_001",
+      "expected_vai": 7,
+      "predicted_vai": 7,
+      "expected_magnifi": 6,
+      "predicted_magnifi": 8,
+      "vai_error": 0,
+      "magnifi_error": 2,
+      "time": 7.3286802768707275
+    },
+    {
+      "case_id": "existing_rp_002",
+      "expected_vai": 16,
+      "predicted_vai": 10,
+      "expected_magnifi": 17,
+      "predicted_magnifi": 12,
+      "vai_error": 6,
+      "magnifi_error": 5,
+      "time": 5.689488887786865
+    },
+    {
+      "case_id": "existing_rp_003",
+      "expected_vai": 11,
+      "predicted_vai": 9,
+      "expected_magnifi": 10,
+      "predicted_magnifi": 11,
+      "vai_error": 2,
+      "magnifi_error": 1,
+      "time": 5.555046081542969
+    },
+    {
+      "case_id": "existing_rp_004",
+      "expected_vai": 2,
+      "predicted_vai": 9,
+      "expected_magnifi": 2,
+      "predicted_magnifi": 12,
+      "vai_error": 7,
+      "magnifi_error": 10,
+      "time": 5.544004201889038
+    },
+    {
+      "case_id": "existing_rp_005",
+      "expected_vai": 0,
+      "predicted_vai": 14,
+      "expected_magnifi": 0,
+      "predicted_magnifi": 17,
+      "vai_error": 14,
+      "magnifi_error": null,
+      "time": 5.228388071060181
+    },
+    {
+      "case_id": "existing_rp_006",
+      "expected_vai": 13,
+      "predicted_vai": 9,
+      "expected_magnifi": 11,
+      "predicted_magnifi": 12,
+      "vai_error": 4,
+      "magnifi_error": 1,
+      "time": 5.3848350048065186
+    },
+    {
+      "case_id": "existing_rp_007",
+      "expected_vai": 9,
+      "predicted_vai": 14,
+      "expected_magnifi": 8,
+      "predicted_magnifi": 16,
+      "vai_error": 5,
+      "magnifi_error": 8,
+      "time": 5.482143878936768
+    },
+    {
+      "case_id": "existing_rp_008",
+      "expected_vai": 7,
+      "predicted_vai": 10,
+      "expected_magnifi": 6,
+      "predicted_magnifi": 12,
+      "vai_error": 3,
+      "magnifi_error": 6,
+      "time": 5.687196969985962
+    },
+    {
+      "case_id": "existing_rp_009",
+      "expected_vai": 0,
+      "predicted_vai": 10,
+      "expected_magnifi": 0,
+      "predicted_magnifi": 12,
+      "vai_error": 10,
+      "magnifi_error": null,
+      "time": 5.393743991851807
+    },
+    {
+      "case_id": "existing_rp_010",
+      "expected_vai": 4,
+      "predicted_vai": 10,
+      "expected_magnifi": 4,
+      "predicted_magnifi": 12,
+      "vai_error": 6,
+      "magnifi_error": 8,
+      "time": 5.61685585975647
+    },
+    {
+      "case_id": "existing_rp_011",
+      "expected_vai": 9,
+      "predicted_vai": 10,
+      "expected_magnifi": 9,
+      "predicted_magnifi": 12,
+      "vai_error": 1,
+      "magnifi_error": 3,
+      "time": 5.589660882949829
+    },
+    {
+      "case_id": "existing_rp_012",
+      "expected_vai": 0,
+      "predicted_vai": 10,
+      "expected_magnifi": 0,
+      "predicted_magnifi": 12,
+      "vai_error": 10,
+      "magnifi_error": null,
+      "time": 5.647890329360962
+    },
+    {
+      "case_id": "existing_pmc_001",
+      "expected_vai": 18,
+      "predicted_vai": 10,
+      "expected_magnifi": 19,
+      "predicted_magnifi": 12,
+      "vai_error": 8,
+      "magnifi_error": 7,
+      "time": 5.501633882522583
+    },
+    {
+      "case_id": "existing_pmc_002",
+      "expected_vai": 22,
+      "predicted_vai": 7,
+      "expected_magnifi": 25,
+      "predicted_magnifi": 8,
+      "vai_error": 15,
+      "magnifi_error": 17,
+      "time": 5.986994981765747
+    },
+    {
+      "case_id": "existing_pmc_003",
+      "expected_vai": 3,
+      "predicted_vai": 14,
+      "expected_magnifi": 2,
+      "predicted_magnifi": 17,
+      "vai_error": 11,
+      "magnifi_error": 15,
+      "time": 5.647906064987183
+    },
+    {
+      "case_id": "edge_healed_001",
+      "expected_vai": 0,
+      "predicted_vai": 10,
+      "expected_magnifi": 0,
+      "predicted_magnifi": 12,
+      "vai_error": 10,
+      "magnifi_error": null,
+      "time": 6.011590242385864
+    },
+    {
+      "case_id": "edge_complex_001",
+      "expected_vai": 12,
+      "predicted_vai": 9,
+      "expected_magnifi": 9,
+      "predicted_magnifi": 10,
+      "vai_error": 3,
+      "magnifi_error": 1,
+      "time": 7.101073980331421
+    },
+    {
+      "case_id": "edge_abscess_001",
+      "expected_vai": 10,
+      "predicted_vai": 14,
+      "expected_magnifi": 10,
+      "predicted_magnifi": 17,
+      "vai_error": 4,
+      "magnifi_error": 7,
+      "time": 5.462723016738892
+    },
+    {
+      "case_id": "edge_postsurg_001",
+      "expected_vai": 0,
+      "predicted_vai": 14,
+      "expected_magnifi": 0,
+      "predicted_magnifi": 17,
+      "vai_error": 14,
+      "magnifi_error": null,
+      "time": 5.740702867507935
+    },
+    {
+      "case_id": "edge_ambig_001",
+      "expected_vai": 8,
+      "predicted_vai": 10,
+      "expected_magnifi": 6,
+      "predicted_magnifi": 12,
+      "vai_error": 2,
+      "magnifi_error": 6,
+      "time": 5.538336992263794
+    },
+    {
+      "case_id": "edge_horseshoe_001",
+      "expected_vai": 19,
+      "predicted_vai": 7,
+      "expected_magnifi": 13,
+      "predicted_magnifi": 8,
+      "vai_error": 12,
+      "magnifi_error": 5,
+      "time": 5.407012224197388
+    },
+    {
+      "case_id": "edge_peds_001",
+      "expected_vai": 6,
+      "predicted_vai": 7,
+      "expected_magnifi": 3,
+      "predicted_magnifi": 8,
+      "vai_error": 1,
+      "magnifi_error": 5,
+      "time": 7.411955833435059
+    },
+    {
+      "case_id": "edge_mixed_001",
+      "expected_vai": 9,
+      "predicted_vai": 16,
+      "expected_magnifi": 9,
+      "predicted_magnifi": 20,
+      "vai_error": 7,
+      "magnifi_error": 11,
+      "time": 5.373713970184326
+    },
+    {
+      "case_id": "edge_severe_001",
+      "expected_vai": 22,
+      "predicted_vai": 10,
+      "expected_magnifi": 24,
+      "predicted_magnifi": 12,
+      "vai_error": 12,
+      "magnifi_error": 12,
+      "time": 5.463733911514282
+    },
+    {
+      "case_id": "edge_normal_001",
+      "expected_vai": 0,
+      "predicted_vai": 14,
+      "expected_magnifi": 0,
+      "predicted_magnifi": 17,
+      "vai_error": 14,
+      "magnifi_error": null,
+      "time": 5.318951845169067
+    },
+    {
+      "case_id": "edge_early_001",
+      "expected_vai": 6,
+      "predicted_vai": 7,
+      "expected_magnifi": 3,
+      "predicted_magnifi": 8,
+      "vai_error": 1,
+      "magnifi_error": 5,
+      "time": 5.348860025405884
+    },
+    {
+      "case_id": "synth_trans_remission_001",
+      "expected_vai": 2,
+      "predicted_vai": 10,
+      "expected_magnifi": 1,
+      "predicted_magnifi": 12,
+      "vai_error": 8,
+      "magnifi_error": 11,
+      "time": 5.623896837234497
+    },
+    {
+      "case_id": "synth_trans_remission_002",
+      "expected_vai": 2,
+      "predicted_vai": 10,
+      "expected_magnifi": 1,
+      "predicted_magnifi": 13,
+      "vai_error": 8,
+      "magnifi_error": 12,
+      "time": 5.964534044265747
+    },
+    {
+      "case_id": "synth_trans_remission_003",
+      "expected_vai": 2,
+      "predicted_vai": 14,
+      "expected_magnifi": 1,
+      "predicted_magnifi": 17,
+      "vai_error": 12,
+      "magnifi_error": 16,
+      "time": 8.716049909591675
+    },
+    {
+      "case_id": "synth_complex_remission_001",
+      "expected_vai": 2,
+      "predicted_vai": 7,
+      "expected_magnifi": 1,
+      "predicted_magnifi": 8,
+      "vai_error": 5,
+      "magnifi_error": 7,
+      "time": 5.454206943511963
+    }
+  ]
+}
