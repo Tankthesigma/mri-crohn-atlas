@@ -2787,6 +2787,26 @@ CRITICAL RULES:
 - "moderate" = ischioanal fossa, typical transsphincteric (3-4cm tracts)
 - "severe" = ONLY for supralevator, horseshoe pattern, extends to thigh/buttock
 
+=== FEW-SHOT EXAMPLES (Apply These Patterns) ===
+
+EXAMPLE 1 - HORSESHOE FISTULA:
+Input: "Fistula at 6 o'clock with bilateral extension into ischioanal fossae"
+Logic: "Bilateral extension" = horseshoe pattern, even if only one tract origin named
+Output: { "extension": { "value": "severe" }, "fistula_type": { "value": "complex" } }
+KEY: Horseshoe = always "severe" extension (3 points in MAGNIFI)
+
+EXAMPLE 2 - HEALED/FIBROTIC TRACT:
+Input: "Dark T2 linear band. No fluid signal or active inflammation."
+Logic: "Dark T2" + "no fluid signal" = inactive/healed tract with NO active disease
+Output: { "t2_hyperintensity": { "value": false, "degree": "none" }, "predominant_feature": { "value": "fibrotic" }, "overall_assessment": { "activity": "healed" } }
+KEY: Dark T2/no fluid signal → MAGNIFI should be 0
+
+EXAMPLE 3 - AMBIGUOUS/EQUIVOCAL REPORT:
+Input: "Possible tract vs scar. Cannot exclude small abscess."
+Logic: "Possible", "cannot exclude" = equivocal language, score conservatively
+Output: { "confidence": "low", "collections_abscesses": { "value": false, "confidence": "low" } }
+KEY: When uncertain, default to lower/absent rather than assuming worst case
+
 Return a JSON object with this EXACT structure:
 {
     "features": {
@@ -2866,7 +2886,34 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             return Math.min(score, 22);
         }
 
-        function calculateMAGNIFI(features, treatmentStatus) {
+        function calculateMAGNIFI(features, treatmentStatus, reportText = '') {
+            // === SYMBOLIC CLAMP: Force MAGNIFI=0 for clinically healed cases ===
+            // This overrides regression for cases where clinical evidence indicates no active disease
+
+            // Check 1: No T2 hyperintensity (inactive tract)
+            const noT2 = features.t2_hyperintensity?.value === false ||
+                         features.t2_hyperintensity?.degree === 'none';
+
+            // Check 2: Healed/fibrotic indicators in report text (case-insensitive)
+            const reportLower = (reportText || '').toLowerCase();
+            const healedKeywords = [
+                'healed', 'fibrotic', 'no active inflammation', 'dark t2',
+                'no fluid signal', 'inactive tract', 'scarred', 'resolved',
+                'completely healed', 'no residual', 'fibrosis without inflammation'
+            ];
+            const hasHealedIndicator = healedKeywords.some(kw => reportLower.includes(kw));
+
+            // Check 3: Fibrotic predominant feature
+            const isFibrotic = features.predominant_feature?.value === 'fibrotic';
+
+            // CLAMP: If any strong healed signal + no active inflammation markers, return 0
+            if ((noT2 || (hasHealedIndicator && isFibrotic)) &&
+                !features.collections_abscesses?.value &&
+                !features.inflammatory_mass?.value) {
+                return 0;
+            }
+
+            // === Standard MAGNIFI calculation ===
             let score = 0;
             const hasSeton = treatmentStatus === 'seton_in_place';
 
@@ -2987,7 +3034,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
             const resultsPanel = document.getElementById('results-panel');
 
             const vai = calculateVAI(features, treatmentStatus);
-            const magnifi = calculateMAGNIFI(features, treatmentStatus);
+            const magnifi = calculateMAGNIFI(features, treatmentStatus, reportText);
 
             const crosswalkPredicted = (1.031 * vai + 1.713).toFixed(1);
             const rmse = 1.10;
