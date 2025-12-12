@@ -790,7 +790,57 @@ interval = [corrected - q, corrected + q]  # q = conformal quantile
 
 ---
 
-*Last Updated: December 11, 2025*
+## Visualization Engine (Dec 12, 2025)
+
+### Fistula Map Generator
+- Created surgical visualization system in `src/visualization/visualize_case.py`
+- Multiple iterations: basic → Da Vinci → journal standard → Netter axial → **coronal cross-section**
+- Current version: **Coronal Cross-Section (Parks Classification)**
+- Output saved in `data/output/visualizations/`
+- TODO: Polish visualization style later (deprioritized for regionals)
+
+### Current Implementation Features
+| Feature | Description |
+|---------|-------------|
+| **View Type** | Coronal (vertical) cross-section through anal canal |
+| **Classification** | Parks Classification fistula pathing |
+| **Anatomical Layers** | Rectum, Levator Ani, EAS (striated), IAS (smooth), Ischioanal Fossa |
+| **Fistula Rendering** | Irregular tunnel with granulation tissue edges |
+| **Tract Types** | Intersphincteric, Transsphincteric, Suprasphincteric, Extrasphincteric |
+| **Pathology** | Abscess blobs, seton placement |
+| **Labels** | Professional anatomical labels with leader lines |
+| **Style** | Frank Netter medical illustration aesthetic |
+| **Output** | 300 DPI PNG with 1cm scale bar |
+
+### Files Created
+- `src/visualization/visualize_case.py` - Main visualization engine (coronal cross-section)
+- `data/output/visualizations/coronal_*.png` - Test outputs (4 cases)
+- `data/output/visualizations/netter_*.png` - Previous axial clock view (archived)
+- `data/output/visualizations/journal_*.png` - Earlier iterations (archived)
+
+### Generated Test Images
+1. `coronal_existing_rp_001_moderate.png` - Intersphincteric with abscess
+2. `coronal_existing_rp_002_severe.png` - Grade 4 transsphincteric with abscess
+3. `coronal_existing_rp_008_mild.png` - Superficial/transsphincteric
+4. `coronal_existing_rp_011_seton.png` - Transsphincteric with seton
+
+---
+
+## Conformal Prediction FINAL (V8b)
+
+**Summary:**
+- Overall coverage: **95.6% VAI, 97.1% MAGNIFI**
+- All severity levels >85%:
+  - Remission: 100%
+  - Mild: 100%
+  - Moderate: 92.9%
+  - Severe: 94.1%
+- Hybrid optimal calibration with group-specific bias correction
+- Prediction intervals adapt to case difficulty
+
+---
+
+*Last Updated: December 12, 2025*
 *Parser: ICC 0.940 (VAI), 0.961 (MAGNIFI) — +38% vs radiologists (REAL API)*
 *Conformal (V8b): 97.1% coverage, ALL severities >85% — Hybrid Optimal Calibration*
 *Validation: 68 test cases, 100% coverage, 85% VAI accuracy (±3)*
