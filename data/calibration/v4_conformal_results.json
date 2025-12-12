@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "version": "V4 Group-Balanced Cross-Conformal",
+    "timestamp": "2025-12-11T21:03:12.889964",
+    "n_folds": 5,
+    "alpha": 0.1,
+    "target_coverage": "90%",
+    "risk_threshold": 10
+  },
+  "summary": {
+    "n_cases": 68,
+    "vai_coverage": 0.9117647058823529,
+    "magnifi_coverage": 0.9264705882352942,
+    "vai_mean_width": 8.029411764705882,
+    "magnifi_mean_width": 7.117647058823529,
+    "vai_low_width": 7.476190476190476,
+    "vai_high_width": 8.923076923076923,
+    "magnifi_low_width": 6.0,
+    "magnifi_high_width": 10.0
+  },
+  "coverage_by_severity": {
+    "Remission": {
+      "vai_coverage": 1.0,
+      "magnifi_coverage": 1.0,
+      "n": 18
+    },
+    "Mild": {
+      "vai_coverage": 1.0,
+      "magnifi_coverage": 1.0,
+      "n": 15
+    },
+    "Moderate": {
+      "vai_coverage": 0.8571428571428571,
+      "magnifi_coverage": 0.9285714285714286,
+      "n": 14
+    },
+    "Severe": {
+      "vai_coverage": 0.7647058823529411,
+      "magnifi_coverage": 0.7647058823529411,
+      "n": 17
+    }
+  },
+  "fold_metrics": [
+    {
+      "fold": 0,
+      "n_test": 15,
+      "vai_coverage": 0.8666666666666667,
+      "magnifi_coverage": 0.9333333333333333
+    },
+    {
+      "fold": 1,
+      "n_test": 15,
+      "vai_coverage": 0.8666666666666667,
+      "magnifi_coverage": 0.9333333333333333
+    },
+    {
+      "fold": 2,
+      "n_test": 14,
+      "vai_coverage": 0.9285714285714286,
+      "magnifi_coverage": 0.9285714285714286
+    },
+    {
+      "fold": 3,
+      "n_test": 13,
+      "vai_coverage": 0.9230769230769231,
+      "magnifi_coverage": 0.9230769230769231
+    },
+    {
+      "fold": 4,
+      "n_test": 11,
+      "vai_coverage": 1.0,
+      "magnifi_coverage": 0.9090909090909091
+    }
+  ],
+  "detailed_results": [
+    {
+      "case_id": "synth_simple_severe_001",
+      "fold": 0,
+      "severity": "Severe",
+      "source": "synthetic_literature",
+      "expected_vai": 16,
+      "expected_magnifi": 16,
+      "raw_vai": 20,
+      "raw_magnifi": 20,
+      "corrected_vai": 19.7,
+      "corrected_magnifi": 20.4,
+      "vai_interval": [
+        15.7,
+        22
+      ],
+      "magnifi_interval": [
+        15.4,
+        25
+      ],
+      "vai_width": 8,
+      "magnifi_width": 10,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_group": "high",
+      "magnifi_group": "high"
+    },
+    {
+      "case_id": "synth_complex_mild_002",
+      "fold": 0,
+      "severity": "Mild",
+      "source": "synthetic_literature",
+      "expected_vai": 6,
+      "expected_magnifi": 5,
+      "raw_vai": 8,
+      "raw_magnifi": 4,
+      "corrected_vai": 8.4,
+      "corrected_magnifi": 4.9,
+      "vai_interval": [
+        4.4,
+        12.4
+      ],
+      "magnifi_interval": [
+        1.9,
+        7.9
+      ],
+      "vai_width": 8,
+      "magnifi_width": 6,
+      "vai_covered": 

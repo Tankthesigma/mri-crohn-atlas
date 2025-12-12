@@ -49,7 +49,7 @@ def main():
     print("\n[Step 2] Setting OPENROUTER_API_KEY environment variable...")
 
     # The new API key provided
-    api_key = "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"
+    api_key = os.environ.get("OPENROUTER_API_KEY", "your-api-key-here")
 
     # Set it in the current process environment
     os.environ["OPENROUTER_API_KEY"] = api_key

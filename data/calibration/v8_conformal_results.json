@@ -1,0 +1,1915 @@
+{
+  "metadata": {
+    "version": "V8 Fully Independent Calibration",
+    "timestamp": "2025-12-11T22:03:49.441127",
+    "n_folds": 5,
+    "alpha": 0.1,
+    "target_coverage": "90%",
+    "strategy": {
+      "mild": "Own Bias + Own Quantile",
+      "moderate": "Own Bias + Own Quantile",
+      "severe": "Own Quantile only (no bias)"
+    }
+  },
+  "summary": {
+    "n_cases": 68,
+    "vai_coverage": 0.9264705882352942,
+    "magnifi_coverage": 0.9411764705882353,
+    "vai_mean_width": 9.088235294117647,
+    "magnifi_mean_width": 7.264705882352941,
+    "vai_mae": 1.6823529411764706,
+    "magnifi_mae": 1.5426470588235293
+  },
+  "coverage_by_severity": {
+    "Remission": {
+      "vai_coverage": 1.0,
+      "magnifi_coverage": 1.0,
+      "n": 18
+    },
+    "Mild": {
+      "vai_coverage": 0.8,
+      "magnifi_coverage": 0.8666666666666667,
+      "n": 15
+    },
+    "Moderate": {
+      "vai_coverage": 0.9285714285714286,
+      "magnifi_coverage": 0.9285714285714286,
+      "n": 14
+    },
+    "Severe": {
+      "vai_coverage": 0.9411764705882353,
+      "magnifi_coverage": 0.9411764705882353,
+      "n": 17
+    }
+  },
+  "fold_metrics": [
+    {
+      "fold": 0,
+      "n_test": 15,
+      "vai_coverage": 1.0,
+      "magnifi_coverage": 1.0
+    },
+    {
+      "fold": 1,
+      "n_test": 15,
+      "vai_coverage": 0.8666666666666667,
+      "magnifi_coverage": 0.9333333333333333
+    },
+    {
+      "fold": 2,
+      "n_test": 14,
+      "vai_coverage": 0.9285714285714286,
+      "magnifi_coverage": 1.0
+    },
+    {
+      "fold": 3,
+      "n_test": 13,
+      "vai_coverage": 0.9230769230769231,
+      "magnifi_coverage": 0.9230769230769231
+    },
+    {
+      "fold": 4,
+      "n_test": 11,
+      "vai_coverage": 0.9090909090909091,
+      "magnifi_coverage": 0.8181818181818182
+    }
+  ],
+  "detailed_results": [
+    {
+      "case_id": "synth_simple_severe_001",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 16,
+      "expected_magnifi": 16,
+      "raw_vai": 20,
+      "raw_magnifi": 20,
+      "corrected_vai": 20.0,
+      "corrected_magnifi": 20.0,
+      "vai_interval": [
+        13.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        14.0,
+        25.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_complex_mild_002",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 6,
+      "expected_magnifi": 5,
+      "raw_vai": 8,
+      "raw_magnifi": 4,
+      "corrected_vai": 7.5,
+      "corrected_magnifi": 4.2,
+      "vai_interval": [
+        4.5,
+        10.5
+      ],
+      "magnifi_interval": [
+        2.2,
+        6.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_trans_severe_001",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 18,
+      "expected_magnifi": 18,
+      "raw_vai": 21,
+      "raw_magnifi": 23,
+      "corrected_vai": 21.0,
+      "corrected_magnifi": 23.0,
+      "vai_interval": [
+        14.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        17.0,
+        25.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_postsurg_severe_002",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 22,
+      "expected_magnifi": 23,
+      "raw_vai": 18,
+      "raw_magnifi": 22,
+      "corrected_vai": 18.0,
+      "corrected_magnifi": 22.0,
+      "vai_interval": [
+        11.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        16.0,
+        25.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_horseshoe_remission_001",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 0,
+      "raw_magnifi": 0,
+      "corrected_vai": -0.5,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        2.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_horseshoe_mild_001",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 6,
+      "expected_magnifi": 5,
+      "raw_vai": 8,
+      "raw_magnifi": 4,
+      "corrected_vai": 7.5,
+      "corrected_magnifi": 4.2,
+      "vai_interval": [
+        4.5,
+        10.5
+      ],
+      "magnifi_interval": [
+        2.2,
+        6.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_horseshoe_moderate_001",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Moderate",
+      "expected_vai": 13,
+      "expected_magnifi": 11,
+      "raw_vai": 15,
+      "raw_magnifi": 9,
+      "corrected_vai": 14.7,
+      "corrected_magnifi": 9.5,
+      "vai_interval": [
+        6.7,
+        22.0
+      ],
+      "magnifi_interval": [
+        3.5,
+        15.5
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.27,
+      "magnifi_bias_applied": -0.55,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "synth_horseshoe_moderate_002",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Moderate",
+      "expected_vai": 11,
+      "expected_magnifi": 9,
+      "raw_vai": 12,
+      "raw_magnifi": 6,
+      "corrected_vai": 11.7,
+      "corrected_magnifi": 6.5,
+      "vai_interval": [
+        3.7,
+        19.7
+      ],
+      "magnifi_interval": [
+        0.5,
+        12.5
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.27,
+      "magnifi_bias_applied": -0.55,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "edge_healed_001",
+      "fold": 0,
+      "source": "edge_cases",
+      "severity": "Remission",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.5,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        4.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_extra_mild_001",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 8,
+      "expected_magnifi": 6,
+      "raw_vai": 9,
+      "raw_magnifi": 6,
+      "corrected_vai": 8.5,
+      "corrected_magnifi": 6.2,
+      "vai_interval": [
+        5.5,
+        11.5
+      ],
+      "magnifi_interval": [
+        4.2,
+        8.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "edge_postsurg_001",
+      "fold": 0,
+      "source": "edge_cases",
+      "severity": "Remission",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.5,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        4.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_peds_remission_002",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 0,
+      "raw_magnifi": 0,
+      "corrected_vai": -0.5,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        2.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "edge_mixed_001",
+      "fold": 0,
+      "source": "edge_cases",
+      "severity": "Moderate",
+      "expected_vai": 9,
+      "expected_magnifi": 9,
+      "raw_vai": 16,
+      "raw_magnifi": 11,
+      "corrected_vai": 15.7,
+      "corrected_magnifi": 11.5,
+      "vai_interval": [
+        7.7,
+        22.0
+      ],
+      "magnifi_interval": [
+        5.5,
+        17.5
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.27,
+      "magnifi_bias_applied": -0.55,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "edge_normal_001",
+      "fold": 0,
+      "source": "edge_cases",
+      "severity": "N/A",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 0,
+      "raw_magnifi": 0,
+      "corrected_vai": -0.5,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        2.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_peds_severe_001",
+      "fold": 0,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 21,
+      "expected_magnifi": 22,
+      "raw_vai": 20,
+      "raw_magnifi": 22,
+      "corrected_vai": 20.0,
+      "corrected_magnifi": 22.0,
+      "vai_interval": [
+        13.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        16.0,
+        25.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_complex_mild_003",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 6,
+      "expected_magnifi": 5,
+      "raw_vai": 6,
+      "raw_magnifi": 3,
+      "corrected_vai": 5.3,
+      "corrected_magnifi": 3.2,
+      "vai_interval": [
+        3.3,
+        7.3
+      ],
+      "magnifi_interval": [
+        1.2,
+        5.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_trans_mild_002",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 6,
+      "expected_magnifi": 5,
+      "raw_vai": 9,
+      "raw_magnifi": 6,
+      "corrected_vai": 8.3,
+      "corrected_magnifi": 6.2,
+      "vai_interval": [
+        6.3,
+        10.3
+      ],
+      "magnifi_interval": [
+        4.2,
+        8.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": false,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_fibrotic_severe_002",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 10,
+      "expected_magnifi": 8,
+      "raw_vai": 6,
+      "raw_magnifi": 7,
+      "corrected_vai": 6.0,
+      "corrected_magnifi": 7.0,
+      "vai_interval": [
+        1.0,
+        11.0
+      ],
+      "magnifi_interval": [
+        2.0,
+        12.0
+      ],
+      "vai_width": 10.0,
+      "magnifi_width": 10.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "existing_rp_004",
+      "fold": 1,
+      "source": "radiopaedia",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 2,
+      "raw_vai": 2,
+      "raw_magnifi": 1,
+      "corrected_vai": 1.3,
+      "corrected_magnifi": 1.2,
+      "vai_interval": [
+        0.0,
+        3.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        3.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "existing_rp_006",
+      "fold": 1,
+      "source": "radiopaedia",
+      "severity": "Severe",
+      "expected_vai": 13,
+      "expected_magnifi": 11,
+      "raw_vai": 6,
+      "raw_magnifi": 5,
+      "corrected_vai": 6.0,
+      "corrected_magnifi": 5.0,
+      "vai_interval": [
+        1.0,
+        11.0
+      ],
+      "magnifi_interval": [
+        0.0,
+        10.0
+      ],
+      "vai_width": 10.0,
+      "magnifi_width": 10.0,
+      "vai_covered": false,
+      "magnifi_covered": false,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "existing_rp_007",
+      "fold": 1,
+      "source": "radiopaedia",
+      "severity": "Moderate",
+      "expected_vai": 9,
+      "expected_magnifi": 8,
+      "raw_vai": 9,
+      "raw_magnifi": 10,
+      "corrected_vai": 8.5,
+      "corrected_magnifi": 11.4,
+      "vai_interval": [
+        0.5,
+        16.5
+      ],
+      "magnifi_interval": [
+        5.4,
+        17.4
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.45,
+      "magnifi_bias_applied": -1.36,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "existing_rp_009",
+      "fold": 1,
+      "source": "radiopaedia",
+      "severity": "N/A",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 0,
+      "raw_magnifi": 0,
+      "corrected_vai": -0.7,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        1.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "existing_rp_010",
+      "fold": 1,
+      "source": "radiopaedia",
+      "severity": "Mild",
+      "expected_vai": 4,
+      "expected_magnifi": 4,
+      "raw_vai": 3,
+      "raw_magnifi": 5,
+      "corrected_vai": 2.3,
+      "corrected_magnifi": 5.2,
+      "vai_interval": [
+        0.3,
+        4.3
+      ],
+      "magnifi_interval": [
+        3.2,
+        7.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "existing_pmc_002",
+      "fold": 1,
+      "source": "pubmed_central",
+      "severity": "Severe",
+      "expected_vai": 22,
+      "expected_magnifi": 25,
+      "raw_vai": 22,
+      "raw_magnifi": 24,
+      "corrected_vai": 22.0,
+      "corrected_magnifi": 24.0,
+      "vai_interval": [
+        17.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        19.0,
+        25.0
+      ],
+      "vai_width": 10.0,
+      "magnifi_width": 10.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_extra_remission_001",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 3,
+      "expected_magnifi": 1,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.3,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        3.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_extra_moderate_001",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Moderate",
+      "expected_vai": 14,
+      "expected_magnifi": 13,
+      "raw_vai": 18,
+      "raw_magnifi": 15,
+      "corrected_vai": 17.5,
+      "corrected_magnifi": 16.4,
+      "vai_interval": [
+        9.5,
+        22.0
+      ],
+      "magnifi_interval": [
+        10.4,
+        22.4
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.45,
+      "magnifi_bias_applied": -1.36,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "synth_peds_remission_001",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 2,
+      "raw_magnifi": 1,
+      "corrected_vai": 1.3,
+      "corrected_magnifi": 1.2,
+      "vai_interval": [
+        0.0,
+        3.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        3.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_peds_moderate_001",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Moderate",
+      "expected_vai": 14,
+      "expected_magnifi": 13,
+      "raw_vai": 18,
+      "raw_magnifi": 15,
+      "corrected_vai": 17.5,
+      "corrected_magnifi": 16.4,
+      "vai_interval": [
+        9.5,
+        22.0
+      ],
+      "magnifi_interval": [
+        10.4,
+        22.4
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.45,
+      "magnifi_bias_applied": -1.36,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "synth_peds_severe_003",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 20,
+      "expected_magnifi": 21,
+      "raw_vai": 20,
+      "raw_magnifi": 19,
+      "corrected_vai": 20.0,
+      "corrected_magnifi": 19.0,
+      "vai_interval": [
+        15.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        14.0,
+        24.0
+      ],
+      "vai_width": 10.0,
+      "magnifi_width": 10.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_simple_remission_001",
+      "fold": 1,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 1,
+      "raw_magnifi": 0,
+      "corrected_vai": 0.3,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        2.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.24,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "existing_rp_001",
+      "fold": 2,
+      "source": "radiopaedia",
+      "severity": "Moderate",
+      "expected_vai": 7,
+      "expected_magnifi": 6,
+      "raw_vai": 9,
+      "raw_magnifi": 7,
+      "corrected_vai": 8.2,
+      "corrected_magnifi": 7.5,
+      "vai_interval": [
+        0.2,
+        16.2
+      ],
+      "magnifi_interval": [
+        1.5,
+        13.5
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.82,
+      "magnifi_bias_applied": -0.55,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "existing_rp_003",
+      "fold": 2,
+      "source": "radiopaedia",
+      "severity": "Moderate",
+      "expected_vai": 11,
+      "expected_magnifi": 10,
+      "raw_vai": 11,
+      "raw_magnifi": 7,
+      "corrected_vai": 10.2,
+      "corrected_magnifi": 7.5,
+      "vai_interval": [
+        2.2,
+        18.2
+      ],
+      "magnifi_interval": [
+        1.5,
+        13.5
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.82,
+      "magnifi_bias_applied": -0.55,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "synth_postsurg_severe_001",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 20,
+      "expected_magnifi": 21,
+      "raw_vai": 18,
+      "raw_magnifi": 22,
+      "corrected_vai": 18.0,
+      "corrected_magnifi": 22.0,
+      "vai_interval": [
+        11.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        16.0,
+        25.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_ambig_remission_001",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 0,
+      "raw_magnifi": 0,
+      "corrected_vai": -0.7,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        1.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "existing_rp_008",
+      "fold": 2,
+      "source": "radiopaedia",
+      "severity": "Mild",
+      "expected_vai": 7,
+      "expected_magnifi": 6,
+      "raw_vai": 4,
+      "raw_magnifi": 5,
+      "corrected_vai": 3.3,
+      "corrected_magnifi": 5.2,
+      "vai_interval": [
+        1.3,
+        5.3
+      ],
+      "magnifi_interval": [
+        3.2,
+        7.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": false,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_ambig_severe_001",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 18,
+      "expected_magnifi": 18,
+      "raw_vai": 16,
+      "raw_magnifi": 15,
+      "corrected_vai": 16.0,
+      "corrected_magnifi": 15.0,
+      "vai_interval": [
+        9.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        9.0,
+        21.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "existing_rp_011",
+      "fold": 2,
+      "source": "radiopaedia",
+      "severity": "Moderate",
+      "expected_vai": 9,
+      "expected_magnifi": 9,
+      "raw_vai": 11,
+      "raw_magnifi": 8,
+      "corrected_vai": 10.2,
+      "corrected_magnifi": 8.5,
+      "vai_interval": [
+        2.2,
+        18.2
+      ],
+      "magnifi_interval": [
+        2.5,
+        14.5
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.82,
+      "magnifi_bias_applied": -0.55,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "existing_rp_012",
+      "fold": 2,
+      "source": "radiopaedia",
+      "severity": "N/A",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 1,
+      "raw_magnifi": 1,
+      "corrected_vai": 0.3,
+      "corrected_magnifi": 1.2,
+      "vai_interval": [
+        0.0,
+        2.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        3.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_horseshoe_remission_002",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.3,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        3.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "edge_horseshoe_001",
+      "fold": 2,
+      "source": "edge_cases",
+      "severity": "Severe",
+      "expected_vai": 19,
+      "expected_magnifi": 13,
+      "raw_vai": 14,
+      "raw_magnifi": 8,
+      "corrected_vai": 14.0,
+      "corrected_magnifi": 8.0,
+      "vai_interval": [
+        7.0,
+        21.0
+      ],
+      "magnifi_interval": [
+        2.0,
+        14.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_abscess_mild_001",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 9,
+      "expected_magnifi": 7,
+      "raw_vai": 10,
+      "raw_magnifi": 5,
+      "corrected_vai": 9.3,
+      "corrected_magnifi": 5.2,
+      "vai_interval": [
+        7.3,
+        11.3
+      ],
+      "magnifi_interval": [
+        3.2,
+        7.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_abscess_mild_002",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 8,
+      "expected_magnifi": 6,
+      "raw_vai": 10,
+      "raw_magnifi": 7,
+      "corrected_vai": 9.3,
+      "corrected_magnifi": 7.2,
+      "vai_interval": [
+        7.3,
+        11.3
+      ],
+      "magnifi_interval": [
+        5.2,
+        9.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_complex_remission_002",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.3,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        3.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_simple_remission_002",
+      "fold": 2,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 1,
+      "raw_magnifi": 0,
+      "corrected_vai": 0.3,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        2.3
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.66,
+      "magnifi_bias_applied": -0.21,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_fibrotic_severe_001",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 8,
+      "expected_magnifi": 8,
+      "raw_vai": 6,
+      "raw_magnifi": 7,
+      "corrected_vai": 6.0,
+      "corrected_magnifi": 7.0,
+      "vai_interval": [
+        0.0,
+        13.0
+      ],
+      "magnifi_interval": [
+        1.0,
+        13.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "existing_rp_005",
+      "fold": 3,
+      "source": "radiopaedia",
+      "severity": "N/A",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 0,
+      "raw_magnifi": 0,
+      "corrected_vai": -0.6,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        2.4
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.57,
+      "magnifi_bias_applied": -0.23,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_postsurg_mild_001",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 5,
+      "expected_magnifi": 5,
+      "raw_vai": 7,
+      "raw_magnifi": 5,
+      "corrected_vai": 6.4,
+      "corrected_magnifi": 5.2,
+      "vai_interval": [
+        3.4,
+        9.4
+      ],
+      "magnifi_interval": [
+        3.2,
+        7.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.57,
+      "magnifi_bias_applied": -0.23,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_ambig_remission_002",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 0,
+      "expected_magnifi": 0,
+      "raw_vai": 1,
+      "raw_magnifi": 0,
+      "corrected_vai": 0.4,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        3.4
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.57,
+      "magnifi_bias_applied": -0.23,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_ambig_severe_002",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 20,
+      "expected_magnifi": 19,
+      "raw_vai": 20,
+      "raw_magnifi": 17,
+      "corrected_vai": 20.0,
+      "corrected_magnifi": 17.0,
+      "vai_interval": [
+        13.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        11.0,
+        23.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "existing_pmc_003",
+      "fold": 3,
+      "source": "pubmed_central",
+      "severity": "Mild",
+      "expected_vai": 3,
+      "expected_magnifi": 2,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.4,
+      "corrected_magnifi": 0.2,
+      "vai_interval": [
+        0.0,
+        4.4
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.57,
+      "magnifi_bias_applied": -0.23,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "edge_ambig_001",
+      "fold": 3,
+      "source": "edge_cases",
+      "severity": "Moderate",
+      "expected_vai": 8,
+      "expected_magnifi": 6,
+      "raw_vai": 0,
+      "raw_magnifi": 0,
+      "corrected_vai": -1.8,
+      "corrected_magnifi": 0.1,
+      "vai_interval": [
+        0.0,
+        5.2
+      ],
+      "magnifi_interval": [
+        0.0,
+        3.1
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 6.0,
+      "vai_covered": false,
+      "magnifi_covered": false,
+      "vai_bias_applied": 1.82,
+      "magnifi_bias_applied": -0.09,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "edge_severe_001",
+      "fold": 3,
+      "source": "edge_cases",
+      "severity": "Severe",
+      "expected_vai": 22,
+      "expected_magnifi": 24,
+      "raw_vai": 22,
+      "raw_magnifi": 25,
+      "corrected_vai": 22.0,
+      "corrected_magnifi": 25.0,
+      "vai_interval": [
+        15.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        19.0,
+        25.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_peds_moderate_002",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Moderate",
+      "expected_vai": 13,
+      "expected_magnifi": 12,
+      "raw_vai": 14,
+      "raw_magnifi": 13,
+      "corrected_vai": 12.2,
+      "corrected_magnifi": 13.1,
+      "vai_interval": [
+        5.2,
+        19.2
+      ],
+      "magnifi_interval": [
+        10.1,
+        16.1
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 6.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 1.82,
+      "magnifi_bias_applied": -0.09,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "synth_peds_moderate_003",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Moderate",
+      "expected_vai": 12,
+      "expected_magnifi": 11,
+      "raw_vai": 12,
+      "raw_magnifi": 8,
+      "corrected_vai": 10.2,
+      "corrected_magnifi": 8.1,
+      "vai_interval": [
+        3.2,
+        17.2
+      ],
+      "magnifi_interval": [
+        5.1,
+        11.1
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 6.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 1.82,
+      "magnifi_bias_applied": -0.09,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "edge_early_001",
+      "fold": 3,
+      "source": "edge_cases",
+      "severity": "Mild",
+      "expected_vai": 6,
+      "expected_magnifi": 3,
+      "raw_vai": 6,
+      "raw_magnifi": 3,
+      "corrected_vai": 5.4,
+      "corrected_magnifi": 3.2,
+      "vai_interval": [
+        2.4,
+        8.4
+      ],
+      "magnifi_interval": [
+        1.2,
+        5.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.57,
+      "magnifi_bias_applied": -0.23,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_trans_remission_001",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 3,
+      "raw_magnifi": 1,
+      "corrected_vai": 2.4,
+      "corrected_magnifi": 1.2,
+      "vai_interval": [
+        0.0,
+        5.4
+      ],
+      "magnifi_interval": [
+        0.0,
+        3.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.57,
+      "magnifi_bias_applied": -0.23,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_trans_remission_003",
+      "fold": 3,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 3,
+      "raw_magnifi": 1,
+      "corrected_vai": 2.4,
+      "corrected_magnifi": 1.2,
+      "vai_interval": [
+        0.0,
+        5.4
+      ],
+      "magnifi_interval": [
+        0.0,
+        3.2
+      ],
+      "vai_width": 6.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.57,
+      "magnifi_bias_applied": -0.23,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "existing_rp_002",
+      "fold": 4,
+      "source": "radiopaedia",
+      "severity": "Severe",
+      "expected_vai": 16,
+      "expected_magnifi": 17,
+      "raw_vai": 17,
+      "raw_magnifi": 12,
+      "corrected_vai": 17.0,
+      "corrected_magnifi": 12.0,
+      "vai_interval": [
+        10.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        6.0,
+        18.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_trans_mild_001",
+      "fold": 4,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 7,
+      "expected_magnifi": 5,
+      "raw_vai": 9,
+      "raw_magnifi": 4,
+      "corrected_vai": 8.5,
+      "corrected_magnifi": 4.3,
+      "vai_interval": [
+        6.5,
+        10.5
+      ],
+      "magnifi_interval": [
+        2.3,
+        6.3
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.32,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "existing_pmc_001",
+      "fold": 4,
+      "source": "pubmed_central",
+      "severity": "Severe",
+      "expected_vai": 18,
+      "expected_magnifi": 19,
+      "raw_vai": 17,
+      "raw_magnifi": 17,
+      "corrected_vai": 17.0,
+      "corrected_magnifi": 17.0,
+      "vai_interval": [
+        10.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        11.0,
+        23.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "edge_complex_001",
+      "fold": 4,
+      "source": "edge_cases",
+      "severity": "Moderate",
+      "expected_vai": 12,
+      "expected_magnifi": 9,
+      "raw_vai": 8,
+      "raw_magnifi": 6,
+      "corrected_vai": 6.8,
+      "corrected_magnifi": 6.7,
+      "vai_interval": [
+        0.0,
+        14.8
+      ],
+      "magnifi_interval": [
+        0.7,
+        12.7
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 1.25,
+      "magnifi_bias_applied": -0.67,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "edge_abscess_001",
+      "fold": 4,
+      "source": "edge_cases",
+      "severity": "Moderate",
+      "expected_vai": 10,
+      "expected_magnifi": 10,
+      "raw_vai": 12,
+      "raw_magnifi": 12,
+      "corrected_vai": 10.8,
+      "corrected_magnifi": 12.7,
+      "vai_interval": [
+        2.8,
+        18.8
+      ],
+      "magnifi_interval": [
+        6.7,
+        18.7
+      ],
+      "vai_width": 16.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 1.25,
+      "magnifi_bias_applied": -0.67,
+      "calibration_group": "moderate"
+    },
+    {
+      "case_id": "synth_peds_remission_003",
+      "fold": 4,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 3,
+      "raw_magnifi": 1,
+      "corrected_vai": 2.5,
+      "corrected_magnifi": 1.3,
+      "vai_interval": [
+        0.5,
+        4.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        3.3
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.32,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "edge_peds_001",
+      "fold": 4,
+      "source": "edge_cases",
+      "severity": "Mild",
+      "expected_vai": 6,
+      "expected_magnifi": 3,
+      "raw_vai": 6,
+      "raw_magnifi": 5,
+      "corrected_vai": 5.5,
+      "corrected_magnifi": 5.3,
+      "vai_interval": [
+        3.5,
+        7.5
+      ],
+      "magnifi_interval": [
+        3.3,
+        7.3
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": false,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.32,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_peds_severe_002",
+      "fold": 4,
+      "source": "synthetic_literature",
+      "severity": "Severe",
+      "expected_vai": 22,
+      "expected_magnifi": 24,
+      "raw_vai": 20,
+      "raw_magnifi": 22,
+      "corrected_vai": 20.0,
+      "corrected_magnifi": 22.0,
+      "vai_interval": [
+        13.0,
+        22.0
+      ],
+      "magnifi_interval": [
+        16.0,
+        25.0
+      ],
+      "vai_width": 14.0,
+      "magnifi_width": 12.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.0,
+      "magnifi_bias_applied": 0.0,
+      "calibration_group": "severe"
+    },
+    {
+      "case_id": "synth_trans_remission_002",
+      "fold": 4,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.5,
+      "corrected_magnifi": 0.3,
+      "vai_interval": [
+        0.0,
+        3.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.3
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.32,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_complex_remission_001",
+      "fold": 4,
+      "source": "synthetic_literature",
+      "severity": "Remission",
+      "expected_vai": 2,
+      "expected_magnifi": 1,
+      "raw_vai": 2,
+      "raw_magnifi": 0,
+      "corrected_vai": 1.5,
+      "corrected_magnifi": 0.3,
+      "vai_interval": [
+        0.0,
+        3.5
+      ],
+      "magnifi_interval": [
+        0.0,
+        2.3
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": true,
+      "magnifi_covered": true,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.32,
+      "calibration_group": "mild"
+    },
+    {
+      "case_id": "synth_complex_mild_001",
+      "fold": 4,
+      "source": "synthetic_literature",
+      "severity": "Mild",
+      "expected_vai": 6,
+      "expected_magnifi": 5,
+      "raw_vai": 9,
+      "raw_magnifi": 7,
+      "corrected_vai": 8.5,
+      "corrected_magnifi": 7.3,
+      "vai_interval": [
+        6.5,
+        10.5
+      ],
+      "magnifi_interval": [
+        5.3,
+        9.3
+      ],
+      "vai_width": 4.0,
+      "magnifi_width": 4.0,
+      "vai_covered": false,
+      "magnifi_covered": false,
+      "vai_bias_applied": 0.48,
+      "magnifi_bias_applied": -0.32,
+      "calibration_group": "mild"
+    }
+  ]
+}

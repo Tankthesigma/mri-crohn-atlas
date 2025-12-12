@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 
 # API Configuration
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 MODEL = "deepseek/deepseek-chat"  # Using deepseek-chat as in the web parser
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 

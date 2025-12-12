@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-V3 Cross-Conformal Prediction with Bias Correction
-===================================================
+V5 Granular Group-Balanced Cross-Conformal Prediction
+=====================================================
 
 MRI-Crohn Atlas ISEF 2026 Project
 Parser Validation with Distribution-Free Uncertainty Quantification
@@ -9,10 +9,20 @@ Parser Validation with Distribution-Free Uncertainty Quantification
 This script implements:
 1. K-fold cross-conformal prediction for calibrated prediction intervals
 2. BIAS CORRECTION: Subtracts mean calibration error before interval generation
-3. Full validation metrics (MAE, ICC, coverage, interval width)
+3. 3-TIER GROUP-BALANCED CALIBRATION: Separate quantiles for each severity band
+4. Full validation metrics (MAE, ICC, coverage, interval width)
 
-V2 Results showed: MAE 1.30, Coverage 25%, Bias +0.78
-V3 Goal: Apply bias correction to achieve >80% coverage
+V4 Results showed "masking problem":
+  - Moderate data diluting Severe error variance
+  - Severe group stuck at 76.5% coverage
+
+V5 Solution: 3 Calibration Groups based on Predicted Score
+  - Group 1 (Remission/Mild): Predicted Score < 10 → use q_low
+  - Group 2 (Moderate): Predicted Score 10-15 → use q_mid
+  - Group 3 (Severe): Predicted Score >= 16 → use q_high
+
+This allows Severe intervals to expand automatically without affecting
+precision of Mild/Moderate cases.
 
 Author: Tanmay Vasudeva
 """
@@ -29,7 +39,7 @@ from typing import List, Dict, Tuple, Optional
 
 # ============== CONFIGURATION ==============
 # API key from environment variable (set by fix_and_reset.py or manually)
-OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "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")
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 MODEL = "deepseek/deepseek-chat"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
@@ -38,12 +48,16 @@ SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent
 CASES_FILE = PROJECT_ROOT / "data" / "parser_validation" / "mega_test_cases.json"
 PROGRESS_FILE = SCRIPT_DIR / "parser_validation_progress.json"
-RESULTS_FILE = SCRIPT_DIR / "v3_conformal_results.json"
+RESULTS_FILE = SCRIPT_DIR / "v5_conformal_results.json"
 
 # Cross-conformal parameters
 N_FOLDS = 5
 ALPHA = 0.10  # 90% coverage target (1 - alpha)
 RATE_LIMIT_DELAY = 1.5  # seconds between API calls
+
+# V5: 3-tier group thresholds for granular calibration
+THRESH_LOW = 10   # Group 1: pred < 10 (Remission/Mild)
+THRESH_HIGH = 16  # Group 3: pred >= 16 (Severe), Group 2: 10-15 (Moderate)
 
 # ============== EXTRACTION PROMPT ==============
 EXTRACTION_PROMPT = """You are an expert radiologist analyzing MRI findings for perianal fistulas.
@@ -250,7 +264,7 @@ def call_api(report_text: str) -> Dict:
                 "Authorization": f"Bearer {OPENROUTER_API_KEY}",
                 "Content-Type": "application/json",
                 "HTTP-Referer": "https://mri-crohn-atlas.vercel.app",
-                "X-Title": "MRI-Crohn Atlas V3 Conformal Validation"
+                "X-Title": "MRI-Crohn Atlas V4 Conformal Validation"
             },
             json={
                 "model": MODEL,
@@ -277,33 +291,64 @@ def call_api(report_text: str) -> Dict:
         return {"error": str(e)}
 
 
-# ============== CROSS-CONFORMAL PREDICTION ==============
-class BiasCorrectCrossConformal:
+# ============== V5: 3-TIER GROUP-BALANCED CROSS-CONFORMAL PREDICTION ==============
+class GranularGroupBalancedConformal:
     """
-    Cross-Conformal Prediction with Bias Correction
+    V5 Granular Group-Balanced Cross-Conformal Prediction with Bias Correction
 
-    Key insight from V2: Positive bias (+0.78) causes low coverage (25%).
-    V3 fix: Subtract mean error (bias) from predictions before computing intervals.
+    Key insight from V4: "Masking problem"
+      - Moderate data diluting Severe error variance in High group
+      - Severe group stuck at 76.5% coverage
+
+    V5 Solution: 3 Calibration Groups based on Predicted Score
+      - Group 1 (Remission/Mild): Predicted Score < 10 → q_low
+      - Group 2 (Moderate): Predicted Score 10-15 → q_mid
+      - Group 3 (Severe): Predicted Score >= 16 → q_high
+
+    This allows Severe intervals to expand automatically without affecting
+    precision of Mild/Moderate cases.
     """
 
-    def __init__(self, n_folds: int = 5, alpha: float = 0.10):
+    def __init__(self, n_folds: int = 5, alpha: float = 0.10,
+                 thresh_low: float = 10, thresh_high: float = 16):
         self.n_folds = n_folds
         self.alpha = alpha  # 1 - alpha = coverage level (e.g., 0.10 -> 90%)
-        self.calibration_scores = []
-        self.bias_vai = 0.0  # Will be calculated from calibration set
-        self.bias_magnifi = 0.0
+        self.thresh_low = thresh_low    # < thresh_low = Group 1 (low)
+        self.thresh_high = thresh_high  # >= thresh_high = Group 3 (high), else Group 2 (mid)
+
+        # Separate calibration data for each of 3 groups
+        self.calibration_scores = {
+            'low': {'vai': [], 'magnifi': []},
+            'mid': {'vai': [], 'magnifi': []},
+            'high': {'vai': [], 'magnifi': []}
+        }
+
+        # Bias per group
+        self.bias = {
+            'low': {'vai': 0.0, 'magnifi': 0.0},
+            'mid': {'vai': 0.0, 'magnifi': 0.0},
+            'high': {'vai': 0.0, 'magnifi': 0.0}
+        }
+
+    def _get_group(self, score: float) -> str:
+        """Determine which group a score belongs to."""
+        if score < self.thresh_low:
+            return 'low'
+        elif score >= self.thresh_high:
+            return 'high'
+        else:
+            return 'mid'
 
     def calibrate(self, predictions: List[Dict], ground_truths: List[Dict]) -> Dict:
         """
         Calculate nonconformity scores and bias from calibration set.
-
-        Nonconformity score = |prediction - truth| (absolute residual)
-        Bias = mean(prediction - truth) (signed, for correction)
+        SPLIT by predicted score into 3 groups: Low, Mid, High.
         """
-        vai_scores = []
-        mag_scores = []
-        vai_errors = []  # signed errors for bias
-        mag_errors = []
+        # Collect errors by group
+        vai_scores = {'low': [], 'mid': [], 'high': []}
+        mag_scores = {'low': [], 'mid': [], 'high': []}
+        vai_errors = {'low': [], 'mid': [], 'high': []}
+        mag_errors = {'low': [], 'mid': [], 'high': []}
 
         for pred, truth in zip(predictions, ground_truths):
             pred_vai = pred.get('vai_score', 0)
@@ -311,29 +356,47 @@ class BiasCorrectCrossConformal:
             true_vai = truth.get('expected_vai_score', 0)
             true_mag = truth.get('expected_magnifi_score', 0)
 
-            if pred_vai is not None and true_vai is not None:
-                vai_scores.append(abs(pred_vai - true_vai))
-                vai_errors.append(pred_vai - true_vai)  # signed
+            if pred_vai is None or true_vai is None:
+                continue
 
-            if pred_mag is not None and true_mag is not None:
-                mag_scores.append(abs(pred_mag - true_mag))
-                mag_errors.append(pred_mag - true_mag)  # signed
+            vai_abs_err = abs(pred_vai - true_vai)
+            vai_signed_err = pred_vai - true_vai
+            mag_abs_err = abs(pred_mag - true_mag)
+            mag_signed_err = pred_mag - true_mag
 
-        self.calibration_scores = {
-            'vai': sorted(vai_scores),
-            'magnifi': sorted(mag_scores)
-        }
+            # Assign to group based on predicted score
+            vai_group = self._get_group(pred_vai)
+            mag_group = self._get_group(pred_mag)
 
-        # Calculate bias (mean signed error)
-        self.bias_vai = np.mean(vai_errors) if vai_errors else 0.0
-        self.bias_magnifi = np.mean(mag_errors) if mag_errors else 0.0
+            vai_scores[vai_group].append(vai_abs_err)
+            vai_errors[vai_group].append(vai_signed_err)
+            mag_scores[mag_group].append(mag_abs_err)
+            mag_errors[mag_group].append(mag_signed_err)
+
+        # Store sorted calibration scores for each group
+        for group in ['low', 'mid', 'high']:
+            self.calibration_scores[group] = {
+                'vai': sorted(vai_scores[group]),
+                'magnifi': sorted(mag_scores[group])
+            }
+            # Calculate bias per group
+            self.bias[group]['vai'] = np.mean(vai_errors[group]) if vai_errors[group] else 0.0
+            self.bias[group]['magnifi'] = np.mean(mag_errors[group]) if mag_errors[group] else 0.0
 
         return {
-            'n_calibration': len(vai_scores),
-            'vai_bias': self.bias_vai,
-            'magnifi_bias': self.bias_magnifi,
-            'vai_mae': np.mean(vai_scores) if vai_scores else 0,
-            'magnifi_mae': np.mean(mag_scores) if mag_scores else 0
+            'n_calibration_total': len(predictions),
+            'n_vai_low': len(vai_scores['low']),
+            'n_vai_mid': len(vai_scores['mid']),
+            'n_vai_high': len(vai_scores['high']),
+            'n_magnifi_low': len(mag_scores['low']),
+            'n_magnifi_mid': len(mag_scores['mid']),
+            'n_magnifi_high': len(mag_scores['high']),
+            'vai_bias_low': self.bias['low']['vai'],
+            'vai_bias_mid': self.bias['mid']['vai'],
+            'vai_bias_high': self.bias['high']['vai'],
+            'magnifi_bias_low': self.bias['low']['magnifi'],
+            'magnifi_bias_mid': self.bias['mid']['magnifi'],
+            'magnifi_bias_high': self.bias['high']['magnifi'],
         }
 
     def get_conformal_quantile(self, scores: List[float]) -> float:
@@ -341,8 +404,8 @@ class BiasCorrectCrossConformal:
         Get the (1-alpha) quantile of nonconformity scores.
         This gives us the interval half-width for coverage guarantee.
         """
-        if not scores:
-            return 3.0  # default fallback
+        if not scores or len(scores) < 2:
+            return 5.0  # conservative fallback for very small samples
 
         n = len(scores)
         # Conformal prediction quantile: ceil((n+1)*(1-alpha))/n
@@ -353,37 +416,48 @@ class BiasCorrectCrossConformal:
 
     def predict_with_interval(self, pred_vai: float, pred_mag: float) -> Dict:
         """
-        Generate prediction interval with BIAS CORRECTION.
+        Generate prediction interval with 3-TIER GROUP-BALANCED calibration + BIAS CORRECTION.
 
-        V3 Innovation:
-        1. Correct the point prediction: corrected = raw - bias
-        2. Generate symmetric interval around corrected prediction
+        V5 Innovation:
+        1. Determine which of 3 groups the prediction falls into
+        2. Apply group-specific bias correction
+        3. Use group-specific quantile for interval width
         """
-        # Step 1: Apply bias correction
-        corrected_vai = pred_vai - self.bias_vai
-        corrected_mag = pred_mag - self.bias_magnifi
+        # Determine groups based on predicted scores
+        vai_group = self._get_group(pred_vai)
+        mag_group = self._get_group(pred_mag)
 
-        # Step 2: Get conformal interval widths
-        vai_width = self.get_conformal_quantile(self.calibration_scores.get('vai', []))
-        mag_width = self.get_conformal_quantile(self.calibration_scores.get('magnifi', []))
+        # Get group-specific bias
+        vai_bias = self.bias[vai_group]['vai']
+        mag_bias = self.bias[mag_group]['magnifi']
 
-        # Step 3: Generate intervals around CORRECTED predictions
+        # Apply bias correction
+        corrected_vai = pred_vai - vai_bias
+        corrected_mag = pred_mag - mag_bias
+
+        # Get group-specific quantiles (interval widths)
+        vai_width = self.get_conformal_quantile(self.calibration_scores[vai_group]['vai'])
+        mag_width = self.get_conformal_quantile(self.calibration_scores[mag_group]['magnifi'])
+
+        # Generate intervals around CORRECTED predictions
         return {
             'vai': {
                 'point': round(corrected_vai, 1),
-                'raw_point': pred_vai,  # original uncorrected
-                'bias_applied': round(self.bias_vai, 2),
+                'raw_point': pred_vai,
+                'bias_applied': round(vai_bias, 2),
                 'lower': max(0, round(corrected_vai - vai_width, 1)),
                 'upper': min(22, round(corrected_vai + vai_width, 1)),
-                'width': round(2 * vai_width, 1)
+                'width': round(2 * vai_width, 1),
+                'group': vai_group
             },
             'magnifi': {
                 'point': round(corrected_mag, 1),
                 'raw_point': pred_mag,
-                'bias_applied': round(self.bias_magnifi, 2),
+                'bias_applied': round(mag_bias, 2),
                 'lower': max(0, round(corrected_mag - mag_width, 1)),
                 'upper': min(25, round(corrected_mag + mag_width, 1)),
-                'width': round(2 * mag_width, 1)
+                'width': round(2 * mag_width, 1),
+                'group': mag_group
             }
         }
 
@@ -426,19 +500,25 @@ def save_progress(progress: Dict):
 # ============== MAIN VALIDATION ==============
 def run_cross_conformal_validation():
     """
-    Run K-fold cross-conformal prediction with bias correction.
+    Run K-fold cross-conformal prediction with 3-TIER GROUP-BALANCED calibration.
+
+    V5: 3 Calibration Groups based on Predicted Score:
+      - Group 1 (Low): pred < 10  → Remission/Mild
+      - Group 2 (Mid): pred 10-15 → Moderate
+      - Group 3 (High): pred >= 16 → Severe
 
     For each fold:
     1. Use other folds as calibration set
-    2. Calculate bias from calibration errors
-    3. Predict on test fold with bias correction
-    4. Generate calibrated prediction intervals
+    2. Split calibration by predicted score into 3 groups
+    3. Calculate group-specific bias and quantiles
+    4. Predict on test fold with adaptive intervals
     """
     print("=" * 70)
-    print("V3 CROSS-CONFORMAL PREDICTION WITH BIAS CORRECTION")
+    print("V5 GRANULAR GROUP-BALANCED CROSS-CONFORMAL PREDICTION")
     print("=" * 70)
     print(f"\nTarget Coverage: {(1-ALPHA)*100:.0f}%")
     print(f"Number of Folds: {N_FOLDS}")
+    print(f"3-Tier Thresholds: Low (<{THRESH_LOW}), Mid ({THRESH_LOW}-{THRESH_HIGH-1}), High (>={THRESH_HIGH})")
     print(f"API: {MODEL}")
 
     # Load test cases
@@ -523,9 +603,9 @@ def run_cross_conformal_validation():
 
         time.sleep(RATE_LIMIT_DELAY)
 
-    # Phase 2: Cross-Conformal with Bias Correction
+    # Phase 2: Group-Balanced Cross-Conformal Prediction
     print("\n" + "-" * 70)
-    print("PHASE 2: Cross-Conformal Prediction with Bias Correction")
+    print("PHASE 2: Group-Balanced Cross-Conformal Prediction")
     print("-" * 70)
 
     final_results = []
@@ -553,15 +633,18 @@ def run_cross_conformal_validation():
                 })
                 cal_truths.append(case.get("ground_truth", {}))
 
-        # Initialize conformal predictor and calibrate
-        conformal = BiasCorrectCrossConformal(n_folds=N_FOLDS, alpha=ALPHA)
+        # Initialize V5 3-TIER GROUP-BALANCED conformal predictor and calibrate
+        conformal = GranularGroupBalancedConformal(
+            n_folds=N_FOLDS, alpha=ALPHA,
+            thresh_low=THRESH_LOW, thresh_high=THRESH_HIGH
+        )
         cal_metrics = conformal.calibrate(cal_predictions, cal_truths)
 
-        print(f"  Calibration set size: {cal_metrics['n_calibration']}")
-        print(f"  VAI Bias: {cal_metrics['vai_bias']:+.2f}")
-        print(f"  MAGNIFI Bias: {cal_metrics['magnifi_bias']:+.2f}")
+        print(f"  Calibration: {cal_metrics['n_calibration_total']} total")
+        print(f"    VAI  - Low: {cal_metrics['n_vai_low']} (bias {cal_metrics['vai_bias_low']:+.2f}), Mid: {cal_metrics['n_vai_mid']} (bias {cal_metrics['vai_bias_mid']:+.2f}), High: {cal_metrics['n_vai_high']} (bias {cal_metrics['vai_bias_high']:+.2f})")
+        print(f"    MAG  - Low: {cal_metrics['n_magnifi_low']} (bias {cal_metrics['magnifi_bias_low']:+.2f}), Mid: {cal_metrics['n_magnifi_mid']} (bias {cal_metrics['magnifi_bias_mid']:+.2f}), High: {cal_metrics['n_magnifi_high']} (bias {cal_metrics['magnifi_bias_high']:+.2f})")
 
-        # Predict on test fold with bias correction
+        # Predict on test fold with group-balanced intervals
         fold_coverage_vai = 0
         fold_coverage_mag = 0
         fold_count = 0
@@ -575,7 +658,7 @@ def run_cross_conformal_validation():
             if result.get("predicted_vai") is None:
                 continue
 
-            # Get bias-corrected prediction interval
+            # Get group-balanced prediction interval
             interval = conformal.predict_with_interval(
                 result['predicted_vai'],
                 result['predicted_magnifi']
@@ -612,7 +695,9 @@ def run_cross_conformal_validation():
                 "vai_covered": bool(vai_covered),
                 "magnifi_covered": bool(mag_covered),
                 "vai_bias_applied": float(interval['vai']['bias_applied']),
-                "magnifi_bias_applied": float(interval['magnifi']['bias_applied'])
+                "magnifi_bias_applied": float(interval['magnifi']['bias_applied']),
+                "vai_group": interval['vai']['group'],
+                "magnifi_group": interval['magnifi']['group']
             })
 
         if fold_count > 0:
@@ -621,15 +706,18 @@ def run_cross_conformal_validation():
                 'n_test': fold_count,
                 'vai_coverage': fold_coverage_vai / fold_count,
                 'magnifi_coverage': fold_coverage_mag / fold_count,
-                'vai_bias': cal_metrics['vai_bias'],
-                'magnifi_bias': cal_metrics['magnifi_bias']
+                'vai_bias_low': cal_metrics['vai_bias_low'],
+                'vai_bias_mid': cal_metrics['vai_bias_mid'],
+                'vai_bias_high': cal_metrics['vai_bias_high'],
+                'magnifi_bias_low': cal_metrics['magnifi_bias_low'],
+                'magnifi_bias_mid': cal_metrics['magnifi_bias_mid'],
+                'magnifi_bias_high': cal_metrics['magnifi_bias_high']
             })
-            print(f"  Test set coverage - VAI: {fold_coverage_vai}/{fold_count} ({100*fold_coverage_vai/fold_count:.1f}%)")
-            print(f"  Test set coverage - MAG: {fold_coverage_mag}/{fold_count} ({100*fold_coverage_mag/fold_count:.1f}%)")
+            print(f"  Test coverage - VAI: {fold_coverage_vai}/{fold_count} ({100*fold_coverage_vai/fold_count:.1f}%), MAG: {fold_coverage_mag}/{fold_count} ({100*fold_coverage_mag/fold_count:.1f}%)")
 
     # Phase 3: Aggregate Results
     print("\n" + "=" * 70)
-    print("V3 CROSS-CONFORMAL PREDICTION RESULTS")
+    print("V5 GRANULAR GROUP-BALANCED CONFORMAL PREDICTION RESULTS")
     print("=" * 70)
 
     valid_results = [r for r in final_results if r.get('expected_vai') is not None]
@@ -648,38 +736,75 @@ def run_cross_conformal_validation():
         vai_widths = [r['vai_width'] for r in valid_results]
         mag_widths = [r['magnifi_width'] for r in valid_results]
 
-        # Bias statistics
-        vai_biases = [r['vai_bias_applied'] for r in valid_results]
-        mag_biases = [r['magnifi_bias_applied'] for r in valid_results]
+        # Group-specific widths (3 groups for V5)
+        vai_low_widths = [r['vai_width'] for r in valid_results if r['vai_group'] == 'low']
+        vai_mid_widths = [r['vai_width'] for r in valid_results if r['vai_group'] == 'mid']
+        vai_high_widths = [r['vai_width'] for r in valid_results if r['vai_group'] == 'high']
+        mag_low_widths = [r['magnifi_width'] for r in valid_results if r['magnifi_group'] == 'low']
+        mag_mid_widths = [r['magnifi_width'] for r in valid_results if r['magnifi_group'] == 'mid']
+        mag_high_widths = [r['magnifi_width'] for r in valid_results if r['magnifi_group'] == 'high']
 
         print(f"\nTotal valid cases: {len(valid_results)}")
 
-        print(f"\n{'Metric':<30} {'VAI':<15} {'MAGNIFI-CD':<15}")
-        print("-" * 60)
-        print(f"{'Coverage (target 90%)':<30} {100*np.mean(vai_coverages):.1f}%{'':<9} {100*np.mean(mag_coverages):.1f}%")
-        print(f"{'Mean Interval Width':<30} {np.mean(vai_widths):.2f}{'':<11} {np.mean(mag_widths):.2f}")
-        print(f"{'Corrected MAE':<30} {np.mean(vai_errors):.2f}{'':<11} {np.mean(mag_errors):.2f}")
-        print(f"{'Raw MAE (before correction)':<30} {np.mean(raw_vai_errors):.2f}{'':<11} {np.mean(raw_mag_errors):.2f}")
-        print(f"{'Mean Bias Applied':<30} {np.mean(vai_biases):+.2f}{'':<10} {np.mean(mag_biases):+.2f}")
+        print(f"\n{'Metric':<35} {'VAI':<15} {'MAGNIFI-CD':<15}")
+        print("-" * 65)
+        print(f"{'Coverage (target 90%)':<35} {100*np.mean(vai_coverages):.1f}%{'':<9} {100*np.mean(mag_coverages):.1f}%")
+        print(f"{'Mean Interval Width':<35} {np.mean(vai_widths):.2f}{'':<11} {np.mean(mag_widths):.2f}")
+        print(f"{'  - Low Group (<{0}) Width'.format(THRESH_LOW):<35} {np.mean(vai_low_widths) if vai_low_widths else 0:.2f}{'':<11} {np.mean(mag_low_widths) if mag_low_widths else 0:.2f}")
+        print(f"{'  - Mid Group ({0}-{1}) Width'.format(THRESH_LOW, THRESH_HIGH-1):<35} {np.mean(vai_mid_widths) if vai_mid_widths else 0:.2f}{'':<11} {np.mean(mag_mid_widths) if mag_mid_widths else 0:.2f}")
+        print(f"{'  - High Group (>={0}) Width'.format(THRESH_HIGH):<35} {np.mean(vai_high_widths) if vai_high_widths else 0:.2f}{'':<11} {np.mean(mag_high_widths) if mag_high_widths else 0:.2f}")
+        print(f"{'Corrected MAE':<35} {np.mean(vai_errors):.2f}{'':<11} {np.mean(mag_errors):.2f}")
+        print(f"{'Raw MAE':<35} {np.mean(raw_vai_errors):.2f}{'':<11} {np.mean(raw_mag_errors):.2f}")
 
         # Coverage by severity
-        print(f"\n{'Coverage by Severity:':<30}")
-        print("-" * 60)
+        print(f"\n{'COVERAGE BY SEVERITY (Target: >85% all groups):':<50}")
+        print("-" * 65)
         for sev in ['Remission', 'Mild', 'Moderate', 'Severe']:
             sev_results = [r for r in valid_results if r.get('severity') == sev]
             if sev_results:
                 vai_cov = 100 * np.mean([r['vai_covered'] for r in sev_results])
                 mag_cov = 100 * np.mean([r['magnifi_covered'] for r in sev_results])
-                print(f"  {sev:<26} {vai_cov:.1f}%{'':<9} {mag_cov:.1f}%  (n={len(sev_results)})")
+                vai_width = np.mean([r['vai_width'] for r in sev_results])
+                mag_width = np.mean([r['magnifi_width'] for r in sev_results])
+
+                vai_status = "✓" if vai_cov >= 85 else "✗"
+                mag_status = "✓" if mag_cov >= 85 else "✗"
+
+                print(f"  {sev:<15} VAI: {vai_cov:>5.1f}% {vai_status} (w={vai_width:.1f})  MAG: {mag_cov:>5.1f}% {mag_status} (w={mag_width:.1f})  n={len(sev_results)}")
+
+        # Coverage by group (3 groups for V5)
+        print(f"\n{'COVERAGE BY PREDICTION GROUP (3-Tier):':<50}")
+        print("-" * 65)
+        group_labels = {
+            'low': f'<{THRESH_LOW}',
+            'mid': f'{THRESH_LOW}-{THRESH_HIGH-1}',
+            'high': f'>={THRESH_HIGH}'
+        }
+        for group in ['low', 'mid', 'high']:
+            vai_group_results = [r for r in valid_results if r['vai_group'] == group]
+            mag_group_results = [r for r in valid_results if r['magnifi_group'] == group]
+
+            if vai_group_results:
+                vai_cov = 100 * np.mean([r['vai_covered'] for r in vai_group_results])
+                vai_status = "✓" if vai_cov >= 85 else "✗"
+                print(f"  VAI {group.upper():>4} ({group_labels[group]:>7}): {vai_cov:>5.1f}% {vai_status} (n={len(vai_group_results)})")
+
+            if mag_group_results:
+                mag_cov = 100 * np.mean([r['magnifi_covered'] for r in mag_group_results])
+                mag_status = "✓" if mag_cov >= 85 else "✗"
+                print(f"  MAG {group.upper():>4} ({group_labels[group]:>7}): {mag_cov:>5.1f}% {mag_status} (n={len(mag_group_results)})")
 
         # Save results
         output = {
             "metadata": {
-                "version": "V3 Bias-Corrected Cross-Conformal",
+                "version": "V5 Granular Group-Balanced Cross-Conformal",
                 "timestamp": datetime.now().isoformat(),
                 "n_folds": N_FOLDS,
                 "alpha": ALPHA,
                 "target_coverage": f"{(1-ALPHA)*100:.0f}%",
+                "thresh_low": THRESH_LOW,
+                "thresh_high": THRESH_HIGH,
+                "groups": f"Low (<{THRESH_LOW}), Mid ({THRESH_LOW}-{THRESH_HIGH-1}), High (>={THRESH_HIGH})",
                 "model": MODEL
             },
             "summary": {
@@ -688,12 +813,24 @@ def run_cross_conformal_validation():
                 "magnifi_coverage": float(np.mean(mag_coverages)),
                 "vai_mean_width": float(np.mean(vai_widths)),
                 "magnifi_mean_width": float(np.mean(mag_widths)),
+                "vai_low_width": float(np.mean(vai_low_widths)) if vai_low_widths else None,
+                "vai_mid_width": float(np.mean(vai_mid_widths)) if vai_mid_widths else None,
+                "vai_high_width": float(np.mean(vai_high_widths)) if vai_high_widths else None,
+                "magnifi_low_width": float(np.mean(mag_low_widths)) if mag_low_widths else None,
+                "magnifi_mid_width": float(np.mean(mag_mid_widths)) if mag_mid_widths else None,
+                "magnifi_high_width": float(np.mean(mag_high_widths)) if mag_high_widths else None,
                 "vai_corrected_mae": float(np.mean(vai_errors)),
                 "magnifi_corrected_mae": float(np.mean(mag_errors)),
                 "vai_raw_mae": float(np.mean(raw_vai_errors)),
-                "magnifi_raw_mae": float(np.mean(raw_mag_errors)),
-                "mean_vai_bias": float(np.mean(vai_biases)),
-                "mean_magnifi_bias": float(np.mean(mag_biases))
+                "magnifi_raw_mae": float(np.mean(raw_mag_errors))
+            },
+            "coverage_by_severity": {
+                sev: {
+                    "vai_coverage": float(np.mean([r['vai_covered'] for r in valid_results if r.get('severity') == sev])),
+                    "magnifi_coverage": float(np.mean([r['magnifi_covered'] for r in valid_results if r.get('severity') == sev])),
+                    "n": len([r for r in valid_results if r.get('severity') == sev])
+                }
+                for sev in ['Remission', 'Mild', 'Moderate', 'Severe']
             },
             "fold_metrics": fold_metrics,
             "detailed_results": final_results
@@ -706,16 +843,28 @@ def run_cross_conformal_validation():
 
         # Final summary box
         print("\n" + "=" * 70)
-        print("V3 CROSS-CONFORMAL PREDICTION RESULTS TABLE")
+        print("V5 GRANULAR GROUP-BALANCED CONFORMAL PREDICTION RESULTS TABLE")
         print("=" * 70)
         print(f"┌{'─'*68}┐")
         print(f"│{'Metric':<35}{'VAI':<16}{'MAGNIFI-CD':<17}│")
         print(f"├{'─'*68}┤")
-        print(f"│{'Coverage (90% target)':<35}{100*np.mean(vai_coverages):>6.1f}%{'':<9}{100*np.mean(mag_coverages):>6.1f}%{'':<10}│")
+        print(f"│{'Overall Coverage (90% target)':<35}{100*np.mean(vai_coverages):>6.1f}%{'':<9}{100*np.mean(mag_coverages):>6.1f}%{'':<10}│")
         print(f"│{'Mean Interval Width':<35}{np.mean(vai_widths):>7.2f}{'':<9}{np.mean(mag_widths):>7.2f}{'':<10}│")
-        print(f"│{'Corrected MAE':<35}{np.mean(vai_errors):>7.2f}{'':<9}{np.mean(mag_errors):>7.2f}{'':<10}│")
-        print(f"│{'Mean Bias Applied':<35}{np.mean(vai_biases):>+7.2f}{'':<9}{np.mean(mag_biases):>+7.2f}{'':<10}│")
-        print(f"│{'Cases Evaluated':<35}{len(valid_results):>7}{'':<9}{len(valid_results):>7}{'':<10}│")
+        print(f"│{'  Low (<{0}) Width'.format(THRESH_LOW):<35}{np.mean(vai_low_widths) if vai_low_widths else 0:>7.2f}{'':<9}{np.mean(mag_low_widths) if mag_low_widths else 0:>7.2f}{'':<10}│")
+        print(f"│{'  Mid ({0}-{1}) Width'.format(THRESH_LOW, THRESH_HIGH-1):<35}{np.mean(vai_mid_widths) if vai_mid_widths else 0:>7.2f}{'':<9}{np.mean(mag_mid_widths) if mag_mid_widths else 0:>7.2f}{'':<10}│")
+        print(f"│{'  High (>={0}) Width'.format(THRESH_HIGH):<35}{np.mean(vai_high_widths) if vai_high_widths else 0:>7.2f}{'':<9}{np.mean(mag_high_widths) if mag_high_widths else 0:>7.2f}{'':<10}│")
+        print(f"│{'MAE':<35}{np.mean(vai_errors):>7.2f}{'':<9}{np.mean(mag_errors):>7.2f}{'':<10}│")
+        print(f"├{'─'*68}┤")
+        print(f"│{'COVERAGE BY SEVERITY (✓ = >85%)':<68}│")
+        print(f"├{'─'*68}┤")
+        for sev in ['Remission', 'Mild', 'Moderate', 'Severe']:
+            sev_results = [r for r in valid_results if r.get('severity') == sev]
+            if sev_results:
+                vai_cov = 100 * np.mean([r['vai_covered'] for r in sev_results])
+                mag_cov = 100 * np.mean([r['magnifi_covered'] for r in sev_results])
+                vai_status = "✓" if vai_cov >= 85 else "✗"
+                mag_status = "✓" if mag_cov >= 85 else "✗"
+                print(f"│  {sev:<33}{vai_cov:>5.1f}% {vai_status}{'':<7}{mag_cov:>5.1f}% {mag_status}{'':<8}│")
         print(f"└{'─'*68}┘")
 
         return output
