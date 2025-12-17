@@ -1,0 +1,11 @@
+name,category,description,auc,std,filename
+V38-T,Advanced,Torture test,0.8881574074074073,0.0,v38_torture_report.json
+V39,Stable,Stabilized,0.8915925925925926,0.0,v39_stabilized_report.json
+V40,Stable,Dictator,0.8793888888888888,0.0,v40_dictator_report.json
+V41,Stable,Bagged ensemble,0.8861111111111112,0.003872319197467893,v41_bagged_report.json
+V42,Stable,Pure TabPFN,0.8421052631578947,0.004587757966240915,v42_pure_report.json
+V43,Expanded,Expanded data,0.8250320924261875,0.0,v43_expanded_report.json
+Chimera,Chimera,Original (leaky),0.8202824133504494,0.005515417473412292,chimera_report.json
+Chimera-Ctrl,Chimera,Control (leaky),0.9833,0.0,chimera_control_report.json
+Chimera-LF,Chimera,Leak-free,0.9083333333333333,0.007550129678480061,chimera_leakfree_report.json
+Torture-30,Final,30-run torture test,0.8978,0.0065,torture_test

@@ -1,0 +1,60 @@
+{
+  "project": "PARSEC",
+  "timestamp": "2025-12-16T21:40:07.417824",
+  "config": {
+    "dataset": "/Users/tanmaydagoat/Desktop/Antigrav crohns trial/data/v43_expanded_dataset.csv",
+    "n_samples": 79,
+    "n_features_raw": 35,
+    "n_pca_components": 5,
+    "mlp_architecture": "5->32->16->1",
+    "mlp_dropout": 0.3,
+    "mlp_l2_decay": 0.0001,
+    "ensemble_weights": {
+      "catboost": 0.5,
+      "mlp": 0.5
+    },
+    "n_bags": 20,
+    "n_stability_tests": 10
+  },
+  "pca": {
+    "variance_explained": [
+      0.2678820788860321,
+      0.10381683707237244,
+      0.09732257574796677,
+      0.08862917870283127,
+      0.07546016573905945
+    ],
+    "cumulative_variance": 0.6331108808517456
+  },
+  "final_model": {
+    "auc": 0.8202824133504494,
+    "brier": 0.16919410704941767,
+    "bootstrap_ci_lower": 0.7142545122887864,
+    "bootstrap_ci_upper": 0.9104064807741279,
+    "bootstrap_ci_width": 0.19615196848534144
+  },
+  "stability": {
+    "mean_auc": 0.8238767650834404,
+    "std_auc": 0.005515417473412292,
+    "min_auc": 0.8157894736842105,
+    "max_auc": 0.8337612323491657,
+    "all_aucs": [
+      0.8247753530166881,
+      0.8228498074454429,
+      0.8209242618741978,
+      0.8273427471116817,
+      0.8157894736842105,
+      0.8273427471116817,
+      0.8189987163029525,
+      0.8337612323491657,
+      0.8299101412066753,
+      0.8170731707317074
+    ]
+  },
+  "components": {
+    "catboost_mean_auc": 0.8035606546854943,
+    "mlp_mean_auc": 0.7861521181001284
+  },
+  "verdict": "STABLE BUT LOW AUC",
+  "status": "WARNING"
+}

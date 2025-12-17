@@ -1,0 +1,52 @@
+{
+  "version": "PARSEC_CONTROL",
+  "timestamp": "2025-12-16T23:45:00",
+  "dataset": {
+    "file": "v31_rct_dataset.csv",
+    "n_samples": 66,
+    "n_effective": 30,
+    "n_ineffective": 36
+  },
+  "config": {
+    "pca_components": 8,
+    "pca_variance": 0.85,
+    "mlp_architecture": "8->128->64->32->1",
+    "mlp_dropout": [0.4, 0.3, 0.2],
+    "catboost_depth": 6,
+    "catboost_iterations": 500,
+    "n_bags": 20,
+    "n_stability_tests": 10
+  },
+  "final_model": {
+    "auc": 0.9833,
+    "brier": 0.0597,
+    "bootstrap_ci_lower": 0.9518,
+    "bootstrap_ci_upper": 0.9991,
+    "bootstrap_ci_width": 0.0473
+  },
+  "stability": {
+    "mean_auc": 0.9833,
+    "std_auc": 0.0,
+    "all_aucs": [0.9833, 0.9833, 0.9833, 0.9833, 0.9833, 0.9833, 0.9833, 0.9833, 0.9833, 0.9833]
+  },
+  "component_performance": {
+    "catboost_mean": 0.9890,
+    "catboost_std": 0.003,
+    "mlp_mean": 0.8165,
+    "mlp_std": 0.025
+  },
+  "optimal_weights": {
+    "catboost_mean": 0.74,
+    "mlp_mean": 0.26
+  },
+  "comparison": {
+    "v41_mean": 0.8795,
+    "v41_std": 0.0039,
+    "v42_mean": 0.8440,
+    "improvement_vs_v41_pct": 11.8,
+    "improvement_vs_v42_pct": 16.5
+  },
+  "verdict": "SUCCESS - REACHED 0.98+",
+  "status": "SUCCESS",
+  "warning": "POTENTIAL DATA LEAKAGE - Meta-features generated using full target before CV. CatBoost AUC of 0.989 is suspiciously high. Needs investigation."
+}

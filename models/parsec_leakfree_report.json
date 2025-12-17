@@ -1,0 +1,63 @@
+{
+  "version": "PARSEC_LEAKFREE",
+  "timestamp": "2025-12-16T22:26:35.561721",
+  "dataset": {
+    "file": "v31_rct_dataset.csv",
+    "n_samples": 66,
+    "n_effective": 30,
+    "n_ineffective": 36
+  },
+  "config": {
+    "leak_free": true,
+    "meta_features": "generated per-fold (honest)",
+    "pca_variance": 0.85,
+    "mlp_architecture": "PCA\u2192128\u219264\u219232\u21921",
+    "catboost_depth": 6,
+    "n_bags": 20,
+    "n_stability_tests": 10
+  },
+  "final_model": {
+    "auc": 0.9083333333333333,
+    "brier": 0.12636609763799178,
+    "bootstrap_ci_lower": 0.8275262509722582,
+    "bootstrap_ci_upper": 0.9655256518082421,
+    "bootstrap_ci_width": 0.13799940083598394
+  },
+  "stability": {
+    "mean_auc": 0.8982407407407406,
+    "std_auc": 0.007550129678480061,
+    "min_auc": 0.8814814814814815,
+    "max_auc": 0.9064814814814814,
+    "all_aucs": [
+      0.8814814814814815,
+      0.8981481481481481,
+      0.9064814814814814,
+      0.8981481481481481,
+      0.8972222222222223,
+      0.9055555555555556,
+      0.9046296296296297,
+      0.9018518518518519,
+      0.9009259259259259,
+      0.887962962962963
+    ]
+  },
+  "component_performance": {
+    "catboost_mean": 0.8860995370370369,
+    "catboost_std": 0.01879894375056299,
+    "mlp_mean": 0.8185694444444445,
+    "mlp_std": 0.022545715921498136
+  },
+  "optimal_weights": {
+    "catboost_mean": 0.72925,
+    "mlp_mean": 0.27075000000000005
+  },
+  "comparison": {
+    "v41_mean": 0.8795,
+    "v42_mean": 0.844,
+    "parsec_leaky": 0.9833,
+    "improvement_vs_v41_pct": 2.13084033436505,
+    "improvement_vs_v42_pct": 6.426628049850781
+  },
+  "verdict": "BEAT V41 - Honest Progress!",
+  "status": "IMPROVED"
+}

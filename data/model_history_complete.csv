@@ -1,0 +1,24 @@
+name,auc,std,desc,path
+v6,0.6434,,Calibrated Voting Ensemble (V6),/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v6_report.json
+v7,0.6696,0.0571,V7 Calibrated Voting Ensemble (Final),/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v7_report.json
+v8,0.7544,0.0719,V8 Final (V5 Engine + V7 Labels + No Purge),/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v8_report.json
+v9,0.755,0.0672,V9 Deep Context (Quad-Ensemble),/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v9_report.json
+v10,0.7226,0.0508,V10 Deep Context (Quad-Ensemble with Enriched Data,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v10_report.json
+v11,0.7665,,V11 Regularized Quad-Ensemble,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v11_report.json
+v12,0.7666,,V12 Optuna Grandmaster,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v12_report.json
+v13,0.8796,,V13 Nuclear (Quad-Ensemble),/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v13_report.json
+v14,0.8835,,V14 Cyborg (Optuna + Text Features),/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v14_report.json
+v21,0.9369991154356481,,V21_CLEAN_SLATE,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v21_report.json
+v30,0.8229606245035426,,V30_ULTIMATE,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v30_report.json
+v38_torture,0.8881574074074073,0.014814262142468958,V38_TORTURE_TEST,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v38_torture_report.json
+v39_stabilized,0.8915925925925926,0.01477406432503879,V39_STABILIZED,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v39_stabilized_report.json
+v40_dictator,0.8793888888888888,0.015155583161337591,V40_DICTATOR,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v40_dictator_report.json
+v41_bagged,0.8861111111111112,0.003872319197467893,V41_BAGGED,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v41_bagged_report.json
+v42_pure,0.8421052631578947,0.004587757966240915,V42_PURE_TABPFN,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v42_pure_report.json
+v43_expanded,0.8250320924261875,0.015460957234292519,V43_EXPANDED,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/v43_expanded_report.json
+chimera_control,0.9833,0.0,CHIMERA_CONTROL,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/chimera_control_report.json
+chimera_leakfree,0.9083333333333333,0.007550129678480061,CHIMERA_LEAKFREE,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/chimera_leakfree_report.json
+chimera,0.8202824133504494,0.005515417473412292,chimera,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/chimera_report.json
+Torture-30,0.8977777777777777,0.0065770189292234825,30-run torture validated,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/data/chimera_torture_results.csv
+binary_classifier,0.7115,,XGBoost Binary Classifier,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/binary_classifier_report.json
+ensemble_v5,0.6529,0.0809,Voting Ensemble (XGBoost + RandomForest + LightGBM,/Users/tanmaydagoat/Desktop/Antigrav crohns trial/models/ensemble_v5_report.json
