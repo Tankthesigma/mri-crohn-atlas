@@ -185,8 +185,10 @@ def map_clinical_to_features(clinical_input):
 
     # Detect seton specifically (palliative, not curative)
     has_seton = 'seton' in treatments
-    # Seton ALONE is palliative - but when combined with biologic, the biologic does the healing
-    seton_alone = has_seton and not has_biologic and not has_stem_cell
+    # Curative surgeries (not seton)
+    has_curative_surgery = any(t in ['fistulotomy', 'lift', 'flap', 'proctectomy'] for t in treatments)
+    # Seton ALONE is palliative - but when combined with biologic, stem cell, OR curative surgery, don't penalize
+    seton_alone = has_seton and not has_biologic and not has_stem_cell and not has_curative_surgery
 
     features['cat_Biologic'] = 1 if has_biologic else 0
     features['cat_Surgical'] = 1 if has_surgical else 0
@@ -288,6 +290,23 @@ def predict():
         import traceback
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
+
+
+@app.route('/', methods=['GET'])
+def index():
+    """Root endpoint with API info."""
+    return jsonify({
+        'name': 'PARSEC CHIMERA API',
+        'status': 'ok' if MODEL_LOADED else 'error',
+        'endpoints': {
+            'GET /': 'This info',
+            'GET /health': 'Model health check',
+            'POST /predict': 'Get treatment prediction',
+            'POST /batch': 'Batch predictions'
+        },
+        'model': MODEL.get('version', 'unknown') if MODEL else None,
+        'auc': MODEL.get('auc', 0) if MODEL else None
+    })
 
 
 @app.route('/health', methods=['GET'])
