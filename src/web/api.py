@@ -197,10 +197,18 @@ def map_clinical_to_features(clinical_input):
     features['cat_Other'] = 1 if has_immunomod else 0
     features['is_seton'] = 1 if seton_alone else 0  # Only penalize seton-alone cases
 
-    # Combination therapy
-    if has_biologic and has_surgical:
+    # Combination therapy (only when NOT curative surgery - surgery is boss when present)
+    if has_biologic and has_surgical and not has_curative_surgery:
         features['cat_Combination'] = 1
         features['combo_therapy'] = 1
+
+    # LOGIC FIX: If patient is having curative surgery, don't let the "Refractory Biologic"
+    # score drag it down. Surgery is the primary mechanical driver of fistula closure.
+    # When curative surgery is present, treat it as surgery-only for prediction purposes.
+    if has_curative_surgery:
+        features['cat_Biologic'] = 0
+        features['cat_Combination'] = 0
+        features['combo_therapy'] = 0
 
     # Study defaults (simulating a typical RCT patient)
     features['n_total'] = 100
