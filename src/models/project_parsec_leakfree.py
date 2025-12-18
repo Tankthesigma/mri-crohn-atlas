@@ -24,6 +24,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import json
+import pickle
 import numpy as np
 import pandas as pd
 from pathlib import Path
@@ -44,7 +45,8 @@ from torch.utils.data import DataLoader, TensorDataset
 # =============================================================================
 
 BASE_DIR = Path(__file__).parent.parent.parent
-V31_CSV = BASE_DIR / "data" / "v31_rct_dataset.csv"
+# FIXED: Use v30_ultimate_corrected (seton labels fixed to reflect palliative nature)
+V30_CSV = BASE_DIR / "data" / "v30_ultimate_corrected.csv"
 
 # Architecture config
 N_BAGS = 20
@@ -82,6 +84,8 @@ BANNED_FEATURES = [
     'num_healed', 'success_percentage', 'effective', 'outcome_type',
     'is_rct', 'study_year', 'dropout_rate',
     'blinding_Unknown', 'primary_endpoint_type_Unknown', 'analysis_type_Unknown',
+    # Corrupted columns with bad data in v30
+    'study_group', 'exclusion_reason',
 ]
 
 BANNER = """
@@ -151,7 +155,10 @@ def prepare_features(df):
     for col in X.columns:
         if X[col].dtype == 'object':
             X[col] = pd.to_numeric(X[col], errors='coerce')
-        X[col] = X[col].fillna(0)
+        # Replace inf values with NaN, then fill with 0
+        X[col] = X[col].replace([np.inf, -np.inf], np.nan).fillna(0)
+        # Clip extreme values to prevent overflow (safety measure)
+        X[col] = X[col].clip(-1e10, 1e10)
 
     X = X.loc[:, X.std() > 0]
     return X
@@ -314,11 +321,23 @@ def train_parsec_leakfree():
     # =========================================================================
 
     print("\n" + "=" * 70)
-    print("STEP 1: LOAD CLEAN N=66 DATA")
+    print("STEP 1: LOAD V30 ULTIMATE DATASET")
     print("=" * 70)
 
-    df = pd.read_csv(V31_CSV)
+    df = pd.read_csv(V30_CSV)
     print(f"  Loaded {len(df)} samples")
+
+    # -------------------------------------------------------------------------
+    # FEATURE ENGINEERING: Add is_seton to distinguish palliative vs curative
+    # Setons are palliative (keep fistula open), not curative like LIFT/Flap
+    # -------------------------------------------------------------------------
+    if 'intervention_name' in df.columns:
+        df['is_seton'] = df['intervention_name'].str.contains('seton', case=False, na=False).astype(int)
+        n_setons = df['is_seton'].sum()
+        print(f"  Added is_seton feature: {n_setons} seton cases detected")
+    else:
+        df['is_seton'] = 0
+        print("  Warning: intervention_name not found, is_seton set to 0")
 
     y = (df["success_rate_percent"].fillna(0) > 50).astype(int).values
     n_effective = y.sum()
@@ -559,7 +578,7 @@ def train_parsec_leakfree():
         "version": "P.A.R.S.E.C._LEAKFREE",
         "timestamp": datetime.now().isoformat(),
         "dataset": {
-            "file": "v31_rct_dataset.csv",
+            "file": "v30_ultimate_dataset.csv",
             "n_samples": int(len(y)),
             "n_effective": int(n_effective),
             "n_ineffective": int(n_ineffective)
@@ -628,6 +647,132 @@ def train_parsec_leakfree():
         json.dump(report, f, indent=2)
 
     print(f"\n  Report saved: {report_path}")
+
+    # =========================================================================
+    # STEP 6B: SAVE DEPLOYABLE MODEL FOR FLASK API
+    # =========================================================================
+
+    print("\n" + "=" * 70)
+    print("STEP 6B: SAVING DEPLOYABLE CHIMERA MODEL")
+    print("=" * 70)
+
+    print("  Training final models on ALL data for deployment...")
+
+    # Feature columns for the API
+    CORE_FEATURES = [
+        'cat_Biologic', 'cat_Surgical', 'cat_Combination', 'cat_Stem_Cell',
+        'cat_Antibiotic', 'cat_Other', 'n_total', 'followup_weeks',
+        'is_refractory', 'is_rct', 'combo_therapy', 'oracle_vibe_score',
+        'fistula_complexity_Simple', 'fistula_complexity_Mixed',
+        'fistula_complexity_Complex', 'previous_biologic_failure',
+        'stringency_score', 'confidence_score',
+        'is_seton'  # Distinguishes palliative setons from curative surgeries
+    ]
+
+    # Create fistula complexity dummies if not present
+    df_export = df.copy()
+    if 'fistula_complexity' in df_export.columns:
+        complexity = df_export['fistula_complexity'].fillna('Unknown').astype(str)
+        df_export['fistula_complexity_Simple'] = (complexity.str.lower().str.contains('simple')).astype(int)
+        df_export['fistula_complexity_Mixed'] = (complexity.str.lower().str.contains('mixed')).astype(int)
+        df_export['fistula_complexity_Complex'] = (complexity.str.lower().str.contains('complex')).astype(int)
+
+    # Ensure all core features exist
+    for feat in CORE_FEATURES:
+        if feat not in df_export.columns:
+            df_export[feat] = 0
+
+    # Prepare core features (subset for API compatibility)
+    X_core = df_export[CORE_FEATURES].fillna(0).values.astype(float)
+
+    # 1. Train XGBoost on all data for meta-feature generation
+    print("  Training XGBoost meta-feature generator...")
+    xgb_meta = XGBClassifier(
+        n_estimators=150, max_depth=4, learning_rate=0.05,
+        subsample=0.8, random_state=42, use_label_encoder=False,
+        eval_metric='logloss', verbosity=0
+    )
+    xgb_meta.fit(X_core, y)
+
+    # Generate meta-features using CV to avoid leakage for training
+    meta_cv_preds = np.zeros(len(y))
+    for train_idx, val_idx in StratifiedKFold(5, shuffle=True, random_state=42).split(X_core, y):
+        xgb_cv = XGBClassifier(n_estimators=100, max_depth=4, learning_rate=0.05,
+                               random_state=42, use_label_encoder=False, eval_metric='logloss', verbosity=0)
+        xgb_cv.fit(X_core[train_idx], y[train_idx])
+        meta_cv_preds[val_idx] = xgb_cv.predict_proba(X_core[val_idx])[:, 1]
+
+    # Build meta-features
+    cat_bio = df_export['cat_Biologic'].fillna(0).values
+    n_total = df_export['n_total'].fillna(50).values
+    X_meta = np.column_stack([
+        meta_cv_preds,
+        np.abs(meta_cv_preds - 0.5),
+        meta_cv_preds * cat_bio,
+        meta_cv_preds * np.log1p(n_total)
+    ])
+
+    # 2. Train CatBoost on raw + meta features
+    print("  Training CatBoost classifier...")
+    X_cat_full = np.hstack([X_core, X_meta])
+    catboost_final = CatBoostClassifier(
+        iterations=CAT_ITERATIONS, depth=CAT_DEPTH, learning_rate=CAT_LR,
+        l2_leaf_reg=CAT_L2_REG, subsample=CAT_SUBSAMPLE,
+        colsample_bylevel=CAT_COLSAMPLE, random_seed=42,
+        verbose=False, allow_writing_files=False
+    )
+    catboost_final.fit(X_cat_full, y)
+
+    # 3. Scale and PCA for MLP
+    print("  Training MLP with PCA...")
+    scaler_final = StandardScaler()
+    X_scaled = scaler_final.fit_transform(X_core)
+
+    pca_full = PCA()
+    pca_full.fit(X_scaled)
+    cumvar = np.cumsum(pca_full.explained_variance_ratio_)
+    n_pca = np.argmax(cumvar >= TARGET_VARIANCE) + 1
+    n_pca = max(n_pca, MIN_PCA_COMPONENTS)
+    n_pca = min(n_pca, MAX_PCA_COMPONENTS, X_scaled.shape[1])
+
+    pca_final = PCA(n_components=n_pca)
+    X_pca = pca_final.fit_transform(X_scaled)
+
+    # 4. Train final MLP
+    mlp_final = TheKrakenV2(input_dim=n_pca, dropout_schedule=MLP_DROPOUT_SCHEDULE)
+    mlp_final = train_mlp(mlp_final, X_pca, y)
+
+    # Get optimal weights from stability tests
+    catboost_weight = avg_cat_weight
+    mlp_weight = 1 - avg_cat_weight
+
+    # 5. Save the complete Chimera model
+    chimera_model = {
+        'version': 'PARSEC_CHIMERA_v1',
+        'xgb_meta': xgb_meta,           # For generating meta-features on new data
+        'catboost': catboost_final,      # CatBoost classifier
+        'scaler': scaler_final,          # StandardScaler for MLP input
+        'pca': pca_final,                # PCA for MLP input
+        'mlp': mlp_final,                # TheKrakenV2 MLP
+        'mlp_state_dict': mlp_final.state_dict(),  # PyTorch weights
+        'n_pca_components': n_pca,
+        'weights': {
+            'catboost': float(catboost_weight),
+            'mlp': float(mlp_weight)
+        },
+        'features': CORE_FEATURES,
+        'auc': float(final_auc),
+        'stability_auc': float(stability_mean),
+        'stability_std': float(stability_std)
+    }
+
+    model_path = BASE_DIR / "models" / "parsec_chimera_final.pkl"
+    with open(model_path, 'wb') as f:
+        pickle.dump(chimera_model, f)
+
+    print(f"  Chimera model saved: {model_path}")
+    print(f"  Model contains: XGB meta, CatBoost, Scaler, PCA ({n_pca} components), MLP")
+    print(f"  Ensemble weights: CatBoost={catboost_weight:.3f}, MLP={mlp_weight:.3f}")
 
     # =========================================================================
     # FINAL SUMMARY
