@@ -1,0 +1,49 @@
+{
+  "data": {
+    "n_studies": 1002,
+    "n_features": 15,
+    "feature_names": [
+      "cat_Biologic",
+      "cat_Surgical",
+      "cat_Combination",
+      "cat_Stem_Cell",
+      "cat_Antibiotic",
+      "cat_Other",
+      "followup_weeks",
+      "is_refractory",
+      "is_rct",
+      "combo_therapy",
+      "fistula_complexity_Simple",
+      "fistula_complexity_Mixed",
+      "fistula_complexity_Complex",
+      "previous_biologic_failure",
+      "is_seton"
+    ],
+    "class_balance": {
+      "fail": 291,
+      "success": 711
+    }
+  },
+  "cv": {
+    "n_folds": 5,
+    "n_bags": 10
+  },
+  "base_model_aucs": {
+    "lightgbm": 0.7720721504487653,
+    "xgboost": 0.7749334222647546,
+    "catboost": 0.7832538267093925
+  },
+  "ensemble": {
+    "weights": {
+      "lightgbm": 0.19999999999999996,
+      "xgboost": 0.20881193176064677,
+      "catboost": 0.5911880682393533
+    },
+    "auc": 0.7826158404260974,
+    "brier": 0.188813019756208
+  },
+  "best_single": {
+    "model": "catboost",
+    "auc": 0.7832538267093925
+  }
+}
