@@ -1,0 +1,18 @@
+{
+  "models": [
+    "v4",
+    "catboost",
+    "lightgbm",
+    "xgboost"
+  ],
+  "simple_avg_auc": 0.6916900483652854,
+  "meta_learner_aucs": {
+    "LogReg_prob": 0.6900577233501614,
+    "LogReg_logit": 0.6909588644223722,
+    "MLP_prob": 0.683353722224318,
+    "MLP_logit": 0.6868058310150282,
+    "Ridge_logit": 0.6909997260329301
+  },
+  "best_method": null,
+  "best_auc": 0.6916900483652854
+}
