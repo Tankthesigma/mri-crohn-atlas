@@ -1,0 +1,48 @@
+{
+  "best_trial": 176,
+  "best_auc": 0.6605470486010651,
+  "final_auc": 0.6565049521738849,
+  "fold_aucs": [
+    0.6794416633228189,
+    0.6616811155493801,
+    0.6373992401714523,
+    0.6387479812720124,
+    0.6749005178788167
+  ],
+  "brier_score": 0.23977105189627662,
+  "best_params": {
+    "max_depth": 3,
+    "num_leaves": 15,
+    "n_estimators": 509,
+    "learning_rate": 0.006425065777008385,
+    "min_child_samples": 20,
+    "subsample": 0.6551543403615485,
+    "colsample_bytree": 0.8420555174884149,
+    "reg_alpha": 0.0011379416281054387,
+    "reg_lambda": 0.16030482270180274,
+    "min_split_gain": 1.4966718629085633e-08,
+    "path_smooth": 7.850233905082601,
+    "extra_trees": false
+  },
+  "n_trials": 500,
+  "n_features": 17,
+  "features_used": [
+    "cat_Biologic",
+    "cat_Surgical",
+    "cat_Combination",
+    "cat_Stem_Cell",
+    "cat_Antibiotic",
+    "cat_Other",
+    "followup_weeks",
+    "is_refractory",
+    "is_rct",
+    "combo_therapy",
+    "fistula_complexity_Simple",
+    "fistula_complexity_Mixed",
+    "fistula_complexity_Complex",
+    "previous_biologic_failure",
+    "is_seton",
+    "refractory_x_complex",
+    "bio_failure_x_refractory"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "models": [
+    "catboost",
+    "lightgbm",
+    "xgboost",
+    "lightgbm_optuna",
+    "vrex",
+    "mixed_effects",
+    "saint",
+    "ngboost"
+  ],
+  "base_aucs": {
+    "catboost": 0.6911097309877078,
+    "lightgbm": 0.6792906818553908,
+    "xgboost": 0.6878375775366816,
+    "lightgbm_optuna": 0.7004459752052816,
+    "vrex": 0.6472337088981126,
+    "mixed_effects": 0.6450316042670785,
+    "saint": 0.5605073133458035,
+    "ngboost": 0.6494686778923308
+  },
+  "stacking_aucs": {
+    "Simple Average": 0.6944495000704287,
+    "Scipy Optimized": 0.6955426797383379,
+    "LogReg Stack": 0.6942441075805303,
+    "MLP Stack": 0.6766716575160141
+  },
+  "best_method": "Scipy Optimized",
+  "best_auc": 0.6955426797383379,
+  "target_auc": 0.72,
+  "moonshot_achieved": 

@@ -1,0 +1,17 @@
+{
+  "base_aucs": {
+    "lightgbm_optuna": 0.7004459752052816,
+    "catboost": 0.6911097309877078,
+    "xgboost": 0.6878375775366816,
+    "lightgbm": 0.6792906818553908
+  },
+  "stacking_aucs": {
+    "Simple Average": 0.6942184301216949,
+    "Scipy Optimized": 0.7008595001098028,
+    "AUC-Weighted": 0.6943131101943312
+  },
+  "best_method": "Scipy Optimized",
+  "best_auc": 0.7008595001098028,
+  "single_best_model": "lightgbm_optuna",
+  "single_best_auc": 0.7004459752052816,
+  "ensemble_wins": 

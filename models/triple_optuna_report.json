@@ -1,0 +1,27 @@
+{
+  "models": [
+    "lightgbm_optuna_v2",
+    "catboost",
+    "xgboost"
+  ],
+  "base_aucs": {
+    "lightgbm_optuna_v2": 0.6565049521738849,
+    "catboost": 0.6911097309877078,
+    "xgboost": 0.6878375775366816
+  },
+  "stacking_aucs": {
+    "Simple Average": 0.6923299221448331,
+    "Scipy Optimized": 0.6910743619279001,
+    "Calibrated (Isotonic)": 0.6863949685572934,
+    "Rank Average": 0.6903528446914086,
+    "Geometric Mean": 0.6935603444542118,
+    "Power Mean (p=2)": 0.6908013693018946
+  },
+  "best_method": "Geometric Mean",
+  "best_auc": 0.6935603444542118,
+  "single_best_model": "catboost",
+  "single_best_auc": 0.6911097309877078,
+  "final_method": "Geometric Mean",
+  "final_auc": 0.6935603444542118,
+  "target_auc": 0.72,
+  "moonshot_achieved": 
