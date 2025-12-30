@@ -780,6 +780,38 @@
             color: var(--primary);
         }
 
+        /* PARSEC Link Button */
+        .parsec-link-container {
+            margin-top: var(--space-6);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .parsec-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-4);
+            background: linear-gradient(135deg, #0066CC, #0052A3);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+        }
+
+        .parsec-link-btn:hover {
+            background: linear-gradient(135deg, #0052A3, #003D7A);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+        }
+
+        .parsec-link-btn svg {
+            flex-shrink: 0;
+        }
+
         /* =========================================
            METHODOLOGY SLIDESHOW
            ========================================= */
@@ -1651,6 +1683,7 @@
                 <li><a href="index.html#crosswalk">Crosswalk</a></li>
                 <li><a href="index.html#validation">Validation</a></li>
                 <li><a href="parser.html" class="active">Parser Demo</a></li>
+                <li><a href="parsec.html">PARSEC</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><span class="nav-badge">ISEF 2026</span></li>
                 <li>
@@ -1986,6 +2019,9 @@ MRI pelvis demonstrates a transsphincteric fistula at the 6 o'clock position wit
                                 <tbody id="features-tbody"></tbody>
                             </table>
                         </div>
+
+                        <!-- PARSEC Treatment Prediction Link -->
+                        <div id="parsec-link-container" class="parsec-link-container"></div>
                     </div>
 
                     <!-- Placeholder -->
@@ -3076,6 +3112,74 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                 `;
             }
 
+            // Add PARSEC prediction link button
+            const parsecLinkContainer = document.getElementById('parsec-link-container');
+            if (parsecLinkContainer) {
+                // Build URL parameters for PARSEC
+                const params = new URLSearchParams();
+
+                // Complexity from fistula_type
+                const fistulaType = features.fistula_type?.value || '';
+                if (fistulaType === 'simple' || fistulaType === 'intersphincteric') {
+                    params.set('complexity', 'simple');
+                } else if (fistulaType === 'complex' || fistulaType === 'transsphincteric' ||
+                           fistulaType === 'extrasphincteric' || fistulaType === 'suprasphincteric') {
+                    params.set('complexity', 'complex');
+                }
+
+                // Scores
+                params.set('vai', vai);
+                params.set('magnifi', magnifi);
+
+                // Features
+                if (features.fistula_count?.value) {
+                    params.set('fistula_count', features.fistula_count.value);
+                }
+                if (features.fistula_type?.value) {
+                    params.set('fistula_type', features.fistula_type.value);
+                }
+                if (features.t2_hyperintensity?.value) {
+                    params.set('t2', features.t2_hyperintensity.degree || features.t2_hyperintensity.value);
+                }
+                if (features.collections_abscesses?.value) {
+                    params.set('collections', 'yes');
+                }
+                if (treatmentStatus && treatmentStatus !== 'unknown') {
+                    params.set('treatment_status', treatmentStatus);
+                }
+
+                const parsecUrl = `parsec.html?${params.toString()}`;
+
+                // Save to sessionStorage for PARSEC import
+                const parsecData = {
+                    fistula_type: features.fistula_type?.value || '',
+                    fistula_count: features.fistula_count?.value || 1,
+                    vai: vai,
+                    magnifi: magnifi,
+                    t2: features.t2_hyperintensity?.degree || features.t2_hyperintensity?.value || '',
+                    collections: features.collections_abscesses?.value ? true : false,
+                    treatment_status: treatmentStatus,
+                    complexity: (fistulaType === 'simple' || fistulaType === 'intersphincteric') ? 'simple' : 'complex',
+                    extension: features.extension?.value || '',
+                    rectal_wall: features.rectal_wall?.value ? true : false
+                };
+                sessionStorage.setItem('parsec_mri_data', JSON.stringify(parsecData));
+
+                parsecLinkContainer.innerHTML = `
+                    <a href="${parsecUrl}" class="parsec-link-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                        Predict Treatment Outcome (PARSEC)
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                `;
+            }
+
             resultsPanel.classList.add('show');
         }
 
@@ -3594,6 +3698,7 @@ IMPORTANT: Use null if a feature is not mentioned. Return ONLY valid JSON.`
                 }
             });
         }
+
     </script>
 
     <!-- Stat Explanation Modal -->

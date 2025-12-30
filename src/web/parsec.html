@@ -957,23 +957,49 @@
                         'extrasphincteric': 'complex',
                         'horseshoe': 'horseshoe'
                     };
-                    const mapped = typeMap[mri.fistula_type.toLowerCase()] || 'complex';
+                    const mapped = typeMap[mri.fistula_type.toLowerCase()] || 'transsphincteric';
                     document.getElementById('complexity').value = mapped;
                     imported.push(`<div class="import-item success">&#10003; Fistula type: ${mri.fistula_type} &rarr; ${mapped}</div>`);
                 }
 
+                // Map fistula count to tract-count
+                if (mri.fistula_count) {
+                    const countEl = document.getElementById('tract-count');
+                    if (countEl) {
+                        const countNum = parseInt(mri.fistula_count) || 1;
+                        if (countNum >= 3) {
+                            countEl.value = '3';
+                        } else {
+                            countEl.value = countNum.toString();
+                        }
+                        imported.push(`<div class="import-item success">&#10003; Fistula tracts: ${mri.fistula_count}</div>`);
+                    }
+                }
+
                 // Display VAI if available
                 if (mri.vai !== undefined) {
-                    imported.push(`<div class="import-item info">&#8505; VAI score: ${mri.vai} (informational)</div>`);
+                    imported.push(`<div class="import-item info">&#8505; VAI score: ${mri.vai}</div>`);
+                }
+
+                // Display MAGNIFI if available
+                if (mri.magnifi !== undefined) {
+                    imported.push(`<div class="import-item info">&#8505; MAGNIFI-CD: ${mri.magnifi}</div>`);
+                }
+
+                // Display T2 hyperintensity
+                if (mri.t2) {
+                    imported.push(`<div class="import-item info">&#8505; T2 hyperintensity: ${mri.t2}</div>`);
                 }
 
                 // Display other features as informational
                 if (mri.collections) {
-                    imported.push(`<div class="import-item info">&#8505; Collections present (not used in model)</div>`);
+                    imported.push(`<div class="import-item info">&#8505; Collections/abscess on MRI</div>`);
                 }
 
                 statusDiv.classList.remove('hidden');
-                statusDiv.innerHTML = imported.join('') || '<div class="import-item info">No mappable features found</div>';
+                statusDiv.innerHTML = (imported.length > 0
+                    ? `<div class="import-item success" style="font-weight:600;">&#10003; Imported from MRI Parser:</div>` + imported.join('')
+                    : '<div class="import-item info">No mappable features found</div>');
 
                 updatePrediction();
             } catch (e) {
@@ -983,11 +1009,92 @@
         }
 
         // ============================================================
+        // AUTO-IMPORT FROM URL PARAMS
+        // ============================================================
+        function autoImportFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const statusDiv = document.getElementById('mri-import-status');
+
+            // Check if we have URL params from parser
+            if (urlParams.has('complexity') || urlParams.has('vai') || urlParams.has('fistula_type')) {
+                let imported = [];
+
+                // Complexity
+                if (urlParams.has('complexity')) {
+                    const complexity = urlParams.get('complexity');
+                    const complexityEl = document.getElementById('complexity');
+                    if (complexityEl) {
+                        // Map simple complexity values
+                        if (complexity === 'simple') {
+                            complexityEl.value = 'simple';
+                        } else if (complexity === 'complex' || complexity === 'transsphincteric') {
+                            complexityEl.value = 'transsphincteric';
+                        } else {
+                            complexityEl.value = complexity;
+                        }
+                        imported.push(`<div class="import-item success">&#10003; Complexity: ${complexity}</div>`);
+                    }
+                }
+
+                // Fistula count
+                if (urlParams.has('fistula_count')) {
+                    const count = urlParams.get('fistula_count');
+                    const countEl = document.getElementById('tract-count');
+                    if (countEl) {
+                        // Map raw count to select options (1, 2, 3+)
+                        const countNum = parseInt(count) || 1;
+                        if (countNum >= 3) {
+                            countEl.value = '3';
+                        } else {
+                            countEl.value = countNum.toString();
+                        }
+                        imported.push(`<div class="import-item success">&#10003; Fistula tracts: ${count}</div>`);
+                    }
+                }
+
+                // Display VAI as informational
+                if (urlParams.has('vai')) {
+                    const vai = urlParams.get('vai');
+                    imported.push(`<div class="import-item info">&#8505; MRI VAI score: ${vai}</div>`);
+                }
+
+                // Display MAGNIFI as informational
+                if (urlParams.has('magnifi')) {
+                    const magnifi = urlParams.get('magnifi');
+                    imported.push(`<div class="import-item info">&#8505; MRI MAGNIFI-CD: ${magnifi}</div>`);
+                }
+
+                // Collections
+                if (urlParams.get('collections') === 'yes') {
+                    imported.push(`<div class="import-item info">&#8505; Collections detected on MRI</div>`);
+                }
+
+                // Show status
+                if (imported.length > 0) {
+                    statusDiv.classList.remove('hidden');
+                    statusDiv.innerHTML = `<div class="import-item success" style="font-weight:600;">&#10003; Imported from MRI Parser:</div>` + imported.join('');
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // ============================================================
         // INIT
         // ============================================================
         document.addEventListener('DOMContentLoaded', async function() {
             await checkAPI();
             updateTreatmentOptions();
+
+            // Try auto-import from URL params first, then check sessionStorage
+            if (!autoImportFromURL()) {
+                // Check if sessionStorage has data (user clicked import button)
+                const parserData = sessionStorage.getItem('parsec_mri_data');
+                if (parserData && window.location.search.includes('from_parser')) {
+                    importFromParser();
+                }
+            }
+
             updatePrediction();
         });
     </script>
