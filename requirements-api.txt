@@ -1,7 +1,8 @@
 # PARSEC v3 API Dependencies
-fastapi==0.109.0
-uvicorn==0.27.0
-pydantic==2.5.3
+# Using versions with pre-built wheels (no Rust compilation needed)
+fastapi>=0.110.0
+uvicorn>=0.27.0
+pydantic>=2.6.0
 numpy>=1.24.0,<2.0.0
 catboost>=1.2.0
 scikit-learn>=1.3.0
