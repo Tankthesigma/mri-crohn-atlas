@@ -178,20 +178,37 @@
                         <select id="complexity" class="form-select" onchange="updatePrediction()">
                             <option value="simple">Simple / Intersphincteric</option>
                             <option value="transsphincteric" selected>Transsphincteric</option>
-                            <option value="complex">Complex / High</option>
-                            <option value="horseshoe">Horseshoe / Multiple</option>
+                            <option value="complex">Complex / Suprasphincteric</option>
+                            <option value="horseshoe">Horseshoe / Extrasphincteric</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Current Disease State</label>
+                        <label class="form-label">Number of Fistula Tracts</label>
+                        <select id="tract-count" class="form-select" onchange="updatePrediction()">
+                            <option value="1" selected>Single tract</option>
+                            <option value="2">2 tracts</option>
+                            <option value="3+">3 or more tracts</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Disease Duration</label>
+                        <select id="disease-duration" class="form-select" onchange="updatePrediction()">
+                            <option value="new">Newly diagnosed (&lt;1 year)</option>
+                            <option value="established" selected>Established (1-5 years)</option>
+                            <option value="longstanding">Longstanding (&gt;5 years)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Current Disease Activity</label>
                         <select id="disease-state" class="form-select" onchange="updatePrediction()">
-                            <option value="controlled">Inflammation controlled</option>
-                            <option value="active" selected>Active inflammation</option>
-                            <option value="sepsis">Active sepsis/abscess</option>
+                            <option value="remission">Remission (no active luminal disease)</option>
+                            <option value="controlled">Mild/Controlled inflammation</option>
+                            <option value="active" selected>Moderate-severe active disease</option>
+                            <option value="sepsis">Active perianal sepsis/abscess</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Prior Treatment History</label>
+                        <label class="form-label">Prior Treatment Failures</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" id="prior-antitnf" onchange="updatePrediction()">
@@ -199,11 +216,32 @@
                             </label>
                             <label class="checkbox-label">
                                 <input type="checkbox" id="prior-vedo" onchange="updatePrediction()">
-                                Failed vedolizumab
+                                Failed vedolizumab/ustekinumab
                             </label>
                             <label class="checkbox-label">
                                 <input type="checkbox" id="prior-surgery" onchange="updatePrediction()">
-                                Prior fistula surgery
+                                Failed prior fistula surgery
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="prior-seton" onchange="updatePrediction()">
+                                Currently has draining seton
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Risk Factors</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="smoking" onchange="updatePrediction()">
+                                Current smoker
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rectovaginal" onchange="updatePrediction()">
+                                Rectovaginal fistula
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="proctitis" onchange="updatePrediction()">
+                                Active proctitis
                             </label>
                         </div>
                     </div>
