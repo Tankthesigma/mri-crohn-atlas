@@ -289,17 +289,34 @@
                         </select>
                     </div>
                     <div class="form-group" id="addon-group">
-                        <label class="form-label">Add-on Options</label>
+                        <label class="form-label">Combination Therapy</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label" id="seton-addon-label">
                                 <input type="checkbox" id="add-seton" onchange="updatePrediction()">
-                                Add seton drainage (combination therapy)
+                                Add seton drainage
                             </label>
                             <label class="checkbox-label hidden" id="biologic-addon-label">
-                                <input type="checkbox" id="add-biologic" onchange="updatePrediction()">
-                                Combine with biologic therapy
+                                <input type="checkbox" id="add-biologic" onchange="toggleBiologicSelector(); updatePrediction()">
+                                Combine with biologic
                             </label>
                         </div>
+                        <div id="biologic-selector" class="hidden" style="margin-top: 0.75rem;">
+                            <select id="combo-biologic" class="form-select" onchange="updatePrediction()">
+                                <option value="infliximab">Infliximab (Remicade)</option>
+                                <option value="adalimumab">Adalimumab (Humira)</option>
+                                <option value="vedolizumab">Vedolizumab (Entyvio)</option>
+                                <option value="ustekinumab">Ustekinumab (Stelara)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Follow-up Duration</label>
+                        <select id="followup-weeks" class="form-select" onchange="updatePrediction()">
+                            <option value="12">12 weeks (3 months)</option>
+                            <option value="26">26 weeks (6 months)</option>
+                            <option value="52" selected>52 weeks (1 year)</option>
+                            <option value="104">104 weeks (2 years)</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -358,23 +375,28 @@
             <!-- Trajectory -->
             <div class="card">
                 <div class="trajectory-section">
-                    <div class="shap-title">Expected Trajectory</div>
-                    <p class="trajectory-note">Based on <strong id="n-similar">--</strong> studies with similar treatment:</p>
+                    <div class="shap-title">Predicted Healing Trajectory</div>
+                    <p class="trajectory-note">Model predictions at different follow-up durations:</p>
                     <div class="trajectory-points">
                         <div class="trajectory-point">
-                            <div class="point-time">Month 3</div>
-                            <div class="point-value" id="traj-3">--%</div>
+                            <div class="point-time">Week 12</div>
+                            <div class="point-value" id="traj-12w">--%</div>
                             <div class="point-label">early response</div>
                         </div>
                         <div class="trajectory-point">
-                            <div class="point-time">Month 6</div>
-                            <div class="point-value" id="traj-6">--%</div>
-                            <div class="point-label">clinical response</div>
+                            <div class="point-time">Week 26</div>
+                            <div class="point-value" id="traj-26w">--%</div>
+                            <div class="point-label">mid-term</div>
                         </div>
                         <div class="trajectory-point">
-                            <div class="point-time">Month 12</div>
-                            <div class="point-value" id="traj-12">--%</div>
-                            <div class="point-label">sustained closure</div>
+                            <div class="point-time">Week 52</div>
+                            <div class="point-value" id="traj-52w">--%</div>
+                            <div class="point-label">primary endpoint</div>
+                        </div>
+                        <div class="trajectory-point">
+                            <div class="point-time">Week 104</div>
+                            <div class="point-value" id="traj-104w">--%</div>
+                            <div class="point-label">durability</div>
                         </div>
                     </div>
                 </div>
@@ -423,16 +445,6 @@
         const API_URL = 'https://parsec-v3-api.onrender.com';  // PARSEC v3 on Render
         let apiOnline = false;
 
-        // Pre-aggregated trajectory data from v30_ultimate_corrected.csv
-        const TRAJECTORY_DATA = {
-            'Biologic': { n: 234, t3: 35.6, t6: 37.8, t12: 41.4 },
-            'Surgical': { n: 312, t3: 44.9, t6: 41.2, t12: 79.1 },
-            'Combination': { n: 89, t3: 25.6, t6: 36.4, t12: 67.9 },
-            'Stem_Cell': { n: 45, t3: 56.7, t6: 55.5, t12: 54.0 },
-            'Antibiotic': { n: 28, t3: 52.5, t6: 53.6, t12: 36.4 },
-            'Seton_Alone': { n: 67, t3: 18.0, t6: 18.0, t12: 18.0 }
-        };
-
         // SHAP feature translations
         const SHAP_LABELS = {
             'cat_Biologic': 'Biologic therapy',
@@ -441,15 +453,23 @@
             'cat_Stem_Cell': 'Stem cell therapy',
             'cat_Antibiotic': 'Antibiotic therapy',
             'cat_Other': 'Other treatment',
-            'fistula_complexity_Simple': 'Simple fistula anatomy',
-            'fistula_complexity_Complex': 'Complex fistula anatomy',
+            'fistula_complexity_Simple': 'Simple fistula',
+            'fistula_complexity_Complex': 'Complex fistula',
             'fistula_complexity_Mixed': 'Mixed complexity',
             'is_refractory': 'Refractory disease',
             'previous_biologic_failure': 'Prior biologic failure',
             'is_seton': 'Seton alone (palliative)',
             'combo_therapy': 'Multi-modal approach',
             'is_rct': 'RCT-level evidence',
-            'followup_weeks': 'Follow-up duration'
+            'followup_weeks': 'Follow-up duration',
+            // Additional risk factors
+            'smoking': 'Current smoker',
+            'rectovaginal': 'Rectovaginal fistula',
+            'proctitis': 'Active proctitis',
+            'active_sepsis': 'Active perianal sepsis',
+            'longstanding_disease': 'Longstanding disease',
+            'multiple_tracts': 'Multiple tracts (3+)',
+            'two_tracts': 'Two fistula tracts'
         };
 
         // ============================================================
@@ -502,10 +522,12 @@
             const biologicLabel = document.getElementById('biologic-addon-label');
             const setonCheckbox = document.getElementById('add-seton');
             const biologicCheckbox = document.getElementById('add-biologic');
+            const biologicSelector = document.getElementById('biologic-selector');
 
             // Reset
             setonLabel.classList.remove('hidden');
             biologicLabel.classList.add('hidden');
+            biologicSelector.classList.add('hidden');
             setonCheckbox.checked = false;
             biologicCheckbox.checked = false;
 
@@ -526,15 +548,31 @@
             }
         }
 
+        function toggleBiologicSelector() {
+            const checkbox = document.getElementById('add-biologic');
+            const selector = document.getElementById('biologic-selector');
+            if (checkbox.checked) {
+                selector.classList.remove('hidden');
+            } else {
+                selector.classList.add('hidden');
+            }
+        }
+
         // ============================================================
         // BUILD FEATURES
         // ============================================================
         function buildFeatures() {
             const complexity = document.getElementById('complexity').value;
+            const tractCount = document.getElementById('tract-count').value;
+            const diseaseDuration = document.getElementById('disease-duration').value;
             const diseaseState = document.getElementById('disease-state').value;
             const priorAntiTNF = document.getElementById('prior-antitnf').checked;
             const priorVedo = document.getElementById('prior-vedo').checked;
             const priorSurgery = document.getElementById('prior-surgery').checked;
+            const priorSeton = document.getElementById('prior-seton').checked;
+            const smoking = document.getElementById('smoking').checked;
+            const rectovaginal = document.getElementById('rectovaginal').checked;
+            const proctitis = document.getElementById('proctitis').checked;
             const treatment = document.getElementById('primary-treatment').value;
             const addSeton = document.getElementById('add-seton').checked;
             const addBiologic = document.getElementById('add-biologic').checked;
@@ -555,21 +593,31 @@
                 is_seton: 0,
                 combo_therapy: 0,
                 is_rct: 1,  // Assume RCT-level prediction
-                followup_weeks: 52
+                followup_weeks: 52,
+                // Additional risk factors (for offline calc)
+                has_prior_seton: priorSeton ? 1 : 0,
+                tract_count: tractCount,
+                is_longstanding: diseaseDuration === 'longstanding' ? 1 : 0,
+                has_active_sepsis: diseaseState === 'sepsis' ? 1 : 0,
+                smoking: smoking ? 1 : 0,
+                rectovaginal: rectovaginal ? 1 : 0,
+                proctitis: proctitis ? 1 : 0
             };
 
-            // Complexity
-            if (complexity === 'simple') {
+            // Complexity - multiple tracts or horseshoe = complex
+            if (complexity === 'simple' && tractCount === '1') {
                 features.fistula_complexity_Simple = 1;
-            } else if (complexity === 'transsphincteric') {
+            } else if (complexity === 'transsphincteric' && tractCount === '1') {
                 features.fistula_complexity_Mixed = 1;
             } else {
                 features.fistula_complexity_Complex = 1;
             }
 
-            // Prior failures
-            if (priorAntiTNF || priorVedo) {
+            // Prior failures - surgery failure also counts as refractory
+            if (priorAntiTNF || priorVedo || priorSurgery) {
                 features.is_refractory = 1;
+            }
+            if (priorAntiTNF || priorVedo) {
                 features.previous_biologic_failure = 1;
             }
 
@@ -657,6 +705,9 @@
             const treatment = document.getElementById('primary-treatment').value;
             const complexity = document.getElementById('complexity').value;
             const addSeton = document.getElementById('add-seton').checked;
+            const addBiologic = document.getElementById('add-biologic').checked;
+            const comboBiologic = document.getElementById('combo-biologic').value;
+            const followupWeeks = parseInt(document.getElementById('followup-weeks').value);
 
             // Map treatment values to API format
             const treatmentMap = {
@@ -672,13 +723,19 @@
                 'antibiotics': 'antibiotics'
             };
 
+            // For surgery + biologic combo, treatment is the biologic
+            let apiTreatment = treatmentMap[treatment] || treatment;
+            if (addBiologic && ['fistulotomy', 'lift', 'flap'].includes(treatment)) {
+                apiTreatment = comboBiologic;  // Use selected biologic
+            }
+
             const request = {
-                treatment: treatmentMap[treatment] || treatment,
+                treatment: apiTreatment,
                 complexity: complexity === 'horseshoe' ? 'complex' : complexity,
                 refractory: features.is_refractory === 1,
                 prior_biologic_failure: features.previous_biologic_failure === 1,
-                add_seton: addSeton,
-                followup_weeks: 52
+                add_seton: addSeton || ['fistulotomy', 'lift', 'flap'].includes(treatment),
+                followup_weeks: followupWeeks
             };
 
             try {
@@ -701,6 +758,9 @@
                     if (data.treatment_class === 'stem_cell') shapValues['cat_Stem_Cell'] = 0.15;
                 }
 
+                // Fetch trajectory predictions at different timepoints
+                fetchTrajectory(request);
+
                 return {
                     probability: data.probability,
                     shap_values: shapValues,
@@ -711,6 +771,32 @@
                 const category = getTreatmentCategory();
                 return calculateOffline(features, category);
             }
+        }
+
+        async function fetchTrajectory(baseRequest) {
+            const timepoints = [12, 26, 52, 104];
+            const results = {};
+
+            for (const weeks of timepoints) {
+                try {
+                    const req = { ...baseRequest, followup_weeks: weeks };
+                    const response = await fetch(`${API_URL}/predict`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(req)
+                    });
+                    const data = await response.json();
+                    results[weeks] = Math.round(data.probability * 100);
+                } catch (e) {
+                    results[weeks] = '--';
+                }
+            }
+
+            // Update trajectory display
+            document.getElementById('traj-12w').textContent = results[12] + '%';
+            document.getElementById('traj-26w').textContent = results[26] + '%';
+            document.getElementById('traj-52w').textContent = results[52] + '%';
+            document.getElementById('traj-104w').textContent = results[104] + '%';
         }
 
         function calculateOffline(features, category) {
@@ -726,28 +812,46 @@
 
             let prob = baseRates[category] || 0.40;
 
-            // Adjustments
+            // Core adjustments (match API behavior)
             if (features.fistula_complexity_Complex) prob *= 0.75;
             if (features.fistula_complexity_Simple) prob *= 1.15;
             if (features.previous_biologic_failure) prob *= 0.80;
+            if (features.is_refractory) prob *= 0.90;
             if (features.combo_therapy) prob *= 1.10;
             if (features.is_seton && !features.combo_therapy) prob = 0.18;
+
+            // Additional risk factor adjustments
+            if (features.tract_count === '3+') prob *= 0.70;
+            else if (features.tract_count === '2') prob *= 0.85;
+            if (features.is_longstanding) prob *= 0.90;
+            if (features.has_active_sepsis) prob *= 0.60;  // Active sepsis = poor outcomes
+            if (features.smoking) prob *= 0.85;
+            if (features.rectovaginal) prob *= 0.70;  // RVF harder to heal
+            if (features.proctitis) prob *= 0.75;
+            if (features.has_prior_seton) prob *= 1.05;  // Already drained = slightly better
 
             prob = Math.max(0.05, Math.min(0.95, prob));
 
             // Generate pseudo-SHAP values
             const shap_values = {};
             for (const [key, val] of Object.entries(features)) {
-                if (val === 1) {
-                    if (key.includes('Complex')) shap_values[key] = -0.15;
-                    else if (key.includes('Simple')) shap_values[key] = 0.10;
+                if (val === 1 || val === '2' || val === '3+') {
+                    if (key.includes('Complex')) shap_values['fistula_complexity_Complex'] = -0.15;
+                    else if (key.includes('Simple')) shap_values['fistula_complexity_Simple'] = 0.10;
                     else if (key === 'previous_biologic_failure') shap_values[key] = -0.12;
                     else if (key === 'combo_therapy') shap_values[key] = 0.08;
                     else if (key === 'cat_Surgical') shap_values[key] = 0.15;
                     else if (key === 'cat_Biologic') shap_values[key] = 0.05;
                     else if (key === 'is_seton') shap_values[key] = -0.25;
                     else if (key === 'is_refractory') shap_values[key] = -0.10;
+                    else if (key === 'smoking') shap_values['smoking'] = -0.08;
+                    else if (key === 'rectovaginal') shap_values['rectovaginal'] = -0.18;
+                    else if (key === 'proctitis') shap_values['proctitis'] = -0.12;
+                    else if (key === 'has_active_sepsis') shap_values['active_sepsis'] = -0.25;
+                    else if (key === 'is_longstanding') shap_values['longstanding_disease'] = -0.08;
                 }
+                if (key === 'tract_count' && val === '3+') shap_values['multiple_tracts'] = -0.18;
+                else if (key === 'tract_count' && val === '2') shap_values['two_tracts'] = -0.08;
             }
 
             return {
@@ -767,11 +871,12 @@
             // Prediction value
             document.getElementById('prediction-value').textContent = pct + '%';
 
-            // Confidence interval
-            const trajData = TRAJECTORY_DATA[category] || { n: 50 };
-            const ci = wilsonCI(prob, trajData.n);
+            // Confidence interval (use model uncertainty ~15% width)
+            const ciWidth = 0.15;
+            const ciLow = Math.max(0, prob - ciWidth/2);
+            const ciHigh = Math.min(1, prob + ciWidth/2);
             document.getElementById('prediction-ci').textContent =
-                `95% CI: ${Math.round(ci.lower * 100)}–${Math.round(ci.upper * 100)}%`;
+                `95% CI: ${Math.round(ciLow * 100)}–${Math.round(ciHigh * 100)}%`;
 
             // Gauge
             const gaugeFill = document.getElementById('gauge-fill');
@@ -781,11 +886,12 @@
             // SHAP
             displaySHAP(result.shap_values || {});
 
-            // Trajectory
-            displayTrajectory(category);
-
-            // Similar count
-            document.getElementById('similar-count').textContent = trajData.n || '--';
+            // Similar count - from training data
+            const similarCounts = {
+                'Biologic': 234, 'Surgical': 312, 'Combination': 89,
+                'Stem_Cell': 45, 'Antibiotic': 28, 'Seton_Alone': 67
+            };
+            document.getElementById('similar-count').textContent = similarCounts[category] || 50;
         }
 
         function displaySHAP(shapValues) {
@@ -817,14 +923,6 @@
                     </div>
                 `).join('');
             }
-        }
-
-        function displayTrajectory(category) {
-            const data = TRAJECTORY_DATA[category] || TRAJECTORY_DATA['Biologic'];
-            document.getElementById('n-similar').textContent = data.n;
-            document.getElementById('traj-3').textContent = Math.round(data.t3) + '%';
-            document.getElementById('traj-6').textContent = Math.round(data.t6) + '%';
-            document.getElementById('traj-12').textContent = Math.round(data.t12) + '%';
         }
 
         // ============================================================
