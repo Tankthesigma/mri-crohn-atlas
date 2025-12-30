@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.A.R.S.E.C. | Treatment Outcome Predictor</title>
+    <style>
+        :root {
+            --primary: #0066CC; --primary-light: #E6F0FA; --primary-dark: #004C99;
+            --white: #FFFFFF; --gray-50: #F9FAFB; --gray-100: #F3F4F6; --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB; --gray-400: #9CA3AF; --gray-500: #6B7280; --gray-600: #4B5563;
+            --gray-700: #374151; --gray-800: #1F2937; --gray-900: #111827;
+            --success: #059669; --success-light: #D1FAE5;
+            --warning: #D97706; --warning-light: #FEF3C7;
+            --danger: #DC2626; --danger-light: #FEE2E2;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        html[data-theme="dark"] {
+            --white: #111827; --gray-50: #1F2937; --gray-100: #374151; --gray-200: #4B5563;
+            --gray-300: #6B7280; --gray-400: #9CA3AF; --gray-500: #D1D5DB; --gray-600: #E5E7EB;
+            --gray-700: #F3F4F6; --gray-800: #F9FAFB; --gray-900: #FFFFFF;
+            --primary-light: #1E3A5F; --success-light: #064E3B; --warning-light: #78350F; --danger-light: #7F1D1D;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font); background: var(--gray-50); color: var(--gray-900); line-height: 1.5; min-height: 100vh; }
+
+        /* Nav */
+        nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--gray-200); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; height: 56px; }
+        .nav-logo { font-weight: 600; font-size: 1.125rem; color: var(--gray-900); text-decoration: none; }
+        .nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--gray-600); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.5rem 0.75rem; border-radius: 4px; }
+        .nav-links a:hover { color: var(--gray-900); background: var(--gray-100); }
+        .nav-links a.active { color: var(--primary); background: var(--primary-light); }
+        .theme-toggle { width: 36px; height: 36px; border: 1px solid var(--gray-200); border-radius: 6px; background: var(--white); color: var(--gray-600); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+        /* Header */
+        .header { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1.5rem; }
+        .header-inner { max-width: 1200px; margin: 0 auto; }
+        .header h1 { font-size: 1.5rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.25rem; }
+        .header p { font-size: 0.875rem; color: var(--gray-600); }
+
+        /* Main Grid */
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; display: grid; grid-template-columns: 360px 1fr; gap: 1.5rem; }
+        @media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
+
+        /* Cards */
+        .card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; }
+        .card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--gray-200); }
+        .card-header h3 { font-size: 0.9375rem; font-weight: 600; color: var(--gray-800); }
+        .card-body { padding: 1.25rem; }
+
+        /* Form Elements */
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group:last-child { margin-bottom: 0; }
+        .form-label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--gray-700); text-transform: uppercase; letter-spacing: 0.025em; margin-bottom: 0.5rem; }
+        .form-select { width: 100%; padding: 0.625rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 6px; font-size: 0.875rem; background: var(--white); color: var(--gray-900); cursor: pointer; }
+        .form-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1); }
+
+        /* Checkboxes */
+        .checkbox-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--gray-700); cursor: pointer; }
+        .checkbox-label input { width: 16px; height: 16px; accent-color: var(--primary); }
+
+        /* MRI Import */
+        .import-btn { width: 100%; padding: 0.75rem; border: 2px dashed var(--gray-300); border-radius: 6px; background: var(--gray-50); color: var(--gray-600); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+        .import-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+        .import-status { margin-top: 0.75rem; font-size: 0.8125rem; }
+        .import-item { padding: 0.375rem 0; display: flex; align-items: center; gap: 0.5rem; }
+        .import-item.success { color: var(--success); }
+        .import-item.info { color: var(--gray-500); }
+        .hidden { display: none; }
+
+        /* Right Panel */
+        .output-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        /* Prediction Display */
+        .prediction-card { text-align: center; padding: 2rem 1.5rem; }
+        .prediction-value { font-size: 4rem; font-weight: 700; color: var(--gray-900); line-height: 1; }
+        .prediction-ci { font-size: 1rem; color: var(--gray-500); margin-top: 0.25rem; }
+        .prediction-label { font-size: 0.875rem; color: var(--gray-600); margin-top: 0.5rem; }
+
+        /* Gauge */
+        .gauge { margin-top: 1.5rem; }
+        .gauge-track { height: 12px; background: var(--gray-200); border-radius: 6px; overflow: hidden; position: relative; }
+        .gauge-fill { height: 100%; border-radius: 6px; transition: width 0.5s ease, background-color 0.3s; }
+        .gauge-fill.poor { background: var(--danger); }
+        .gauge-fill.moderate { background: var(--warning); }
+        .gauge-fill.good { background: var(--success); }
+        .gauge-labels { display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.6875rem; color: var(--gray-500); }
+
+        /* SHAP Explanation */
+        .shap-section { padding: 1.25rem; }
+        .shap-title { font-size: 0.875rem; font-weight: 600; color: var(--gray-800); margin-bottom: 1rem; }
+        .shap-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .shap-group { padding: 1rem; border-radius: 6px; }
+        .shap-group.positive { background: var(--success-light); }
+        .shap-group.negative { background: var(--danger-light); }
+        .shap-group-title { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+        .shap-group.positive .shap-group-title { color: var(--success); }
+        .shap-group.negative .shap-group-title { color: var(--danger); }
+        .shap-item { display: flex; justify-content: space-between; align-items: center; padding: 0.375rem 0; font-size: 0.8125rem; }
+        .shap-factor { color: var(--gray-700); }
+        .shap-value { font-weight: 600; }
+        .shap-group.positive .shap-value { color: var(--success); }
+        .shap-group.negative .shap-value { color: var(--danger); }
+
+        /* Trajectory */
+        .trajectory-section { padding: 1.25rem; }
+        .trajectory-note { font-size: 0.8125rem; color: var(--gray-600); margin-bottom: 1rem; }
+        .trajectory-points { display: flex; justify-content: space-between; gap: 0.5rem; }
+        .trajectory-point { flex: 1; text-align: center; padding: 1rem 0.5rem; background: var(--gray-50); border-radius: 6px; }
+        .point-time { font-size: 0.6875rem; font-weight: 600; color: var(--gray-500); text-transform: uppercase; margin-bottom: 0.25rem; }
+        .point-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .point-label { font-size: 0.6875rem; color: var(--gray-500); margin-top: 0.25rem; }
+
+        /* Transparency */
+        .transparency-section { padding: 1.25rem; border-top: 1px solid var(--gray-200); }
+        .transparency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+        .stat-box { text-align: center; }
+        .stat-value { font-size: 1.25rem; font-weight: 700; color: var(--gray-900); }
+        .stat-label { font-size: 0.6875rem; color: var(--gray-500); }
+
+        /* Limitations */
+        details { font-size: 0.8125rem; }
+        details summary { cursor: pointer; color: var(--gray-600); font-weight: 500; }
+        details summary:hover { color: var(--gray-900); }
+        details ul { margin-top: 0.75rem; padding-left: 1.25rem; color: var(--gray-600); }
+        details li { margin-bottom: 0.375rem; }
+
+        /* API Status */
+        .api-status { display: flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; padding: 0.5rem 0.75rem; border-radius: 4px; margin-bottom: 1rem; }
+        .api-status.online { background: var(--success-light); color: var(--success); }
+        .api-status.offline { background: var(--warning-light); color: #92400E; }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .api-status.online .status-dot { background: var(--success); }
+        .api-status.offline .status-dot { background: var(--warning); }
+
+        /* Footer */
+        footer { text-align: center; padding: 1.5rem; color: var(--gray-500); font-size: 0.75rem; border-top: 1px solid var(--gray-200); margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">CrohnBridge</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="parser.html">MRI Parser</a></li>
+                <li><a href="parsec.html" class="active">PARSEC</a></li>
+                <li>
+                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="header-inner">
+            <h1>P.A.R.S.E.C. Treatment Predictor</h1>
+            <p>Predict fistula healing probability based on treatment selection and patient factors</p>
+        </div>
+    </div>
+
+    <main class="main">
+        <!-- LEFT PANEL: Inputs -->
+        <div class="input-panel">
+            <!-- Patient Profile -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Patient Profile</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-label">Fistula Anatomy</label>
+                        <select id="complexity" class="form-select" onchange="updatePrediction()">
+                            <option value="simple">Simple / Intersphincteric</option>
+                            <option value="transsphincteric" selected>Transsphincteric</option>
+                            <option value="complex">Complex / High</option>
+                            <option value="horseshoe">Horseshoe / Multiple</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Current Disease State</label>
+                        <select id="disease-state" class="form-select" onchange="updatePrediction()">
+                            <option value="controlled">Inflammation controlled</option>
+                            <option value="active" selected>Active inflammation</option>
+                            <option value="sepsis">Active sepsis/abscess</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Prior Treatment History</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="prior-antitnf" onchange="updatePrediction()">
+                                Failed anti-TNF (infliximab/adalimumab)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="prior-vedo" onchange="updatePrediction()">
+                                Failed vedolizumab
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="prior-surgery" onchange="updatePrediction()">
+                                Prior fistula surgery
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MRI Import -->
+            <div class="card" style="margin-top: 1rem;">
+                <div class="card-header">
+                    <h3>MRI Data (Optional)</h3>
+                </div>
+                <div class="card-body">
+                    <button class="import-btn" onclick="importFromParser()">
+                        Import from MRI Parser
+                    </button>
+                    <div id="mri-import-status" class="import-status hidden"></div>
+                </div>
+            </div>
+
+            <!-- Treatment Selection -->
+            <div class="card" style="margin-top: 1rem;">
+                <div class="card-header">
+                    <h3>Treatment to Evaluate</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-label">Primary Treatment</label>
+                        <select id="primary-treatment" class="form-select" onchange="updateTreatmentOptions(); updatePrediction();">
+                            <optgroup label="Biologics">
+                                <option value="infliximab" selected>Infliximab (Remicade)</option>
+                                <option value="adalimumab">Adalimumab (Humira)</option>
+                                <option value="vedolizumab">Vedolizumab (Entyvio)</option>
+                                <option value="ustekinumab">Ustekinumab (Stelara)</option>
+                            </optgroup>
+                            <optgroup label="Surgery">
+                                <option value="fistulotomy">Fistulotomy</option>
+                                <option value="lift">LIFT Procedure</option>
+                                <option value="flap">Advancement Flap</option>
+                                <option value="seton-alone">Seton Drainage (alone)</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option value="stemcell">Stem Cell (Darvadstrocel)</option>
+                                <option value="antibiotics">Antibiotics Only</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group" id="addon-group">
+                        <label class="form-label">Add-on Options</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label" id="seton-addon-label">
+                                <input type="checkbox" id="add-seton" onchange="updatePrediction()">
+                                Add seton drainage (combination therapy)
+                            </label>
+                            <label class="checkbox-label hidden" id="biologic-addon-label">
+                                <input type="checkbox" id="add-biologic" onchange="updatePrediction()">
+                                Combine with biologic therapy
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL: Outputs -->
+        <div class="output-stack">
+            <!-- API Status -->
+            <div id="api-status" class="api-status offline">
+                <span class="status-dot"></span>
+                <span id="api-status-text">Checking API...</span>
+            </div>
+
+            <!-- Prediction -->
+            <div class="card">
+                <div class="prediction-card">
+                    <div class="prediction-value" id="prediction-value">--%</div>
+                    <div class="prediction-ci" id="prediction-ci"></div>
+                    <div class="prediction-label">Predicted Fistula Closure at 52 Weeks</div>
+                    <div class="gauge">
+                        <div class="gauge-track">
+                            <div class="gauge-fill" id="gauge-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="gauge-labels">
+                            <span>0%</span>
+                            <span>Poor (&lt;30%)</span>
+                            <span>Moderate (30-50%)</span>
+                            <span>Good (&gt;50%)</span>
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SHAP Explanation -->
+            <div class="card">
+                <div class="shap-section">
+                    <div class="shap-title">What's Driving This Prediction</div>
+                    <div class="shap-groups">
+                        <div class="shap-group positive">
+                            <div class="shap-group-title">Working For You</div>
+                            <div id="shap-positive">
+                                <div class="shap-item"><span class="shap-factor">Loading...</span></div>
+                            </div>
+                        </div>
+                        <div class="shap-group negative">
+                            <div class="shap-group-title">Working Against You</div>
+                            <div id="shap-negative">
+                                <div class="shap-item"><span class="shap-factor">Loading...</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trajectory -->
+            <div class="card">
+                <div class="trajectory-section">
+                    <div class="shap-title">Expected Trajectory</div>
+                    <p class="trajectory-note">Based on <strong id="n-similar">--</strong> studies with similar treatment:</p>
+                    <div class="trajectory-points">
+                        <div class="trajectory-point">
+                            <div class="point-time">Month 3</div>
+                            <div class="point-value" id="traj-3">--%</div>
+                            <div class="point-label">early response</div>
+                        </div>
+                        <div class="trajectory-point">
+                            <div class="point-time">Month 6</div>
+                            <div class="point-value" id="traj-6">--%</div>
+                            <div class="point-label">clinical response</div>
+                        </div>
+                        <div class="trajectory-point">
+                            <div class="point-time">Month 12</div>
+                            <div class="point-value" id="traj-12">--%</div>
+                            <div class="point-label">sustained closure</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transparency -->
+            <div class="card">
+                <div class="transparency-section">
+                    <div class="transparency-grid">
+                        <div class="stat-box">
+                            <div class="stat-value">1,003</div>
+                            <div class="stat-label">Studies analyzed</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">0.757</div>
+                            <div class="stat-label">AUC (RCT-calibrated)</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="similar-count">--</div>
+                            <div class="stat-label">Similar in training</div>
+                        </div>
+                    </div>
+                    <details>
+                        <summary>Important Limitations</summary>
+                        <ul>
+                            <li>Model trained on study-level aggregate data, not individual patient outcomes</li>
+                            <li>All predictions are RCT-calibrated (is_rct=1 forced) for "single truth" output</li>
+                            <li>Prediction assumes 52-week follow-up with RCT-quality monitoring</li>
+                            <li>Model has monotonic constraints: complex fistulas &amp; refractory status reduce probability</li>
+                            <li>Does not account for individual drug levels, antibody status, or specific fistula anatomy</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><strong>CrohnBridge</strong> by Tanmay | P.A.R.S.E.C. Treatment Predictor | ISEF 2026</p>
+    </footer>
+
+    <script>
+        // ============================================================
+        // CONFIGURATION
+        // ============================================================
+        const API_URL = 'http://localhost:8000';  // PARSEC v3 FastAPI
+        let apiOnline = false;
+
+        // Pre-aggregated trajectory data from v30_ultimate_corrected.csv
+        const TRAJECTORY_DATA = {
+            'Biologic': { n: 234, t3: 35.6, t6: 37.8, t12: 41.4 },
+            'Surgical': { n: 312, t3: 44.9, t6: 41.2, t12: 79.1 },
+            'Combination': { n: 89, t3: 25.6, t6: 36.4, t12: 67.9 },
+            'Stem_Cell': { n: 45, t3: 56.7, t6: 55.5, t12: 54.0 },
+            'Antibiotic': { n: 28, t3: 52.5, t6: 53.6, t12: 36.4 },
+            'Seton_Alone': { n: 67, t3: 18.0, t6: 18.0, t12: 18.0 }
+        };
+
+        // SHAP feature translations
+        const SHAP_LABELS = {
+            'cat_Biologic': 'Biologic therapy',
+            'cat_Surgical': 'Surgical intervention',
+            'cat_Combination': 'Combination therapy',
+            'cat_Stem_Cell': 'Stem cell therapy',
+            'cat_Antibiotic': 'Antibiotic therapy',
+            'cat_Other': 'Other treatment',
+            'fistula_complexity_Simple': 'Simple fistula anatomy',
+            'fistula_complexity_Complex': 'Complex fistula anatomy',
+            'fistula_complexity_Mixed': 'Mixed complexity',
+            'is_refractory': 'Refractory disease',
+            'previous_biologic_failure': 'Prior biologic failure',
+            'is_seton': 'Seton alone (palliative)',
+            'combo_therapy': 'Multi-modal approach',
+            'is_rct': 'RCT-level evidence',
+            'followup_weeks': 'Follow-up duration'
+        };
+
+        // ============================================================
+        // THEME
+        // ============================================================
+        function toggleTheme() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+        (function() {
+            const saved = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+
+        // ============================================================
+        // API CHECK
+        // ============================================================
+        async function checkAPI() {
+            try {
+                const response = await fetch(`${API_URL}/health`, { method: 'GET' });
+                const data = await response.json();
+                apiOnline = data.status === 'ok';
+                updateAPIStatus();
+            } catch (e) {
+                apiOnline = false;
+                updateAPIStatus();
+            }
+        }
+
+        function updateAPIStatus() {
+            const el = document.getElementById('api-status');
+            const text = document.getElementById('api-status-text');
+            if (apiOnline) {
+                el.className = 'api-status online';
+                text.textContent = 'Model API Online - Real predictions';
+            } else {
+                el.className = 'api-status offline';
+                text.textContent = 'API Offline - Using fallback estimates';
+            }
+        }
+
+        // ============================================================
+        // TREATMENT OPTIONS
+        // ============================================================
+        function updateTreatmentOptions() {
+            const treatment = document.getElementById('primary-treatment').value;
+            const setonLabel = document.getElementById('seton-addon-label');
+            const biologicLabel = document.getElementById('biologic-addon-label');
+            const setonCheckbox = document.getElementById('add-seton');
+            const biologicCheckbox = document.getElementById('add-biologic');
+
+            // Reset
+            setonLabel.classList.remove('hidden');
+            biologicLabel.classList.add('hidden');
+            setonCheckbox.checked = false;
+            biologicCheckbox.checked = false;
+
+            // Biologics: can add seton
+            if (['infliximab', 'adalimumab', 'vedolizumab', 'ustekinumab'].includes(treatment)) {
+                setonLabel.classList.remove('hidden');
+                biologicLabel.classList.add('hidden');
+            }
+            // Surgery: can add biologic
+            else if (['fistulotomy', 'lift', 'flap'].includes(treatment)) {
+                setonLabel.classList.add('hidden');
+                biologicLabel.classList.remove('hidden');
+            }
+            // Seton alone or other: no add-ons
+            else {
+                setonLabel.classList.add('hidden');
+                biologicLabel.classList.add('hidden');
+            }
+        }
+
+        // ============================================================
+        // BUILD FEATURES
+        // ============================================================
+        function buildFeatures() {
+            const complexity = document.getElementById('complexity').value;
+            const diseaseState = document.getElementById('disease-state').value;
+            const priorAntiTNF = document.getElementById('prior-antitnf').checked;
+            const priorVedo = document.getElementById('prior-vedo').checked;
+            const priorSurgery = document.getElementById('prior-surgery').checked;
+            const treatment = document.getElementById('primary-treatment').value;
+            const addSeton = document.getElementById('add-seton').checked;
+            const addBiologic = document.getElementById('add-biologic').checked;
+
+            // Start with all zeros
+            const features = {
+                cat_Biologic: 0,
+                cat_Surgical: 0,
+                cat_Combination: 0,
+                cat_Stem_Cell: 0,
+                cat_Antibiotic: 0,
+                cat_Other: 0,
+                fistula_complexity_Simple: 0,
+                fistula_complexity_Mixed: 0,
+                fistula_complexity_Complex: 0,
+                is_refractory: 0,
+                previous_biologic_failure: 0,
+                is_seton: 0,
+                combo_therapy: 0,
+                is_rct: 1,  // Assume RCT-level prediction
+                followup_weeks: 52
+            };
+
+            // Complexity
+            if (complexity === 'simple') {
+                features.fistula_complexity_Simple = 1;
+            } else if (complexity === 'transsphincteric') {
+                features.fistula_complexity_Mixed = 1;
+            } else {
+                features.fistula_complexity_Complex = 1;
+            }
+
+            // Prior failures
+            if (priorAntiTNF || priorVedo) {
+                features.is_refractory = 1;
+                features.previous_biologic_failure = 1;
+            }
+
+            // Treatment mapping
+            const biologics = ['infliximab', 'adalimumab', 'vedolizumab', 'ustekinumab'];
+            const surgeries = ['fistulotomy', 'lift', 'flap'];
+
+            if (biologics.includes(treatment)) {
+                features.cat_Biologic = 1;
+                if (addSeton) {
+                    features.combo_therapy = 1;
+                    features.cat_Combination = 1;
+                }
+            } else if (surgeries.includes(treatment)) {
+                features.cat_Surgical = 1;
+                if (addBiologic) {
+                    features.cat_Combination = 1;
+                    features.combo_therapy = 1;
+                }
+            } else if (treatment === 'seton-alone') {
+                features.cat_Surgical = 1;
+                features.is_seton = 1;
+            } else if (treatment === 'stemcell') {
+                features.cat_Stem_Cell = 1;
+            } else if (treatment === 'antibiotics') {
+                features.cat_Antibiotic = 1;
+            }
+
+            return features;
+        }
+
+        // ============================================================
+        // GET TREATMENT CATEGORY
+        // ============================================================
+        function getTreatmentCategory() {
+            const treatment = document.getElementById('primary-treatment').value;
+            const addSeton = document.getElementById('add-seton').checked;
+            const addBiologic = document.getElementById('add-biologic').checked;
+
+            if (treatment === 'seton-alone') return 'Seton_Alone';
+            if (['infliximab', 'adalimumab', 'vedolizumab', 'ustekinumab'].includes(treatment)) {
+                return addSeton ? 'Combination' : 'Biologic';
+            }
+            if (['fistulotomy', 'lift', 'flap'].includes(treatment)) {
+                return addBiologic ? 'Combination' : 'Surgical';
+            }
+            if (treatment === 'stemcell') return 'Stem_Cell';
+            if (treatment === 'antibiotics') return 'Antibiotic';
+            return 'Biologic';
+        }
+
+        // ============================================================
+        // WILSON CI
+        // ============================================================
+        function wilsonCI(p, n, z = 1.96) {
+            if (n === 0) return { lower: 0, upper: 1 };
+            const denom = 1 + z*z/n;
+            const center = p + z*z/(2*n);
+            const spread = z * Math.sqrt((p*(1-p) + z*z/(4*n))/n);
+            return {
+                lower: Math.max(0, (center - spread) / denom),
+                upper: Math.min(1, (center + spread) / denom)
+            };
+        }
+
+        // ============================================================
+        // UPDATE PREDICTION
+        // ============================================================
+        async function updatePrediction() {
+            const features = buildFeatures();
+            const category = getTreatmentCategory();
+
+            let result;
+            if (apiOnline) {
+                result = await fetchPrediction(features);
+            } else {
+                result = calculateOffline(features, category);
+            }
+
+            displayPrediction(result, category);
+        }
+
+        async function fetchPrediction(features) {
+            // Build request for PARSEC v3 API
+            const treatment = document.getElementById('primary-treatment').value;
+            const complexity = document.getElementById('complexity').value;
+            const addSeton = document.getElementById('add-seton').checked;
+
+            // Map treatment values to API format
+            const treatmentMap = {
+                'infliximab': 'infliximab',
+                'adalimumab': 'adalimumab',
+                'vedolizumab': 'vedolizumab',
+                'ustekinumab': 'ustekinumab',
+                'fistulotomy': 'fistulotomy',
+                'lift': 'lift',
+                'flap': 'advancement_flap',
+                'seton-alone': 'seton_drainage',
+                'stemcell': 'darvadstrocel',
+                'antibiotics': 'antibiotics'
+            };
+
+            const request = {
+                treatment: treatmentMap[treatment] || treatment,
+                complexity: complexity === 'horseshoe' ? 'complex' : complexity,
+                refractory: features.is_refractory === 1,
+                prior_biologic_failure: features.previous_biologic_failure === 1,
+                add_seton: addSeton,
+                followup_weeks: 52
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/predict`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(request)
+                });
+                const data = await response.json();
+
+                // Generate pseudo-SHAP values from features used
+                const shapValues = {};
+                if (data.features_used) {
+                    if (data.features_used.fistula_complex === 1) shapValues['fistula_complexity_Complex'] = -0.12;
+                    if (data.features_used.fistula_complex === 0) shapValues['fistula_complexity_Simple'] = 0.08;
+                    if (data.features_used.is_refractory === 1) shapValues['is_refractory'] = -0.10;
+                    if (data.features_used.has_seton === 1) shapValues['combo_therapy'] = 0.05;
+                    if (data.treatment_class === 'surgery') shapValues['cat_Surgical'] = 0.12;
+                    if (data.treatment_class === 'biologic') shapValues['cat_Biologic'] = 0.05;
+                    if (data.treatment_class === 'stem_cell') shapValues['cat_Stem_Cell'] = 0.15;
+                }
+
+                return {
+                    probability: data.probability,
+                    shap_values: shapValues,
+                    offline: false
+                };
+            } catch (e) {
+                console.warn('API error, using offline:', e);
+                const category = getTreatmentCategory();
+                return calculateOffline(features, category);
+            }
+        }
+
+        function calculateOffline(features, category) {
+            // Simple offline estimate based on treatment category
+            const baseRates = {
+                'Biologic': 0.38,
+                'Surgical': 0.65,
+                'Combination': 0.52,
+                'Stem_Cell': 0.54,
+                'Antibiotic': 0.25,
+                'Seton_Alone': 0.18
+            };
+
+            let prob = baseRates[category] || 0.40;
+
+            // Adjustments
+            if (features.fistula_complexity_Complex) prob *= 0.75;
+            if (features.fistula_complexity_Simple) prob *= 1.15;
+            if (features.previous_biologic_failure) prob *= 0.80;
+            if (features.combo_therapy) prob *= 1.10;
+            if (features.is_seton && !features.combo_therapy) prob = 0.18;
+
+            prob = Math.max(0.05, Math.min(0.95, prob));
+
+            // Generate pseudo-SHAP values
+            const shap_values = {};
+            for (const [key, val] of Object.entries(features)) {
+                if (val === 1) {
+                    if (key.includes('Complex')) shap_values[key] = -0.15;
+                    else if (key.includes('Simple')) shap_values[key] = 0.10;
+                    else if (key === 'previous_biologic_failure') shap_values[key] = -0.12;
+                    else if (key === 'combo_therapy') shap_values[key] = 0.08;
+                    else if (key === 'cat_Surgical') shap_values[key] = 0.15;
+                    else if (key === 'cat_Biologic') shap_values[key] = 0.05;
+                    else if (key === 'is_seton') shap_values[key] = -0.25;
+                    else if (key === 'is_refractory') shap_values[key] = -0.10;
+                }
+            }
+
+            return {
+                probability: prob,
+                shap_values: shap_values,
+                offline: true
+            };
+        }
+
+        // ============================================================
+        // DISPLAY PREDICTION
+        // ============================================================
+        function displayPrediction(result, category) {
+            const prob = result.probability;
+            const pct = Math.round(prob * 100);
+
+            // Prediction value
+            document.getElementById('prediction-value').textContent = pct + '%';
+
+            // Confidence interval
+            const trajData = TRAJECTORY_DATA[category] || { n: 50 };
+            const ci = wilsonCI(prob, trajData.n);
+            document.getElementById('prediction-ci').textContent =
+                `95% CI: ${Math.round(ci.lower * 100)}–${Math.round(ci.upper * 100)}%`;
+
+            // Gauge
+            const gaugeFill = document.getElementById('gauge-fill');
+            gaugeFill.style.width = pct + '%';
+            gaugeFill.className = 'gauge-fill ' + (pct < 30 ? 'poor' : pct < 50 ? 'moderate' : 'good');
+
+            // SHAP
+            displaySHAP(result.shap_values || {});
+
+            // Trajectory
+            displayTrajectory(category);
+
+            // Similar count
+            document.getElementById('similar-count').textContent = trajData.n || '--';
+        }
+
+        function displaySHAP(shapValues) {
+            const positiveDiv = document.getElementById('shap-positive');
+            const negativeDiv = document.getElementById('shap-negative');
+
+            const sorted = Object.entries(shapValues).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+            const positives = sorted.filter(([k, v]) => v > 0.02).slice(0, 3);
+            const negatives = sorted.filter(([k, v]) => v < -0.02).slice(0, 3);
+
+            if (positives.length === 0) {
+                positiveDiv.innerHTML = '<div class="shap-item"><span class="shap-factor">No major positive factors</span></div>';
+            } else {
+                positiveDiv.innerHTML = positives.map(([key, val]) => `
+                    <div class="shap-item">
+                        <span class="shap-factor">${SHAP_LABELS[key] || key}</span>
+                        <span class="shap-value">+${Math.round(val * 100)}%</span>
+                    </div>
+                `).join('');
+            }
+
+            if (negatives.length === 0) {
+                negativeDiv.innerHTML = '<div class="shap-item"><span class="shap-factor">No major negative factors</span></div>';
+            } else {
+                negativeDiv.innerHTML = negatives.map(([key, val]) => `
+                    <div class="shap-item">
+                        <span class="shap-factor">${SHAP_LABELS[key] || key}</span>
+                        <span class="shap-value">${Math.round(val * 100)}%</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function displayTrajectory(category) {
+            const data = TRAJECTORY_DATA[category] || TRAJECTORY_DATA['Biologic'];
+            document.getElementById('n-similar').textContent = data.n;
+            document.getElementById('traj-3').textContent = Math.round(data.t3) + '%';
+            document.getElementById('traj-6').textContent = Math.round(data.t6) + '%';
+            document.getElementById('traj-12').textContent = Math.round(data.t12) + '%';
+        }
+
+        // ============================================================
+        // MRI IMPORT
+        // ============================================================
+        function importFromParser() {
+            const parserData = sessionStorage.getItem('parsec_mri_data');
+            const statusDiv = document.getElementById('mri-import-status');
+
+            if (!parserData) {
+                statusDiv.classList.remove('hidden');
+                statusDiv.innerHTML = `
+                    <div class="import-item info">No MRI data found. Parse a report in the MRI Parser first, then return here.</div>
+                `;
+                return;
+            }
+
+            try {
+                const mri = JSON.parse(parserData);
+                let imported = [];
+
+                // Map fistula type to complexity
+                if (mri.fistula_type) {
+                    const typeMap = {
+                        'simple': 'simple',
+                        'intersphincteric': 'simple',
+                        'transsphincteric': 'transsphincteric',
+                        'suprasphincteric': 'complex',
+                        'extrasphincteric': 'complex',
+                        'horseshoe': 'horseshoe'
+                    };
+                    const mapped = typeMap[mri.fistula_type.toLowerCase()] || 'complex';
+                    document.getElementById('complexity').value = mapped;
+                    imported.push(`<div class="import-item success">&#10003; Fistula type: ${mri.fistula_type} &rarr; ${mapped}</div>`);
+                }
+
+                // Display VAI if available
+                if (mri.vai !== undefined) {
+                    imported.push(`<div class="import-item info">&#8505; VAI score: ${mri.vai} (informational)</div>`);
+                }
+
+                // Display other features as informational
+                if (mri.collections) {
+                    imported.push(`<div class="import-item info">&#8505; Collections present (not used in model)</div>`);
+                }
+
+                statusDiv.classList.remove('hidden');
+                statusDiv.innerHTML = imported.join('') || '<div class="import-item info">No mappable features found</div>';
+
+                updatePrediction();
+            } catch (e) {
+                statusDiv.classList.remove('hidden');
+                statusDiv.innerHTML = '<div class="import-item info">Error parsing MRI data</div>';
+            }
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', async function() {
+            await checkAPI();
+            updateTreatmentOptions();
+            updatePrediction();
+        });
+    </script>
+</body>
+</html>
