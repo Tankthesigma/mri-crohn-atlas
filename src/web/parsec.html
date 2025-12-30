@@ -176,11 +176,12 @@
                     <div class="form-group">
                         <label class="form-label">Fistula Anatomy</label>
                         <select id="complexity" class="form-select" onchange="updatePrediction()">
-                            <option value="simple">Simple / Intersphincteric</option>
-                            <option value="transsphincteric" selected>Transsphincteric</option>
-                            <option value="complex">Complex / Suprasphincteric</option>
-                            <option value="horseshoe">Horseshoe / Extrasphincteric</option>
+                            <option value="simple">Simple (intersphincteric)</option>
+                            <option value="transsphincteric" selected>Complex (transsphincteric)</option>
+                            <option value="complex">Complex (suprasphincteric)</option>
+                            <option value="horseshoe">Complex (horseshoe/extra)</option>
                         </select>
+                        <small style="color: var(--gray-500); font-size: 0.75rem;">Model uses binary: simple vs complex</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Number of Fistula Tracts</label>
@@ -206,6 +207,7 @@
                             <option value="active" selected>Moderate-severe active disease</option>
                             <option value="sepsis">Active perianal sepsis/abscess</option>
                         </select>
+                        <small style="color: var(--gray-500); font-size: 0.75rem;">Affects offline estimate; API uses refractory status</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Prior Treatment Failures</label>
@@ -708,6 +710,7 @@
             const addBiologic = document.getElementById('add-biologic').checked;
             const comboBiologic = document.getElementById('combo-biologic').value;
             const followupWeeks = parseInt(document.getElementById('followup-weeks').value);
+            const priorSeton = document.getElementById('prior-seton').checked;
 
             // Map treatment values to API format
             const treatmentMap = {
@@ -734,7 +737,7 @@
                 complexity: complexity === 'horseshoe' ? 'complex' : complexity,
                 refractory: features.is_refractory === 1,
                 prior_biologic_failure: features.previous_biologic_failure === 1,
-                add_seton: addSeton || ['fistulotomy', 'lift', 'flap'].includes(treatment),
+                add_seton: addSeton || priorSeton,
                 followup_weeks: followupWeeks
             };
 
