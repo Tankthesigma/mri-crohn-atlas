@@ -211,11 +211,12 @@ DEFAULT_FEATURES = {
 
 class PredictionRequest(BaseModel):
     """Request model for predictions."""
-    treatment: str = Field(..., description="Treatment name (e.g., 'infliximab', 'Remicade', 'seton_cutting')")
+    treatment: str = Field(..., description="Treatment name (e.g., 'infliximab', 'Remicade', 'fistulotomy')")
     complexity: str = Field(default="complex", description="Fistula complexity: 'simple', 'complex', 'transsphincteric'")
     refractory: bool = Field(default=False, description="Prior treatment failures?")
     prior_biologic_failure: bool = Field(default=False, description="Failed biologic before?")
     add_seton: bool = Field(default=False, description="Adding seton to treatment?")
+    add_biologic: Optional[str] = Field(default=None, description="Biologic to combine with surgery (e.g., 'infliximab')")
     followup_weeks: int = Field(default=52, description="Follow-up duration in weeks")
 
 class PredictionResponse(BaseModel):
@@ -289,6 +290,7 @@ def build_feature_vector(
     refractory: bool = False,
     prior_biologic_failure: bool = False,
     add_seton: bool = False,
+    add_biologic: Optional[str] = None,
     followup_weeks: int = 52,
 ) -> Dict[str, Any]:
     """
@@ -302,6 +304,11 @@ def build_feature_vector(
     # Get treatment bundle
     bundle = TREATMENT_BUNDLES.get(treatment_canonical, TREATMENT_BUNDLES['other_unknown'])
     treatment_class = bundle['class']
+
+    # Handle surgery + biologic combination
+    if add_biologic and treatment_class == 'surgery':
+        # This is a combination therapy: surgery + biologic
+        treatment_class = 'combination'
 
     # Start with defaults
     features = DEFAULT_FEATURES.copy()
@@ -328,6 +335,15 @@ def build_feature_vector(
         features['is_combo'] = 1
         features['seton_subtype'] = 'drainage'  # Assume drainage for combos
         features['seton_drainage'] = 1
+
+    # Handle add_biologic (surgery + biologic combination)
+    if add_biologic:
+        features['has_biologic'] = 1
+        features['is_combo'] = 1
+        # Also enable surgery flag if coming from biologic-first pathway
+        if treatment_class == 'biologic':
+            features['has_surgery'] = 1
+            treatment_class = 'combination'
 
     # Complexity
     is_complex = complexity.lower() in ['complex', 'high', 'horseshoe', 'extrasphincteric', 'transsphincteric']
@@ -468,6 +484,7 @@ async def predict_endpoint(request: PredictionRequest):
             refractory=request.refractory,
             prior_biologic_failure=request.prior_biologic_failure,
             add_seton=request.add_seton,
+            add_biologic=request.add_biologic,
             followup_weeks=request.followup_weeks,
         )
 

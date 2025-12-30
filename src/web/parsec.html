@@ -190,6 +190,7 @@
                             <option value="2">2 tracts</option>
                             <option value="3+">3 or more tracts</option>
                         </select>
+                        <small style="color: var(--gray-500); font-size: 0.75rem;">Prediction is for closure of ALL tracts. With multiple tracts, success requires healing each one.</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Disease Duration</label>
@@ -198,16 +199,6 @@
                             <option value="established" selected>Established (1-5 years)</option>
                             <option value="longstanding">Longstanding (&gt;5 years)</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Current Disease Activity</label>
-                        <select id="disease-state" class="form-select" onchange="updatePrediction()">
-                            <option value="remission">Remission (no active luminal disease)</option>
-                            <option value="controlled">Mild/Controlled inflammation</option>
-                            <option value="active" selected>Moderate-severe active disease</option>
-                            <option value="sepsis">Active perianal sepsis/abscess</option>
-                        </select>
-                        <small style="color: var(--gray-500); font-size: 0.75rem;">Affects offline estimate; API uses refractory status</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Prior Treatment Failures</label>
@@ -297,10 +288,22 @@
                                 <input type="checkbox" id="add-seton" onchange="updatePrediction()">
                                 Add seton drainage
                             </label>
+                            <label class="checkbox-label hidden" id="surgery-addon-label">
+                                <input type="checkbox" id="add-surgery" onchange="toggleSurgerySelector(); updatePrediction()">
+                                Add surgery after biologic
+                            </label>
                             <label class="checkbox-label hidden" id="biologic-addon-label">
                                 <input type="checkbox" id="add-biologic" onchange="toggleBiologicSelector(); updatePrediction()">
-                                Combine with biologic
+                                Add biologic before surgery
                             </label>
+                        </div>
+                        <div id="surgery-selector" class="hidden" style="margin-top: 0.75rem;">
+                            <select id="combo-surgery" class="form-select" onchange="updatePrediction()">
+                                <option value="fistulotomy">Fistulotomy</option>
+                                <option value="lift">LIFT Procedure</option>
+                                <option value="flap">Advancement Flap</option>
+                            </select>
+                            <small style="color: var(--gray-500); font-size: 0.75rem; margin-top: 0.25rem; display: block;">For complex fistulas, biologics reduce inflammation before surgery</small>
                         </div>
                         <div id="biologic-selector" class="hidden" style="margin-top: 0.75rem;">
                             <select id="combo-biologic" class="form-select" onchange="updatePrediction()">
@@ -521,32 +524,43 @@
         function updateTreatmentOptions() {
             const treatment = document.getElementById('primary-treatment').value;
             const setonLabel = document.getElementById('seton-addon-label');
+            const surgeryLabel = document.getElementById('surgery-addon-label');
             const biologicLabel = document.getElementById('biologic-addon-label');
             const setonCheckbox = document.getElementById('add-seton');
+            const surgeryCheckbox = document.getElementById('add-surgery');
             const biologicCheckbox = document.getElementById('add-biologic');
+            const surgerySelector = document.getElementById('surgery-selector');
             const biologicSelector = document.getElementById('biologic-selector');
 
-            // Reset
-            setonLabel.classList.remove('hidden');
+            // Reset all
+            setonLabel.classList.add('hidden');
+            surgeryLabel.classList.add('hidden');
             biologicLabel.classList.add('hidden');
+            surgerySelector.classList.add('hidden');
             biologicSelector.classList.add('hidden');
             setonCheckbox.checked = false;
+            surgeryCheckbox.checked = false;
             biologicCheckbox.checked = false;
 
-            // Biologics: can add seton
+            // Biologics: can add seton OR surgery (biologic → surgery pathway)
             if (['infliximab', 'adalimumab', 'vedolizumab', 'ustekinumab'].includes(treatment)) {
                 setonLabel.classList.remove('hidden');
-                biologicLabel.classList.add('hidden');
+                surgeryLabel.classList.remove('hidden');  // Show "add surgery" option
             }
-            // Surgery: can add biologic
+            // Surgery: can add biologic (surgery + biologic pathway)
             else if (['fistulotomy', 'lift', 'flap'].includes(treatment)) {
-                setonLabel.classList.add('hidden');
                 biologicLabel.classList.remove('hidden');
             }
             // Seton alone or other: no add-ons
-            else {
-                setonLabel.classList.add('hidden');
-                biologicLabel.classList.add('hidden');
+        }
+
+        function toggleSurgerySelector() {
+            const checkbox = document.getElementById('add-surgery');
+            const selector = document.getElementById('surgery-selector');
+            if (checkbox.checked) {
+                selector.classList.remove('hidden');
+            } else {
+                selector.classList.add('hidden');
             }
         }
 
@@ -707,7 +721,9 @@
             const treatment = document.getElementById('primary-treatment').value;
             const complexity = document.getElementById('complexity').value;
             const addSeton = document.getElementById('add-seton').checked;
+            const addSurgery = document.getElementById('add-surgery').checked;
             const addBiologic = document.getElementById('add-biologic').checked;
+            const comboSurgery = document.getElementById('combo-surgery').value;
             const comboBiologic = document.getElementById('combo-biologic').value;
             const followupWeeks = parseInt(document.getElementById('followup-weeks').value);
             const priorSeton = document.getElementById('prior-seton').checked;
@@ -726,12 +742,9 @@
                 'antibiotics': 'antibiotics'
             };
 
-            // For surgery + biologic combo, treatment is the biologic
             let apiTreatment = treatmentMap[treatment] || treatment;
-            if (addBiologic && ['fistulotomy', 'lift', 'flap'].includes(treatment)) {
-                apiTreatment = comboBiologic;  // Use selected biologic
-            }
 
+            // Build request
             const request = {
                 treatment: apiTreatment,
                 complexity: complexity === 'horseshoe' ? 'complex' : complexity,
@@ -740,6 +753,17 @@
                 add_seton: addSeton || priorSeton,
                 followup_weeks: followupWeeks
             };
+
+            // Biologic → Surgery pathway: biologic first, then surgery
+            if (addSurgery && ['infliximab', 'adalimumab', 'vedolizumab', 'ustekinumab'].includes(treatment)) {
+                // Send surgery as treatment, biologic as add_biologic
+                request.treatment = treatmentMap[comboSurgery] || comboSurgery;
+                request.add_biologic = treatment;  // The biologic becomes the add-on
+            }
+            // Surgery + biologic combo: surgery + biologic support
+            else if (addBiologic && ['fistulotomy', 'lift', 'flap'].includes(treatment)) {
+                request.add_biologic = comboBiologic;
+            }
 
             try {
                 const response = await fetch(`${API_URL}/predict`, {
