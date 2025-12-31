@@ -40,9 +40,17 @@
         .header h1 { font-size: 1.5rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.25rem; }
         .header p { font-size: 0.875rem; color: var(--gray-600); }
 
-        /* Main Grid */
-        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; display: grid; grid-template-columns: 360px 1fr; gap: 1.5rem; }
+        /* Main Grid - balanced 40/60 split */
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: 1.5rem; }
         @media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
+
+        /* Compact form spacing */
+        .compact .form-group { margin-bottom: 0.875rem; }
+        .compact .card-body { padding: 1rem; }
+        .compact .form-label { margin-bottom: 0.375rem; }
+        .compact .form-select { padding: 0.5rem 0.625rem; }
+        .compact .checkbox-group { gap: 0.375rem; }
+        .compact .checkbox-label { font-size: 0.8125rem; }
 
         /* Cards */
         .card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 8px; }
@@ -166,7 +174,7 @@
 
     <main class="main">
         <!-- LEFT PANEL: Inputs -->
-        <div class="input-panel">
+        <div class="input-panel compact">
             <!-- Patient Profile -->
             <div class="card">
                 <div class="card-header">
