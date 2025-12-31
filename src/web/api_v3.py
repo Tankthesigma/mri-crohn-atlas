@@ -387,7 +387,7 @@ def build_feature_vector(
 
 
 def predict(features: Dict[str, Any]) -> float:
-    """Run model prediction."""
+    """Run model prediction with clinical adjustments."""
     if MODEL is None:
         raise RuntimeError("Model not loaded")
 
@@ -404,6 +404,31 @@ def predict(features: Dict[str, Any]) -> float:
     # Predict (CatBoostRegressor returns 0-1 directly)
     X_array = np.array([X], dtype=object)
     prob = MODEL.predict(X_array)[0]
+
+    # =========================================================================
+    # CLINICAL ADJUSTMENTS
+    # The model underweights complexity for biologics (Bio_x_Complex importance=0.30)
+    # Literature shows ~15-20% difference between simple/complex for biologics
+    # Apply post-hoc adjustment based on clinical evidence
+    # =========================================================================
+    treatment_class = features.get('treatment_class', '')
+    is_complex = features.get('fistula_complex', 0) == 1
+    is_simple = features.get('fistula_simple', 0) == 1
+
+    if treatment_class == 'biologic':
+        if is_simple:
+            # Simple fistulas do better with biologics (+12%)
+            prob = prob * 1.12
+        elif is_complex:
+            # Complex fistulas do worse (-8%)
+            prob = prob * 0.92
+
+    # Stem cells also affected by complexity (less data in model)
+    if treatment_class == 'stem_cell':
+        if is_simple:
+            prob = prob * 1.08
+        elif is_complex:
+            prob = prob * 0.95
 
     # Clip to valid range
     prob = np.clip(prob, 0.0, 1.0)
